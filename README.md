@@ -17,9 +17,11 @@ The schema for the employee:
 ```
 
 It's the list:
+
 ![Preview](./src/images/preview.png)
 
 It's an expected result of your job:
+
 ![Result](./src/images/result.png)
 
 You can read about non-standard attributes and dataset [here](https://javascript.info/dom-attributes-and-properties#non-standard-attributes-dataset)
