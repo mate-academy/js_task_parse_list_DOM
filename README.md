@@ -1,10 +1,9 @@
 ### Task: Parse list with data attributes
 
-Hey there! Can you parse data from the list and sort it based on this data?
+Hey there! Can you parse data from the list and sort it based on data attributes?
 
 Your task: Sort list by salary. Get an array of employees.
-
-Write two functions, first, which sorts the list by salary from data attributes, and the second, which returns an array of objects, where objects are employees also based on data from HTML.
+Write two functions, first, which sorts the list by salary from data attributes, and the second, which returns an array of objects, where objects are employees.
 
 The schema for the employee:
 ```
