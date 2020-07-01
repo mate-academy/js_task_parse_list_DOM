@@ -1,29 +1,32 @@
 'use strict';
 
 function sortList(list) {
+  function toNumber(num) {
+    return Number(num.dataset.salary.replace(/[$,]/g, ''));
+  }
+
   const sortedList = [...list].sort((a, b) =>
-    Number(b.dataset.salary.replace(/[$,]/g, ''))
-  - Number(a.dataset.salary.replace(/[$,]/g, ''))
-  );
+    toNumber(b) - toNumber(a));
 
   document.querySelector('ul').append(...sortedList);
 }
 
 function getEmployees(list) {
-  const resultList = [];
+  return [...list].reduce((accumulator, currentValue) => {
+    const { position, salary, age } = currentValue.dataset;
 
-  for (let i = 0; i < list.length; i++) {
-    const listItem = {};
+    accumulator.push({
+      position,
+      salary,
+      age,
+      name: currentValue.innerText,
+    });
 
-    listItem['name'] = list[i].innerText;
-    listItem['position'] = list[i].dataset.position;
-    listItem['salary'] = list[i].dataset.salary;
-    listItem['age'] = list[i].dataset.age;
-    resultList.push(listItem);
-  }
-
-  return resultList;
+    return accumulator;
+  }, []);
 }
 
-sortList(document.querySelectorAll('li'));
-getEmployees(document.querySelectorAll('li'));
+const allListItems = document.querySelectorAll('li');
+
+sortList(allListItems);
+getEmployees(allListItems);
