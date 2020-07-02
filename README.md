@@ -1,3 +1,5 @@
+Follow [this instruction](https://github.com/mate-academy/layout_task-guideline/blob/master/README.md) to solve task
+
 ### Task: Parse list with data attributes
 
 Hey there! Can you parse data from the list and sort it based on data attributes?
