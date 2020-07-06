@@ -3,13 +3,15 @@
 function sortList(list) {
   function toNumber(element) {
     return Number(
-      element.dataset.salary.split('$').join('').split(',').join('.')
+      element.dataset.salary.split('$').join('').split(',').join('')
     );
   }
 
-  const sortedList = [...list].sort((a, b) => toNumber(b) - toNumber(a));
+  const sortedList = [...list.children].sort((a, b) => {
+    return toNumber(b) - toNumber(a);
+  });
 
-  document.querySelector('ul').append(...sortedList);
+  list.append(...sortedList);
 }
 
 function getEmployees(list) {
@@ -24,12 +26,12 @@ function getEmployees(list) {
       },
     ];
   };
-  const employees = [...list].reduce(callback, []);
+  const employees = [...list.children].reduce(callback, []);
 
   return employees;
 }
 
-const employeesList = [...document.querySelectorAll('li')];
+const employeesList = document.querySelector('ul');
 
 sortList(employeesList);
 getEmployees(employeesList);
