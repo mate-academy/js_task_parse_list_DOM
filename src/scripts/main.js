@@ -2,15 +2,15 @@
 
 // write code here
 const arr = document.querySelector('ul');
-const elements = [...arr.children];
+const listItems = [...arr.children];
 
 function sortList(list) {
-  return list.sort((firstItem, secondItem) => {
-    return (
-      secondItem.dataset.salary.replace(/[^0-9]/gm, '')
-    - firstItem.dataset.salary.replace(/[^0-9]/gm, '')
-    );
-  }).map((item) => arr.append(item));
+  list.sort((firstItem, secondItem) =>
+    secondItem.dataset.salary.split('$').join('').split(',').join('')
+    - firstItem.dataset.salary.split('$').join('').split(',').join(''));
+  arr.append(...list);
+
+  return arr;
 }
 
 function getEmployees(employees) {
@@ -24,5 +24,5 @@ function getEmployees(employees) {
   });
 }
 
-sortList(elements);
-getEmployees(elements);
+sortList(listItems);
+getEmployees(listItems);
