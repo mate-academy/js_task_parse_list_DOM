@@ -1,6 +1,7 @@
 'use strict';
 
 const arrObjects = [];
+const liItems = document.querySelectorAll('li');
 
 function convertToNumber(paramString) {
   const arrParStr = +[...paramString].slice(1).join('').split(',').join('');
@@ -46,3 +47,5 @@ function getEmployees(par) {
     arrObjects.push(temp);
   }
 }
+sortList(liItems);
+getEmployees(liItems);
