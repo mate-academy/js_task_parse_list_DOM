@@ -1,21 +1,19 @@
 'use strict';
 
 // write code here
-function parseNumber(elementA, elementB) {
-  const salaryA = elementA.dataset.salary;
-  const salaryB = elementB.dataset.salary;
+function parseNumber(element) {
+  const salary = element.dataset.salary;
 
-  const item1 = salaryA.split('').splice(1).join('').split(',').join('');
-  const item2 = salaryB.split('').splice(1).join('').split(',').join('');
+  const item = salary.slice(1).split(',').join('');
 
-  return Number.parseInt(item2) - Number.parseInt(item1);
+  return Number.parseInt(item);
 }
 
 function sortList(ul) {
   const list = document.querySelectorAll('li');
   const arrayLi = [...list];
 
-  arrayLi.sort((item1, item2) => parseNumber(item1, item2));
+  arrayLi.sort((item1, item2) => parseNumber(item2) - parseNumber(item1));
 
   for (let i = 0; i < arrayLi.length; i++) {
     ul.append(arrayLi[i]);
@@ -38,7 +36,7 @@ function getEmployees() {
   return employees;
 }
 
-const uls = document.getElementsByTagName('ul');
+const uls = document.querySelectorAll('ul');
 
 sortList(uls[uls.length - 1]);
 
