@@ -1,6 +1,6 @@
 'use strict';
 
-const listLi = document.querySelectorAll('li');
+const callList = document.querySelectorAll('li');
 
 function sortList(list) {
   const sortSalary = [...list].sort((a, b) =>
@@ -9,7 +9,7 @@ function sortList(list) {
 
   document.querySelector('ul').append(...sortSalary);
 };
-sortList(listLi);
+sortList(callList);
 
 function getEmployees(list) {
   for (let i = 0; i < list.length; i++) {
@@ -23,4 +23,4 @@ function getEmployees(list) {
     resultArray.push(resultObject);
   };
 };
-getEmployees(listLi);
+getEmployees(callList);
