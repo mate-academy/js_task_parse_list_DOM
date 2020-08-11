@@ -1,6 +1,6 @@
 'use strict';
 
-const employees = document.querySelectorAll('li');
+let employees = document.querySelectorAll('li');
 
 function sortList(employeesAll) {
   const employeess = [...employeesAll];
@@ -13,6 +13,10 @@ function sortList(employeesAll) {
   const ulList = document.querySelector('ul');
 
   ulList.append(...employeess);
+
+  employees = employeess;
+
+  return employees;
 }
 
 sortList(employees);
