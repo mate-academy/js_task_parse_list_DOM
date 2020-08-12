@@ -1,6 +1,6 @@
 'use strict';
 
-let employees = document.querySelectorAll('li');
+let employees = document.querySelector('ul');
 
 function sortList(employeesAll) {
   const employeess = [...employeesAll];
@@ -10,16 +10,13 @@ function sortList(employeesAll) {
     - (+a.dataset.salary.split(',').join('').split('$').join(''));
   });
 
-  const ulList = document.querySelector('ul');
-
-  ulList.append(...employeess);
-
+  employeess[0].parentElement.append(...employeess);
   employees = employeess;
 
   return employees;
 }
 
-sortList(employees);
+sortList(employees.children);
 
 function getEmployees(employees2) {
   const arrEmployees = [];
