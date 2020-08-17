@@ -1,7 +1,7 @@
 'use strict';
 
 // write code here
-const workers = document.querySelectorAll('li');
+const workers = document.querySelector('ul');
 
 function sortList(array) {
   for (let i = 0; i < array.length; i++) {
@@ -18,6 +18,4 @@ function sortList(array) {
   return newArray;
 }
 
-const list = document.querySelector('ul');
-
-list.append(...sortList(workers));
+workers.append(...sortList(workers.children));
