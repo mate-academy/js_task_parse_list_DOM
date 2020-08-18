@@ -1,9 +1,12 @@
 'use strict';
 
-[...document.querySelectorAll('[data-salary]')]
-  .sort((a, b) => {
-    const salaryB = +b.dataset.salary.split('$').join('').split(',').join('');
-    const salaryA = +a.dataset.salary.split('$').join('').split(',').join('');
+const list = [...document.querySelectorAll('[data-salary]')];
 
-    return salaryB - salaryA;
-  }).forEach(li => document.querySelector('ul').append(li));
+list.sort((a, b) => {
+  const salaryB = +b.dataset.salary.slice(1).split(',').join('');
+  const salaryA = +a.dataset.salary.slice(1).split(',').join('');
+
+  return salaryB - salaryA;
+});
+
+document.querySelector('ul').append(...list);
