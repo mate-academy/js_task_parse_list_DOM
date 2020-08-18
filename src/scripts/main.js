@@ -2,7 +2,8 @@
 
 [...document.querySelectorAll('[data-salary]')]
   .sort((a, b) => {
-    return +b.dataset.salary.split('$').join('').split(',').join('')
-    > +a.dataset.salary.split('$').join('').split(',').join('')
-      ? 1 : -1;
+    const salaryB = +b.dataset.salary.split('$').join('').split(',').join('');
+    const salaryA = +a.dataset.salary.split('$').join('').split(',').join('');
+
+    return salaryB - salaryA;
   }).forEach(li => document.querySelector('ul').append(li));
