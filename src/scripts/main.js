@@ -2,7 +2,7 @@
 
 const employees = Array.from(document.querySelectorAll('li'));
 
-function greatePeopeList(people) {
+function сreatePeopeList(people) {
   return employees.map(person => ({
     name: person.textContent.trim(),
     ...person.dataset,
