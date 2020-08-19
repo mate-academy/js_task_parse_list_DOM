@@ -5,8 +5,8 @@ const employeeList = document.querySelector('ul');
 
 const sortList = function(list) {
   list.sort((a, b) => {
-    const salary1 = Number(a.dataset.salary.slice(1).replace(/,/g, ''));
-    const salary2 = Number(b.dataset.salary.slice(1).replace(/,/g, ''));
+    const salary1 = Number(a.dataset.salary.replace(/[^0-9]/gi, ''));
+    const salary2 = Number(b.dataset.salary.replace(/[^0-9]/gi, ''));
 
     return salary2 - salary1;
   });
@@ -16,11 +16,9 @@ const sortList = function(list) {
 
 const getEmployees = function(list) {
   return list.map(employee => {
-    return Object.assign({}, {
+    return ({
       name: employee.innerHTML,
-      position: employee.dataset.position,
-      salary: employee.dataset.salary,
-      age: employee.dataset.age,
+      ...employee.dataset,
     });
   });
 };
