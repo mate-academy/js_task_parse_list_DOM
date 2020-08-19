@@ -3,19 +3,13 @@
 function sortEmployeeBySalary(listEmployees) {
   const sortListEmployees = [...listEmployees.children]
     .sort((person1, person2) => {
-      const salary1 = person1.dataset.salary
-        .split(',').join('').split('$').join('');
-
-      const salary2 = person2.dataset.salary
-        .split(',').join('').split('$').join('');
+      const salary1 = person1.dataset.salary.replace(/[^0-9]/gi, '');
+      const salary2 = person2.dataset.salary.replace(/[^0-9]/gi, '');
 
       return salary2 - salary1;
     });
 
-  for (let i = 0; i < listEmployees.children.length; i++) {
-    listEmployees.removeChild(listEmployees.firstChild);
-    listEmployees.append(sortListEmployees[i]);
-  }
+  listEmployees.append(...sortListEmployees);
 }
 
 function employeeToObject(listEmployees) {
@@ -24,9 +18,7 @@ function employeeToObject(listEmployees) {
   for (const employee of listEmployees.children) {
     arrObjects.push({
       name: employee.textContent.trim(),
-      position: employee.dataset.position,
-      salary: employee.dataset.salary,
-      age: employee.dataset.age,
+      ...employee.dataset,
     });
   }
 
