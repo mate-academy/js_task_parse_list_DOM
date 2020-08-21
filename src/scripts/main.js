@@ -4,7 +4,7 @@ const initialList = document.querySelector('ul');
 const employees = [...initialList.children];
 
 function toNumber(str) {
-  return str.replace('$', '').replace(',', '');
+  return +str.replace('$', '').replace(',', '');
 }
 
 function sortList(list) {
