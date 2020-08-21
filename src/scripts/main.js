@@ -7,7 +7,10 @@ list.sort((a, b) => {
     .slice(1)
     .split(',')
     .join('');
-  const salaryA = +a.dataset.salary.slice(1).split(',').join('');
+  const salaryA = +a.dataset.salary
+    .slice(1)
+    .split(',')
+    .join('');
 
   return salaryB - salaryA;
 });
