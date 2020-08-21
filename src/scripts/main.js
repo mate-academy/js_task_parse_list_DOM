@@ -16,8 +16,15 @@ function toNumber(salary) {
   return +salary.replace(/[^0-9]/gi, '');
 }
 
-function getEmployees(arr) {
-  return [...arr].map(employee => employee.innerText);
+function getEmployees(list) {
+  return [...list.children].map(employee => ({
+    name: employee.innerText,
+    position: employee.dataset.position,
+    salary: employee.dataset.salary,
+    age: employee.dataset.age,
+  })
+  );
 }
 
-getEmployees(sortList(employees));
+sortList(employees);
+getEmployees(employees);
