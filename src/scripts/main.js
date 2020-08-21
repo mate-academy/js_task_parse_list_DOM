@@ -21,7 +21,7 @@ function getEmployees(list) {
 }
 
 function sortList(people) {
-  people.sort((a, b) => a.numberSalary - b.numberSalary);
+  people.sort((a, b) => b.numberSalary - a.numberSalary);
 }
 
 function pasteNewList(people, list) {
