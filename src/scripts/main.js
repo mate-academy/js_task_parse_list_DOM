@@ -3,7 +3,10 @@
 const list = [...document.querySelectorAll('[data-salary]')];
 
 list.sort((a, b) => {
-  const salaryB = +b.dataset.salary.slice(1).split(',').join('');
+  const salaryB = +b.dataset.salary
+    .slice(1)
+    .split(',')
+    .join('');
   const salaryA = +a.dataset.salary.slice(1).split(',').join('');
 
   return salaryB - salaryA;
