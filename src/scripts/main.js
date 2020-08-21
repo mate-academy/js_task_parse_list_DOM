@@ -9,7 +9,7 @@ function getEmployees(list) {
 
     person.name = list[i].innerText;
 
-    person.salary = +person.salary
+    person.numberSalary = +person.salary
       .slice(1)
       .split(',')
       .join('');
@@ -21,7 +21,25 @@ function getEmployees(list) {
 }
 
 function sortList(people) {
-  people.sort((a, b) => a.salary - b.salary);
+  people.sort((a, b) => a.numberSalary - b.numberSalary);
+}
+
+function pasteNewList(people, list) {
+  let newHTML = '';
+
+  for (const person of people) {
+    newHTML += `
+    <li
+    data-position="${person.position}"
+    data-salary="${person.salary}"
+    data-age="${person.age}"
+  >
+    ${person.name}
+  </li>
+    `;
+  }
+
+  document.querySelector('ul').innerHTML = newHTML;
 }
 
 const currentList = document.querySelectorAll('li');
@@ -29,4 +47,4 @@ const people = getEmployees(currentList);
 
 sortList(people);
 
-// console.table(people);
+pasteNewList(people, currentList);
