@@ -11,7 +11,7 @@ const convert = salary => +salary.slice(1).split(',').join('');
 
 function getEmployees(list) {
   return [...list.children].map(person => ({
-    name: person.textContent.trim(),
+    name: person.innerText,
     position: person.dataset.position,
     salary: person.dataset.salary,
     age: person.dataset.age,
