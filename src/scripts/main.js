@@ -4,8 +4,8 @@ const list = document.querySelectorAll('li');
 
 function sortList() {
   const listNew = [...list].sort((x, y) =>
-    parseInt(y.dataset.salary.slice(1))
-     - parseInt(x.dataset.salary.slice(1)));
+    +y.dataset.salary.slice(1).split(',').join('')
+     - (+x.dataset.salary.slice(1).split(',').join('')));
 
   document.querySelector('ul').append(...listNew);
 }
