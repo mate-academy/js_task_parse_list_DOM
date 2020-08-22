@@ -12,7 +12,10 @@ function convert(elem) {
 }
 
 function getEmployees(list) {
-  return list.map(elem => ({ ...elem.dataset }));
+  return list.map(elem => ({
+    name: elem.innerText,
+    ...elem.dataset,
+  }));
 }
 
 sortList(ul).map(elem => ul.append(elem));
