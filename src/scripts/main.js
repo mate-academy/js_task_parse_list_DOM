@@ -1,50 +1,15 @@
-/* eslint-disable no-shadow */
 'use strict';
 
-function getEmployees(list) {
-  const people = [];
+function sortList(list, fatherSelector) {
+  list.sort((a, b) => b.dataset.salary.slice(1).split(',').join('')
+    - a.dataset.salary.slice(1).split(',').join(''));
 
-  for (let i = 0; i < list.length; i++) {
-    const person = { ...list[i].dataset };
-
-    person.name = list[i].innerText;
-
-    person.numberSalary = +person.salary
-      .slice(1)
-      .split(',')
-      .join('');
-
-    people.push(person);
+  for (const person of list) {
+    document.querySelector(fatherSelector).append(person);
   }
-
-  return people;
 }
 
-function sortList(people) {
-  people.sort((a, b) => b.numberSalary - a.numberSalary);
-}
+const listSelector = 'ul';
+const people = [...document.querySelector(listSelector).children];
 
-function pasteNewList(people, list) {
-  let newHTML = '';
-
-  for (const person of people) {
-    newHTML += `
-    <li
-    data-position="${person.position}"
-    data-salary="${person.salary}"
-    data-age="${person.age}"
-  >
-    ${person.name}
-  </li>
-    `;
-  }
-
-  document.querySelector('ul').innerHTML = newHTML;
-}
-
-const currentList = document.querySelectorAll('li');
-const people = getEmployees(currentList);
-
-sortList(people);
-
-pasteNewList(people, currentList);
+sortList(people, listSelector);
