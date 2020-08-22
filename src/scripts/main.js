@@ -26,7 +26,11 @@ function sortList(listToSort) {
 }
 
 function getEmployees(listToObject) {
-  return listToObject.map(element => ({ ...element.dataset }));
+  return listToObject.map(element => (
+    {
+      name: element.innerText,
+      ...element.dataset,
+    }));
 }
 
 sortList(list);
