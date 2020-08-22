@@ -19,30 +19,14 @@ function sortList(listToSort) {
 
     const second = toNumber(b);
 
-    return first - second;
+    return second - first;
   });
 
-  listToSort.forEach(element => ul.children[0].before(element));
+  ul.append(...listToSort);
 }
 
 function getEmployees(listToObject) {
-  const employeesArray = [];
-
-  listToObject.forEach(element => {
-    const employee = {};
-
-    employee.name = element.innerText;
-
-    employee.position = element.dataset.position;
-
-    employee.salary = element.dataset.salary;
-
-    employee.age = element.dataset.age;
-
-    employeesArray.push(employee);
-  });
-
-  return employeesArray;
+  return listToObject.map(element => ({ ...element.dataset }));
 }
 
 sortList(list);
