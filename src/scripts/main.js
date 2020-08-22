@@ -3,6 +3,10 @@
 // write code here
 const employeesList = [...document.querySelectorAll('li')];
 
+function toNumber(str) {
+  return +str.replace(/[^\d]/g, '');
+}
+
 function sortList(list) {
   list
     .sort((a, b) => toNumber(b.dataset.salary)
@@ -16,10 +20,6 @@ function getEmployee(list) {
     name: employee.textContent.trim(),
     ...employee.dataset,
   }));
-}
-
-function toNumber(str) {
-  return +str.replace(/[^\d]/g, '');
 }
 
 getEmployee(employeesList);
