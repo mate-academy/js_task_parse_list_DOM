@@ -9,9 +9,9 @@ function toNumber(input) {
 function sortList(listFromHTML) {
   [...listFromHTML.children]
     .sort((a, b) => toNumber(b.dataset.salary) - toNumber(a.dataset.salary))
-    .forEach(child => list.append(child));
+    .forEach(child => listFromHTML.append(child));
 
-  return list;
+  return listFromHTML;
 }
 
 function getEmployees(listOfEmployees) {
