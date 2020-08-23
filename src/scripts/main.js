@@ -21,8 +21,8 @@ function getEmployees(listOfEmployees) {
     employees.push({
       name: employee.innerText,
       position: employee.dataset.position,
-      age: employee.dataset.age,
       salary: employee.dataset.salary,
+      age: employee.dataset.age,
     }));
 
   return employees;
