@@ -1,5 +1,5 @@
-1. Replace `<your_account>` with your Github username in the link
-    - [DEMO LINK](https://<your_account>.github.io/js_task_parse_list_DOM/)
+1. Replace `sobchuksasha` with your Github username in the link
+    - [DEMO LINK](https://sobchuksasha.github.io/js_task_parse_list_DOM/)
 2. Follow [this instructions](https://mate-academy.github.io/layout_task-guideline/)
     - There are no tests for this task so use `npm run lint` command instead of `npm test` 
 
