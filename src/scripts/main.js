@@ -6,8 +6,8 @@ const employee = Array.from(document.querySelectorAll('li'));
 
 function sortEmployeeList(people) {
   const sortList = [...people].sort((a, b) =>
-    +a.dataset.salary.replace(',', '').replace('$', '')
-  - +b.dataset.salary.replace(',', '').replace('$', ''));
+    +b.dataset.salary.replace(',', '').replace('$', '')
+  - +a.dataset.salary.replace(',', '').replace('$', ''));
 
   employeeList.append(...sortList);
 }
