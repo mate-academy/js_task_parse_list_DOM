@@ -30,9 +30,7 @@ const getEmployees = listOfEmployers => {
   for (const person of listOfEmployers) {
     const employer = {
       name: person.innerText,
-      position: person.dataset.position,
-      salary: person.dataset.salary,
-      age: person.dataset.age,
+      ...person.dataset,
     };
 
     employers.push(employer);
