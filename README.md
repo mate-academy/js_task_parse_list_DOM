@@ -1,7 +1,7 @@
 1. Replace `<your_account>` with your Github username in the link
-    - [DEMO LINK](https://<your_account>.github.io/js_task_parse_list_DOM/)
+    - [DEMO LINK](https://Paavlo.github.io/js_task_parse_list_DOM/)
 2. Follow [this instructions](https://mate-academy.github.io/layout_task-guideline/)
-    - There are no tests for this task so use `npm run lint` command instead of `npm test` 
+    - There are no tests for this task so use `npm run lint` command instead of `npm test`
 
 ### Task: Parse list with data attributes
 
@@ -13,7 +13,7 @@ Write two functions, first, which sorts the list by salary from data attributes,
 The schema for the employee:
 ```
 {
-  name, 
+  name,
   position,
   salary,
   age
