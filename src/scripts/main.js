@@ -7,9 +7,10 @@ function toNumber(input) {
 };
 
 function sortList(listFromHTML) {
-  [...listFromHTML.children]
-    .sort((a, b) => toNumber(b.dataset.salary) - toNumber(a.dataset.salary))
-    .forEach(child => listFromHTML.append(child));
+  const sortedList = ([...listFromHTML.children]
+    .sort((a, b) => toNumber(b.dataset.salary) - toNumber(a.dataset.salary)));
+
+  listFromHTML.append(...sortedList);
 
   return listFromHTML;
 }
