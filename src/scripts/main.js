@@ -15,7 +15,7 @@ function sortList(people) {
 
 function getEmployees(people) {
   return people.map(person => ({
-    name: person.textContent.trim(),
+    name: person.textContent,
     ...person.dataset,
   }));
 }
