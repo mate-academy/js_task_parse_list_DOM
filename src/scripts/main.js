@@ -1,14 +1,13 @@
 'use strict';
 
-const salary = [...document.querySelectorAll('[data-salary]')];
 const employees = [...document.querySelectorAll('li')];
 
-salary
+employees
   .sort((a, b) => b.dataset.salary
     .slice(1).split(',').join('') - a.dataset.salary
     .slice(1).split(',').join(''));
 
-document.querySelector('ul').append(...salary);
+document.querySelector('ul').append(...employees);
 
 const getEmployees = (list) => {
   return list.map(person => {
