@@ -6,11 +6,11 @@ function sortList() {
   const objects = [];
   const reg = /([^0-9])/g;
 
-  list.forEach(x => (objects.push({
-    name: x.innerText,
-    position: x.dataset.position,
-    salary: Number(x.dataset.salary.replace(reg, '')),
-    age: x.dataset.age,
+  list.forEach(li => (objects.push({
+    name: li.innerText,
+    position: li.dataset.position,
+    salary: Number(li.dataset.salary.replace(reg, '')),
+    age: li.dataset.age,
   })));
 
   return objects.sort((a, b) => b.salary - a.salary);
@@ -19,11 +19,11 @@ function sortList() {
 function getEmployers() {
   const objects = sortList(list);
 
-  objects.map((x, i) => {
-    list[i].innerHTML = x.name;
-    list[i].dataset.position = x.position;
-    list[i].dataset.age = x.age;
-    list[i].dataset.salary = x.salary;
+  objects.map((person, i) => {
+    list[i].innerHTML = person.name;
+    list[i].dataset.position = person.position;
+    list[i].dataset.age = person.age;
+    list[i].dataset.salary = person.salary;
   });
 }
 
