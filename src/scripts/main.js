@@ -3,13 +3,13 @@
 const listEmployees = [...document.querySelectorAll('li')];
 const list = document.querySelector('ul');
 
-function sortList(l) {
-  l.sort((x, y) => salaryConverter(y) - salaryConverter(x));
-  list.append(...l);
+function sortList(employees) {
+  employees.sort((x, y) => salaryConverter(y) - salaryConverter(x));
+  list.append(...employees);
 }
 
-function salaryConverter(n) {
-  return +n.dataset.salary
+function salaryConverter(employee) {
+  return +employee.dataset.salary
     .slice(1)
     .split(',')
     .join('');
