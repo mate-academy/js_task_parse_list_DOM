@@ -2,7 +2,7 @@
 
 const listOfPeople = [...document.querySelectorAll('li')];
 
-const changedList = document.querySelector('ul');
+const listToChange = document.querySelector('ul');
 
 function sortList(people) {
   people.sort(
@@ -11,7 +11,7 @@ function sortList(people) {
       - +first.dataset.salary.replace(/[^0-9]/gi, '')
   );
 
-  changedList.append(...people);
+  listToChange.append(...people);
 }
 
 function getEmployees(people) {
