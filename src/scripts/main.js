@@ -26,5 +26,4 @@ const getEmployees = (list) => {
 };
 
 sortList(employees);
-
 getEmployees(employees);
