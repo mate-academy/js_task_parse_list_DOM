@@ -1,8 +1,8 @@
 'use strict';
 
-const listElements = document.getElementsByTagName('li');
+const listElements = [...document.getElementsByTagName('li')];
 
-const sortedList = [...listElements].sort((prev, next) => {
+const sortedList = listElements.sort((prev, next) => {
   let prevSalary = prev.getAttribute('data-salary');
   let nextSalary = next.getAttribute('data-salary');
 
@@ -14,6 +14,6 @@ const sortedList = [...listElements].sort((prev, next) => {
 
 const sortedNames = sortedList.map(item => item.innerText);
 
-[...listElements].forEach((item, index) => {
+listElements.forEach((item, index) => {
   item.textContent = sortedNames[index];
 });
