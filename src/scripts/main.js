@@ -1,19 +1,46 @@
 'use strict';
 
 const listElements = [...document.getElementsByTagName('li')];
+const ul = document.querySelector('ul');
+const schema = ['name', 'position', 'salary', 'age'];
 
-const sortedList = listElements.sort((prev, next) => {
-  let prevSalary = prev.getAttribute('data-salary');
-  let nextSalary = next.getAttribute('data-salary');
+function sortList(list) {
+  list.sort((prev, next) => {
+    const prevSalary = prev.getAttribute('data-salary');
+    const nextSalary = next.getAttribute('data-salary');
 
-  prevSalary = prevSalary.split(',').join('').split('$').join('');
-  nextSalary = nextSalary.split(',').join('').split('$').join('');
+    return convertToNumber(nextSalary) - convertToNumber(prevSalary);
+  });
 
-  return nextSalary - prevSalary;
-});
+  ul.append(...listElements);
+}
 
-const sortedNames = sortedList.map(item => item.innerText);
+function convertToNumber(string) {
+  return Number(string.split(',').join('').split('$').join(''));
+}
 
-listElements.forEach((item, index) => {
-  item.textContent = sortedNames[index];
-});
+function getEmployees(list) {
+  const listArray = [];
+
+  for (let i = 0; i < listElements.length; i++) {
+    const personInObject = {};
+    const person = list[i];
+
+    for (let j = 0; j < schema.length; j++) {
+      const property = schema[j];
+
+      if (property === 'name') {
+        personInObject[property] = person.innerText;
+      } else {
+        personInObject[property] = person.dataset[property];
+      }
+    }
+
+    listArray.push(personInObject);
+  }
+
+  return listArray;
+}
+
+sortList(listElements);
+getEmployees(listElements);
