@@ -2,7 +2,6 @@
 
 const listElements = [...document.getElementsByTagName('li')];
 const ul = document.querySelector('ul');
-const schema = ['name', 'position', 'salary', 'age'];
 
 function sortList(list) {
   list.sort((prev, next) => {
@@ -23,20 +22,15 @@ function getEmployees(list) {
   const listArray = [];
 
   for (let i = 0; i < listElements.length; i++) {
-    const personInObject = {};
     const person = list[i];
+    const personToObject = {
+      name: person.innerText,
+      position: person.dataset.position,
+      salary: person.dataset.salary,
+      age: person.dataset.age,
+    };
 
-    for (let j = 0; j < schema.length; j++) {
-      const property = schema[j];
-
-      if (property === 'name') {
-        personInObject[property] = person.innerText;
-      } else {
-        personInObject[property] = person.dataset[property];
-      }
-    }
-
-    listArray.push(personInObject);
+    listArray.push(personToObject);
   }
 
   return listArray;
