@@ -20,9 +20,8 @@ function getEmployees(list) {
 }
 
 function convertToNumber(stringOfNumber) {
-  return +[...stringOfNumber]
+  return +stringOfNumber
     .slice(1)
-    .join('')
     .replace(/,/g, '');
 }
 
