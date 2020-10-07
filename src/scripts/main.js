@@ -29,7 +29,8 @@ const peopleMap = getEmployees(people);
 
 sortList(peopleMap);
 
-board.innerHTML = `
+board.insertAdjacentHTML('afterend', `
+  <h1>Sorted employees</h1>
   ${peopleMap.map(({ name, position, salary, age }) => `
     <li
       data-position="${position}"
@@ -39,4 +40,4 @@ board.innerHTML = `
       ${name}
     </li>
   `).join('')}
-`;
+`);
