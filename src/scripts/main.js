@@ -30,7 +30,14 @@ function getEmployees(list) {
       age: person.dataset.age,
     };
 
-    listArray.push(personToObject);
+    listArray.push(
+      {
+        name: list[i].innerText,
+        position: list[i].dataset.position,
+        salary: list[i].dataset.salary,
+        age: list[i].dataset.age,
+      }
+    );
   }
 
   return listArray;
