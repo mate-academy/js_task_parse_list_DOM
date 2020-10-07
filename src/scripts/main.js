@@ -31,13 +31,15 @@ sortList(peopleMap);
 
 board.insertAdjacentHTML('afterend', `
   <h1>Sorted employees</h1>
-  ${peopleMap.map(({ name, position, salary, age }) => `
-    <li
-      data-position="${position}"
-      data-salary="${salary}"
-      data-age="${age}"
-    >
-      ${name}
-    </li>
-  `).join('')}
+  <ul>
+    ${peopleMap.map(({ name, position, salary, age }) => `
+      <li
+        data-position="${position}"
+        data-salary="${salary}"
+        data-age="${age}"
+      >
+        ${name}
+      </li>
+    `).join('')}
+  </ul>
 `);
