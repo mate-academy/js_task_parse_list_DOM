@@ -4,12 +4,9 @@ const listElements = [...document.getElementsByTagName('li')];
 const ul = document.querySelector('ul');
 
 function sortList(list) {
-  list.sort((prev, next) => {
-    const prevSalary = prev.getAttribute('data-salary');
-    const nextSalary = next.getAttribute('data-salary');
-
-    return convertToNumber(nextSalary) - convertToNumber(prevSalary);
-  });
+  list.sort(
+    (prev, next) =>  toNumber(next.dataset.salary) - toNumber(prev.dataset.salary);
+  );
 
   ul.append(...listElements);
 }
