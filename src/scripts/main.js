@@ -4,17 +4,11 @@ const employees = [...document.querySelectorAll('li')];
 const listResult = document.querySelector('ul');
 
 const sortList = (list) => {
-  list.sort(
-    (a, b) => (+b.dataset.salary.split(',')
-      .join('')
-      .replace('$', ''))
-    - (+a.dataset.salary.split(',')
-      .join('')
-      .replace('$', ''))
-  );
-
+  list.sort((a, b) => toNumber(b.dataset.salary) - toNumber(a.dataset.salary));
   listResult.append(...list);
 };
+
+const toNumber = (str) => str.split(',').join('').replace('$', '');
 
 const getEmployees = (list) => {
   return list.map(element => (
