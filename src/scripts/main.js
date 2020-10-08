@@ -25,9 +25,7 @@ function getEmployees(list) {
   for (const employee of list) {
     const employeeInformation = {
       name: employee.innerHTML.trim(),
-      position: employee.dataset.position,
-      salary: employee.dataset.salary,
-      age: employee.dataset.age,
+      ...employee.dataset,
     };
 
     employeeObjects.push(employeeInformation);
