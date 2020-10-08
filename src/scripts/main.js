@@ -10,15 +10,7 @@ function sortList(list) {
 }
 
 function getNumber(string) {
-  const stringSplited = string.split('');
-
-  for (const char of stringSplited) {
-    if (isNaN(char)) {
-      stringSplited.splice(stringSplited.indexOf(char), 1);
-    }
-  }
-
-  return +stringSplited.join('');
+  return +string.replace(/\D*/g, '');
 }
 
 function getEmployees(list) {
@@ -27,9 +19,7 @@ function getEmployees(list) {
   for (const person of list) {
     people.push({
       name: person.innerText,
-      position: person.dataset.position,
-      salary: person.dataset.salary,
-      age: person.dataset.age,
+      ...person.dataset,
     });
   }
 
