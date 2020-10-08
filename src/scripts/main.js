@@ -10,13 +10,10 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  return [...list]
-    .map(person => ({
-      name: person.innerText,
-      position: person.dataset.position,
-      salary: person.dataset.salary,
-      age: person.dataset.age,
-    }));
+  return [...list].map(person => ({
+    name: person.innerText,
+    ...person.dataset,
+  }));
 }
 
 function convertToNumber(stringOfNumber) {
