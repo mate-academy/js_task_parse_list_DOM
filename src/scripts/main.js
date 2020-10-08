@@ -4,16 +4,16 @@ const employyes = [...document.querySelectorAll('li')];
 const employyesList = document.querySelector('ul');
 
 function sortList(list) {
-  list.sort((prevEmp, curEmp) => {
-    const salaryOfPrevEmp = parseInt(
-      prevEmp.dataset.salary.slice(1).split(',').join('')
+  list.sort((previousEmployee, currentEmployee) => {
+    const salaryOfPreviousEmployee = parseInt(
+      previousEmployee.dataset.salary.slice(1).split(',').join('')
     );
 
-    const salaryOfCurEmp = parseInt(
-      curEmp.dataset.salary.slice(1).split(',').join('')
+    const salaryOfCurrentEmployee = parseInt(
+      currentEmployee.dataset.salary.slice(1).split(',').join('')
     );
 
-    return salaryOfCurEmp - salaryOfPrevEmp;
+    return salaryOfCurrentEmployee - salaryOfPreviousEmployee;
   });
 
   employyesList.append(...employyes);
