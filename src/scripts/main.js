@@ -4,7 +4,7 @@ const employees = [...document.querySelectorAll('li')];
 const employeesList = document.querySelector('ul');
 
 function salaryToNumber(salary) {
-  return salary.replace('$', '').split(',').join('');
+  return Number(salary.replace('$', '').split(',').join(''));
 }
 
 function sortBySalary(list) {
