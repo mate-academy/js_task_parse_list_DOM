@@ -5,11 +5,11 @@ const employees = [...document.querySelectorAll('li')];
 
 function sortList(list) {
   // eslint-disable-next-line max-len
-  list.sort((a, b) => makeClearSalaryNumber(b.dataset.salary) - makeClearSalaryNumber(a.dataset.salary));
+  list.sort((a, b) => makeCleanSalaryNumber(b.dataset.salary) - makeCleanSalaryNumber(a.dataset.salary));
   employeeList.append(...list);
 }
 
-function makeClearSalaryNumber(num) {
+function makeCleanSalaryNumber(num) {
   return num.split(',').join('').replace('$', '');
 }
 
@@ -20,7 +20,7 @@ function getEmployees(list) {
       position: employee.dataset.position,
       salary: employee.dataset.salary,
       age: employee.dataset.age,
-    }
+    };
   });
 }
 
