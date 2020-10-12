@@ -1,29 +1,25 @@
 'use strict';
 
 const employees = [...document.querySelectorAll('li')];
-const employeesList = [];
+const employeesList = document.querySelector('ul');
 
 function salaryToNumber(salary) {
   return salary.replace('$', '').split(',').join('');
 }
 
-function sortBySalary(list, array) {
-  list.sort((a, b) =>
+function sortBySalary(list) {
+  return [...list].sort((a, b) =>
     salaryToNumber(b.dataset.salary) - salaryToNumber(a.dataset.salary));
-
-  array.push(...list);
 }
 
 function newEmployeesList(list) {
   list.map(person => {
     return {
       name: person.innerText,
-      position: person.dataset.position,
-      salary: person.dataset.salary,
-      age: person.dataset.age,
+      ...person.dataset,
     };
   });
 }
 
-sortBySalary(employees, employeesList);
+employeesList.append(...sortBySalary(employees));
 newEmployeesList(employeesList);
