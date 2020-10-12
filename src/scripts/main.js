@@ -8,7 +8,7 @@ const sortEmployees = (list) => {
     const prevNumber = +prev.dataset.salary.replace(/[$,]/g, '');
     const currNumber = +curr.dataset.salary.replace(/[$,]/g, '');
 
-    return prevNumber - currNumber;
+    return currNumber - prevNumber;
   });
 
   employeesList.append(...sortedList);
