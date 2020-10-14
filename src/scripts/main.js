@@ -1,24 +1,30 @@
 'use strict';
 
-const listOfEmployees = document.querySelector('ul');
-const parsedListOfEmployees = [ ...listOfEmployees.children ];
+const employees = [ ...document.querySelectorAll('li') ];
 
 function strToNumber(string) {
   return string.replace(/,|\$/g, '');
 }
 
 function sortList(list) {
-  return list
-    .sort((employeeA, employeeB) => (
-      strToNumber(employeeB.dataset.salary)
-      - strToNumber(employeeA.dataset.salary)
-    ));
+  list.sort((a, b) => (
+    strToNumber(b.dataset.salary) - strToNumber(a.dataset.salary)
+  ));
+  list.forEach(item => item.parentNode.appendChild(item));
 }
 
-function getEmployees(fixedList) {
-  fixedList.forEach(item => item.parentNode.appendChild(item));
+function getEmployees(list) {
+  const newStructureOfEmployees = [];
+
+  for (const person of list) {
+    newStructureOfEmployees.push({
+      name: person.textContent.trim(),
+      ...person.dataset,
+    });
+  }
+
+  return newStructureOfEmployees;
 }
 
-const sortedList = sortList(parsedListOfEmployees);
-
-getEmployees(sortedList);
+sortList(employees);
+getEmployees(employees);
