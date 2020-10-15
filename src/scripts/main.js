@@ -4,7 +4,7 @@ const employees = [...document.querySelectorAll('li')];
 const employeesList = document.querySelector('ul');
 
 function toNum(string) {
-  return (string.replace(/\D/g, ''));
+  return +string.replace(/\D/g, '');
 }
 
 function sortList(list) {
