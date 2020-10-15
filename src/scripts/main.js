@@ -1,6 +1,6 @@
 'use strict';
 
-const persons = document.querySelector('ul');
+const people = document.querySelector('ul');
 
 function sortList(list) {
   return [...list.children].sort((a, b) =>
@@ -19,5 +19,5 @@ function getEmployees(list) {
     }));
 };
 
-getEmployees(persons);
-sortList(persons);
+getEmployees(people);
+sortList(people);
