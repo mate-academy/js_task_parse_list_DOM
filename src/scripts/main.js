@@ -4,15 +4,17 @@ function getEmployees() {
   const employeesData = document.querySelectorAll('li');
 
   return [...employeesData].map(text => {
+    const formatedSalaryValue = Number(text
+      .dataset
+      .salary
+      .replace(/[$,]/g, ''));
+
     return {
       name: text.innerText,
       position: text.dataset.position,
       salary: text.dataset.salary,
       age: text.dataset.age,
-      formatedSalary: Number(text
-        .dataset
-        .salary
-        .replace(/[$,]/g, '')),
+      formatedSalary: formatedSalaryValue,
     };
   });
 }
