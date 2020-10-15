@@ -3,10 +3,12 @@
 const ul = document.querySelector('ul');
 const liItems = document.querySelectorAll('li');
 
+const convertToNumber = (str) =>
+  (+str.dataset.salary.replace(/[$,]/g, ''));
+
 function sortList(list) {
   const sortedList = [...list].sort((previous, next) =>
-    (+next.dataset.salary.replace(/[$,]/g, '')
-      - +previous.dataset.salary.replace(/[$,]/g, '')));
+    (convertToNumber(next) - convertToNumber(previous)));
 
   ul.append(...sortedList);
 }
