@@ -8,8 +8,7 @@ sortList(employeesList);
 getEmployees(employeesList);
 
 function sortList(list) {
-  // eslint-disable-next-line max-len
-  list.sort((a, b) => convertToNumber(b.dataset.salary) - convertToNumber(a.dataset.salary));
+  list.sort((a, b) => toNumber(b.dataset.salary) - toNumber(a.dataset.salary));
   listOfPeople.append(...list);
 }
 
@@ -22,6 +21,6 @@ function getEmployees(list) {
   }));
 }
 
-function convertToNumber(string) {
+function toNumber(string) {
   return Number(string.replace(/\D+/g, ''));
 }
