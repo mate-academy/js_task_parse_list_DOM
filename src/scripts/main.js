@@ -4,12 +4,13 @@ const employeeList = document.querySelector('ul');
 const employees = [...document.querySelectorAll('li')];
 
 function sortList(list) {
-  // eslint-disable-next-line max-len
-  list.sort((a, b) => makeCleanSalaryNumber(b.dataset.salary) - makeCleanSalaryNumber(a.dataset.salary));
+  list.sort((a, b) => (
+    makeCleanNumber(b.dataset.salary) - makeCleanNumber(a.dataset.salary)
+  ));
   employeeList.append(...list);
 }
 
-function makeCleanSalaryNumber(num) {
+function makeCleanNumber(num) {
   return num.split(',').join('').replace('$', '');
 }
 
