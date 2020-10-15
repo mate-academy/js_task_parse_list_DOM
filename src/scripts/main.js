@@ -4,7 +4,7 @@ const elements = [...document.querySelectorAll('li')];
 
 function sortList(list) {
   const convertToNumber = (string) => {
-    const number = +string.slice(1).split(',').join('');
+    const number = Number(string.slice(1).split(',').join(''));
 
     return number;
   };
