@@ -1,6 +1,6 @@
 'use strict';
 
-const elements = [...document.querySelectorAll('li')];
+const listElements = [...document.querySelectorAll('li')];
 
 function sortList(list) {
   const convertToNumber = (string) => {
@@ -27,5 +27,5 @@ function getEmployees(list) {
   return employees;
 }
 
-sortList(elements);
-getEmployees(elements);
+sortList(listElements);
+getEmployees(listElements);
