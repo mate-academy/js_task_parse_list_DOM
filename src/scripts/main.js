@@ -1,10 +1,10 @@
 'use strict';
 
 const personList = document.querySelector('ul');
-const person = [...document.querySelectorAll('li')];
+const persons = [...document.querySelectorAll('li')];
 
 function salaryToNumber(salary) {
-  return +salary.replace(/,/g, '').slice(1);
+  return +salary.replace(/,|\$/g, '');
 }
 
 function sortList(list) {
@@ -24,5 +24,5 @@ function getEmployees(list) {
   );
 }
 
-sortList(person);
-getEmployees(person);
+sortList(persons);
+getEmployees(persons);
