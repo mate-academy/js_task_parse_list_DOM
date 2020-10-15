@@ -13,7 +13,7 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  return [ ...list.children ].map(
+  return list.children.map(
     person => ({
       name: person.innerText,
       position: person.dataset.position,
