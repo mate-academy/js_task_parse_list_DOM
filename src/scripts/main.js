@@ -13,20 +13,14 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  const employeesArray = [];
+  const employeesData = list.map(employee => ({
+    name: employee.innerText,
+    position: employee.dataset.position,
+    salary: employee.dataset.salary,
+    age: employee.dataset.age,
+  }));
 
-  for (const person of list) {
-    const personInfo = {
-      name: person.innerHTML.trim(),
-      position: person.dataset.position,
-      salary: person.dataset.salary,
-      age: person.dataset.age,
-    };
-
-    employeesArray.push(personInfo);
-  }
-
-  return employeesArray;
+  return employeesData;
 }
 
 employList.append(...sortList(employees));
