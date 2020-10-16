@@ -15,10 +15,12 @@ function sortList(listSalary) {
 
 function getEmployees(property) {
   return property.map(person => {
-    person.name = person.textContent;
-    person.position = person.dataset.position;
-    person.salary = person.dataset.salary;
-    person.age = person.dataset.age;
+    return {
+      name: person.innerText,
+      position: person.dataset.position,
+      salary: person.dataset.salary,
+      age: person.dataset.age,
+    };
   });
 };
 
