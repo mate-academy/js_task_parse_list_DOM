@@ -7,8 +7,7 @@ const arrayOfEmployee = [...employee];
 function sortList(list) {
   list.sort((prev, cur) => (
     convert(cur.dataset.salary) - convert(prev.dataset.salary)
-  ))
-    .map(person => listOfEmployee.append(person));
+  )).map(person => listOfEmployee.append(person));
 }
 
 function convert(string) {
@@ -16,14 +15,12 @@ function convert(string) {
 }
 
 function getEmployees(list) {
-  return list.map(human => {
-    return {
-      name: human.textContent.trim(),
-      position: human.dataset.position,
-      salary: human.dataset.salary,
-      age: Number(human.dataset.age),
-    };
-  });
+  return list.map(human => ({
+    name: human.textContent.trim(),
+    position: human.dataset.position,
+    salary: human.dataset.salary,
+    age: Number(human.dataset.age),
+  }));
 }
 
 sortList(arrayOfEmployee);
