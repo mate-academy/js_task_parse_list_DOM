@@ -7,9 +7,9 @@ function salaryFormats(string) {
 }
 
 function sortList(list) {
-  return [...list.children].sort((a, b) =>
-    (salaryFormats(a.dataset.salary))
-  - (salaryFormats(b.dataset.salary)))
+  return [...list.children].sort((a, b) => (
+    salaryFormats(a.dataset.salary) - salaryFormats(b.dataset.salary)
+  ))
     .forEach(person => list.prepend(person));
 };
 
