@@ -20,7 +20,7 @@ const sortList = (list) => {
 const getEmployees = (list) => {
   const employeesList = [];
 
-  list.forEach(person => (
+  list.map(person => (
     employeesList.push({
       name: person.textContent.trim(),
       position: person.dataset.position,
