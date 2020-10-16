@@ -1,8 +1,7 @@
 'use strict';
 
 const listBlock = document.querySelector('ul');
-const listOfPeople = document.querySelectorAll('li');
-const listArray = Array.from(listOfPeople);
+const listArray = Array.from(document.querySelectorAll('li'));
 
 const personSalary = (el) => (
   (el.dataset.salary)
