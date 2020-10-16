@@ -4,7 +4,7 @@ const listBlock = document.querySelector('ul');
 const listArray = Array.from(document.querySelectorAll('li'));
 
 const personSalary = (el) => (
-  (el.dataset.salary)
+  el.dataset.salary
     .slice(1)
     .split(',')
     .join('')
@@ -17,14 +17,12 @@ const sortList = (list) => {
 };
 
 const getEmployees = (list) => {
-  return list.map(person => (
-    {
-      name: person.textContent.trim(),
-      position: person.dataset.position,
-      salary: person.dataset.salary,
-      age: person.dataset.age,
-    }
-  ));
+  return list.map(person => ({
+    name: person.textContent.trim(),
+    position: person.dataset.position,
+    salary: person.dataset.salary,
+    age: person.dataset.age,
+  }));
 };
 
 sortList(listArray);
