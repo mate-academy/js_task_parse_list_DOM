@@ -17,18 +17,14 @@ const sortList = (list) => {
 };
 
 const getEmployees = (list) => {
-  const employeesList = [];
-
-  list.map(person => (
-    employeesList.push({
+  return list.map(person => (
+    {
       name: person.textContent.trim(),
       position: person.dataset.position,
       salary: person.dataset.salary,
       age: person.dataset.age,
-    })
+    }
   ));
-
-  return employeesList;
 };
 
 sortList(listArray);
