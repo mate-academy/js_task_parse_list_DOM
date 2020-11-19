@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Actions', () => {
+describe('Parse list', () => {
   beforeEach(() => {
     cy.visit('index.html');
   });
