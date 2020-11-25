@@ -1,5 +1,4 @@
 'use strict';
-/// <reference types="cypress" />
 
 describe('List', () => {
   beforeEach(() => {
@@ -17,27 +16,16 @@ describe('List', () => {
   it('should be sorted by salary DSC', () => {
 
     cy.get('ul > li').then(($ul) => {
-     
-      const list = $ul.map((row) => row.dataset.salary.replace('$', '').replace(',', ''));
-      const listCopy = [...list];
-      let counter = 0;
-      const arrCopy = [];
-      const sortedList = [];
+      const list = [...$ul].map((row) => row.dataset.salary.replace('$', '').replace(',', ''));
+      let prev = list[0];
 
-      for (let i = 0; i < list.length; i++) {
-        arrCopy.push(list[i].replace('$', '').replace(',', ''))
-        sortedList.push(listCopy[i].replace('$', '').replace(',', ''))
-      }
+      for (let i = 1; i < list.length; i++) {
+        if (list[i] < prev) { 
+          prev = list[i];
+        };
+      };
 
-      sortedList.sort((a,b) => b - a);
-
-      for (let i = 0; i < arrCopy.length; i++) {
-        if (arrCopy[i] === sortedList[i]) {
-          counter += 1;
-        }
-      }
-
-      expect(counter).to.equal(arrCopy.length);
+      expect(prev).to.equal(list[list.length -2]);
     });
   });
 });
