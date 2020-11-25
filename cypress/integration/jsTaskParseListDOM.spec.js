@@ -18,7 +18,7 @@ describe('List', () => {
 
     cy.get('ul > li').then(($ul) => {
      
-      const list = [...$ul].map((row) => row.dataset.salary);
+      const list = $ul.map((row) => row.dataset.salary.replace('$', '').replace(',', ''));
       const listCopy = [...list];
       let counter = 0;
       const arrCopy = [];
