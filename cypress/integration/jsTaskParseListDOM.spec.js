@@ -16,7 +16,8 @@ describe('List', () => {
   it('should be sorted by salary DSC', () => {
 
     cy.get('ul > li').then(($ul) => {
-      const list = [...$ul].map((row) => row.dataset.salary.replace('$', '').replace(',', ''));
+      const list = [...$ul].map((row) => row.dataset.salary
+        .replace('$', '').replace(',', ''));
       let prev = list[0];
 
       for (let i = 1; i < list.length; i++) {
@@ -25,7 +26,7 @@ describe('List', () => {
         };
       };
 
-      expect(prev).to.equal(list[list.length -2]);
+      expect(prev).to.equal(list[list.length - 2]);
     });
   });
 });
