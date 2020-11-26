@@ -1,6 +1,6 @@
 'use strict';
 
-describe('List', () => {
+describe('Parse list app ', () => {
   beforeEach(() => {
     cy.visit('/');
   });
