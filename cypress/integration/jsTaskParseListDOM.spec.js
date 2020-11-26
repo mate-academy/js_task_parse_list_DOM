@@ -2,7 +2,7 @@
 
 describe('List', () => {
   beforeEach(() => {
-    cy.visit('');
+    cy.visit('/');
   });
 
   it('should render list', () => {
@@ -17,16 +17,17 @@ describe('List', () => {
 
     cy.get('ul > li').then(($ul) => {
       const list = [...$ul].map(
-          (row) => row.dataset.salaryreplace('$', '').replace(',', ''));
-      let prev = list[0];
+          (row) => row.dataset.salary.replace('$', '').replace(',', ''));
+      let counter = 0;
 
-      for (let i = 1; i < list.length; i++) {
-        if (list[i] < prev) { 
-          prev = list[i];
-        };
-      };
+      for (let i = 0; i < list.length; i++) {
+        if (Number(list[i + 1]) <= Number(list[i])) {
+          
+          counter += 1;
+        }
+      }
 
-      expect(prev).to.equal(list[list.length - 2]);
+      expect(counter).to.equal(list.length - 1);
     });
   });
 });
