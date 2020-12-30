@@ -18,7 +18,18 @@ function sortList(l) {
 }
 
 function getEmployees(l) {
-  return [...l];
+  const employees = [];
+
+  [...l].forEach((element) => {
+    employees.push({
+      name: element.textContent.replace(/\n/g, '').trim(),
+      position: element.dataset.position,
+      salary: element.dataset.salary,
+      age: element.dataset.age,
+    });
+  });
+
+  return [employees];
 }
 
 sortList(items);
