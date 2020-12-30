@@ -1,6 +1,6 @@
 'use strict';
 
-const parsed = { ...document.querySelectorAll('li') };
+const parsed = [ ...document.querySelectorAll('li') ];
 
 function sortList(list) {
   const people = [];
@@ -15,13 +15,6 @@ function sortList(list) {
   }
 
   const sortedBySalary = [ ...people ].sort((a, b) => +b.salary - +a.salary);
-
-  for (const coworker in list) {
-    list[coworker].innerText = sortedBySalary[coworker].name;
-    list[coworker].dataset.position = sortedBySalary[coworker].position;
-    list[coworker].dataset.salary = sortedBySalary[coworker].salary;
-    list[coworker].dataset.age = sortedBySalary[coworker].age;
-  }
 
   return sortedBySalary;
 }
@@ -42,3 +35,12 @@ function getEmployees(list) {
   return people;
 }
 getEmployees(parsed);
+
+const sortedWithFunction = sortList(parsed);
+
+for (const coworker in parsed) { // for (const coworker in list)
+  parsed[coworker].innerText = sortedWithFunction[coworker].name;
+  parsed[coworker].dataset.position = sortedWithFunction[coworker].position;
+  parsed[coworker].dataset.salary = sortedWithFunction[coworker].salary;
+  parsed[coworker].dataset.age = sortedWithFunction[coworker].age;
+}
