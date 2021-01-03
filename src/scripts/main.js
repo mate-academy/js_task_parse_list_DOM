@@ -8,9 +8,9 @@ function convertToNumber(inputString) {
 }
 
 function sortList(list) {
-  const sorted = [...list].sort((employerA, employerB) =>
-    (convertToNumber(employerB.dataset.salary)
-    - convertToNumber(employerA.dataset.salary)));
+  const sorted = [...list].sort((employeeA, employeeB) =>
+    (convertToNumber(employeeB.dataset.salary)
+    - convertToNumber(employeeA.dataset.salary)));
 
   employeesBlock.append(...sorted);
 }
