@@ -6,7 +6,7 @@ const employeesCollectionRepository = document.querySelector('ul');
 function sortList(collection, list) {
   const sortedList = [...collection].sort((a, b) => {
     return Number(b.dataset.salary.replace(/\D/g, ''))
-    - Number(a.dataset.salary.replace(/\D/g, ''));
+      - Number(a.dataset.salary.replace(/\D/g, ''));
   });
 
   list.append(...sortedList);
