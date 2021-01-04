@@ -1,5 +1,3 @@
-'use strict';
-
 describe('Parse list app ', () => {
   beforeEach(() => {
     cy.visit('/');
@@ -22,7 +20,7 @@ describe('Parse list app ', () => {
 
       for (let i = 0; i < list.length; i++) {
         if (Number(list[i + 1]) <= Number(list[i])) {
-          
+
           counter += 1;
         }
       }
