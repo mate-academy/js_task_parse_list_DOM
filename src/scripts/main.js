@@ -3,7 +3,7 @@
 const employees = document.querySelector('ul');
 
 const stringToNumber = (str) => {
-  return str.slice(1).split(',').join('');
+  return Number(str.slice(1).split(',').join(''));
 };
 
 const sortList = (list) => {
