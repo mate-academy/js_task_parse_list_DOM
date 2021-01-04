@@ -5,22 +5,9 @@ const employees = document.querySelector('ul');
 function sortList(list) {
   const employeesArr = [...list.children];
 
-  employeesArr.forEach((employee) => {
-    employee.dataset.salary = employee.dataset.salary.slice(1).replace(',', '');
-  });
-
   employeesArr.sort((a, b) => {
-    return b.dataset.salary - a.dataset.salary;
-  });
-
-  employeesArr.forEach((employee) => {
-    const salaryArr = ('' + employee.dataset.salary).split('');
-
-    for (let i = salaryArr.length - 3; i > 0; i -= 3) {
-      salaryArr.splice(i, 0, ',');
-    }
-
-    employee.dataset.salary = '$' + salaryArr.join('');
+    return b.dataset.salary.slice(1).replace(',', '')
+      - a.dataset.salary.slice(1).replace(',', '');
   });
 
   for (const employee of employeesArr) {
