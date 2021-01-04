@@ -1,13 +1,5 @@
 'use strict';
 
-const myList = [...document.getElementsByTagName('li')]
-  .map(item => ({
-    name: item.innerText,
-    position: item.dataset.position,
-    salary: item.dataset.salary.replace(/[$,]/g, ''),
-    age: item.dataset.age,
-  }));
-
 function sortList() {
   const list = document.querySelector('ul');
 
@@ -33,9 +25,15 @@ function sortList() {
   }
 }
 
-function getEmployees(arr) {
-  return arr;
+function getEmployees() {
+  return [...document.getElementsByTagName('li')]
+    .map(item => ({
+      name: item.innerText,
+      position: item.dataset.position,
+      salary: item.dataset.salary.replace(/[$,]/g, ''),
+      age: item.dataset.age,
+    }));
 }
 
 sortList();
-getEmployees(myList);
+getEmployees();
