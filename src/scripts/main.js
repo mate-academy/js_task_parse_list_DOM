@@ -23,14 +23,14 @@ function insertToHtml(array, tagElement) {
   const elementArray = [...document.querySelectorAll(tagElement)];
 
   for (let i = 0; i < elementArray.length; i++) {
-    elementArray[i].innerHTML = array[i].name;
+    elementArray[i].textContent = array[i].name;
   }
 }
 
 function getEmployees(collection) {
   const array = [...collection].map(person => {
     return {
-      name: person.innerHTML.trim(),
+      name: person.textContent.trim(),
       position: person.dataset.position,
       salary: salaryToNumber(person.dataset.salary),
       age: +person.dataset.age,
