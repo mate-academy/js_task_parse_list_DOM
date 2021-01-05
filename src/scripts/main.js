@@ -8,7 +8,7 @@ function sortList() {
     const A = +a.dataset.salary.replace(/[$,]/g, '');
     const B = +b.dataset.salary.replace(/[$,]/g, '');
 
-    return A === B ? 0 : B > A ? 1 : -1;
+    return B - A;
   });
 
   for (let i = 0; i < itemsArr.length; ++i) {
