@@ -2,21 +2,13 @@
 
 function sortList() {
   const list = document.querySelector('ul');
-  const items = list.childNodes;
-  const itemsArr = [];
-
-  for (const i in items) {
-    if (items[i].nodeType === 1) {
-      itemsArr.push(items[i]);
-    }
-  }
+  const itemsArr = [...list.children];
 
   itemsArr.sort(function(a, b) {
-    return +a.dataset.salary.replace(/[$,]/g, '') === +b
-      .dataset.salary.replace(/[$,]/g, '')
-      ? 0
-      : (+b.dataset.salary.replace(/[$,]/g, '') > +a
-        .dataset.salary.replace(/[$,]/g, '') ? 1 : -1);
+    const A = +a.dataset.salary.replace(/[$,]/g, '');
+    const B = +b.dataset.salary.replace(/[$,]/g, '');
+
+    return A === B ? 0 : B > A ? 1 : -1;
   });
 
   for (let i = 0; i < itemsArr.length; ++i) {
