@@ -40,5 +40,5 @@ function getEmployees(collection) {
   return array;
 }
 
-sortList(list);
 getEmployees(list);
+sortList(list);
