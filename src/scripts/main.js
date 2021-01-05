@@ -11,20 +11,24 @@ function sortList(list, convert) {
 }
 
 function convertSalary(salary) {
-  return salary.replace(/\D/g, '');
+  return +string.slice(1).split(',').join('');
 }
 
 sortList(employees, convertSalary);
 
 function getEmployees(list) {
-  return [...list].map(employer =>
-    ({
-      name: employer.innerText,
-      position: employer.dataset.position,
-      salary: employer.dataset.salary,
-      age: employer.dataset.age,
-    })
-  );
+  const employer = [];
+
+  for (const person of list) {
+    employer.push({
+      name: person.innerText,
+      position: person.dataset.position,
+      salary: person.dataset.salary,
+      age: person.dataset.age,
+    });
+  }
+
+  return employer;
 }
 
 getEmployees(employees);
