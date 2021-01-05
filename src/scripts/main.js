@@ -1,12 +1,10 @@
 'use strict';
 
-
 const sourceList = document.querySelectorAll('li');
 
 function convertSalary(salary) {
   return Number(salary.replace(/\D/g, ''));
 }
-
 
 function getEmployees(list) {
   return [...list].map(el => {
@@ -14,7 +12,7 @@ function getEmployees(list) {
       name: el.innerText,
       position: el.dataset.position,
       salary: convertSalary(el.dataset.salary),
-      age: el.dataset.age
+      age: el.dataset.age,
     };
   }
   );
@@ -26,11 +24,9 @@ function sortList(list) {
   for (let i = 0; i < newList.length; i++) {
     list[i].innerText = newList[i].name;
     list[i].dataset.position = newList[i].position;
-    list[i].dataset.salary = newList[i].salary;
+    list[i].dataset.salary = `$${(newList[i].salary).toLocaleString()}`;
     list[i].dataset.age = newList[i].age;
   }
 }
 
-
 sortList(sourceList);
-// getEmployees(sourceList)
