@@ -5,7 +5,7 @@ const listWithEmp = document.querySelector('ul');
 
 function getEmployyees(list) {
   const result = list.map((e) => ({
-    name: e.textContent,
+    name: e.textContent.trim(),
     position: e.dataset.position,
     salary: +e.dataset.salary.slice(1).split(',').join(''),
     age: e.dataset.age,
@@ -31,11 +31,12 @@ function sortList(list) {
     }
   });
 
+  for (const e of list) {
+    listWithEmp.append(e);
+  }
+
   return list;
 }
 
-for (const e of sortList([...employees])) {
-  listWithEmp.append(e);
-}
-
+sortList([...employees]);
 getEmployyees([...employees]);
