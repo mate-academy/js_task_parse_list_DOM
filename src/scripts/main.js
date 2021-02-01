@@ -4,13 +4,16 @@ const employeesNode = document.querySelector('ul');
 const employees = [...employeesNode.querySelectorAll('li')];
 
 const sortList = (toBeSorted) => {
-  toBeSorted.sort((one, two) => {
+  const sorted = [...toBeSorted];
+
+  sorted.sort((one, two) => {
     const first = +one.dataset.salary.replace(/[,$]/g, '');
     const second = +two.dataset.salary.replace(/[,$]/g, '');
 
     return second - first;
   });
-  employeesNode.append(...employees);
+
+  employeesNode.append(...sorted);
 };
 
 const getEmployees = (toBePresented) => {
