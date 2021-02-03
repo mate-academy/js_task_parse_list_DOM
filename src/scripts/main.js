@@ -17,23 +17,9 @@ function getEmployyees(list) {
 const toNum = (str) => +str.slice(1).split(',').join('');
 
 function sortList(list) {
-  list.sort((a, b) => {
-    if (toNum(a.dataset.salary) > toNum(b.dataset.salary)) {
-      return -1;
-    }
+  list.sort((a, b) => toNum(b.dataset.salary) - toNum(a.dataset.salary));
 
-    if (toNum(a.dataset.salary) < toNum(b.dataset.salary)) {
-      return 1;
-    }
-
-    if (toNum(a.dataset.salary) === toNum(b.dataset.salary)) {
-      return 0;
-    }
-  });
-
-  for (const e of list) {
-    listWithEmp.append(e);
-  }
+  listWithEmp.append(...list);
 
   return list;
 }
