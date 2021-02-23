@@ -23,7 +23,7 @@ const getEmployees = (list) => {
   const employee = list.children;
   const fullInformation = [];
 
-  employee.map(person => fullInformation.push({
+  [...employee].map(person => fullInformation.push({
     name: person.innerText,
     ...person.dataset,
   }));
