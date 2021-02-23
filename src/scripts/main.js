@@ -5,8 +5,10 @@ const items = document.querySelectorAll('li');
 
 function sortList(parameters) {
   return [...parameters].sort(
-    (a, b) => +b.dataset.salary.replace(/[$,]/g, '') - +a.dataset.salary
-      .replace(/[$,]/g, ''));
+    (currentValue, nextValue) => {
+      return +nextValue.dataset.salary.replace(/[$,]/g, '')
+        - +currentValue.dataset.salary.replace(/[$,]/g, '');
+    });
 }
 
 function getEmployees(parameters) {
@@ -14,9 +16,7 @@ function getEmployees(parameters) {
     (accumulator, parameter) => {
       accumulator.push({
         name: parameter.textContent.trim(),
-        position: parameter.dataset.position,
-        salary: parameter.dataset.salary,
-        age: parameter.dataset.age,
+        ...parameter.dataset,
       });
 
       return accumulator;
