@@ -25,7 +25,8 @@ function getEmployees(parameters) {
 
 const output = getEmployees(sortList(items));
 const convertToString = output.map(
-  a => `<li data-position='${a.position}' data-salary='${a.salary}'`
-    + `data-age='${a.age}'> ${a.name}</li>`).join('');
+  employee => `<li data-position='${employee.position}'`
+  + `data-salary='${employee.salary}'`
+  + `data-age='${employee.age}'> ${employee.name}</li>`).join('');
 
 list.innerHTML = convertToString;
