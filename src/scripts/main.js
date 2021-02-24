@@ -1,7 +1,7 @@
 'use strict';
 
 const list = document.querySelector('ul');
-const items = document.querySelectorAll('li');
+const employees = list.children;
 
 function sortList(parameters) {
   return [...parameters].sort(
@@ -10,6 +10,8 @@ function sortList(parameters) {
         - +currentValue.dataset.salary.replace(/[$,]/g, '');
     });
 }
+
+const sorted = sortList(employees);
 
 function getEmployees(parameters) {
   return parameters.reduce(
@@ -23,10 +25,5 @@ function getEmployees(parameters) {
     }, []);
 }
 
-const output = getEmployees(sortList(items));
-const convertToString = output.map(
-  employee => `<li data-position='${employee.position}'`
-  + `data-salary='${employee.salary}'`
-  + `data-age='${employee.age}'> ${employee.name}</li>`).join('');
-
-list.innerHTML = convertToString;
+getEmployees(sorted);
+list.append(...sorted);
