@@ -21,14 +21,11 @@ const sortList = (list) => {
 
 const getEmployees = (list) => {
   const employee = list.children;
-  const fullInformation = [];
 
-  [...employee].map(person => fullInformation.push({
+  return [...employee].map(person => ({
     name: person.innerText,
     ...person.dataset,
   }));
-
-  return fullInformation;
 };
 
 sortList(employees);
