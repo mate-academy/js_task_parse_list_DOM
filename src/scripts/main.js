@@ -4,7 +4,7 @@ const listItems = document.querySelectorAll('li');
 const list = document.querySelector('ul');
 
 function getEmployees(element) {
-  [...element].map(person => ({
+  return [...element].map(person => ({
     ...person,
     ...person.dataset,
     name: person.innerText,
