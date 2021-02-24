@@ -11,7 +11,7 @@ function sortList(parameters) {
     });
 }
 
-const sorted = sortList(employees);
+const sortedEmployees = sortList(employees);
 
 function getEmployees(parameters) {
   return parameters.reduce(
@@ -25,5 +25,5 @@ function getEmployees(parameters) {
     }, []);
 }
 
-getEmployees(sorted);
-list.append(...sorted);
+getEmployees(sortedEmployees);
+list.append(...sortedEmployees);
