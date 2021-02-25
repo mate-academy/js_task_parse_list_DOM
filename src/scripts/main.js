@@ -20,14 +20,10 @@ function convertToNumber(string) {
 function getEmployees(list) {
   return [...list].map(
     employee => {
-      const newEmployeeObject = {};
-
-      newEmployeeObject.name = employee.innerText;
-      newEmployeeObject.position = employee.dataset.position;
-      newEmployeeObject.salary = convertToNumber(employee.dataset.salary);
-      newEmployeeObject.age = convertToNumber(employee.dataset.age);
-
-      return newEmployeeObject;
+      return {
+        ...employee.dataset,
+        name: employee.innerText,
+      };
     }
   );
 }
