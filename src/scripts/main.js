@@ -5,9 +5,10 @@ function convertToNumber(string) {
 };
 
 function sortList(list) {
-  return [...list].sort((current, next) =>
+  return [...list].sort((current, next) => (
     convertToNumber(next.dataset.salary)
-      - convertToNumber(current.dataset.salary));
+      - convertToNumber(current.dataset.salary)
+  ));
 }
 
 const employees = document.querySelectorAll('li');
@@ -16,5 +17,5 @@ const sortedEmployees = sortList(employees);
 const listWithEmployees = document.querySelector('ul');
 
 sortedEmployees.forEach(function(value) {
-  listWithEmployees.appendChild(value);
+  listWithEmployees.append(value);
 });
