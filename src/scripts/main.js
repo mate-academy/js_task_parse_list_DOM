@@ -3,19 +3,18 @@
 const liElement = document.querySelectorAll('li');
 const ulElement = document.querySelector('ul');
 
-function creatingNumbers(value) {
+function convertNumber(value) {
   return +value.slice(1).replace(',', '');
 }
 
-function sotList(incomingList) {
-  return incomingList.sort((firstEmployer, secondEmployer) => {
-    return creatingNumbers(secondEmployer.dataset.salary) - creatingNumbers(
+function sortList(list) {
+  return list.sort((firstEmployer, secondEmployer) => {
+    return convertNumber(secondEmployer.dataset.salary) - convertNumber(
       firstEmployer.dataset.salary);
   });
 }
 
-const liElementArray = [...liElement];
-const liSorted = sotList(liElementArray);
+const liSorted = sortList([...liElement]);
 
 ulElement.append(...liSorted);
 
