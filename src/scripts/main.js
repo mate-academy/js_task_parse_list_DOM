@@ -25,7 +25,7 @@ function sortList(list) {
 }
 
 function getEmployees(listEmployees) {
-  return listEmployees.map(person => ({
+  return [...listEmployees].map(person => ({
     name: person.innerText,
     salary: person.dataset.salary,
     age: person.dataset.age,
