@@ -4,16 +4,8 @@ const listOfEmployees = document.querySelector('ul');
 const employees = document.querySelectorAll('li');
 
 function callBackToSort(a, b) {
-  const firstArgument = +(a.dataset.salary
-    .split('$')
-    .join('')
-    .split(',')
-    .join(''));
-  const secondArgument = +(b.dataset.salary
-    .split('$')
-    .join('')
-    .split(',')
-    .join(''));
+  const firstArgument = +(a.dataset.salary.replace(/\$|,/g, ''));
+  const secondArgument = +(b.dataset.salary.replace(/\$|,/g, ''));
 
   return secondArgument - firstArgument;
 }
