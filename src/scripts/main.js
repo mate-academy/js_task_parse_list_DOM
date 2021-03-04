@@ -12,10 +12,6 @@ function sortList(list) {
 }
 
 const employees = document.querySelectorAll('li');
-const sortedEmployees = sortList(employees);
-
 const listWithEmployees = document.querySelector('ul');
 
-sortedEmployees.forEach(function(value) {
-  listWithEmployees.append(value);
-});
+listWithEmployees.append(...sortList(employees));
