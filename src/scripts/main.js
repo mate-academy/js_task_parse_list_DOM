@@ -1,6 +1,7 @@
 'use strict';
 
 const liElement = document.querySelectorAll('li');
+
 const ulElement = document.querySelector('ul');
 
 function creatingNumbers(value) {
