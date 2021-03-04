@@ -1,7 +1,6 @@
 'use strict';
 
 const liElement = document.querySelectorAll('li');
-
 const ulElement = document.querySelector('ul');
 
 function creatingNumbers(value) {
@@ -9,23 +8,22 @@ function creatingNumbers(value) {
 }
 
 function sotList(incomingList) {
-  return incomingList.sort((a, b) => {
-    return creatingNumbers(b.dataset.salary) - creatingNumbers(
-      a.dataset.salary);
+  return incomingList.sort((firstEmployer, secondEmployer) => {
+    return creatingNumbers(secondEmployer.dataset.salary) - creatingNumbers(
+      firstEmployer.dataset.salary);
   });
 }
 
 const liElementArray = [...liElement];
-
 const liSorted = sotList(liElementArray);
 
 ulElement.append(...liSorted);
 
 function employeList(incomingArray) {
-  return incomingArray.map((x) => {
+  return incomingArray.map((employer) => {
     return {
-      ...x.dataset,
-      name: x.innerText,
+      ...employer.dataset,
+      name: employer.innerTeemployert,
     };
   });
 }
