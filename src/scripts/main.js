@@ -16,19 +16,16 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  const arrayOfEmployeesProfiels = list
-    .map(employee => {
-      const employeeProfile = {};
+  return list.map(employee => {
+    const employeeProfile = {};
 
-      employeeProfile.name = employee.innerText;
-      employeeProfile.position = employee.dataset.position;
-      employeeProfile.salary = employee.dataset.salary;
-      employeeProfile.age = employee.dataset.age;
+    employeeProfile.name = employee.innerText;
+    employeeProfile.position = employee.dataset.position;
+    employeeProfile.salary = employee.dataset.salary;
+    employeeProfile.age = employee.dataset.age;
 
-      return employeeProfile;
-    });
-
-  return arrayOfEmployeesProfiels;
+    return employeeProfile;
+  });
 }
 
 sortList(employees);
