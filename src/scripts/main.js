@@ -15,11 +15,11 @@ function sortedList(list) {
 
 function getEmployees(list) {
   return list.map(element => ({
-      name: element.innerText,
-      position: element.dataset.position,
-      salary: element.dataset.salary,
-      age: element.dataset.age,
-    }));
+    name: element.innerText,
+    position: element.dataset.position,
+    salary: element.dataset.salary,
+    age: element.dataset.age,
+  }));
 }
 
 sortedList(employees).forEach(element => {
