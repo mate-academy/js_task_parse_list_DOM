@@ -5,8 +5,8 @@ const employees = document.querySelectorAll('li');
 
 function sortList(list) {
   const sortedEmployees = [...list].sort(
-    (s1, s2) =>
-      toNumber(s2.dataset.salary) - toNumber(s1.dataset.salary));
+    (a, b) =>
+      toNumber(b.dataset.salary) - toNumber(a.dataset.salary));
 
   employeesList.append(...sortedEmployees);
 }
