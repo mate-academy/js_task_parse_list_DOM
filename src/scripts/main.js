@@ -1,9 +1,8 @@
 'use strict';
 
 // write code here
-const collectionOfEmployeesElements = document.body.querySelectorAll('li');
-const employeeListElement = document.body.querySelector('ul');
-const arrayOfEmployeesElements = [...collectionOfEmployeesElements];
+const employeeList = document.body.querySelector('ul');
+const employees = [...document.body.querySelectorAll('li')];
 
 function convertStringtoNumber(string) {
   return +(string.replace(/[$,]/gm, ''));
@@ -32,8 +31,8 @@ function getEmployees(list) {
   return arrayOfEmployeesProfiels;
 }
 
-sortList(arrayOfEmployeesElements);
+sortList(employees);
 
-employeeListElement.append(...arrayOfEmployeesElements);
+employeeList.append(...employees);
 
-getEmployees(arrayOfEmployeesElements);
+getEmployees(employees);
