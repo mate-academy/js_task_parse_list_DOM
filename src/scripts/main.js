@@ -14,11 +14,11 @@ function sortList(list) {
 };
 
 function getEmployees(list) {
-  list.map(element => ({
-    name: element.innerText.name,
-    position: element.innerText.position,
-    salary: element.innerText.salary,
-    age: element.innerText.age,
+  return list.map(element => ({
+    name: element.innerText,
+    position: element.dataset.position,
+    salary: element.dataset.salary,
+    age: element.dataset.age,
   }));
 }
 
