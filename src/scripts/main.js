@@ -16,9 +16,7 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  const people = [];
-
-  list.map(human => {
+  return list.map(human => {
     const employee = {};
 
     employee.name = human.textContent.trim();
@@ -26,10 +24,8 @@ function getEmployees(list) {
     employee.age = human.dataset.age;
     employee.position = human.dataset.position;
 
-    people.push(employee);
+    return employee;
   });
-
-  return people;
 }
 
 function convertToNumber(string) {
