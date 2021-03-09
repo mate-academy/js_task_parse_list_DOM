@@ -3,8 +3,8 @@
 const itemsOfEmployees = document.querySelectorAll('li');
 const listOfEmployees = document.querySelector('ul');
 
-const convertToNumber = (item) => {
-  return Number(item.split(',').join('').slice(1));
+const convertToNumber = (string) => {
+  return Number(string.split(',').join('').replace('$', ''));
 };
 
 function sortList(list) {
@@ -19,14 +19,12 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  return [...list].map(item => {
-    return {
-      name: item.innerText,
-      position: item.dataset.position,
-      salary: item.dataset.salary,
-      age: item.dataset.age,
-    };
-  });
+  return [...list].map(item => ({
+    name: item.innerText,
+    position: item.dataset.position,
+    salary: item.dataset.salary,
+    age: item.dataset.age,
+  }));
 }
 
 sortList(itemsOfEmployees);
