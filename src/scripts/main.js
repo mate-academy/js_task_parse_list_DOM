@@ -16,17 +16,14 @@ function getEmployees() {
   return formattedListOfEmployees;
 }
 
-function sortList() {
-  const listOfEmployees = getEmployees().sort((a, b) =>
-    convertToMoney(b.salary) - convertToMoney(a.salary));
-  const fieldsForEditing = document.querySelectorAll('li');
+function sortList(listing) {
+  const listOfEmployees = listing.sort((a, b) =>
+    convertToMoney(b.dataset.salary) - convertToMoney(a.dataset.salary));
+  const text = document.querySelector('ul');
 
-  return listOfEmployees.forEach((person, i) => {
-    fieldsForEditing[i].innerText = person.name;
-    fieldsForEditing[i].dataset.age = person.age;
-    fieldsForEditing[i].dataset.position = person.position;
-    fieldsForEditing[i].dataset.salary = person.salary;
-  });
+  listOfEmployees.forEach((listItem) => text.append(listItem));
+
+  return listOfEmployees;
 }
 
 function convertToMoney(str) {
@@ -43,5 +40,7 @@ function convertToMoney(str) {
   return parseInt(sum);
 }
 
-sortList();
-getEmployees();
+const list = [...document.querySelectorAll('li')];
+
+sortList(list);
+getEmployees(list);
