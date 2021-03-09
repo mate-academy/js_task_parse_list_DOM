@@ -21,7 +21,8 @@ function sortList(listing) {
     convertToMoney(b.dataset.salary) - convertToMoney(a.dataset.salary));
   const text = document.querySelector('ul');
 
-  listOfEmployees.forEach((listItem) => text.append(listItem));
+ /*  listOfEmployees.forEach((listItem) => text.append(listItem)); */
+  text.append(...listOfEmployees);
 
   return listOfEmployees;
 }
