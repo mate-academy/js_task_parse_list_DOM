@@ -1,17 +1,15 @@
 'use strict';
 
-const employees = [...document.querySelectorAll('[data-salary]')];
+const employees = [...document.querySelectorAll('li')];
+const ul = document.querySelector('ul');
 
-document.querySelector('ul').append(...sortList(employees));
+ul.append(...sortList(employees));
 getEmployees(employees);
 
-/* 4) Call both functions.
-5) Done. <----- якщо чесно то не зрозумів для чого викликати getEmployees() */
-
 function sortList(list) {
-  return list.sort((first, second) => {
-    const num1 = convertToNumber(first.dataset.salary);
-    const num2 = convertToNumber(second.dataset.salary);
+  return list.sort((previous, current) => {
+    const num1 = convertToNumber(previous.dataset.salary);
+    const num2 = convertToNumber(current.dataset.salary);
 
     return Number(num2) - Number(num1);
   });
@@ -20,7 +18,7 @@ function sortList(list) {
 function getEmployees(list) {
   const people = [];
 
-  for (const human of list) {
+  list.map(human => {
     const employee = {};
 
     employee.name = human.textContent.trim();
@@ -29,7 +27,7 @@ function getEmployees(list) {
     employee.position = human.dataset.position;
 
     people.push(employee);
-  }
+  });
 
   return people;
 }
