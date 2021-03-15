@@ -1,7 +1,7 @@
 'use strict';
 
-const listWithEmployees = document.querySelector('ul');
-const listWithEveryEmployee = document.querySelectorAll('li');
+const ulEmployees = document.querySelector('ul');
+const employees = document.querySelectorAll('li');
 
 function convertSalary(string) {
   return string.slice(1).split(',').join('');
