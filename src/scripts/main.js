@@ -7,20 +7,20 @@ function convertSalary(string) {
   return string.slice(1).split(',').join('');
 }
 
-function sortList(employees) {
-  const sortedList = [...employees]
+function sortList(workers) {
+  const sortedList = [...workers]
     .sort((a, b) => (
-       convertSalary(a.dataset.salary)
-        - convertSalary(b.dataset.salary);
-     ));
+      convertSalary(b.dataset.salary)
+        - convertSalary(a.dataset.salary)
+    ));
 
-  listWithEmployees.append(...sortedList);
+  ulEmployees.append(...sortedList);
 
   return sortedList;
 }
 
-function getEmployees(employees) {
-  return [...employees].map(person => ({
+function getEmployees(workers) {
+  return [...workers].map(person => ({
     name: person.innerText,
     position: person.dataset.position,
     salary: person.dataset.salary,
@@ -29,6 +29,6 @@ function getEmployees(employees) {
   );
 }
 
-const sortedListOfEmployees = sortList(listWithEveryEmployee);
+const sortedListOfEmployees = sortList(employees);
 
 getEmployees(sortedListOfEmployees);
