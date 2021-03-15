@@ -8,11 +8,11 @@ function convertSalary(string) {
 }
 
 function sortList(employees) {
-  const sortedList
-   = [...employees].sort((previous, current) => {
-     return convertSalary(current.dataset.salary)
-      - convertSalary(previous.dataset.salary);
-   });
+  const sortedList = [...employees]
+    .sort((a, b) => (
+       convertSalary(a.dataset.salary)
+        - convertSalary(b.dataset.salary);
+     ));
 
   listWithEmployees.append(...sortedList);
 
