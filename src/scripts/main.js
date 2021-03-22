@@ -3,14 +3,14 @@
 const people = [...document.querySelectorAll('li')];
 const peopleContainer = document.querySelector('ul');
 
-const convertToNumber = (salary) => {
+const convertSalary = (salary) => {
   return +(salary.substring(1).split(',').join(''));
 };
 
 const sortList = (peopleList) => {
   const sortedPeopleList = peopleList.sort((firstPerson, secondPerson) => {
-    return convertToNumber(secondPerson.dataset.salary)
-      - convertToNumber(firstPerson.dataset.salary);
+    return convertSalary(secondPerson.dataset.salary)
+      - convertSalary(firstPerson.dataset.salary);
   });
 
   peopleContainer.append(...sortedPeopleList);
