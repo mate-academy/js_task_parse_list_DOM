@@ -2,9 +2,10 @@
 
 const people = [...document.querySelectorAll('li')];
 const peopleContainer = document.querySelector('ul');
+const separator = ',';
 
 const convertSalary = (salary) => {
-  return +(salary.substring(1).split(',').join(''));
+  return +(salary.substring(1).split(separator).join(''));
 };
 
 const sortList = (peopleList) => {
