@@ -18,7 +18,10 @@ function getEmployees(item) {
   const result = [...item];
 
   for (let a = 0; a < result.length; a++) {
-    result[a] = { ...result[a].dataset };
+    result[a] = {
+      name: item[a].innerText,
+      ...result[a].dataset,
+    };
   };
 
   return result;
