@@ -11,7 +11,7 @@ function converter(salary) {
 function sortList(list) {
   const sortedList = [...list].sort((firstSalary, secondSalary) =>
     converter(secondSalary.dataset.salary)
-        - converter(firstSalary.dataset.salary));
+      - converter(firstSalary.dataset.salary));
 
   employeesList.append(...sortedList);
 }
