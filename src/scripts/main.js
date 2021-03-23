@@ -15,14 +15,9 @@ const sortList = function(employees) {
     return personBSalary - personASalary;
   });
 
-  employees.innerHTML = `${employeesSorted.map(person => `
-    <li
-      data-position=${person.dataset.position}
-      data-salary=${person.dataset.salary}
-      data-age=${person.dataset.age}
-    >
-      ${person.innerText}
-    </li>`).join('')}`;
+  for (const employee of employeesSorted) {
+    employees.append(employee);
+  }
 };
 
 const getEmployees = function(employees) {
