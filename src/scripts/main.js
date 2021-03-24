@@ -3,10 +3,13 @@
 const parentList = document.querySelector('ul');
 const people = [...document.querySelectorAll('li')];
 
+function sorted(element) {
+  return +element.dataset.salary.slice(1).replace(',', '');
+}
+
 function sortList(list) {
   list.sort((personOne, personTwo) => (
-    +(personTwo.dataset.salary.slice(1).replace(',', ''))
-    - +(personOne.dataset.salary.slice(1).replace(',', ''))
+    sorted(personTwo) - sorted(personOne)
   ));
 
   parentList.append(...list);
