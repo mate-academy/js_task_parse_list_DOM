@@ -4,10 +4,15 @@
 const employeesList = document.querySelector('ul');
 const employeesData = [...document.querySelectorAll('li')];
 
+function sort(sortPerson) {
+  const sortedPerson = +sortPerson.dataset.salary.slice(1).replace(',', '');
+
+  return sortedPerson;
+}
+
 function sortList(list) {
   list.sort((personOne, personTwo) => (
-    +(personTwo.dataset.salary.slice(1).replace(',', ''))
-    - +(personOne.dataset.salary.slice(1).replace(',', ''))
+    sort(personTwo) - sort(personOne)
   ));
 
   employeesList.append(...list);
