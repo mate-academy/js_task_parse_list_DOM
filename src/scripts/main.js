@@ -4,18 +4,17 @@ function sortList(list) {
   const listCopy = [...list];
 
   listCopy.sort(
-    (a, b) => parseInt(b.dataset.salary.replace(/[,$]/g, ''))
-    - parseInt(a.dataset.salary.replace(/[,$]/g, ''))
+    (a, b) => parseSalary(b.dataset.salary) - parseSalary(a.dataset.salary)
   );
 
-  peopleListContainer.append(...listCopy);
+  peopleContainer.append(...listCopy);
 }
 
 function getEmployees(list) {
-  const peopleArray = [];
+  const peopleList = [];
 
   for (let i = 0; i < list.length; i++) {
-    peopleArray.push(
+    peopleList.push(
       {
         name: list[i].textContent,
         position: list[i].dataset.position,
@@ -28,9 +27,13 @@ function getEmployees(list) {
   return peopleList;
 }
 
-const peopleList = document.querySelectorAll('li');
-const peopleListContainer = document.querySelector('ul');
+function parseSalary(salary) {
+  return parseInt(salary.replace(/[,$]/g, ''));
+}
 
-sortList(peopleList);
+const people = document.querySelectorAll('li');
+const peopleContainer = document.querySelector('ul');
 
-getEmployees(peopleList);
+sortList(people);
+
+getEmployees(people);
