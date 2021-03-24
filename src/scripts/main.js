@@ -3,11 +3,14 @@
 const itemsList = [...document.querySelectorAll('li')];
 const itemUl = document.querySelector('ul');
 
+function afterSorted(value) {
+  return +value.dataset.salary.slice(1).replace(',', '');
+}
+
 const sortList = list => {
-  const sorted = list.sort((personA, personB) => {
-    return +((personB.dataset.salary.slice(1).replace(',', ''))
-    - (personA.dataset.salary.slice(1).replace(',', '')));
-  });
+  const sorted = list.sort((personA, personB) => (
+    afterSorted(personB) - afterSorted(personA)
+  ));
 
   itemUl.append(...sorted);
 };
