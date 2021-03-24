@@ -4,10 +4,16 @@
 const peopleList = [...document.querySelectorAll('li')];
 const ulAppendSelector = document.querySelector('ul');
 
+function convert(str) {
+  const result = str.slice(1).split(',').join('');
+
+  return result;
+}
+
 function sortList(list) {
   const sortSalary = list.sort((salaryA, salaryB) => {
-    return +(salaryB.dataset.salary.slice(1).split(',').join(''))
-    - +(salaryA.dataset.salary.slice(1).split(',').join(''));
+    return +convert(salaryB.dataset.salary)
+    - +convert(salaryA.dataset.salary);
   });
 
   ulAppendSelector.append(...sortSalary);

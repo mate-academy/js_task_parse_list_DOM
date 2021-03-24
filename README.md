@@ -26,7 +26,7 @@ The schema for the employee:
 
 Employees list:
 
-![Preview](./src/images/preview.png)
+![Preview](./src/images/preview.png
 
 Expected result after soring:
 
