@@ -13,3 +13,16 @@ employeesList.innerHTML = '';
 
 employeesSortedBySalary.forEach(employee =>
   employeesList.appendChild(employee));
+
+const getEmployees = function(employees) {
+  const employeesData = employees.map(employee => ({
+    name: employee.textContent.trim(),
+    position: employee.dataset.position,
+    salary: employee.dataset.salary,
+    age: +employee.dataset.age,
+  }));
+
+  return employeesData;
+};
+
+getEmployees(employeesItems);
