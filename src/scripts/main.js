@@ -4,16 +4,14 @@ const listOfWorkers = document.querySelectorAll('li');
 const workersList = [...listOfWorkers];
 const UlOfWorkers = document.querySelector('ul');
 
+const onlyNumber = function(string) {
+  return +string.slice(1).split(',').join('');
+};
+
 const sortList = (list) => {
   const sortedList = list.sort((workerA, workerB) => {
-    return +workerB.dataset.salary
-      .slice(1)
-      .split(',')
-      .join('')
-      - +workerA.dataset.salary
-        .slice(1)
-        .split(',')
-        .join('');
+    return onlyNumber(workerB.dataset.salary)
+      - onlyNumber(workerA.dataset.salary);
   });
 
   UlOfWorkers.append(...sortedList);
