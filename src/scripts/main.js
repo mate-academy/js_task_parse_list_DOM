@@ -1,6 +1,8 @@
 'use strict';
 
 const list = document.querySelector('ul');
+const arrLi = [...document.querySelectorAll('li')];
+
 const sortSallary = (a, b) => {
   const first = Number(a.dataset.salary.slice(1).split(',').join(''));
   const second = Number(b.dataset.salary.slice(1).split(',').join(''));
@@ -12,11 +14,10 @@ const sortList = (arr) => {
   return [...arr].sort(sortSallary);
 };
 
-const getEmployees = (listUl) => {
+const getEmployees = (arrList) => {
   const newList = document.createElement('ul');
-  const arr = [...document.querySelectorAll('li')];
 
-  sortList(arr).forEach(elem => {
+  sortList(arrList).forEach(elem => {
     const item = document.createElement('li');
 
     item.dataset.position = elem.dataset.position;
@@ -29,5 +30,5 @@ const getEmployees = (listUl) => {
   return newList;
 };
 
-list.before(getEmployees(list));
+list.before(getEmployees(arrLi));
 list.remove();
