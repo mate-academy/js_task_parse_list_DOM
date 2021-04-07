@@ -4,36 +4,29 @@ function convertSalary(item) {
   return parseInt(item.dataset.salary.replace('$', '').replace(',', ''));
 }
 
-function compare(a, b) {
-  if (a < b) {
-    return 1;
-  }
-
-  if (a > b) {
-    return -1;
-  }
-
-  return 0;
+function compare(item1A, itemB) {
+  return convertSalary(itemB) - convertSalary(item1A);
 }
 
-function sortList() {
-  const list = document.querySelectorAll('li');
-
-  return [...list].sort((a, b) => compare(convertSalary(a), convertSalary(b)));
+function sortList(list) {
+  [...list.children].sort((a, b) => compare(a, b))
+    .forEach(node => list.appendChild(node));
 }
 
-function getEmployees() {
-  const list = sortList();
+function getEmployees(list) {
+  return [...list.children].map(item => {
+    const dt = item.dataset;
 
-  return list.map(item => {
     return {
       name: item.innerText,
-      position: item.dataset.position,
-      salary: item.dataset.salary,
-      age: item.dataset.age,
+      position: dt.position,
+      salary: dt.salary,
+      age: dt.age,
     };
   });
 }
 
-getEmployees();
-// console.log(getEmployees());
+const listOfEmpl = document.querySelector('ul');
+
+sortList(listOfEmpl);
+getEmployees(listOfEmpl);
