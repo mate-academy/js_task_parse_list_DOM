@@ -25,7 +25,7 @@ function sortList(input) {
       element.dataset.salary.replace(regex, ''),
     );
 
-    return parseSalary(a) - parseSalary(b);
+    return parseSalary(b) - parseSalary(a);
   });
 
   input.append(...resultList);
