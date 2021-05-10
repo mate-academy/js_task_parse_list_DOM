@@ -2,7 +2,7 @@
 
 const list = document.querySelector('ul');
 
-list.innerHTML = sortList(list);
+sortList(list);
 getEmployees(list);
 
 function getEmployees(rawList) {
@@ -17,26 +17,16 @@ function getEmployees(rawList) {
 }
 
 function sortList(input) {
-  const resultList = getEmployees(input);
+  const resultList = [...input.children];
 
   resultList.sort((a, b) => {
-    const regex = new RegExp(',', 'g');
-    const aSalary = a.salary.replace('$', '').replace(regex, '');
-    const bSalary = b.salary.replace('$', '').replace(regex, '');
+    const regex = /[,$]/g;
+    const parseSalary = (element) => Number(
+      element.dataset.salary.replace(regex, ''),
+    );
 
-    return bSalary - aSalary;
+    return parseSalary(a) - parseSalary(b);
   });
 
-  return `
-        <ul> 
-        ${resultList.map((element) => `
-            <li 
-            data-position="${element.position}"
-            data-salary=${element.salary.toLocaleString()}
-            data-age=${element.age}> 
-            ${element.name}
-            </li>
-        `).join('')}
-        </ul>
-      `;
+  input.append(...resultList);
 }
