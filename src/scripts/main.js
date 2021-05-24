@@ -33,10 +33,3 @@ function getEmployees(list) {
 
 sortList(document.querySelector('ul'));
 getEmployees(document.querySelector('ul'));
-
-/*
-  console.log(Array.from(ul.getElementsByTagName("LI"))
-    .map(el => `${salaryMap(el.dataset.salary)} - ${el.innerText}`));
-*/
-
-// .sort((a, b) => a.textContent.localeCompare(b.textContent))
