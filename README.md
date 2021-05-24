@@ -9,7 +9,7 @@
 
 Hey there! Can you parse data from the list and sort it based on data attributes?
 
-Your task: Sort list by salary.
+Your task: Sort list by salary in descending order.
 Get an array of employees. Write two functions: 
 - first, which sorts the list by salary from data attributes
 - second, which returns an array of objects, where objects are employees.
@@ -36,7 +36,7 @@ You can read about non-standard attributes and dataset [here](https://javascript
 
 ##### Steps to do this challenge:
 1) Find and get a list from the document.
-2) Create function `sortList`, which takes a `list` property, and sorts list items by salary from data attribute. (Salary from data attribute is a string, do not forget to convert it to number, write helper function for it). Append sorted items to list.
+2) Create function `sortList`, which takes a `list` property, and sorts list items in descending order by salary from data attribute. (Salary from data attribute is a string, do not forget to convert it to number, write helper function for it). Append sorted items to list.
 3) Create function `getEmployees`, which takes a `list` property, and returns an array of right objects.
 4) Call both functions.
 5) Done.
