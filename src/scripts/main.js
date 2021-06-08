@@ -1,18 +1,16 @@
 'use strict';
 
 // write code here
-const liList = document.querySelectorAll('li');
+const ul = document.querySelector('ul');
 
 function sortList(list) {
   const liArray = Array.from(list);
 
-  liArray.sort((a, b) => {
-    return formatData(b.dataset.salary) - formatData(a.dataset.salary);
-  });
+  liArray.sort((a, b) => (
+    formatData(b.dataset.salary) - formatData(a.dataset.salary))
+  );
 
-  const ul = document.querySelector('ul');
-
-  liArray.forEach(elem => ul.append(elem));
+  ul.append(...liArray);
 }
 
 function formatData(string) {
@@ -37,6 +35,6 @@ function createEmplObj(list) {
   return empArray;
 }
 
-sortList(liList);
+sortList(ul.children);
 
-createEmplObj(liList);
+createEmplObj(ul.children);
