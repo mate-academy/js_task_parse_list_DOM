@@ -3,25 +3,14 @@
 const employees = document.querySelector('ul');
 
 function sortList(list) {
-  let swapped = false;
+  const listItems = Array.from(list);
 
-  for (let i = 0; i < list.children.length - 1; i++) {
-    swapped = false;
+  listItems.sort((left, right) => (
+    convertToNumber(right.dataset.salary)
+    - convertToNumber(left.dataset.salary)
+  ));
 
-    for (let j = 1; j < list.children.length; j++) {
-      const leftKey = convertToNumber(list.children[j - 1].dataset.salary);
-      const rightKey = convertToNumber(list.children[j].dataset.salary);
-
-      if (leftKey < rightKey) {
-        swapped = true;
-        list.children[j].after(list.children[j - 1]);
-      }
-    }
-
-    if (!swapped) {
-      break;
-    }
-  }
+  employees.append(...listItems);
 }
 
 function convertToNumber(string) {
@@ -43,6 +32,6 @@ function getEmployees(list) {
   });
 }
 
-sortList(employees);
+sortList(employees.children);
 
 getEmployees(employees);
