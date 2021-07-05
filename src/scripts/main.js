@@ -2,7 +2,9 @@
 
 const employees = document.querySelector('ul');
 
-const stringToNumberConvertor = string => +string.slice(1).split(',').join('');
+const stringToNumberConvertor = string => (
+  Number(string.slice(1).split(',').join(''))
+);
 
 const sortList = list => {
   const itemsOfList = [...list.children];
