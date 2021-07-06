@@ -2,31 +2,27 @@
 
 const employees = document.querySelector('ul');
 
-const stringToNumberConvertor = string => (
+const convertStringToNumber = string => (
   Number(string.slice(1).split(',').join(''))
 );
 
 const sortList = list => {
-  const itemsOfList = [...list.children];
+  const listItems = [...list.children];
 
-  itemsOfList.sort((current, next) => (
-    stringToNumberConvertor(next.dataset.salary)
-    - stringToNumberConvertor(current.dataset.salary)
+  listItems.sort((current, next) => (
+    convertStringToNumber(next.dataset.salary)
+    - convertStringToNumber(current.dataset.salary)
   ));
 
-  employees.append(...itemsOfList);
+  employees.append(...listItems);
 };
 
 const getEmployees = list => {
   return [...list.children].map(listChild => {
-    const employee = {};
-
-    employee.name = listChild.innerText;
-    employee.position = listChild.dataset.position;
-    employee.salary = listChild.dataset.salary;
-    employee.age = listChild.dataset.age;
-
-    return employee;
+    return {
+      name: listChild.innerText,
+      ...listChild.dataset,
+    };
   });
 };
 
