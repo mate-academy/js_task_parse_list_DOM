@@ -10,11 +10,11 @@ function sortList(peopleList) {
     return +toNumber.dataset.salary.slice(1).split(',').join('');
   };
 
-  sortedPeoples.sort((current, next) => {
-    const currentSalary = salary(current);
-    const nextSalary = salary(next);
+  sortedPeoples.sort((currentEmployee, nextEmployee) => {
+    const currentEmployeeSalary = salary(currentEmployee);
+    const nextEmployeeSalary = salary(nextEmployee);
 
-    return nextSalary - currentSalary;
+    return nextEmployeeSalary - currentEmployeeSalary;
   });
 
   peoplesList.append(...sortedPeoples);
@@ -23,12 +23,12 @@ function sortList(peopleList) {
 function getEmployees(peopleList) {
   const arrayOfPeoples = [...peopleList];
 
-  return arrayOfPeoples.map(item => {
+  return arrayOfPeoples.map(person => {
     return {
-      name: item.innerText,
-      position: item.dataset.position,
-      salary: item.dataset.salary,
-      age: item.dataset.age,
+      name: person.innerText,
+      position: person.dataset.position,
+      salary: person.dataset.salary,
+      age: person.dataset.age,
     };
   });
 }
