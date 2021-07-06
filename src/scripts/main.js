@@ -1,7 +1,7 @@
 'use strict';
 
-const getPeoplesList = document.querySelector('ul');
-const getListOfPeoples = document.querySelectorAll('li');
+const peoplesList = document.querySelector('ul');
+const listOfPeoples = document.querySelectorAll('li');
 
 function sortList(peopleList) {
   const sortedPeoples = [...peopleList];
@@ -17,7 +17,7 @@ function sortList(peopleList) {
     return nextSalary - currentSalary;
   });
 
-  getPeoplesList.append(...sortedPeoples);
+  peoplesList.append(...sortedPeoples);
 };
 
 function getEmployees(peopleList) {
@@ -33,5 +33,5 @@ function getEmployees(peopleList) {
   });
 }
 
-sortList(getListOfPeoples);
-getEmployees(getListOfPeoples);
+sortList(listOfPeoples);
+getEmployees(listOfPeoples);
