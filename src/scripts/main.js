@@ -10,6 +10,6 @@ const changeString = function(arg) {
 };
 
 people.sort((prevSalary, nextSalary) =>
-  changeString(nextSalary) - changeString(prevSalary));
+  changeString(prevSalary) - changeString(nextSalary));
 
 people.forEach(human => peopleList.append(human));
