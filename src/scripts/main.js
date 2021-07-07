@@ -6,10 +6,10 @@ const peopleList = document.querySelector('ul');
 peopleList.innerHTML = '';
 
 const changeString = function(arg) {
-  return arg.dataset.salary.replace(/[$,]/g, '');
+  return +arg.dataset.salary.replace(/[$,]/g, '');
 };
 
 people.sort((prevSalary, nextSalary) =>
-  changeString(prevSalary) - changeString(nextSalary));
+  changeString(nextSalary) - changeString(prevSalary));
 
 people.forEach(human => peopleList.append(human));
