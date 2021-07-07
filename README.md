@@ -1,4 +1,4 @@
-1. Replace `<your_account>` with your Github username in the link
+1. Replace `vdzhyranov` with your Github username in the link
     - [DEMO LINK](https://vdzhyranov.github.io/js_task_parse_list_DOM/)
 2. Follow [this instructions](https://mate-academy.github.io/layout_task-guideline/)
     - Run `npm run test` command to test your code;
