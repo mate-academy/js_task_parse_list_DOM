@@ -1,19 +1,19 @@
 'use strict';
 
-const allLiElement = [ ...document.querySelectorAll('li') ];
-const dateList = [];
-const accessToUlTag = document.querySelector('ul');
+const acceesToAllLiElement = [ ...document.querySelectorAll('li') ];
+const accessToList = document.querySelector('ul');
 
-allLiElement.map(item => (item.dataset.salary = Number(item.dataset.salary
-  .slice(1, item.dataset.salary.length).split(',').join(''))));
+let datA = acceesToAllLiElement.map((x, i) => {
+  x.dataset.name = acceesToAllLiElement[i].textContent.trim();
 
-allLiElement.map(item => (item.dataset['name'] = item.textContent)
-  && (item.dataset.name = item.dataset.name.trim())
-  && dateList.push(item.dataset));
+  return x.dataset;
+});
 
-const sortBySalary = (array) => array.sort((a, b,) => b.salary - a.salary);
+const convertSalary = (str) => +(str.slice(1, str.length).split(',').join(''));
 
-accessToUlTag.innerHTML = sortBySalary(dateList).map(x =>
+datA = (datA.sort((a, b) => convertSalary(b.salary) - convertSalary(a.salary)));
+
+accessToList.innerHTML = (datA).map(x =>
   `<li>
     ${x.name}
   </li>`).join('');
