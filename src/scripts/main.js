@@ -9,12 +9,10 @@ function convertNumber(str) {
 };
 
 function getEmployees(list) {
-  return list.map((employee, i) => {
+  return list.map(employee => {
     return {
       name: employee.textContent.trim(),
-      position: employee.dataset.position,
-      salary: employee.dataset.salary,
-      age: employee.dataset.age,
+      ...employee.dataset,
     };
   });
 }
