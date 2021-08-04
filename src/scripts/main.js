@@ -1,9 +1,9 @@
 'use strict';
 
-const lis = document.querySelectorAll('li');
-
-const liTexts = [...lis].map(el => el.innerText);
-const liTextData = [...lis].map(el => el.dataset);
+const list = document.querySelector('ul');
+const listItems = [...list.children];
+const liTexts = listItems.map(el => el.innerText);
+const liTextData = listItems.map(el => el.dataset);
 
 function getEmployees() {
   const employArr = [];
@@ -14,32 +14,23 @@ function getEmployees() {
     employArr[i].position = liTextData[i].position;
     employArr[i].salary = liTextData[i].salary;
     employArr[i].age = liTextData[i].age;
-    lis[i].innerText = employArr[i].name;
+    listItems[i].innerText = employArr[i].name;
   };
 
   return employArr;
 };
 
-const listArr = getEmployees();
+function sortList(listArray) {
+  const parseSalary = (string) => {
+    return parseFloat(string.substring(1).replace(',', ''));
+  };
 
-function sortList() {
-  const sortedArray = listArr.sort((a, b) => {
-    let aString = a.salary;
-
-    aString = parseFloat(aString.substring(1).replace(',', ''));
-
-    let bString = b.salary;
-
-    bString = parseFloat(bString.substring(1).replace(',', ''));
-
-    return bString - aString;
-  });
-
-  return sortedArray;
+  listArray.sort(
+    (a, b) => parseSalary(b.dataset.salary)
+      - parseSalary(a.dataset.salary)
+  );
 };
 
-const sorted = sortList();
-
-for (let i = 0; i < liTexts.length; i++) {
-  lis[i].innerText = sorted[i].name;
-};
+getEmployees();
+sortList(listItems);
+list.append(...listItems);
