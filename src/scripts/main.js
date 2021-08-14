@@ -1,13 +1,13 @@
 'use strict';
 
-function sortBySalary(employees) {
-  return employees.sort((current, next) => (
+function sortBySalary(people) {
+  return people.sort((current, next) => (
     next.salary.replace(/[$,]/g, '') - current.salary.replace(/[$,]/g, '')
   ));
 }
 
-function getEmployeeObjects(employees) {
-  return [...employees].map(employee => ({
+function getEmployeeObjects(people) {
+  return [...people].map(employee => ({
     name: employee.innerText,
     position: employee.dataset.position,
     salary: employee.dataset.salary,
@@ -16,8 +16,8 @@ function getEmployeeObjects(employees) {
 }
 
 const list = document.querySelector('ul');
-const people = document.querySelectorAll('li');
-const employeeObjects = getEmployeeObjects(people);
+const employees = document.querySelectorAll('li');
+const employeeObjects = getEmployeeObjects(employees);
 const sortedBySalary = sortBySalary(employeeObjects);
 
 list.innerHTML = sortedBySalary.map(employee => `
