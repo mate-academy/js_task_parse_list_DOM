@@ -1,32 +1,24 @@
 'use strict';
 
 function sortList(array) {
-  const sortedArray = array.sort((employeeA, employeeB) =>
-    convertToNumber(employeeB.salary) - convertToNumber(employeeA.salary));
+  const sortedArray = [...array].sort((employeeA, employeeB) =>
+    convertToNumber(employeeB.dataset.salary)
+    - convertToNumber(employeeA.dataset.salary));
 
-  for (let i = 0; i < listOfEmployees.length; i++) {
-    listOfEmployees[i].innerText = sortedArray[i].name;
-    listOfEmployees[i].dataset.position = sortedArray[i].position;
-    listOfEmployees[i].dataset.salary = sortedArray[i].salary;
-    listOfEmployees[i].dataset.age = sortedArray[i].age;
+  const list = document.querySelector('ul');
+
+  for (const employee of sortedArray) {
+    list.append(employee);
   }
 }
 
 function getEmployees(list) {
-  const employees = [];
-
-  for (let i = 0; i < list.length; i++) {
-    const employee = {};
-
-    employee.name = list[i].innerText.trim();
-    employee.position = list[i].dataset.position;
-    employee.salary = list[i].dataset.salary;
-    employee.age = list[i].dataset.age;
-
-    employees.push(employee);
-  }
-
-  return employees;
+  return [...list].map(item => ({
+    name: item.innerText,
+    position: item.dataset.position,
+    salary: item.dataset.salary,
+    age: item.dataset.age,
+  }));
 }
 
 function convertToNumber(item) {
@@ -37,6 +29,6 @@ function convertToNumber(item) {
 
 const listOfEmployees = document.querySelectorAll('li');
 
-const arrayOfEmployees = getEmployees(listOfEmployees);
+getEmployees(listOfEmployees);
 
-sortList(arrayOfEmployees);
+sortList(listOfEmployees);
