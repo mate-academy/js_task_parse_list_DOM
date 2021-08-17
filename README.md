@@ -28,7 +28,7 @@ Employees list:
 
 ![Preview](./src/images/preview.png)
 
-Expected result after soring:
+Expected result after sorting:
 
 ![Result](./src/images/result.png)
 
