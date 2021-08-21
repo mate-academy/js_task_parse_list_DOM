@@ -2,33 +2,29 @@
 
 const list = document.querySelector('ul');
 const listItem = list.querySelectorAll('li');
+const strToNum = (str) => {
+  return str.split('$')[1].split(',').join('');
+};
 
 const sortList = () => {
-  const strToNum = (str) => {
-    return str.split('$')[1].split(',').join('');
-  };
   const sortListItem = [...listItem].sort(
     (a, b) => strToNum(b.dataset.salary) - strToNum(a.dataset.salary)
   );
 
-  return (list.innerHTML = `${sortListItem
-    .map((item) => `<li>${item.innerHTML}</li>`)
-    .join('')}`);
+  for (let i = 0; i < sortListItem.length; i++) {
+    list.append(sortListItem[i]);
+  }
+
+  return sortListItem;
 };
 
 const getEmployees = () => {
-  const userArr = [];
-  const obj = {};
-
-  [...listItem].map((item) => {
-    obj.name = item.innerText;
-    obj.position = item.dataset.position;
-    obj.salary = item.dataset.salary;
-    obj.age = item.dataset.age;
-    userArr.push(obj);
-  });
-
-  return userArr;
+  return [...listItem].map((item) => ({
+    name: item.innerText,
+    position: item.dataset.position,
+    salary: item.dataset.salary,
+    age: item.dataset.age,
+  }));
 };
 
 sortList();
