@@ -1,23 +1,23 @@
 'use strict';
 
-const listParent = document.querySelector('ul');
-const list = document.querySelectorAll('li');
+const list = document.querySelector('ul');
+const listItems = [...list.children];
 const getNumFromStr = (string) => {
   return Number(string.replace('$', '').replace(/,/g, ''));
 };
 
 function sortList() {
-  const sortedList = [...list].sort((a, b) => {
+  const sortedList = listItems.sort((a, b) => {
     return getNumFromStr(b.dataset.salary) - getNumFromStr(a.dataset.salary);
   });
 
-  sortedList.forEach(item => listParent.append(item));
+  list.append(...sortedList);
 
   return sortedList;
 };
 
 function getEmployees() {
-  const array = [...list].map(item => {
+  const array = listItems.map(item => {
     const obj = {};
 
     obj.name = item.innerText;
