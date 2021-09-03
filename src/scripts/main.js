@@ -1,6 +1,8 @@
 'use strict';
 
-function getEmployees(list = document.getElementsByTagName('li')) {
+const list = document.querySelectorAll('li');
+
+function getEmployees() {
   const people = [...list].map(function(item) {
     const result = {
       name: item.textContent.trim(),
@@ -16,7 +18,7 @@ function getEmployees(list = document.getElementsByTagName('li')) {
   return people;
 }
 
-function sortList(list = getEmployees()) {
+function sortList() {
   const people = list.map((item) => Object.assign({}, item));
 
   people.sort((a, b) => b.salary - a.salary);
@@ -24,4 +26,5 @@ function sortList(list = getEmployees()) {
   return people;
 }
 
+getEmployees();
 sortList();
