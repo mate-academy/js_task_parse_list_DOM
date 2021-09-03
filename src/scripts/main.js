@@ -3,7 +3,7 @@
 const list = document.querySelectorAll('li');
 
 function getEmployees() {
-  const people = [...list].map(function(item) {
+  const people = [...list].map((item) => {
     const result = {
       name: item.textContent.trim(),
       position: item.getAttribute('data-position'),
@@ -19,12 +19,34 @@ function getEmployees() {
 }
 
 function sortList() {
-  const people = list.map((item) => Object.assign({}, item));
+  const people = [...list].map((item) => {
+    const result = {
+      name: item.textContent.trim(),
+      position: item.getAttribute('data-position'),
+      salary: parseFloat(item.getAttribute('data-salary')
+        .replace(',', '').replace('$', '')),
+      age: parseInt(item.getAttribute('data-age')),
+    };
+
+    return result;
+  });
 
   people.sort((a, b) => b.salary - a.salary);
 
-  return people;
+  let i = 0;
+
+  people.map((person) => {
+    for (i; i < list.length; i++) {
+      list[i].innerText = person.name;
+      i++;
+
+      return person;
+    }
+  }
+  );
+
+  return list;
 }
 
-getEmployees();
-sortList();
+getEmployees(list);
+sortList(list);
