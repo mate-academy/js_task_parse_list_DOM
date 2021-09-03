@@ -4,8 +4,8 @@
 
 const list = document.querySelectorAll('li');
 
-function sortList(lists) {
-  return [...lists].sort((a, b) => {
+function sortList(elements) {
+  return [...elements].sort((a, b) => {
     const textA = a.dataset.salary.split('$').join('').split(',').join('');
     const textB = b.dataset.salary.split('$').join('').split(',').join('');
 
@@ -13,25 +13,23 @@ function sortList(lists) {
   }).forEach(el => el.parentNode.append(el));
 }
 
-function getEmployees(lists) {
-  const mass = [];
+function getEmployees(elements) {
+  const result = [];
 
-  for (let i = 0; i < lists.length; i++) {
+  for (let i = 0; i < elements.length; i++) {
     const objOrder = {
-      'name': lists[i].textContent.trim(),
-      'position': lists[i].dataset.position,
-      'salary': lists[i].dataset.salary,
-      'age': lists[i].dataset.age,
+      'name': elements[i].textContent.trim(),
+      'position': elements[i].dataset.position,
+      'salary': elements[i].dataset.salary,
+      'age': elements[i].dataset.age,
     };
 
-    mass.push(objOrder);
+    result.push(objOrder);
 
   }
 
-  return mass;
+  return result;
 }
-
-// console.log(getEmployees(list));
 
 sortList(list);
 getEmployees(list);
