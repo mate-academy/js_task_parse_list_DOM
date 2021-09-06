@@ -18,34 +18,18 @@ function getEmployees() {
   return people;
 }
 
-function sortList() {
-  const people = [...list].map((item) => {
-    const result = {
-      name: item.textContent.trim(),
-      position: item.getAttribute('data-position'),
-      salary: parseFloat(item.getAttribute('data-salary')
-        .replace(',', '').replace('$', '')),
-      age: parseInt(item.getAttribute('data-age')),
-    };
+function sortList(parameters) {
+  const items = [...parameters];
 
-    return result;
-  });
+  items.sort((a, b) => parseFloat(
+    b.dataset.salary.replace(',', '').replace('$', ''))
+    - parseFloat(a.dataset.salary.replace(',', '').replace('$', '')));
 
-  people.sort((a, b) => b.salary - a.salary);
-
-  let i = 0;
-
-  people.map((person) => {
-    for (i; i < list.length; i++) {
-      list[i].innerText = person.name;
-      i++;
-
-      return person;
-    }
+  for (const item of items) {
+    document.querySelector('ul').appendChild(item);
   }
-  );
 
-  return list;
+  return items;
 }
 
 getEmployees(list);
