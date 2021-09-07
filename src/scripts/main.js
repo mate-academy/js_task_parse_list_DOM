@@ -16,21 +16,24 @@ function sortList(arr) {
 
   const list = document.querySelector('ul');
 
-  newList.map(item => list.append(item));
+  newList.forEach(item => {
+    list.append(item);
+  });
 }
 
 function getEmployees(arr) {
-  const newList = arr.sort((el, nextEl) => getNumberFromString(nextEl)
-  - getNumberFromString(el));
+  return arr.reduce((prev, item) => {
+    const obj = {};
 
-  return newList.reduce((prev, item) => {
-    prev.name = item.innerText.trim();
-    prev.position = item.dataset.position;
-    prev.salary = item.dataset.salary;
-    prev.age = item.dataset.age;
+    obj.name = item.innerText.trim();
+    obj.position = item.dataset.position;
+    obj.salary = item.dataset.salary;
+    obj.age = item.dataset.age;
+
+    prev.push(obj);
 
     return prev;
-  }, {});
+  }, []);
 }
 
 sortList([...employees]);
