@@ -5,17 +5,6 @@ const employees = document.querySelectorAll('li');
 const parentEmployees = document.querySelector('ul');
 
 function stringToNumber(string) {
-  // let result = '';
-
-  // for (const char of string) {
-  //   if (!isNaN(char)) {
-  //     result += char;
-  //   }
-  // }
-
-  // return +result;
-
-  // or
   return +string.replace(/\D/g, '');
 }
 
@@ -27,7 +16,9 @@ function sortList(list) {
     return bSalary - aSalary;
   });
 
-  resultSortList.map(employee => parentEmployees.append(employee));
+  resultSortList.forEach(employee => {
+    parentEmployees.append(employee);
+  });
 }
 
 function getEmployees(list) {
