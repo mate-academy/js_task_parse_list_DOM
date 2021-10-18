@@ -1,9 +1,9 @@
 'use strict';
 
-const u = document.querySelector('ul');
+const people = document.querySelectorAll('li');
 
 function sortList(list) {
-  const listSort = [...list.children].sort((a, b) => {
+  const listSort = [...list].sort((a, b) => {
     function GetNumSalary(item) {
       return Number(item.dataset.salary.slice(1).split(',').join(''));
     }
@@ -11,18 +11,14 @@ function sortList(list) {
     return GetNumSalary(b) - GetNumSalary(a);
   });
 
-  while (list.firstChild) {
-    list.removeChild(list.firstChild);
-  }
-
   for (let i = 0; i < listSort.length; i++) {
-    list.append(listSort[i]);
+    list[0].parentElement.append(listSort[i]);
   }
 }
-sortList(u);
+sortList(people);
 
 function getEmployees(list) {
-  const allEmployees = [...list.children];
+  const allEmployees = [...list];
   const result = [];
 
   allEmployees.forEach(item => {
@@ -36,4 +32,5 @@ function getEmployees(list) {
 
   return result;
 }
-getEmployees(u);
+
+getEmployees(people);
