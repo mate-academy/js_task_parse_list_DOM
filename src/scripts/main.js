@@ -3,27 +3,23 @@
 const listOfEmployees = document.querySelectorAll('li');
 
 function getNumberFromString(string) {
-  const number = Number(string.slice(1).split(',').join(''));
-
-  return number;
+  return Number(string.slice(1).split(',').join(''));
 }
 
-function sortList(list) {
-  const sorted = [...list]
+function sortList(listItems) {
+  const sortedList = [...listItems]
     .sort((a, b) => getNumberFromString(b.dataset.salary)
-    - getNumberFromString(a.dataset.salary));
+      - getNumberFromString(a.dataset.salary));
 
-  sorted.forEach(el =>
-    document.querySelector('ul').appendChild(el));
+  const listing = document.querySelector('ul');
+
+  listing.append(...sortedList);
 }
 
 function getEmployees(list) {
-  const employees = [];
-
-  for (const item of list) {
-    employees
-      .push(Object.assign({ name: item.textContent.trim() }, item.dataset));
-  }
+  const employees = list.map(listItem => Object.assign({
+    name: listItem.textContent.trim(),
+  }, listItem.dataset));
 
   return employees;
 }
