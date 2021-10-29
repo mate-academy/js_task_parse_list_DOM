@@ -5,7 +5,7 @@ function getNumber(string) {
 }
 
 function getEmployees(elementList) {
-  const list = [...liElements].map(el =>
+  const list = [...elementList].map(el =>
     ({
       name: el.innerText,
       position: el.dataset.position,
@@ -17,19 +17,19 @@ function getEmployees(elementList) {
 }
 
 function sortList(elementList) {
-  const list = document.querySelector('ul');
+  const listUl = document.querySelector('ul');
 
-  const sorted = [...liElements].sort((a, b) =>
+  const sorted = [...elementList].sort((a, b) =>
     getNumber(b.dataset.salary) - getNumber(a.dataset.salary));
 
   for (const item of sorted) {
-    list.append(item);
+    listUl.append(item);
   }
 
-  return list;
+  return listUl;
 }
 
-const liElements = document.querySelector('li');
+const liElements = document.querySelectorAll('li');
 
 sortList(liElements);
 getEmployees(liElements);
