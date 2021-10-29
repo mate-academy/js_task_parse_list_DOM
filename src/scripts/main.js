@@ -5,12 +5,7 @@ const salary = document.querySelectorAll('li');
 const ul = document.querySelector('ul');
 
 function sortList(list) {
-  const newLi = [];
-  // const newLi = [].slice.call(salary);
-
-  for (const salar of list) {
-    newLi.push(salar);
-  }
+  const newLi = [ ...list ];
 
   newLi.sort(function(a, b) {
     return +b.dataset.salary.replace('$', '').replace(',', '')
@@ -23,12 +18,8 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  const arr = [];
+  const arr = [ ...list ];
   const result = [];
-
-  for (const salar of list) {
-    arr.push(salar);
-  }
 
   arr.filter(function(item) {
     const info = {};
