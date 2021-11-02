@@ -12,22 +12,11 @@ function sortList(list) {
     return toNum(b.dataset.salary) - toNum(a.dataset.salary);
   });
 
-  list.innerHTML = newList.map(el => `
-    <li
-    data-position="${el.dataset.position}"
-    data-salary="${el.dataset.salary}"
-    data-age="${el.dataset.age}"
-    >
-    ${el.innerHTML}
-    </li>
-  
-  `).join('');
+  list.append(...newList);
 }
 
 function getEmployees(list) {
-  const newList = [...list.children].sort((a, b) => {
-    return toNum(b.dataset.salary) - toNum(a.dataset.salary);
-  });
+  const newList = [...list.children];
 
   const result = [];
 
