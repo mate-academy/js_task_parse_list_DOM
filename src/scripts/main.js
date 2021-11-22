@@ -5,15 +5,22 @@ const listOfEmployees = document.querySelector('ul');
 function getEmployees(list) {
   const employees = [...list.children];
 
-  return employees;
+  return employees.map((employee) => ({
+    name: employee.innerHTML.trim(),
+    position: employee.dataset.position,
+    salary: employee.dataset.salary,
+    age: employee.dataset.age,
+  }));
 }
 
 function sortList(list) {
+  const employees = [...list.children];
+
   const convertSalary = (el) => (
     +el.dataset.salary.replace(/[$,]/g, '')
   );
 
-  const salary = getEmployees(listOfEmployees).sort((a, b) => (
+  const salary = employees.sort((a, b) => (
     convertSalary(b) - convertSalary(a)
   ));
 
