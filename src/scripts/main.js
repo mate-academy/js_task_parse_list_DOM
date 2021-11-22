@@ -9,12 +9,12 @@ function getEmployees(list) {
 }
 
 function sortList(list) {
-  const callBack = (el) => (
+  const convertSalary = (el) => (
     +el.dataset.salary.replace(/[$,]/g, '')
   );
 
   const salary = getEmployees(listOfEmployees).sort((a, b) => (
-    callBack(b) - callBack(a)
+    convertSalary(b) - convertSalary(a)
   ));
 
   list.innerHTML = `
