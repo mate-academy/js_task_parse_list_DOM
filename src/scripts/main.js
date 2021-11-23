@@ -1,41 +1,37 @@
 'use strict';
 
-const listOfEmployees = document.querySelector('ul');
-
 function getEmployees(list) {
   const employees = [...list.children];
 
   return employees.map((employee) => ({
     name: employee.innerHTML.trim(),
-    position: employee.dataset.position,
-    salary: employee.dataset.salary,
-    age: employee.dataset.age,
+    ...employee.dataset,
   }));
 }
 
 function sortList(list) {
-  const employees = [...list.children];
+  const employees = getEmployees(list);
 
   const convertSalary = (el) => (
-    +el.dataset.salary.replace(/[$,]/g, '')
+    +el.salary.replace(/[$,]/g, '')
   );
 
-  const salary = employees.sort((a, b) => (
+  return employees.sort((a, b) => (
     convertSalary(b) - convertSalary(a)
   ));
-
-  list.innerHTML = `
-    ${salary.map(employee => `
-      <li
-        data-position="${employee.dataset.position}"
-        data-salary="${employee.dataset.salary}"
-        data-age="${employee.dataset.age}"
-      >
-        ${employee.innerText}
-      </li>
-    `).join('')}
-  `;
 }
 
-getEmployees(listOfEmployees);
-sortList(listOfEmployees);
+const listOfEmployees = document.querySelector('ul');
+const workers = sortList(listOfEmployees);
+
+listOfEmployees.innerHTML = (`
+    ${workers.map(employee => `
+      <li
+        data-position=" ${employee.position}"
+        data-salary=" ${employee.salary}"
+        data-age=" ${employee.age}"
+      >
+        ${employee.name}
+      </li>
+    `).join('')}
+  `);
