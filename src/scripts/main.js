@@ -3,11 +3,11 @@
 const ul = document.querySelector('ul');
 
 function sortList(list) {
-  const sortedList = [...list.children].map(item => {
-    item.dataset.salary = item.dataset.salary.replace(/[$,]/g, '');
-
-    return item;
-  }).sort((a, b) => b.dataset.salary - a.dataset.salary);
+  const sortedList = [...list.children]
+    .sort((a, b) =>
+      b.dataset.salary.replace(/[$,]/g, '')
+      - a.dataset.salary.replace(/[$,]/g, '')
+    );
 
   list.innerHTML = '';
 
