@@ -16,19 +16,16 @@ function sortList(employeeList) {
 }
 
 function getEmployees(employeeList) {
-  const arr = [];
-
-  for (const person of employeeList) {
-    arr.push({
-      name: person.innerText,
-      position: person.dataset.position,
-      salary: person.dataset.salary,
-      age: person.dataset.age,
-    });
-  }
-
-  return arr;
+  return employeeList.map(item => (
+    {
+      name: item.innerText,
+      position: item.dataset.position,
+      salary: item.dataset.salary,
+      age: item.dataset.age,
+    }
+  ));
 }
 
 sortList(list);
+
 getEmployees(list);
