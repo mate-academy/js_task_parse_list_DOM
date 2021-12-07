@@ -4,15 +4,11 @@ const list = [...document.querySelectorAll('li')];
 const ul = document.querySelector('ul');
 
 function sortList(employeeList) {
-  const salary = employeeList.sort((
+  const sortedEmployees = employeeList.sort((
     a, b) => +b.dataset.salary.split('$').join('').split(',').join('')
     - +a.dataset.salary.split('$').join('').split(',').join(''));
 
-  for (const item of salary) {
-    ul.append(item);
-  }
-
-  return ul;
+  ul.append(...sortedEmployees);
 }
 
 function getEmployees(employeeList) {
@@ -27,5 +23,4 @@ function getEmployees(employeeList) {
 }
 
 sortList(list);
-
 getEmployees(list);
