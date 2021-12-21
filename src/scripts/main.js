@@ -3,7 +3,7 @@
 const list = document.querySelectorAll('li');
 
 const sortList = (li) => {
-  const sorted = [...list].sort((a, b) =>
+  const sorted = [...li].sort((a, b) =>
     +b.dataset.salary.replace(/[,$]/g, '')
     - +a.dataset.salary.replace(/[,$]/g, ''));
 
@@ -17,7 +17,7 @@ const sortList = (li) => {
 };
 
 const getEmployees = (li) => {
-  const result = [...list].map(x => x.dataset);
+  const result = [...li].map(x => x.dataset);
 
   return result;
 };
