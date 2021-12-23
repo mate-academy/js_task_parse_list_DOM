@@ -20,35 +20,26 @@ function sortList(arr) {
     return result;
   });
 
-  return sortedList;
-}
+  const rootElement = document.querySelector('ul');
 
-const newList = sortList(listArr);
+  for (let i = 0; i < sortedList.length; i++) {
+    rootElement.append(sortedList[i]);
+  }
 
-const rootElement = document.querySelector('ul');
-
-for (let i = 0; i < newList.length; i++) {
-  rootElement.append(newList[i]);
+  return rootElement;
 }
 
 sortList(listArr);
 
 function getEmployees(employee) {
-  const arrOfEmpoyees = [];
-  const obj = {};
+  const arrOfEmployees = employee.map(item => ({
+    name: item.innerText,
+    position: item.dataset.position,
+    salary: item.dataset.salary,
+    age: item.dataset.age,
+  }));
 
-  for (const item of employee) {
-    obj.name = item.innerText;
-    obj.position = item.dataset.position;
-    obj.salary = item.dataset.salary;
-    obj.age = item.dataset.age;
-
-    const result = { ...obj };
-
-    arrOfEmpoyees.push(result);
-  }
-
-  return arrOfEmpoyees;
+  return arrOfEmployees;
 }
 
 getEmployees(listArr);
