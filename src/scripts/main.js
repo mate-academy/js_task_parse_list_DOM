@@ -6,9 +6,7 @@ const getEmployees = function(list) {
   const arrayList = [...list].map(item => {
     const itemEmployee = {
       name: item.innerHTML.trim(),
-      position: item.getAttribute('data-position'),
-      salary: item.getAttribute('data-salary'),
-      age: item.getAttribute('data-age'),
+      ...item.dataset,
     };
 
     return itemEmployee;
@@ -19,21 +17,19 @@ const getEmployees = function(list) {
 
 const listForSort = getEmployees(queryList);
 
+listForSort.forEach(item => {
+  const aSort = item.salary.slice(1, 10).split(',');
+
+  item.salary = Number(aSort.join(''));
+});
+
 const sortList = function(list) {
   list.sort(function(a, b) {
-    let aSort = a.salary.slice(1, 10).split(',');
-
-    aSort = Number(aSort.join(''));
-
-    let bSort = b.salary.slice(1, 10).split(',');
-
-    bSort = Number(bSort.join(''));
-
-    if (aSort > bSort) {
+    if (a.salary > b.salary) {
       return -1;
     }
 
-    if (aSort < bSort) {
+    if (a.salary < b.salary) {
       return 1;
     }
 
