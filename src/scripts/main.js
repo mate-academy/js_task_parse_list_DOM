@@ -24,5 +24,5 @@ const getEmployees = () => {
   return arrOfObjecs;
 };
 
-sortList();
-getEmployees();
+sortList(list);
+getEmployees(list);
