@@ -1,49 +1,31 @@
 'use strict';
 
 const list = document.querySelector('ul');
-const itemsOfList = document.querySelectorAll('li');
+const listItems = document.querySelectorAll('li');
 
 const convertToNumber = (str) => {
   return Number(str.slice(1).split(',').join(''));
 };
 
-const sortList = (people) => {
-  const salaries = [];
+const sortList = (data) => {
+  const copy = [...data];
 
-  for (const person of people) {
-    salaries.push(person.dataset.salary);
-  }
+  copy.sort((dataA, dataB) => {
+    const salaryA = convertToNumber(dataA.dataset.salary);
+    const salaryB = convertToNumber(dataB.dataset.salary);
 
-  salaries.sort((salaryA, salaryB) => {
-    const s1 = convertToNumber(salaryA);
-    const s2 = convertToNumber(salaryB);
-
-    return s2 - s1;
+    return salaryB - salaryA;
   });
 
-  for (const salary of salaries) {
-    for (const item of itemsOfList) {
-      if (item.dataset.salary === salary) {
-        list.append(item);
-      }
-    }
-  }
+  list.append(...copy);
 };
 
 const getEmployees = (someList) => {
-  const arr = [];
-
-  for (const item of someList) {
-    arr.push({
-      name: item.textContent,
-      position: item.dataset.position,
-      salary: item.dataset.salary,
-      age: item.dataset.age,
-    });
-  }
-
-  return arr;
+  return [...someList].map(employee => ({
+    name: employee.textContent,
+    ...employee.dataset,
+  }));
 };
 
-sortList(itemsOfList);
-getEmployees(itemsOfList);
+sortList(listItems);
+getEmployees(listItems);
