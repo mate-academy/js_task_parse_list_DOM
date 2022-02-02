@@ -1,7 +1,6 @@
 'use strict';
 
 const list = document.querySelector('ul');
-const listItems = document.querySelectorAll('li');
 
 function sortingListOfPeople(listToSort) {
   const gettingPersonSellary = (person) => {
@@ -11,18 +10,18 @@ function sortingListOfPeople(listToSort) {
       .join('');
   };
 
-  const sortedList = [...listToSort].sort(
+  const sortedList = [...listToSort.children].sort(
     (a, b) => gettingPersonSellary(b) - gettingPersonSellary(a)
   );
 
   list.append(...sortedList);
 }
 
-function getEmploees(employeeList) {
-  const emplouyeesInfo = [];
+function getEmployees(employeeList) {
+  const employeesInfo = [];
 
-  for (const { innerText, dataset } of employeeList) {
-    emplouyeesInfo.push({
+  for (const { innerText, dataset } of employeeList.children) {
+    employeesInfo.push({
       name: innerText,
       age: dataset.age,
       position: dataset.position,
@@ -30,8 +29,8 @@ function getEmploees(employeeList) {
     });
   }
 
-  return emplouyeesInfo;
+  return employeesInfo;
 };
 
-sortingListOfPeople(listItems);
-getEmploees(listItems);
+sortingListOfPeople(list);
+getEmployees(list);
