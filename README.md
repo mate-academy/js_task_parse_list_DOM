@@ -1,5 +1,5 @@
 1. Replace `<your_account>` with your Github username in the link
-    - [DEMO LINK](https://<your_account>.github.io/js_task_parse_list_DOM/)
+    - [DEMO LINK](https://github.com/romafanasiev/js_task_parse_cdlist_DOM)
 2. Follow [this instructions](https://mate-academy.github.io/layout_task-guideline/)
     - Run `npm run test` command to test your code;
     - Run `npm run test:only -- -n` to run fast test ignoring linter;
@@ -42,3 +42,4 @@ You can read about non-standard attributes and dataset [here](https://javascript
 5) Done.
 
 You don't need to change styles or HTML layout in this task. Change only `main.js` file.
+"$183,000"
