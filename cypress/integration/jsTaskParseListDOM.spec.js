@@ -14,7 +14,6 @@ describe('Parse list app ', () => {
   });
 
   it('should be sorted by salary DSC', () => {
-
     cy.get('ul > li').then(($ul) => {
       const list = [...$ul].map(
           (row) => row.dataset.salary.replace('$', '').replace(',', ''));
