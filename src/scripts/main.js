@@ -23,11 +23,35 @@ function sortList(list) {
   employeesArray.sort((empl1, empl2) =>
     helper(empl2.salary) - helper(empl1.salary));
 
-  /*for (let i = 0; i < employeesArray.length; i++) {
-    list.append(employeesArray[i]);
-  }*/
+  // variant with replacing the initial list
 
-  return list;
+  /* for (let i = 0; i < list.length; i++) {
+    list[i].innerHTML = employeesArray[i].name;
+    list[i].dataset.position = employeesArray[i].position;
+    list[i].dataset.salary = employeesArray[i].salary;
+    list[i].dataset.age = employeesArray[i].age;
+  } */
+
+  // variant with creating a new list after the initial list
+
+  const newHeader = document.createElement('h1');
+
+  newHeader.innerHTML = 'List of employees sorted by salary';
+
+  const newList = document.createElement('ul');
+
+  document.body.append(newHeader, newList);
+
+  for (let i = 0; i < employeesArray.length; i++) {
+    newList.insertAdjacentHTML('beforeend', `
+      <li
+        data-position="${employeesArray[i].position}"
+        data-salary="${employeesArray[i].salary}"
+        data-age="${employeesArray[i].salary}"
+      >
+        ${employeesArray[i].name}
+      </li>`);
+  }
 }
 
 function getEmployees(list) {
@@ -47,6 +71,6 @@ function getEmployees(list) {
   return result;
 }
 
-sortList(employees);
-
 getEmployees(employees);
+
+sortList(employees);
