@@ -5,15 +5,15 @@ const ul = document.querySelector('ul');
 
 function sortList(list) {
   list.sort((a, b) => {
-    const aa = +a.dataset.salary
+    const prev = +a.dataset.salary
       .replace(',', '')
       .replace('$', '');
 
-    const bb = +b.dataset.salary
+    const next = +b.dataset.salary
       .replace(',', '')
       .replace('$', '');
 
-    return bb - aa;
+    return next - prev;
   });
   ul.append(...list);
 }
