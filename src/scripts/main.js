@@ -4,9 +4,9 @@ const listFromTag = document.querySelector('ul');
 const employees = [...listFromTag.children];
 
 function sortList(list) {
-  list.sort((o1, o2) => {
-    const salaryO1 = o1.dataset.salary.replace(/[$,]/g, '');
-    const salaryO2 = o2.dataset.salary.replace(/[$,]/g, '');
+  list.sort((first, second) => {
+    const salaryO1 = first.dataset.salary.replace(/[$,]/g, '');
+    const salaryO2 = second.dataset.salary.replace(/[$,]/g, '');
 
     return salaryO2 - salaryO1;
   })
