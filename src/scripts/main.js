@@ -4,10 +4,12 @@ const notitia = document.querySelector('ul');
 const allNotitia = document.querySelectorAll('li');
 
 function sortList(list) {
-  const listSorted = [...list].sort((a, b) =>
-    +b.dataset.salary.slice(1).split(',').join('')
-    - +a.dataset.salary.slice(1).split(',').join('')
-  );
+  const listSorted = [...list].sort((a, b) => {
+    const salary1 = +b.dataset.salary.slice(1).split(',').join('');
+    const salary2 = +a.dataset.salary.slice(1).split(',').join('');
+
+    return (salary1 - salary2);
+  });
 
   notitia.append(...listSorted);
 }
