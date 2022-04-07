@@ -9,7 +9,7 @@ function getEmployersObjects(employers) {
   return [...employers].map(el => ({
     name: el.innerText,
     position: el.dataset.position,
-    salary:  convertSalary(el.dataset.salary),
+    salary: convertSalary(el.dataset.salary),
     age: parseInt(el.dataset.age),
   }));
 }
