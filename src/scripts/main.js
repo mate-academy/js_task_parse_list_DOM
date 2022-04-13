@@ -44,6 +44,8 @@ const getEmployees = listOfEmployees => {
 
     employees.push(objectFromEmployee);
   }
+
+  return employees;
 };
 
 sortList(listItems);
