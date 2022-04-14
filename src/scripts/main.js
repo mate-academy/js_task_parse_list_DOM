@@ -3,37 +3,21 @@
 const list = document.querySelector('ul');
 const listItems = [...list.querySelectorAll('li')];
 
+const convertToNumber = number =>
+  +(number.split('').filter(num => !isNaN(num)).join(''));
+
 const sortList = listOfItems => {
-  listOfItems.forEach(item => {
-    const numFromSalary = +(item.dataset.salary.split('$').pop()
-      .split(',').join('.'));
-
-    item.dataset.salary = numFromSalary;
-  });
-
   const sortedList = listOfItems.sort((a, b) =>
-    b.dataset.salary - a.dataset.salary);
-
-  sortedList.forEach(element => {
-    const number = +element.dataset.salary;
-    const convertToCorrectFormat = number.toFixed(3).split('');
-
-    convertToCorrectFormat.unshift('$');
-
-    const convertedFormat = convertToCorrectFormat.join('')
-      .split('.').join(',');
-
-    element.dataset.salary = convertedFormat;
-  });
+    convertToNumber(b.dataset.salary) - convertToNumber(a.dataset.salary));
 
   for (const person of sortedList) {
     list.append(person);
   }
 };
 
-const employees = [];
-
 const getEmployees = listOfEmployees => {
+  const employees = [];
+
   for (const emloyee of listOfEmployees) {
     const objectFromEmployee = {
       name: emloyee.innerText,
