@@ -9,10 +9,10 @@ function salary(str) {
 
 function sortList(str) {
   const sortedBySalary = str.sort((x, y) =>
-    salary(x.dataset.salary) - salary(y.dataset.salary)
+    salary(y.dataset.salary) - salary(x.dataset.salary)
   );
 
-  sortedBySalary.map(element => list.append(element));
+  sortedBySalary.forEach(element => list.append(element));
 }
 
 function getEmployees(array) {
