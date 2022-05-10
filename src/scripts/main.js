@@ -1,33 +1,43 @@
 'use strict';
-
+// const ulElements = document.querySelector('ul');
+const arElements = document.querySelector('ul');
 const query = document.querySelectorAll('li');
 const list = [...query];
 
-function strToDigitArr(string_){
-    const arrString = string_.split('');
-    const arrDigit = arrString.filter(letter => /^[0-9]$/.test(letter));
-    const resultNumber = Number(arrDigit.join(''));
-    return resultNumber;
+const strToDigitArr = function(string_) {
+  const arrString = string_.split('');
+  const arrDigit = arrString.filter(letter => /^[0-9]$/.test(letter));
+  const resultNumber = Number(arrDigit.join(''));
+
+  return resultNumber;
 }
 
-function sortList(list) {
-    return list.sort((x, y) => strToDigitArr(y.getAttribute('data-salary')) - strToDigitArr(x.getAttribute('data-salary')));
-}
+const sortList = function(listForSort) {
+  const sortedArr = listForSort.sort(
+    (x, y) => strToDigitArr(
+      y.getAttribute('data-salary')
+    ) - strToDigitArr(
+      x.getAttribute('data-salary')
+    )
+  );
 
-function getEmployees(list) {
-    let employees_objegts = {};
-    const employees_list = [];
+  arElements.append(...sortedArr);
+};
 
-    for (const attrib of list) {
-        employees_objegts['name'] = attrib.innerText;
-        employees_objegts['position'] = attrib.getAttribute('data-position');
-        employees_objegts['salary'] = attrib.getAttribute('data-salary');
-        employees_objegts['age'] = attrib.getAttribute('data-age');
-        employees_list.push(employees_objegts);
-        employees_objegts = {};
-    }
+const getEmployees = function(initialList) {
+  let employeesObjegts = {};
+  const employeesList = [];
 
-    return employees_list;
+  for (const attrib of initialList) {
+    employeesObjegts['name'] = attrib.innerText;
+    employeesObjegts['position'] = attrib.getAttribute('data-position');
+    employeesObjegts['salary'] = attrib.getAttribute('data-salary');
+    employeesObjegts['age'] = attrib.getAttribute('data-age');
+    employeesList.push(employeesObjegts);
+    employeesObjegts = {};
+  }
+
+  return employeesList;
 }
 
 sortList(list);
