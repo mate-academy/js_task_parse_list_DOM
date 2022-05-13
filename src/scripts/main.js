@@ -1,4 +1,5 @@
 'use strict';
+
 // const ulElements = document.querySelector('ul');
 const arElements = document.querySelector('ul');
 const query = document.querySelectorAll('li');
@@ -10,7 +11,7 @@ const strToDigitArr = function(string_) {
   const resultNumber = Number(arrDigit.join(''));
 
   return resultNumber;
-}
+};
 
 const sortList = function(listForSort) {
   const sortedArr = listForSort.sort(
@@ -38,15 +39,7 @@ const getEmployees = function(initialList) {
   }
 
   return employeesList;
-}
+};
 
 sortList(list);
 getEmployees(list);
-
-// console.log(list)
-// console.log(list[0])
-// console.log(list[0].getAttribute('data-salary'))
-// console.log(sortList(list))
-// console.log(list[0])
-// console.log(list[0].getAttribute('data-salary'))
-// console.log(getEmployees(list))
