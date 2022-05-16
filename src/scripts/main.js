@@ -1,6 +1,5 @@
 'use strict';
 
-// const ulElements = document.querySelector('ul');
 const arElements = document.querySelector('ul');
 const query = document.querySelectorAll('li');
 const list = [...query];
