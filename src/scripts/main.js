@@ -3,14 +3,23 @@
 const list = document.querySelectorAll('li');
 const listArr = [...list];
 
+// const listUl = document.getElementsByTagName('ul');
+
 function convertSalaryToNumber(salary) {
   return parseInt(salary.substring(1).split(',').join(''));
 }
 
 const sortList = function(arr) {
-  return arr.sort((x, y) =>
-    convertSalaryToNumber(x.dataset.salary)
-    - convertSalaryToNumber(y.dataset.salary));
+  const sortedArr = arr.sort((x, y) =>
+    convertSalaryToNumber(y.dataset.salary)
+    - convertSalaryToNumber(x.dataset.salary));
+
+  //   for (let i = 0; i < sortedArr.length; i++) {
+  //     document.getElementById('list').appendChild(sortedArr[i]);
+  //   }
+  return sortedArr.forEach(element => {
+    document.querySelector('ul').appendChild(element);
+  });
 };
 
 const getEmployees = function(array) {
@@ -27,4 +36,7 @@ const getEmployees = function(array) {
 };
 
 sortList(listArr);
-getEmployees(sortList);
+
+// Cюди треба передати просто список? чи вже відсортований?
+// Бо я не знаю як дістати вже відсортований список...
+getEmployees(listArr);
