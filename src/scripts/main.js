@@ -1,9 +1,9 @@
 'use strict';
 
-const ulList = document.body.children[1];
+const list = document.body.children[1];
 
 function sortList(ulList) {
-  for (const li of ulList.childNodes) {
+  for (const li of list.childNodes) {
     if (li.children !== undefined) {
       const liSalary = li.dataset.salary;
       const salaryNumber = Number(liSalary.slice(1).split(',').join(''));
@@ -19,13 +19,13 @@ function sortList(ulList) {
   for (const li in result) {
     const newLi = result[li];
 
-    ulList.append(newLi);
+    list.append(newLi);
   }
 
-  return ulList;
+  return list;
 }
 
-sortList(ulList);
+sortList(list);
 
 function getEmployees(ulList) {
   const array = [];
@@ -50,4 +50,4 @@ function getEmployees(ulList) {
   return array;
 }
 
-getEmployees(ulList);
+getEmployees(list);
