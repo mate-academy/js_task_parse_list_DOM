@@ -1,53 +1,33 @@
 'use strict';
 
-const list = document.body.children[1];
+const list = document.querySelector('ul');
+const items = document.querySelectorAll('li');
 
 function sortList(ulList) {
-  for (const li of list.childNodes) {
-    if (li.children !== undefined) {
-      const liSalary = li.dataset.salary;
-      const salaryNumber = Number(liSalary.slice(1).split(',').join(''));
-
-      li.setAttribute('data-salary', salaryNumber);
-    }
-  }
-
-  const items = document.querySelectorAll('li');
-
-  const result = [...items].sort((a, b) => b.dataset.salary - a.dataset.salary);
+  const result = [...ulList].sort((a, b) =>
+    b.dataset.salary.slice(1).split(',').join('')
+      - a.dataset.salary.slice(1).split(',').join(''));
 
   for (const li in result) {
-    const newLi = result[li];
-
-    list.append(newLi);
+    list.append(result[li]);
   }
 
   return list;
 }
 
-sortList(list);
+sortList(items);
 
 function getEmployees(ulList) {
-  const array = [];
-  const items = document.querySelectorAll('li');
-
-  for (const item of items) {
-    const position = item.dataset.position;
-    const salary = item.dataset.salary;
-    const age = item.dataset.age;
-    const nameLi = item.textContent.trim();
-
-    const obj = {
-      'name': nameLi,
-      'data-position': position,
-      'data-salary': salary,
-      'data-age': age,
+  function getObjectOfEmployee(li) {
+    return {
+      'name': li.textContent.trim(),
+      'position': li.dataset.position,
+      'salary': li.dataset.salary,
+      'age': li.dataset.age,
     };
-
-    array.push(obj);
   }
 
-  return array;
+  return [...ulList].map(getObjectOfEmployee);
 }
 
-getEmployees(list);
+getEmployees(items);
