@@ -24,7 +24,6 @@ function sortList(list) {
       +b.salary.replace(/[^0-9]/g, '') - +a.salary.replace(/[^0-9]/g, ''));
 
   const ul = document.querySelector('ul');
-
   ul.innerHTML = ``;
 
   for (let i = 0; i < sortedList.length; i++) {
