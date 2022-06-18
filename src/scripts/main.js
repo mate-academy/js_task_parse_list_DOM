@@ -1,8 +1,6 @@
 'use strict';
 
-const li = document.querySelectorAll('li');
-
-const list = [...li];
+const list = [...document.querySelectorAll('li')];
 
 function sortList(arr) {
   const person = [];
@@ -16,9 +14,9 @@ function sortList(arr) {
     Number(a.salary.replaceAll('$', '').replaceAll(',', ''))
   - Number(b.salary.replaceAll('$', '').replaceAll(',', '')));
 
-  [...li].map(el => el.remove());
+  list.map(el => el.remove());
 
-  const ul = document.getElementsByTagName('ul');
+  const ul = document.querySelectorAll('ul');
 
   for (let i = 0; i < sorted.length; i++) {
     const item = document.createElement('li');
