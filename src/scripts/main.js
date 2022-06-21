@@ -4,14 +4,13 @@ const list = document.querySelector('ul');
 const employees = [ ...list.children ];
 
 function normalizeSalary(salary) {
-  return +salary.replace('$', '').replace(',', '');
+  return +salary.split('').filter(char => isFinite(char.trim())).join('');
 }
 
 function sortList(employeesList) {
-  const sortedList = employeesList
-    .sort((liA, liB) =>
-      normalizeSalary(liB.dataset.salary) - normalizeSalary(liA.dataset.salary)
-    );
+  const sortedList = employeesList.sort((liA, liB) =>
+    normalizeSalary(liB.dataset.salary) - normalizeSalary(liA.dataset.salary)
+  );
 
   list.append(...sortedList);
 }
