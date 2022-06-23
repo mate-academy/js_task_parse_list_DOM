@@ -5,16 +5,16 @@
 const ul = document.querySelector('ul');
 const list = [...ul.children];
 
-function sortList(x) {
-  const sorted = x.sort((a, b) =>
+function sortList(parameter) {
+  const sortedList = parameter.sort((a, b) =>
     +b.dataset.salary.split('$').join('').split(',').join('')
     - +a.dataset.salary.split('$').join('').split(',').join(''));
 
-  ul.append(...sorted);
+  ul.append(...sortedList);
 }
 
-function getEmployees(x) {
-  return x.map(item => ({
+function getEmployees(parameter) {
+  return parameter.map(item => ({
     name: item.innerText,
     ...item.dataset,
   }));
