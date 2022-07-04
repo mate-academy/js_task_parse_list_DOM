@@ -3,10 +3,13 @@
 const list = document.querySelector('ul');
 const listItems = [...list.children];
 
+function makeNumber(salaryStr) {
+  return +salaryStr.split('$').join('').split(',').join('');
+}
+
 function sortList(listProperty) {
   const sortedList = listProperty.sort((person1, person2) =>
-    +(person2.dataset.salary.split('$').join('').split(',').join(''))
-    - +(person1.dataset.salary.split('$').join('').split(',').join(''))
+    makeNumber(person2.dataset.salary) - makeNumber(person1.dataset.salary)
   );
 
   list.append(...sortedList);
