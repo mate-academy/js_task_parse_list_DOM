@@ -1,5 +1,7 @@
 'use strict';
 
+const li = document.querySelectorAll('li');
+
 class Employer {
   constructor(fullName, position, salary, age) {
     this.name = fullName;
@@ -9,26 +11,37 @@ class Employer {
   }
 }
 
-const employers = [];
+function getEmployer(list) {
+  const employer = [];
 
-const li = document.querySelectorAll('li');
-const fullNames = [...li].map(item => item.innerText);
-const positions = [...li].map(item => item.getAttribute('data-position'));
-const salaries = [...li].map(item =>
-  Number(item.getAttribute('data-salary').split('').filter(element =>
-    element !== '$' && element !== ',').join('')));
-const ages = [...li].map(item => item.getAttribute('data-age'));
+  for (let i = 0; i < list.length; i++) {
+    employer[employer.length] = new Employer(list[i].innerText,
+      list[i].dataset.position,
+      +list[i].dataset.salary.replace(/\D/g, ''),
+      list[i].dataset.age);
+  }
 
-for (let i = 0; i < li.length; i++) {
-  employers[employers.length] = new Employer(fullNames[i],
-    positions[i], salaries[i], ages[i]);
+  return employer;
 }
 
-employers.sort((first, second) => second.salary - first.salary);
+function listSorted(list) {
+  list.sort((a, b) => b.salary - a.salary).forEach(item => {
+    item.salary = '$' + item.salary.toLocaleString();
+  });
 
-employers.forEach((employer, i) => {
-  li[i].innerText = employer.name;
-  li[i].dataset.position = employer.position;
-  li[i].dataset.salary = '$' + employer.salary.toLocaleString();
-  li[i].dataset.age = employer.age;
-});
+  return list;
+}
+
+function setSortedList(list, sortedList) {
+  sortedList.forEach((employer, i) => {
+    list[i].innerText = employer.name;
+    list[i].dataset.position = employer.position;
+    list[i].dataset.salary = employer.salary;
+    list[i].dataset.age = employer.age;
+  });
+}
+
+const employers = getEmployer(li);
+const sortedEmployers = listSorted(employers);
+
+setSortedList(li, sortedEmployers);
