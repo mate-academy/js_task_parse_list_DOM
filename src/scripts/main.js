@@ -6,22 +6,22 @@ const listUl = document.querySelector('ul');
 const makeNumber = val =>
   +val.dataset.salary.slice(1).split(',').join('');
 
-function sortList(arr, callback) {
-  const arr2 = arr.sort((a, b) => callback(b) - callback(a));
+function sortList(salariesList, callback) {
+  const sortBySalary = salariesList.sort((a, b) => callback(b) - callback(a));
 
-  return listUl.append(...arr2);
+  return listUl.append(...sortBySalary);
 }
 
 function getEmployees(list) {
   return [...list].map(el => {
-    const obj = {};
+    const employeeDataObj = {};
 
-    obj.name = el.innerText;
-    obj.position = el.dataset.position;
-    obj.salary = el.dataset.salary;
-    obj.age = el.dataset.age;
+    employeeDataObj.name = el.innerText;
+    employeeDataObj.position = el.dataset.position;
+    employeeDataObj.salary = el.dataset.salary;
+    employeeDataObj.age = el.dataset.age;
 
-    return obj;
+    return employeeDataObj;
   });
 }
 
