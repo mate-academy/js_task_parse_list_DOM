@@ -3,6 +3,10 @@
 const employeesList = document.querySelector('ul');
 const employees = [...document.querySelectorAll('li')];
 
+function toValid(value) {
+  return Number(value.slice(1).split(',').join(''));
+}
+
 function getEmployees(list) {
   const infoList = [];
 
@@ -12,16 +16,12 @@ function getEmployees(list) {
     infoList.push({
       name: person.textContent.trim(),
       position,
-      salary: Number(salary.slice(1).split(',').join('')),
+      salary: toValid(salary),
       age,
     });
   });
 
   return infoList;
-}
-
-function toValid(value) {
-  return Number(value.slice(1).split(',').join(''));
 }
 
 function sortList(list) {
