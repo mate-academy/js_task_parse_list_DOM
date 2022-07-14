@@ -17,7 +17,7 @@ const ul = document.querySelector('ul');
 ul.innerHTML = '';
 
 for (const item of sortedListOfEmployees) {
-  ul.innerHTML += `
+  ul.insertAdjacentHTML('beforeend', `
     <li
       data-position=${item.dataset.position}
       data-salary=${item.dataset.salary}
@@ -25,7 +25,7 @@ for (const item of sortedListOfEmployees) {
     >
       ${item.textContent.trim()}
     </li>
-  `;
+  `);
 }
 
 function getEmployees(list) {
