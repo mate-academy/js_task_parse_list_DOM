@@ -2,7 +2,6 @@
 
 // write code here
 const infoData = document.querySelectorAll('li');
-// console.log([...infoData].map((item) => item.innerText));
 const result = [...infoData].sort((a, b) => {
   const aSort = a.dataset.salary
     .split(',')
