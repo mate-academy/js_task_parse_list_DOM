@@ -2,11 +2,11 @@
 
 const listOfEmployees = document.querySelectorAll('li');
 
-function sortList(list) {
-  function strToNum(str) {
-    return +str.slice(1).split(',').join('');
-  }
+function strToNum(str) {
+  return +str.slice(1).split(',').join('');
+}
 
+function sortList(list) {
   return [...list].sort((item1, item2) =>
     strToNum(item2.dataset.salary) - strToNum(item1.dataset.salary));
 }
@@ -16,7 +16,7 @@ const ul = document.querySelector('ul');
 
 ul.innerHTML = '';
 
-for (const item of sortedListOfEmployees) {
+sortedListOfEmployees.forEach(item => {
   ul.insertAdjacentHTML('beforeend', `
     <li
       data-position=${item.dataset.position}
@@ -26,7 +26,7 @@ for (const item of sortedListOfEmployees) {
       ${item.textContent.trim()}
     </li>
   `);
-}
+});
 
 function getEmployees(list) {
   return list.map(item => ({
