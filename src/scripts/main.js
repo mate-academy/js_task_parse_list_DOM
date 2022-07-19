@@ -27,12 +27,12 @@ const employees = getEmployees(employeesList);
 
 sortList(employees);
 
-for (let i = 0; i < employees.length; i++) {
-  employeesList[i].innerText = employees[i].name;
-  employeesList[i].dataset.position = employees[i].position;
+employees.forEach((employee, index) => {
+  employeesList[index].innerText = employee.name;
+  employeesList[index].dataset.position = employee.position;
 
-  employeesList[i].dataset.salary = '$'
-    + parseInt(employees[i].salary).toLocaleString('en-US');
+  employeesList[index].dataset.salary = '$'
+    + parseInt(employee.salary).toLocaleString('en-US');
 
-  employeesList[i].dataset.age = employees[i].age;
-}
+  employeesList[index].dataset.age = employee.age;
+});
