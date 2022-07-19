@@ -20,12 +20,12 @@ function sortList(list) {
 }
 
 function setEmployees(list, sortedList) {
-  for (let i = 0; i < list.length; i++) {
-    list[i].textContent = sortedList[i].name;
-    list[i].dataset.position = sortedList[i].position;
-    list[i].dataset.salary = '$' + sortedList[i].salary.toLocaleString('en-Us');
-    list[i].dataset.age = sortedList[i].age;
-  }
+  sortedList.map((li, i) => {
+    list[i].textContent = li.name;
+    list[i].dataset.position = li.position;
+    list[i].dataset.salary = '$' + li.salary.toLocaleString('en-Us');
+    list[i].dataset.age = li.age;
+  });
 }
 
 const nodeList = document.querySelectorAll('li');
