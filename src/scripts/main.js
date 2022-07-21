@@ -1,7 +1,6 @@
 'use strict';
 
 const employesList = [...document.querySelectorAll('li')];
-const ul = document.querySelector('ul');
 
 const getFormatString = (stringToFormat) => {
   return stringToFormat
@@ -11,14 +10,9 @@ const getFormatString = (stringToFormat) => {
     .join('');
 };
 
-function sortList(list) {
-  [...list].sort((current, next) => {
-    const formattedSalaryCurrent = getFormatString(current.dataset.salary);
-    const formattedSalaryNext = getFormatString(next.dataset.salary);
-
-    return Number(formattedSalaryNext) - Number(formattedSalaryCurrent);
-  }).forEach(item => ul.append(item));
-}
+const sortList = (list) => list.sort((a, b) => {
+  return Number(getFormatString(b.salary)) - Number(getFormatString(a.salary));
+});
 
 function getEmployees(list) {
   return list.map(item => {
@@ -33,5 +27,15 @@ function getEmployees(list) {
   });
 }
 
-sortList(employesList);
-getEmployees(employesList);
+const employees = getEmployees(employesList);
+const sortedEmployees = sortList(employees);
+
+sortedEmployees.forEach((employee, index) => {
+  employesList[index].innerText = employee.name;
+  employesList[index].dataset.position = employee.position;
+
+  employesList[index].dataset.salary = (
+    `$${employee.salary.toLocaleString('en-US')}`
+  );
+  employesList[index].dataset.age = employee.age;
+});
