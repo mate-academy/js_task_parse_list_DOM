@@ -4,8 +4,7 @@ function sortEmployees(list) {
   return [...list]
     .map(item => Object.assign({}, item.dataset, { name: item.innerText }))
     .sort((prev, curr) => {
-      return Number(curr.salary.slice(1).split(',').join(''))
-        - Number(prev.salary.slice(1).split(',').join(''));
+      return getSalary(curr.salary) - getSalary(prev.salary);
     });
 }
 
@@ -18,7 +17,11 @@ function setEmployees(elementsList, sortedList) {
   }
 }
 
-const htmlElementsList = document.getElementsByTagName('li');
+function getSalary(str) {
+  return Number(str.slice(1).split(',').join(''));
+}
+
+const htmlElementsList = document.querySelectorAll('li');
 const sortedElementsList = sortEmployees(htmlElementsList);
 
 setEmployees(htmlElementsList, sortedElementsList);
