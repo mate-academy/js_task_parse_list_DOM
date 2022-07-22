@@ -1,24 +1,26 @@
 'use strict';
 
-const HTMLlist = document.querySelectorAll('li');
+const HTMLList = document.querySelector('ul');
+const HTMLElementlist = HTMLList.querySelectorAll('li');
+
+function convertationToNumber(item) {
+  return Number(item.dataset.salary
+    .slice(1)
+    .split(',')
+    .join(''));
+}
 
 function sortList(list) {
-  return [...list].sort((a, b) => (
-    +b.dataset.salary
-      .slice(1)
-      .split(',')
-      .join('')
-        - +a.dataset.salary
-          .slice(1)
-          .split(',')
-          .join(''))
-  );
+  return [...list].sort((a, b) =>
+    convertationToNumber(b) - convertationToNumber(a)
+  )
+    .forEach(item => HTMLList.append(item));
 }
 
 function getEmployees(list) {
   const employes = [];
 
-  [...list].forEach((item) => employes.push({
+  list.forEach((item) => employes.push({
     name: item.textContent.trim(),
     ...item.dataset,
   }));
@@ -26,5 +28,5 @@ function getEmployees(list) {
   return employes;
 }
 
-sortList(HTMLlist);
-getEmployees(HTMLlist);
+sortList(HTMLElementlist);
+getEmployees(HTMLElementlist);
