@@ -1,7 +1,7 @@
 'use strict';
 
-const listItem = document.querySelector('.list');
-const item = document.querySelectorAll('.item');
+const listItem = document.querySelector('ul');
+const item = document.querySelectorAll('li');
 
 function sortList(list) {
   return [...list].sort((a, b) =>
