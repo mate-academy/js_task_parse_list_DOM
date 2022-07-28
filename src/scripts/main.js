@@ -22,5 +22,5 @@ function getEmployees(data) {
   }));
 }
 
-sortList(list);
+sortList(listElements);
 getEmployees(listElements);
