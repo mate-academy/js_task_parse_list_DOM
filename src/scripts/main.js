@@ -2,18 +2,21 @@
 
 // write code here
 
-const allLi = document.querySelectorAll('ul');
+const allLi = document.querySelector('ul');
+
+function format(element) {
+  return +element.slice(1).split(',').join('');
+}
 
 function sortList(list) {
-  const listElements = Array.prototype.slice(list.children);
-  const sortedListElements = listElements.sort((a, b) =>
-    Number(b.getAttribute('data-salary').slice(1).replace(/,/g, ''))
-    - Number(a.getAttribute('data-salary').slice(1).replace(/,/g, '')));
+  const listElements = list.querySelectorAll('li');
+  const sortedListElements = [...listElements].sort((a, b) =>
+    format(b.dataset.salary) - format(a.dataset.salary));
 
   // list.innerHTML = '';
 
   sortedListElements.forEach(function(el) {
-    list.appendChild(el);
+    return list.appendChild(el);
   });
 }
 
