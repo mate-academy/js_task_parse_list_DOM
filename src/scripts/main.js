@@ -5,25 +5,8 @@ const employeesList = document.querySelectorAll('li[data-position]');
 const parseSalary = str => +str.replace(/\D/g, '');
 
 const sortList = list => {
-  let isReordered;
-  const sortedList = [...list];
-
-  do {
-    isReordered = false;
-
-    for (let i = 1; i < sortedList.length; i++) {
-      const prevElement = sortedList[i - 1];
-      const currentElement = sortedList[i];
-      const prevSalary = parseSalary(prevElement.dataset.salary);
-      const currentSalary = parseSalary(currentElement.dataset.salary);
-
-      if (prevSalary < currentSalary) {
-        sortedList[i] = prevElement;
-        sortedList[i - 1] = currentElement;
-        isReordered = true;
-      }
-    }
-  } while (isReordered);
+  const sortedList = [...list].sort((a, b) =>
+    parseSalary(b.dataset.salary) - parseSalary(a.dataset.salary));
 
   sortedList.forEach(item => item.parentElement.appendChild(item));
 };
