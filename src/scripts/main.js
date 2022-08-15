@@ -12,7 +12,7 @@ const getEmployees = list => {
       age: employee.dataset.age,
     };
 
-    obj.name = obj.name.split('\n')[1].trim();
+    obj.name = obj.name.trim();
     obj.salary = obj.salary.split('').slice(1).join('').split(',').join('');
     obj.salary = Number(obj.salary);
 
