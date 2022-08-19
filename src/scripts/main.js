@@ -5,30 +5,32 @@ function getNumber(str) {
 }
 
 function sortList(list) {
-  return list.sort((a, b) => (
-    getNumber(b.dataset.salary) - getNumber(a.dataset.salary)));
+  return list
+    .sort((prev, next) => {
+      const { salary: prevSalary } = prev.dataset;
+      const { salary: nextSalary } = next.dataset;
+
+      return getNumber(nextSalary) - getNumber(prevSalary);
+    });
 }
 
 function getEmployees(list) {
-  const employeesInfo = [];
-
-  list.forEach(item => (
-    employeesInfo.push({
-      name: item.textContent.trim(),
-      position: item.dataset.position,
-      salary: item.dataset.salary,
-      age: item.dataset.age,
-    })
+  return list.map(item => (
+    {
+      name: item.innerText,
+      ...item.dataset,
+    }
   ));
-
-  return employeesInfo;
 }
 
-const employees = [ ...document.querySelectorAll('li') ];
+const employeesList = [ ...document.querySelectorAll('li') ];
 
-sortList(employees);
-getEmployees(employees);
+const sortedEmployees = sortList(employeesList);
+const employees = getEmployees(sortedEmployees);
 
 employees.forEach(employee => {
-  document.querySelector('ul').append(employee);
+  const neededEmployee = employeesList
+    .find(element => element.innerText === employee.name);
+
+  document.querySelector('ul').append(neededEmployee);
 });
