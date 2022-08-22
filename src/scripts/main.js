@@ -2,9 +2,13 @@
 
 const employees = [...document.querySelectorAll('li')];
 
+`function toNumber(string) {
+  return string.replace(/\D/g, '');
+}`
+
 function sortList(list) {
   return list.sort((a, b) => (
-    b.dataset.salary.replace(/\D/g, '') - a.dataset.salary.replace(/\D/g, '')));
+    toNumber(b.dataset.salary) - toNumber(a.dataset.salary)));
 }
 
 function getEmployees(list) {
