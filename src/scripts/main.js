@@ -2,9 +2,9 @@
 
 const employees = [...document.querySelectorAll('li')];
 
-`function toNumber(string) {
+function toNumber(string) {
   return string.replace(/\D/g, '');
-}`
+}
 
 function sortList(list) {
   return list.sort((a, b) => (
