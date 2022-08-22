@@ -7,24 +7,18 @@ function sortList(list) {
     b.dataset.salary.replace(/\D/g, '') - a.dataset.salary.replace(/\D/g, '')));
 }
 
-sortList(employees);
-
 function getEmployees(list) {
-  const result = [];
-
-  list.forEach(element => {
-    result.push({
+  return list.map(element => (
+    {
       name: element.innerText,
       position: element.dataset.position,
       salary: element.dataset.salary,
       age: element.dataset.age,
-    });
-  });
-
-  return result;
+    }
+  ));
 }
 
-getEmployees(employees);
+getEmployees(sortList(employees));
 
 employees.forEach(item => {
   document.querySelector('ul').append(item);
