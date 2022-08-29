@@ -6,7 +6,7 @@ const item = document.querySelector('ul');
 const list = document.querySelectorAll(`li`);
 
 const listSort = () => {
-  const array = [...list];
+  const currentList = [...list];
 
   item.innerHTML = ``;
 
@@ -16,17 +16,17 @@ const listSort = () => {
     return Number(string.slice(1).replaceAll(',', ''));
   };
 
-  array
+  currentList
     .sort((a, b) => toNumber(b) - toNumber(a))
-    .map(element => {
+    .forEach(element => {
       item.appendChild(element);
     });
 };
 
 const getEmployees = () => {
-  const array = [...list];
+  const currentList = [...list];
 
-  return array.map((element) => (
+  return currentList.map((element) => (
     {
       name: element.innerHTML.trim(),
       ...element.dataset,
