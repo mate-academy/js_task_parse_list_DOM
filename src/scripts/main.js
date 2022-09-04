@@ -4,8 +4,10 @@ const listElements = [...document.querySelectorAll('li')];
 const convertToNumber = salary => +salary.slice(1).split(',').join('');
 
 function sortList(list) {
-const sortElem = list.sort((a, b) => convertToNumber(b.dataset.salary) - convertToNumber(a.dataset.salary));
-startList.append(...sortElem);
+  const sortElem = list.sort((a, b) =>
+    convertToNumber(b.dataset.salary) - convertToNumber(a.dataset.salary));
+
+  startList.append(...sortElem);
 };
 
 function getEmployees(list) {
