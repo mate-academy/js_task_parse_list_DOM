@@ -18,13 +18,11 @@ function sortList(workers) {
 }
 
 function getEmployees(workers) {
-  // let data = {};
-
   const arr = [...workers].map(elem => {
     return {
       name: elem.innerText,
       ...elem.dataset,
-    }
+    };
   });
 
   return arr;
