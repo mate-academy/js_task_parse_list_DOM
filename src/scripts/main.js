@@ -1,5 +1,6 @@
 'use strict';
-const startList = document.querySelector('ul')
+
+const startList = document.querySelector('ul');
 const listElements = [...document.querySelectorAll('li')];
 const convertToNumber = salary => +salary.slice(1).split(',').join('');
 
@@ -21,4 +22,3 @@ function getEmployees(list) {
 
 sortList(listElements);
 getEmployees(listElements);
-
