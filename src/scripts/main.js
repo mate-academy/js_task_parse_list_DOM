@@ -2,12 +2,14 @@
 
 const fullList = document.querySelectorAll('li');
 
+function createNumber(string) {
+  return +(string.slice(1).replace(',', '.'));
+}
+
 function sortList(list) {
   return [...list].sort((a, b) => {
-    const salaryA = +(a.dataset.salary.slice(1).split('')
-      .filter(item => item !== ',').join(''));
-    const salaryB = +(b.dataset.salary.slice(1).split('')
-      .filter(item => item !== ',').join(''));
+    const salaryA = createNumber(a.dataset.salary);
+    const salaryB = createNumber(b.dataset.salary);
 
     return salaryB - salaryA;
   });
@@ -15,14 +17,11 @@ function sortList(list) {
 
 const sortedList = sortList(fullList);
 
-document.querySelector('ul').innerHTML = sortedList.map(item => {
-  return item.outerHTML;
-}).join('');
+document.querySelector('ul').innerHTML = sortedList.map(item =>
+  item.outerHTML).join('');
 
 function getEmployees(list) {
-  const employees = [];
-
-  [...list].map(element => {
+  return [...list].map(element => {
     const employee = {
       name: element.innerText.trim(),
       position: element.dataset.position,
@@ -30,10 +29,8 @@ function getEmployees(list) {
       age: element.dataset.age,
     };
 
-    employees.push(employee);
+    return employee;
   });
-
-  return employees;
 }
 
 getEmployees(fullList);
