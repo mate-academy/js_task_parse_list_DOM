@@ -1,6 +1,6 @@
 'use strict';
 
-// const employments = document.querySelector('ul');
+
 const salaries = [...document.querySelectorAll('[data-salary')];
 
 function sortList(list) {
