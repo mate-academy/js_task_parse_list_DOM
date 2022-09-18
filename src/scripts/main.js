@@ -4,12 +4,12 @@ const listUl = document.querySelector('ul');
 const listLi = [...document.querySelectorAll('[data-salary')];
 
 function sortList(list) {
-  const replace = (str) => {
+  const toNum = (str) => {
     return +str.slice(1).split(',').join('');
   };
 
   list.sort((a, b) =>
-    replace(b.dataset.salary) - replace(a.dataset.salary));
+    toNum(b.dataset.salary) - toNum(a.dataset.salary));
 
   listUl.append(...list);
 };
