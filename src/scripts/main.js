@@ -5,7 +5,7 @@ const listLi = [...document.querySelectorAll('[data-salary')];
 
 function sortList(list) {
   const replace = (str) => {
-    return +str.slice(1).replace(',', '.');
+    return +str.slice(1).replace(',', '');
   };
 
   list.sort((a, b) =>
