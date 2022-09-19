@@ -4,40 +4,39 @@
 const ulItem = document.querySelector('ul');
 const liItems = document.querySelectorAll('li');
 
+function salaryToNum(str) {
+  return Number((str.dataset.salary)
+    .slice(1)
+    .split(',')
+    .join(''));
+}
+
 function sortList(list, listItems) {
-  const itemsSorted = [...listItems].sort((a, b) => (
-    +((b.dataset.salary)
-      .slice(1)
-      .split(',')
-      .join(''))
-    - +((a.dataset.salary)
-      .slice(1)
-      .split(',')
-      .join(''))
-  ));
+  const itemsSorted = [...listItems].sort((prev, curr) => {
+    const previous = salaryToNum(prev);
+    const current = salaryToNum(curr);
+
+    return current - previous;
+  });
 
   list.innerHTML = '';
 
-  for (let i = 0; i < itemsSorted.length; i++) {
-    list.appendChild(itemsSorted[i]);
-  }
+  itemsSorted.forEach(item => (
+    list.appendChild(item)
+  ));
 }
 
 function getEmployees(listItems) {
-  const result = [];
-
-  for (const item of listItems) {
-    const employer = {
+  const employees = [...listItems].map(item => (
+    {
       name: item.innerText,
       position: item.dataset.position,
       salary: item.dataset.salary,
       age: item.dataset.age,
-    };
+    }
+  ));
 
-    result.push(employer);
-  }
-
-  return result;
+  return employees;
 }
 
 sortList(ulItem, liItems);
