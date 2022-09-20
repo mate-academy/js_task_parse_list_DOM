@@ -1,31 +1,34 @@
 'use strict';
 
 // write code here
-const listSelector = document.querySelector('ul');
+const employeesList = document.querySelector('ul');
 
-const formatToNumber = (str) => Number(str.replace(/\$|,/gi, ''));
+const formatSalaryToNumber = (str) => Number(str.replace(/\$|,/gi, ''));
 
-const sortList = (list) => {
-  const sortedArr = [...list.querySelectorAll('li')];
+const sortList = (listOfEmployees) => {
+  const sortedItems = [...listOfEmployees.querySelectorAll('li')];
 
-  sortedArr.sort((prev, curr) => (
-    formatToNumber(curr.dataset.salary) - formatToNumber(prev.dataset.salary)
-  ));
+  sortedItems.sort((prev, curr) => {
+    const prevSalary = formatSalaryToNumber(prev.dataset.salary);
+    const currSalary = formatSalaryToNumber(curr.dataset.salary);
 
-  list.append(...sortedArr);
+    return currSalary - prevSalary;
+  });
+
+  employeesList.append(...sortedItems);
 };
 
-sortList(listSelector);
+sortList(employeesList);
 
-const getEmployees = (list) => {
-  const listItems = [...list.querySelectorAll('li')];
+const getEmployees = (listOfEmployees) => {
+  const employeesItems = [...listOfEmployees.querySelectorAll('li')];
 
-  return listItems.map(el => ({
-    name: el.textContent.trim(),
-    position: el.dataset.position,
-    salary: el.dataset.salary,
-    age: el.dataset.age,
+  return employeesItems.map(employee => ({
+    name: employee.textContent.trim(),
+    position: employee.dataset.position,
+    salary: employee.dataset.salary,
+    age: employee.dataset.age,
   }));
 };
 
-getEmployees(listSelector);
+getEmployees(employeesList);
