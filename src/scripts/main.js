@@ -4,14 +4,15 @@ const items = document.querySelectorAll('li');
 const arr = [...items];
 
 function sortList(list) {
+  function getNumber(item) {
+    const result = +item.dataset.salary.split('').filter(el => el
+      !== '$' && el !== ',').join('');
+
+    return result;
+  }
+
   list.sort((a, b) => {
-    a.dataset.salary = +a.dataset.salary.split('').filter(el => el
-      !== '$' && el !== ',').join('');
-
-    b.dataset.salary = +b.dataset.salary.split('').filter(el => el
-      !== '$' && el !== ',').join('');
-
-    return b.dataset.salary - a.dataset.salary;
+    return getNumber(b) - getNumber(a);
   });
 
   const employeeList = document.querySelector('ul');
