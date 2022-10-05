@@ -1,13 +1,12 @@
 'use strict';
 
-function conversion(arrayLi) {
-  return arrayLi.sort((a, b) => b
-    .dataset.salary.split(',').join('').slice(1, -1)
-    - a.dataset.salary.split(',').join('').slice(1, -1));
+function conversion(str) {
+  return str.dataset.salary.split(',').join('').slice(1, -1);
 }
 
 function sotrSalary() {
-  const arrayEmployees = conversion([...document.querySelectorAll('li')]);
+  const arrayEmployees = [...document.querySelectorAll('li')]
+    .sort((a, b) => conversion(b) - conversion(a));
 
   const ulElement = document.querySelector('ul');
 
