@@ -1,20 +1,24 @@
 'use strict';
 
-function sotrSalary() {
-  const arrayEmployees = [...document.querySelectorAll('li')].sort((a, b) => b
+function conversion(arrayLi) {
+  return arrayLi.sort((a, b) => b
     .dataset.salary.split(',').join('').slice(1, -1)
-  - a.dataset.salary.split(',').join('').slice(1, -1));
+    - a.dataset.salary.split(',').join('').slice(1, -1));
+}
+
+function sotrSalary() {
+  const arrayEmployees = conversion([...document.querySelectorAll('li')]);
 
   const ulElement = document.querySelector('ul');
 
   ulElement.innerHTML = `
-    ${arrayEmployees.map(x => `
+    ${arrayEmployees.map(li => `
       <li
-        data-position="${x.dataset.position}"
-        data-salary="${x.dataset.salary}"
-        data-age="${x.dataset.age}"
+        data-position="${li.dataset.position}"
+        data-salary="${li.dataset.salary}"
+        data-age="${li.dataset.age}"
       >
-        ${x.innerHTML}
+        ${li.innerHTML}
       </li>
     `
   )}
@@ -25,12 +29,12 @@ sotrSalary();
 // Сортирует лишки
 
 function arrayOfObjects() {
-  const arrayEmployees = [...document.querySelectorAll('li')].map(x => {
+  const arrayEmployees = [...document.querySelectorAll('li')].map(li => {
     return {
-      name: x.innerText,
-      position: x.dataset.position,
-      salary: x.dataset.salary,
-      age: x.dataset.age,
+      name: li.innerText,
+      position: li.dataset.position,
+      salary: li.dataset.salary,
+      age: li.dataset.age,
     };
   });
 
