@@ -1,25 +1,30 @@
 'use strict';
 
-const employeesList = [...document.getElementsByTagName('li')]
-  .map(item => [item.innerText, { ...item.dataset }]);
+const employeeList = [...document.querySelectorAll('li')];
+const mainList = document.querySelector('ul');
 
 function sortList(list) {
-  list.sort((a, b) => (+b[1].salary.slice(1)
-    .split(',').join('')) - (+a[1].salary.slice(1).split(',').join('')));
+  list.sort((a, b) => (+b.dataset.salary.slice(1)
+    .split(',').join('')) - (+a.dataset.salary.slice(1).split(',').join('')));
 
-  return list;
-};
+  mainList.append(...list);
+}
 
 function getEmployees(list) {
   const objectArray = [];
+  const copyList = [...list];
 
-  for (const item of list) {
-    objectArray.push(item[1]);
-    objectArray[objectArray.length - 1].name = item[0];
-  };
-
+  for (const item of copyList) {
+    objectArray.push({
+      name: item.innerText,
+      position: item.dataset.position,
+      salary: item.dataset.salary,
+      age: item.dataset.age,
+    });
+  }
+  
   return objectArray;
 }
 
-sortList(employeesList);
-getEmployees(employeesList);
+sortList(employeeList);
+getEmployees(employeeList);
