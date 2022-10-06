@@ -5,30 +5,33 @@ function conversion(str) {
 }
 
 function sotrSalary() {
-  const Employees = [...document.querySelectorAll('li')]
+  const employees = [...document.querySelectorAll('li')]
     .sort((a, b) => conversion(b) - conversion(a));
 
   const ulElement = document.querySelector('ul');
 
-  ulElement.innerHTML = `
-    ${Employees.map(employee => `
+  ulElement.insertAdjacentHTML('afterend', '<ul></ul>');
+  ulElement.remove();
+
+  const newUl = document.querySelector('ul');
+
+  employees.map(employee => {
+    newUl.insertAdjacentHTML('beforeend', `
       <li
         data-position="${employee.dataset.position}"
         data-salary="${employee.dataset.salary}"
         data-age="${employee.dataset.age}"
       >
         ${employee.innerHTML}
-      </li>
-    `
-  )}
-  `;
+      </li>`);
+  });
 }
 
 sotrSalary();
 // Сортирует лишки
 
 function getEmployees() {
-  const Employees = [...document.querySelectorAll('li')].map(employee => {
+  const employees = [...document.querySelectorAll('li')].map(employee => {
     return {
       name: employee.innerText,
       position: employee.dataset.position,
@@ -37,7 +40,7 @@ function getEmployees() {
     };
   });
 
-  return Employees;
+  return employees;
 }
 
 getEmployees();
