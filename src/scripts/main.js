@@ -5,19 +5,19 @@ function conversion(str) {
 }
 
 function sotrSalary() {
-  const arrayEmployees = [...document.querySelectorAll('li')]
+  const Employees = [...document.querySelectorAll('li')]
     .sort((a, b) => conversion(b) - conversion(a));
 
   const ulElement = document.querySelector('ul');
 
   ulElement.innerHTML = `
-    ${arrayEmployees.map(li => `
+    ${Employees.map(employee => `
       <li
-        data-position="${li.dataset.position}"
-        data-salary="${li.dataset.salary}"
-        data-age="${li.dataset.age}"
+        data-position="${employee.dataset.position}"
+        data-salary="${employee.dataset.salary}"
+        data-age="${employee.dataset.age}"
       >
-        ${li.innerHTML}
+        ${employee.innerHTML}
       </li>
     `
   )}
@@ -27,18 +27,18 @@ function sotrSalary() {
 sotrSalary();
 // Сортирует лишки
 
-function arrayOfObjects() {
-  const arrayEmployees = [...document.querySelectorAll('li')].map(li => {
+function getEmployees() {
+  const Employees = [...document.querySelectorAll('li')].map(employee => {
     return {
-      name: li.innerText,
-      position: li.dataset.position,
-      salary: li.dataset.salary,
-      age: li.dataset.age,
+      name: employee.innerText,
+      position: employee.dataset.position,
+      salary: employee.dataset.salary,
+      age: employee.dataset.age,
     };
   });
 
-  return arrayEmployees;
+  return Employees;
 }
 
-arrayOfObjects();
+getEmployees();
 // Возвращает массив обьектов
