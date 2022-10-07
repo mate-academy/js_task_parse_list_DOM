@@ -7,7 +7,9 @@ function sortList(list) {
   list.sort((a, b) => (+b.dataset.salary.slice(1)
     .split(',').join('')) - (+a.dataset.salary.slice(1).split(',').join('')));
 
-  mainList.append(...list);
+  for (const item of list) {
+    mainList.append(item);
+  }
 }
 
 function getEmployees(list) {
@@ -22,7 +24,7 @@ function getEmployees(list) {
       age: item.dataset.age,
     });
   }
-  
+
   return objectArray;
 }
 
