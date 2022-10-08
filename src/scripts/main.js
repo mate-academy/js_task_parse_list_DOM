@@ -45,3 +45,6 @@ function getEmployees() {
 
 getEmployees();
 // Возвращает массив обьектов
+
+
+
