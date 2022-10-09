@@ -11,20 +11,7 @@ function sotrSalary() {
   const ulElement = document.querySelector('ul');
 
   ulElement.insertAdjacentHTML('afterend', '<ul></ul>');
-  ulElement.remove();
-
-  const newUl = document.querySelector('ul');
-
-  employees.map(employee => {
-    newUl.insertAdjacentHTML('beforeend', `
-      <li
-        data-position="${employee.dataset.position}"
-        data-salary="${employee.dataset.salary}"
-        data-age="${employee.dataset.age}"
-      >
-        ${employee.innerHTML}
-      </li>`);
-  });
+  ulElement.append(...employees);
 }
 
 sotrSalary();
@@ -45,6 +32,3 @@ function getEmployees() {
 
 getEmployees();
 // Возвращает массив обьектов
-
-
-
