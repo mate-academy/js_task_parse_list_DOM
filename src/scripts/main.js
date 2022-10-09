@@ -3,21 +3,23 @@
 const employeeList = [...document.querySelectorAll('li')];
 const mainList = document.querySelector('ul');
 
-function sortList(list) {
-  list.sort((a, b) => (+b.dataset.salary.slice(1)
-    .split(',').join('')) - (+a.dataset.salary.slice(1).split(',').join('')));
+function salarySort(list) {
+  list.sort((a, b) => (+b.dataset.salary.slice(1).split(',').join(''))
+   - (+a.dataset.salary.slice(1).split(',').join('')));
 
-  for (const item of list) {
-    mainList.append(item);
-  }
+  return list;
+}
+
+function sortList(list) {
+  mainList.append(...salarySort(list));
 }
 
 function getEmployees(list) {
-  const objectArray = [];
+  const employees = [];
   const copyList = [...list];
 
   for (const item of copyList) {
-    objectArray.push({
+    employees.push({
       name: item.innerText,
       position: item.dataset.position,
       salary: item.dataset.salary,
@@ -25,7 +27,7 @@ function getEmployees(list) {
     });
   }
 
-  return objectArray;
+  return employees;
 }
 
 sortList(employeeList);
