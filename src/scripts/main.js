@@ -4,12 +4,12 @@ const allWorkers = [...document.querySelectorAll('li')];
 const workerData = [];
 
 allWorkers.forEach((worker) => {
-  const workerInfo = {};
-
-  workerInfo.name = worker.innerText;
-  workerInfo.salary = worker.dataset.salary;
-  workerInfo.position = worker.dataset.position;
-  workerInfo.age = worker.dataset.age;
+  const workerInfo = {
+    name: worker.innerText,
+    salary: worker.dataset.salary,
+    position: worker.dataset.position,
+    age: worker.dataset.age,
+  };
 
   workerData.push(workerInfo);
 });
