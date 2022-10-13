@@ -1,6 +1,7 @@
 'use strict';
 
 const employeeList = [...document.querySelectorAll('li')];
+
 const mainList = document.querySelector('ul');
 
 function salarySort(list) {
@@ -15,19 +16,12 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  const employees = [];
-  const copyList = [...list];
-
-  for (const item of copyList) {
-    employees.push({
-      name: item.innerText,
-      position: item.dataset.position,
-      salary: item.dataset.salary,
-      age: item.dataset.age,
-    });
-  }
-
-  return employees;
+  return [...list].map(item => ({
+    name: item.innerText,
+    position: item.dataset.position,
+    salary: item.dataset.salary,
+    age: item.dataset.age,
+  }));
 }
 
 sortList(employeeList);
