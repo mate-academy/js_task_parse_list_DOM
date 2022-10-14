@@ -2,21 +2,19 @@
 
 const list = document.querySelectorAll('li');
 
-function employee(info) {
-  const personInfo = {};
-
-  personInfo.name = info.innerText;
-  personInfo.position = info.dataset.position;
-  personInfo.salary = info.dataset.salary;
-  personInfo.age = info.dataset.age;
-
-  return personInfo;
+function getEmployee(info) {
+  return {
+    name: info.innerText,
+    position: info.dataset.position,
+    salary: info.dataset.salary,
+    age: info.dataset.age,
+  };
 }
 
 const arrayEmploees = [];
 
 for (const each of list) {
-  arrayEmploees.push(employee(each));
+  arrayEmploees.push(getEmployee(each));
 }
 
 arrayEmploees.sort((a, b) =>
