@@ -1,6 +1,6 @@
 'use strict';
 
-const listUl = document.querySelector('ul');
+const listContainer = document.querySelector('ul');
 
 const sortList = (list) => {
   const people = [...list.querySelectorAll('li')];
@@ -12,9 +12,9 @@ const sortList = (list) => {
 };
 
 const getEmployees = (list) => {
-  const obj = [...list.querySelectorAll('li')];
+  const listItems = [...list.querySelectorAll('li')];
 
-  return obj.map(el => ({
+  return listItems.map(el => ({
     name: el.innerText,
     position: el.dataset.position,
     salary: el.dataset.salary,
@@ -22,5 +22,5 @@ const getEmployees = (list) => {
   }));
 };
 
-sortList(listUl);
-getEmployees(listUl);
+sortList(listContainer);
+getEmployees(listContainer);
