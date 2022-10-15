@@ -1,17 +1,16 @@
 'use strict';
 
 const list = document.querySelector('ul');
-const items = document.querySelectorAll('li');
-const listItems = [...items];
+const items = [...document.querySelectorAll('li')];
 
 const sortList = () => {
   const getSalary = (item) => {
     return +item.dataset['salary'].slice(1).replace(',', '.');
   };
 
-  listItems.sort((itemOne, itemTwo) => getSalary(itemTwo) - getSalary(itemOne));
+  items.sort((itemOne, itemTwo) => getSalary(itemTwo) - getSalary(itemOne));
 
-  return listItems;
+  return items;
 };
 
 const getEmployees = (place, employees) => {
@@ -19,4 +18,4 @@ const getEmployees = (place, employees) => {
 };
 
 sortList();
-getEmployees(list, listItems);
+getEmployees(list, items);
