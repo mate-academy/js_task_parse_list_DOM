@@ -1,16 +1,13 @@
 'use strict';
 
-// write code here
 const entryList = [...document.querySelectorAll('li')];
 
-function sortList(list) {
-  const result = list
-    .map(item => +(item.dataset.salary.shift().split(',').join('')))
-    .sort((a, b) => b.datase.salary - a.dataset.salary);
+const toNumber = (item) => item.dataset.salary.slice(1).split(',').join('');
 
+function sortList(list) {
   const employeesList = document.querySelector('ul');
 
-  employeesList.append(result);
+  employeesList.append(...list.sort((a, b) => toNumber(b) - toNumber(a)));
 }
 
 function getEmployees(list) {
