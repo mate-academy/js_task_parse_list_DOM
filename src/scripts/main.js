@@ -11,12 +11,12 @@ const sortList = (list) =>
     .append(...list.sort((a, b) => salaryToNum(b) - salaryToNum(a)));
 
 const getEmployees = (list) =>
-  list.map(e =>
+  list.map(data =>
     ({
-      name: e.innerText,
-      position: e.getAttribute('data-position'),
-      salary: e.getAttribute('data-salary'),
-      age: e.getAttribute('data-age'),
+      name: data.innerText,
+      position: data.getAttribute('data-position'),
+      salary: data.getAttribute('data-salary'),
+      age: data.getAttribute('data-age'),
     }));
 
 sortList(workersList);
