@@ -11,13 +11,7 @@ function getEmployee(info) {
   };
 }
 
-const arrayEmploees = [];
-
-for (const each of list) {
-  arrayEmploees.push(getEmployee(each));
-}
-
-// const arrayEmploees = list.map(each => getEmployee(each)); // так не працює
+const arrayEmploees = [...list].map(each => getEmployee(each));
 
 arrayEmploees.sort((a, b) =>
   (b.salary.replace(/[^\d]/g, '')) - (a.salary).replace(/[^\d]/g, ''));
