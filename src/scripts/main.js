@@ -17,16 +17,14 @@ for (const each of list) {
   arrayEmploees.push(getEmployee(each));
 }
 
+// const arrayEmploees = list.map(each => getEmployee(each)); // так не працює
+
 arrayEmploees.sort((a, b) =>
-  (b.salary.replace(/[^+\d]/g, '')) - (a.salary).replace(/[^+\d]/g, ''));
+  (b.salary.replace(/[^\d]/g, '')) - (a.salary).replace(/[^\d]/g, ''));
 
-let i = 0;
-
-for (const item of list) {
-  item.innerText = arrayEmploees[i].name;
-  item.dataset.position = arrayEmploees[i].position;
-  item.dataset.salary = arrayEmploees[i].salary;
-  item.dataset.age = arrayEmploees[i].age;
-
-  i++;
+for (let i = 0; i < list.length; i++) {
+  list[i].innerText = arrayEmploees[i].name;
+  list[i].dataset.position = arrayEmploees[i].position;
+  list[i].dataset.salary = arrayEmploees[i].salary;
+  list[i].dataset.age = arrayEmploees[i].age;
 }
