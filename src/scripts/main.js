@@ -4,13 +4,13 @@ const employees = document.querySelectorAll('li');
 
 const sortList = function([...list]) {
   list.sort(
-    (worker1, worker2) => salaryToNumber(worker2.dataset.salary)
-    - salaryToNumber(worker1.dataset.salary));
+    (worker1, worker2) => salaryConverting(worker2.dataset.salary)
+    - salaryConverting(worker1.dataset.salary));
 
   list.forEach(worker => document.querySelector('ul').append(worker));
 };
 
-function salaryToNumber(salary) {
+function salaryConverting(salary) {
   return salary.slice(1).split(',').join('');
 }
 
