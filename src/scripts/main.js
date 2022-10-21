@@ -1,7 +1,6 @@
 'use strict';
 
-const items = document.querySelectorAll('li');
-const arr = [...items];
+const employeesList = [...document.querySelectorAll('li')];
 
 function sortList(list) {
   list.sort((a, b) => {
@@ -13,17 +12,15 @@ function sortList(list) {
 
     return b.dataset.salary - a.dataset.salary;
   });
-
-  items[0].replaceWith(...arr);
 }
 
 function getEmployees(list) {
-  const employeeList = document.querySelector('ul');
+  const employeesContainer = document.querySelector('ul');
 
-  employeeList.append(...arr);
+  employeesContainer.append(...employeesList);
 
-  return employeeList;
+  return employeesContainer;
 }
 
-sortList(arr);
-getEmployees(arr);
+sortList(employeesList);
+getEmployees(employeesList);
