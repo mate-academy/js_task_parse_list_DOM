@@ -3,11 +3,13 @@
 const employees = document.querySelectorAll('li');
 
 const sortList = function([...list]) {
-  list.sort(
+  const copyOfList = Array.from(list);
+
+  copyOfList.sort(
     (worker1, worker2) => salaryConverting(worker2.dataset.salary)
     - salaryConverting(worker1.dataset.salary));
 
-  list.forEach(worker => document.querySelector('ul').append(worker));
+  copyOfList.forEach(worker => document.querySelector('ul').append(worker));
 };
 
 function salaryConverting(salary) {
