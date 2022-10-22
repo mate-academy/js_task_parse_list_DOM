@@ -2,7 +2,7 @@
 
 const employees = document.querySelectorAll('li');
 
-const sortList = function([...list]) {
+const sortList = function(list) {
   const copyOfList = Array.from(list);
 
   copyOfList.sort(
@@ -16,15 +16,14 @@ function salaryConverting(salary) {
   return salary.slice(1).split(',').join('');
 }
 
-const getEmployees = function([...list]) {
-  return list.map(employee => {
-    return {
-      name: employee.textContent,
-      position: employee.dataset.position,
-      salary: employee.dataset.salary,
-      age: employee.dataset.age,
-    };
-  });
+const getEmployees = function(list) {
+  return list.map(employee => ({
+    name: employee.textContent,
+    position: employee.dataset.position,
+    salary: employee.dataset.salary,
+    age: employee.dataset.age,
+  })
+  );
 };
 
 sortList(employees);
