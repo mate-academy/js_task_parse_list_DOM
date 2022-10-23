@@ -4,11 +4,13 @@ const employeesList = [...document.querySelectorAll('li')];
 
 function sortList(list) {
   list.sort((a, b) => {
-    a.dataset.salary = +a.dataset.salary.split('').filter(
-      el => el !== '$' && el !== ',').join('');
+    function formatSalary() {
+      this.dataset.salary = +this.dataset.salary.split('').filter(
+        el => el !== '$' && el !== ',').join('');
+    }
+    a.dataset.salary = formatSalary(a);
 
-    b.dataset.salary = +b.dataset.salary.split('').filter(
-      el => el !== '$' && el !== ',').join('');
+    a.dataset.salary = formatSalary(b);
 
     return b.dataset.salary - a.dataset.salary;
   });
