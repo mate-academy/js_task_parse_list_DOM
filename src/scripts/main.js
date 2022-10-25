@@ -2,6 +2,9 @@
 
 // write code here
 const list = document.querySelector('ul');
+const preparedPerson = (person) => (
+  Number(person.salary.slice(1).split(',').join(''))
+);
 const people = [...document.querySelectorAll('[data-position]')]
   .map(person => ({
     name: person.innerText,
@@ -10,10 +13,7 @@ const people = [...document.querySelectorAll('[data-position]')]
     age: person.dataset.age,
   }))
   .sort((personA, personB) => {
-    const preparedPersonA = Number(personA.salary.slice(1).split(',').join(''));
-    const preparedPersonB = Number(personB.salary.slice(1).split(',').join(''));
-
-    return preparedPersonB - preparedPersonA;
+    return preparedPerson(personB) - preparedPerson(personA);
   });
 
 list.innerHTML = people
