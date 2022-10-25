@@ -5,7 +5,7 @@ const list = document.querySelector('ul');
 
 function sortList(listProporties) {
   return [...listItems].sort((a, b) =>
-    Number(changingSignes(b.dataset.salary)) 
+    Number(changingSignes(b.dataset.salary))
     - Number(changingSignes(a.dataset.salary))
   );
 };
