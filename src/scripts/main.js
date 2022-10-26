@@ -15,17 +15,15 @@ const sortList = (list) => {
 
 let sortListOfEmployees = sortList(listOfEmployees);
 
-console.log(sortListOfEmployees);
-
 const getEmployees = (sortListOfEmployees) => {
   for (let i = 0; i < sortListOfEmployees.length; i++) {
     list[i].innerText = sortListOfEmployees[i].name;
     list[i].dataset.position = sortListOfEmployees[i].position;
-    list[i].dataset.salary = `$${sortListOfEmployees[i].salary.toLocaleString('en-US')}`;
+    list[i].dataset.salary
+      = `$${sortListOfEmployees[i].salary.toLocaleString('en-US')}`;
     list[i].dataset.age = sortListOfEmployees[i].age;
   };
 };
 
 getEmployees(sortListOfEmployees);
 
-console.log(list[0])
