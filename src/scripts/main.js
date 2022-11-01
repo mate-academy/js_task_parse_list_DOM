@@ -15,7 +15,7 @@ const sortList = (list) => {
 };
 
 const getEmployees = (list) => {
-  return [...list].map(employee => ({
+  return list.map(employee => ({
     name: employee.innerText,
     ...employee.dataset,
   }));
