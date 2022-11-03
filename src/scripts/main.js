@@ -5,16 +5,16 @@ function toNumber(salary) {
 }
 
 function sortList(list) {
-  const lst = document.querySelector(list);
+  const newList = document.querySelector(list);
 
-  [...lst.children]
+  [...newList.children]
     .sort((a, b) => toNumber(b.dataset.salary) - toNumber(a.dataset.salary))
-    .forEach(node => lst.appendChild(node));
+    .forEach(node => newList.appendChild(node));
 }
 
 function getEmployees(list) {
-  const lst = document.querySelector('ul');
-  const employees = [...lst.children].map(item => ({
+  const newList = document.querySelector(list);
+  const employees = [...newList.children].map(item => ({
     name: item.innerHTML.trim(),
     position: item.dataset.position,
     salary: item.dataset.salary,
