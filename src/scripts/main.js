@@ -15,21 +15,12 @@ function sortList(people) {
 }
 
 function getEmployees(listOfEmployees) {
-  const employ = [...listOfEmployees];
-  const arrayOfEmployees = [];
-
-  for (let i = 0; i < employ.length; i++) {
-    const man = {};
-
-    man.name = employ[i].innerText;
-    man.position = employ[i].dataset.position;
-    man.salary = employ[i].dataset.salary;
-    man.age = employ[i].dataset.age;
-
-    arrayOfEmployees.push(man);
-  }
-
-  return arrayOfEmployees;
+  return [...listOfEmployees].map(el => ({
+    name: el.innerText,
+    position: el.dataset.position,
+    salary: el.dataset.salary,
+    age: el.dataset.age,
+  }));
 }
 sortList(list);
 getEmployees(list);
