@@ -1,18 +1,18 @@
 'use strict';
 
 function convertToNum(item, key) {
-  return +item[key].replace(/\$|,/g, '') || undefined;
+  return +item.dataset[key].replace(/\$|,/g, '') || undefined;
 }
 
 function getEmployees(list) {
-  const resultArray = [];
   const employeeList = [...list];
 
-  employeeList.map((item, index) => {
-    resultArray.push({
-      ...item.dataset, name: item.innerText,
-    });
-    resultArray[index].salary = convertToNum(resultArray[index], 'salary');
+  const resultArray = employeeList.map(person => {
+    return {
+      ...person.dataset,
+      name: person.innerText,
+      salary: convertToNum(person, 'salary'),
+    };
   });
 
   return resultArray;
@@ -28,9 +28,9 @@ function fillList(array, elementToFill) {
   array.map(item => {
     const element = document.createElement('li');
 
-    element.setAttribute('data-position', item.position);
-    element.setAttribute('data-salary', item.salary);
-    element.setAttribute('data-age', item.age);
+    element.dataset.position = item.position;
+    element.dataset.salary = item.salary;
+    element.dataset.age = item.age;
     element.textContent = item.name;
     elementToFill.appendChild(element);
   });
