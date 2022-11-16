@@ -3,7 +3,7 @@
 const ul = document.querySelector('ul');
 const itemOfList = document.querySelectorAll('li');
 
-function convertingSalary(salary) {
+function convertSalary(salary) {
   return +salary.slice(1).split(',').join('');
 };
 
