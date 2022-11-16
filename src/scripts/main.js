@@ -10,7 +10,7 @@ function convertSalary(salary) {
 function sortList(list) {
   return [...list]
     .sort((x, y) =>
-      convertingSalary(y.dataset.salary) - convertingSalary(x.dataset.salary)
+      convertSalary(y.dataset.salary) - convertSalary(x.dataset.salary)
     );
 }
 
