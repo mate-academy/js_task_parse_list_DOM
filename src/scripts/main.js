@@ -1,36 +1,40 @@
 'use strict';
 
-const li = document.querySelectorAll('li');
+function sortList() {
+  const li = document.querySelectorAll('li');
 
-const liSetInArray = [...li]
-  .sort((a, b) =>
-    Number(b.dataset.salary
-      .split(',')
-      .join('')
-      .slice(1))
+  const liSetInArray = [...li]
+    .sort((a, b) =>
+      Number(b.dataset.salary
+        .split(',')
+        .join('')
+        .slice(1))
    - Number(a.dataset.salary
      .split(',')
      .join('')
      .slice(1)));
 
-function getEmployees() {
-  const root = document.getElementById('root');
+  const getEmployees = () => {
+    const root = document.getElementById('root');
 
-  const list = document.createElement('ul');
+    const list = document.createElement('ul');
 
-  root.append(list);
+    root.append(list);
 
-  for (const items of liSetInArray) {
-    const l = document.createElement('li');
+    for (const items of liSetInArray) {
+      const l = document.createElement('li');
 
-    l.textContent = items.innerText;
+      l.textContent = items.innerText;
 
-    list.append(l);
-  }
+      list.append(l);
+    }
 
-  const removeUl = document.querySelector('ul');
+    const removeUl = document.querySelector('ul');
 
-  removeUl.remove();
+    removeUl.remove();
+  };
+
+  return getEmployees();
 }
 
-getEmployees();
+sortList();
