@@ -3,7 +3,7 @@
 // write code here
 const startList = document.querySelectorAll('li');
 const startListSorted = sortList(startList);
-const ul = document.querySelector('ul');
+const listUl = document.querySelector('ul');
 
 function correctNum(string) {
   return +string.dataset.salary.slice(1).split(',').join('');
@@ -17,4 +17,4 @@ function getEmployees(where, afterElements) {
   afterElements.forEach(element => where.append(element));
 };
 
-getEmployees(ul, startListSorted);
+getEmployees(listUl, startListSorted);
