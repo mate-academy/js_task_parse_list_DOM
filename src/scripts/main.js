@@ -10,11 +10,11 @@ function sortList(list) {
   return [...list.children]
     .sort((a, b) =>
       convertSalary(b.dataset.salary) - convertSalary(a.dataset.salary))
-    .forEach(elem => list.append(elem));
+    .forEach(element => list.append(element));
 }
 
 function getEmployees(list) {
-  return [...list.children].map(employee => ({
+  return [...list.children].forEach(employee => ({
     name: employee.textContent.trim(),
     position: employee.dataset.position,
     salary: employee.dataset.salary,
