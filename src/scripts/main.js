@@ -14,7 +14,7 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  return [...list.children].forEach(employee => ({
+  return list.forEach(employee => ({
     name: employee.textContent.trim(),
     position: employee.dataset.position,
     salary: employee.dataset.salary,
