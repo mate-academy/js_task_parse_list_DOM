@@ -19,9 +19,10 @@ function sortList(list) {
 sortList(employees);
 
 function getEmployees(list) {
-  return list.map((item) => ({ name: item.innerText,
+  return list.map((item) => ({
+    name: item.innerText,
     ...item.dataset,
-}));
+  }));
 }
 
 getEmployees(employees);
