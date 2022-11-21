@@ -1,5 +1,5 @@
 1. Replace `<DatsOlena>` with your Github username in the link
-    - [DEMO LINK](https://<DatsOlena>.github.io/js_task_parse_list_DOM/)
+    - [DEMO LINK](https://DatsOlena.github.io/js_task_parse_list_DOM/)
 2. Follow [this instructions](https://mate-academy.github.io/layout_task-guideline/)
     - Run `npm run test` command to test your code;
     - Run `npm run test:only -- -n` to run fast test ignoring linter;
