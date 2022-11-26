@@ -1,41 +1,26 @@
 'use strict';
 
-const employeesNodeList = document.querySelectorAll('body > ul > li');
-const ulNode = document.querySelector('body > ul');
-const convertToObjects = (nodeList) => {
-  const arrOfEmployees = [];
-
-  for (const employee of Array.from(nodeList)) {
-    arrOfEmployees.push({
-      name: employee.textContent.trim(),
-      salary: employee.getAttribute('data-salary'),
-      age: employee.getAttribute('data-age'),
-      position: employee.getAttribute('data-position'),
-    });
-  }
-
-  return arrOfEmployees;
-};
+const employeesNodeList = document.querySelectorAll('body > ul > li')
+const convertToObjects = (nodeList) => Array.from(nodeList).map(el => {
+    return {
+        name: el.textContent.trim(),
+        salary: el.getAttribute('data-salary'),
+        age: el.getAttribute('data-age'),
+        position: el.getAttribute('data-position'),
+    }
+})
 const sortArrBySalary = (arr) => {
-  const convertStrToNumber = (str) => Number(str.replaceAll(',', '')
-    .replaceAll('$', ''));
-
-  return arr.sort((a, b) =>
-    convertStrToNumber(b.salary) - convertStrToNumber(a.salary));
-};
-const convertedArr = convertToObjects(employeesNodeList);
-const sortedArr = sortArrBySalary(convertedArr);
-const changeLiToSorted = (arr) => {
-  for (const element of employeesNodeList) {
-    element.remove();
-  }
-
-  for (const employee of arr) {
-    const liNode = document.createElement('li');
-
-    liNode.textContent = employee.name;
-    ulNode.append(liNode);
-  }
-};
-
-changeLiToSorted(sortedArr);
+    const convertStrToNumber = (str) => Number(str.slice(1).replaceAll(',', ''));
+    return arr.sort((a, b) => convertStrToNumber(b.salary) - convertStrToNumber(a.salary))
+}
+const convertedArr = convertToObjects(employeesNodeList)
+const sortedArr = sortArrBySalary(convertedArr)
+const changeLiToSorted = (arr, nodeList) => {
+    Array.from(nodeList).forEach((item, i) => {
+        item.textContent = arr[i].name
+        item.setAttribute('data-age', arr[i].age)
+        item.setAttribute('data-salary', arr[i].salary)
+        item.setAttribute('data-position', arr[i].position)
+    })
+}
+changeLiToSorted(sortedArr, employeesNodeList)
