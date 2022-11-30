@@ -5,7 +5,7 @@ const list = document.getElementsByTagName('li');
 function getEmployees(listProperty) {
   const employees = [];
 
-  for (const employee of list) {
+  for (const employee of listProperty) {
     employees.push({
       name: employee.innerText,
       position: employee.dataset.position,
