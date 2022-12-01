@@ -1,8 +1,8 @@
 'use strict';
 
-function decreaseSortOrder() {
-  const list = document.querySelector('ul');
-  const items = list.childNodes;
+function sortList() {
+  const fullList = document.querySelector('ul');
+  const items = fullList.childNodes;
   const itemsArr = [];
 
   for (const i in items) {
@@ -24,10 +24,31 @@ function decreaseSortOrder() {
   });
 
   for (let i = 0; i < itemsArr.length; i++) {
-    list.appendChild(itemsArr[i]);
+    fullList.appendChild(itemsArr[i]);
   }
 
   return itemsArr;
 }
 
-decreaseSortOrder();
+function getEmployees() {
+  const fullList = document.querySelector('ul');
+  const items = fullList.childNodes;
+  const itemsArr = [];
+
+  for (const i in items) {
+    if (items[i].nodeType === 1) {
+      itemsArr.push(items[i]);
+    }
+  }
+
+  const objectsArr = itemsArr.map(item => (
+    {
+      name: item.innerText, ...item.dataset,
+    }
+  ));
+
+  return objectsArr;
+}
+
+sortList();
+getEmployees();
