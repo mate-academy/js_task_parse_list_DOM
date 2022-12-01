@@ -11,13 +11,13 @@ function sortList() {
     }
   }
 
-  itemsArr.sort((a, b) => {
+  itemsArr.sort((itemPrev, itemNext) => {
     return (
-      +b.dataset.salary
+      +itemPrev.dataset.salary
         .split('')
         .filter(item => !isNaN(item)).join('')
     ) - (
-      +a.dataset.salary
+      +itemNext.dataset.salary
         .split('')
         .filter(item => !isNaN(item)).join('')
     );
