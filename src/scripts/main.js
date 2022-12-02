@@ -1,25 +1,24 @@
 'use strict';
 
 // write code here
-const elementsList = document.querySelector('ul').children;
+const elementsList = Array.from(document.querySelector('ul').children);
 
 function sortList(list) {
-  const array = Array.from(list);
   const getNumber = (string) => {
     const number = Number.parseInt(string.slice(1).replace(/,/g, ''));
 
     return number;
   };
 
-  array.sort((a, b) => {
+  list.sort((a, b) => {
     return getNumber(b.dataset.salary) - getNumber(a.dataset.salary);
   });
 
-  array.forEach((child) => {
+  list.forEach((child) => {
     document.querySelector('ul').append(child);
   });
 
-  return array;
+  return list;
 }
 
 function getEmployees(list) {
