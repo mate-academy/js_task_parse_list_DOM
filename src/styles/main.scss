@@ -10,6 +10,13 @@ body {
   flex-direction: column;
 }
 
+button {
+  padding: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+
 h1 {
   font-size: 32px;
 }
@@ -18,7 +25,25 @@ ul {
   list-style-type: square;
 }
 
-li:hover {
-  font-weight: 700;
-  cursor: default;
+li {
+  width: 410px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+
+  &:hover {
+    font-weight: 700;
+    cursor: default;
+  }
+}
+
+span {
+  width: 130px;
+  margin-left: 30px;
+  transition: transform 0.2s linear;
+}
+
+.hided {
+  transform: translateX(100%);
+  overflow: hidden;
 }
