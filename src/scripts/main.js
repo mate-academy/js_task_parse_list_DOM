@@ -5,7 +5,7 @@
 const [...list] = document.querySelectorAll('li');
 
 function sortList(list) {
-    list.sort((a, b) => a.salary - b.salary);
+    list.sort((a, b) => b.salary - a.salary);
 
     return list;
 }
