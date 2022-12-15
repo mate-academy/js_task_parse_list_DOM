@@ -5,14 +5,26 @@ const list = document.querySelector('ul');
 
 const listElements = [...list.children];
 
-const sortedElements = listElements.sort((a, b) => {
-  return (salaryInNumber(b)) - (salaryInNumber(a));
-});
+const sortList = arr => {
+  arr.sort((a, b) => {
+    return (convertToNumber(b)) - (convertToNumber(a));
+  });
 
-function salaryInNumber(value) {
+  arr.forEach(el => list.appendChild(el));
+};
+
+const convertToNumber = value => {
   return +(value.dataset.salary.split(',').join('').slice(1));
-}
+};
 
-list.innerHTML = '';
+const getEmployees = arr => {
+  return arr.map(person => (
+    {
+      name: person.innerText,
+      position: person.dataset.position,
+      sallary: person.dataset.age,
+    }));
+};
 
-sortedElements.forEach(el => list.appendChild(el));
+sortList(listElements);
+getEmployees(listElements);
