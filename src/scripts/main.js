@@ -7,11 +7,11 @@ const arraySort = [];
 function sortList(array, listChildren) {
   return getEmployees(array, listChildren)
     .sort((a, b) =>
-      conversion(b.salary, '$', ',') - conversion(a.salary, '$', ','));
+      conversion(b.salary) - conversion(a.salary));
 }
 
-function conversion(salary, currencySymbol, separator) {
-  return +salary.replace(currencySymbol, '').replaceAll(separator, '');
+function conversion(salary) {
+  return +salary.replace('$', '').replaceAll(',', '');
 }
 
 function getEmployees(array, listChildren) {
