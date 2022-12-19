@@ -5,17 +5,14 @@ const items = document.querySelectorAll('li');
 
 // sorts an array
 function sortList(list) {
-  const arrEmpl = [...list].map(item => ({
-    ...item.dataset,
-    'name': item.innerText,
+  const sortedEmployees = [...list].map(item => ({
+    name: item.innerText,
+    position: item.dataset.position,
+    salary: Number(item.dataset.salary.replace(/[^a-zа-яё0-9\s]/gi, '')),
+    age: Number(item.dataset.age),
   }));
 
-  arrEmpl.forEach(item => {
-    item.salary = item.salary.replace(/[^a-zа-яё0-9\s]/gi, '');
-    item.salary = Number(item.salary);
-  });
-
-  return arrEmpl.sort((a, b) => b.salary - a.salary);
+  return sortedEmployees.sort((a, b) => b.salary - a.salary);
 }
 
 function getEmployees(sortedArray, list) {
