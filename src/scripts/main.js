@@ -9,10 +9,12 @@ const sorted = listEmployees.sort((a, b) => {
 });
 
 function sallary(value) {
-  const noDollar = value.dataset.salary.split('$').join('');
-  const salary = noDollar.split(',').join('');
+  // const noDollar = value.dataset.salary.split('$').join('');
+  // const salary = noDollar.split(',').join('');
 
-  return (salary);
+  const corectSallary = value.dataset.salary.replace(/[^\d]/g, '');
+
+  return (corectSallary);
 }
 
 employees.innerHTML = '';
@@ -31,7 +33,6 @@ function getEmployee(list) {
   }));
 
   result.push(arrayObj);
-
 }
 
 getEmployee(listEmployees);
