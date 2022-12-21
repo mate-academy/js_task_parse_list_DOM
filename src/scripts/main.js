@@ -2,42 +2,45 @@
 
 const liElements = document.querySelectorAll('li');
 const ulElement = document.querySelector('ul');
-const arr = [...liElements];
+const arrayOfNodeList = [...liElements];
 
-function toNumb(salary) {
+function convertToNumber(salary) {
   return +salary.slice(1).replace(',', '');
 }
 
-const sortList = function(list) {
+function sortList(list) {
   return list.sort((a, b) => {
-    return (toNumb(b.dataset.salary) - toNumb(a.dataset.salary));
+    return (
+      convertToNumber(b.dataset.salary) - convertToNumber(a.dataset.salary)
+    );
   });
 };
 
-const newLi = sortList(arr);
+const newLi = sortList(arrayOfNodeList);
 
-[...liElements].forEach(el => el.remove());
+// [...liElements].forEach(el => el.remove());
+liElements.forEach(el => el.remove());
 
 ulElement.insertAdjacentHTML('afterbegin', `
-    ${[...newLi].map(person => `
+    ${newLi.map(person => `
       ${person.outerHTML}
     `).join('')}
 `);
 
 function getEmployees(list) {
-  const arrayObj = [...list].map(person => {
+  const arrayObj = list.map(person => {
     const clearName = person.innerText
       .slice(2, person.innerText.lastIndexOf('/n'))
       .trim();
 
-    const obj = {
+    const personInfo = {
       name: clearName,
       position: person.dataset.position,
       salary: person.dataset.salary,
       age: person.dataset.age,
     };
 
-    return obj;
+    return personInfo;
   });
 
   return arrayObj;
