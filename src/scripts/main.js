@@ -18,7 +18,6 @@ function sortList(list) {
 
 const newLi = sortList(arrayOfNodeList);
 
-// [...liElements].forEach(el => el.remove());
 liElements.forEach(el => el.remove());
 
 ulElement.insertAdjacentHTML('afterbegin', `
