@@ -1,25 +1,25 @@
 'use strict';
 
-const user = document.querySelectorAll('li');
+const listUser = document.querySelectorAll('li');
 
 function sortList(list) {
-  const bod = document.querySelector('body');
-  const userUl = document.querySelector('ul');
-
-  userUl.remove();
-
-  const userUlNew = document.createElement('div');
-
   const result = [...list].sort((a, b) =>
     b.dataset.salary.slice(1).split(',').join('')
      - a.dataset.salary.slice(1).split(',').join(''));
 
+  const userUl = document.querySelector('ul');
+  const userUlNew = document.createElement('ul');
+
   userUlNew.innerHTML = `
-  <ul>
-  ${result.map(text => `<li> ${text.textContent}</li>`).join('')}
-  </ul>
+  ${result.map(text => `<li
+  data-position=${text.dataset.position}
+  data-salary=${text.dataset.salary}
+  data-age=${text.dataset.age}
+>
+  ${text.textContent}</li>`).join('')}
   `;
-  bod.append(userUlNew);
+
+  userUl.replaceWith(userUlNew);
 }
 
 function getEmployees(list) {
@@ -45,5 +45,5 @@ function getEmployees(list) {
   return result;
 }
 
-sortList(user);
-getEmployees(user);
+sortList(listUser);
+getEmployees(listUser);
