@@ -23,10 +23,7 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  const result = [];
-
-  list.forEach((employee) => {
-    const resultUser = {};
+  return [...list].map((employee) => {
     let nameEmployee = employee.innerText;
 
     nameEmployee = nameEmployee.replace(/\r|\n/g, '');
@@ -35,14 +32,13 @@ function getEmployees(list) {
 
     const index = nameEmployee.indexOf(' ');
 
-    resultUser.name = nameEmployee.slice(0, index);
-    resultUser.position = employee.dataset.position;
-    resultUser.salary = employee.dataset.salary;
-    resultUser.age = employee.dataset.age;
-    result.push(resultUser);
+    return {
+      name: nameEmployee.slice(0, index),
+      position: employee.dataset.position,
+      salary: employee.dataset.salary,
+      age: employee.dataset.age,
+    };
   });
-
-  return result;
 }
 
 sortList(listUser);
