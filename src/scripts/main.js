@@ -26,6 +26,5 @@ function getEmployees([...list]) {
 
   return resultArr;
 }
-
 getEmployees(employees);
 sortList(employees);
