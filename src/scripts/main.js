@@ -1,13 +1,13 @@
 'use strict';
 
 const fullList = document.querySelector('ul');
-const employees = document.querySelectorAll('li');
+const employees = [...document.querySelectorAll('li')];
 
 function convertToNum(salary) {
   return +(salary.split(',').join('').slice(1));
 }
 
-function sortList([...list]) {
+function sortList(list) {
   const sorted = list.sort((a, b) => (
     convertToNum(b.dataset.salary)
     - convertToNum(a.dataset.salary)));
@@ -15,7 +15,7 @@ function sortList([...list]) {
   fullList.append(...sorted);
 }
 
-function getEmployees([...list]) {
+function getEmployees(list) {
   const resultArr = [];
 
   list.forEach(p => {
