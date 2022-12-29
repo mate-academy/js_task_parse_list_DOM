@@ -1,52 +1,27 @@
 'use strict';
-class Employee {
-  constructor(personName, position, salary, age) {
-    this.name = personName;
-    this.position = position;
-    this.salary = salary;
-    this.age = age;
-  }
-}
 
-const [...elementsList] = document.getElementsByTagName('li');
-const elementsArr = elementsList.map(element => element.dataset);
-const namesArr = elementsList.map((element) =>
-  element.textContent.split('\n').join('').trim());
-
-for (let i = 0; i < namesArr.length; i++) {
-  elementsArr[i].name = namesArr[i];
-}
-
-function toNumber(string) {
-  const number = +string.split('$').join('').split(',').join('');
-
-  return number;
-};
+const employeesList = document.querySelector('ul');
+const [...employees] = document.querySelectorAll('li');
 
 function sortList(list) {
-  list.sort((a, b) => toNumber(b.salary) - toNumber(a.salary));
+  const toNumber = (string) => +string.slice(1).split(',').join('');
 
-  return list;
+  const sortedList = list.sort((a, b) =>
+    toNumber(b.dataset.salary) - toNumber(a.dataset.salary));
+
+  employeesList.append(...sortedList);
 };
 
 function getEmployees(list) {
-  const employeeArr = [];
-
-  list.forEach(element => {
-    employeeArr
-      .push(new Employee(
-        element.name, element.position, element.salary, element.age
-      ));
+  return list.map(employee => {
+    return {
+      name: employee.dataset.name,
+      position: employee.dataset.position,
+      salary: employee.dataset.salary,
+      age: employee.dataset.age,
+    };
   });
-
-  for (let i = 0; i < elementsList.length; i++) {
-    elementsList[i].textContent = employeeArr[i].name;
-    elementsList[i].setAttribute('data-name', employeeArr[i].name);
-    elementsList[i].setAttribute('data-position', employeeArr[i].position);
-    elementsList[i].setAttribute('data-age', employeeArr[i].age);
-    elementsList[i].setAttribute('data-salary', employeeArr[i].salary);
-  };
 };
 
-sortList(elementsArr);
-getEmployees(elementsArr);
+sortList(employees);
+getEmployees(employees);
