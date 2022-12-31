@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 'use strict';
 
 const employeesList = document.querySelector('ul');
@@ -14,11 +15,10 @@ function sortList(list) {
 
 function getEmployees(list) {
   return list.map(employee => {
+    const { name, position, salary, age } = employee.dataset;
+
     return {
-      name: employee.dataset.name,
-      position: employee.dataset.position,
-      salary: employee.dataset.salary,
-      age: employee.dataset.age,
+      name, position, salary, age,
     };
   });
 };
