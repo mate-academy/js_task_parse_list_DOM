@@ -5,13 +5,13 @@ const listOFWorkers = [...document.querySelectorAll('li')];
 const newList = document.querySelector('ul');
 
 function convertToNumber(string) {
-  return +string;
+  return +string.slice(1).split(',').join('');
 }
 
 function sortList(list) {
   list.sort((a, b) =>
-    convertToNumber(b.dataset.salary.slice(1).split(',').join(''))
-      - convertToNumber(a.dataset.salary.slice(1).split(',').join('')));
+    convertToNumber(b.dataset.salary)
+      - convertToNumber(a.dataset.salary));
   list.forEach((person) => newList.append(person));
 
   return newList;
@@ -19,18 +19,16 @@ function sortList(list) {
 
 function getEmployees(list) {
   const employees = [...list];
-  const newEmployeeList = [];
+  const newRate = employees.map(employee => (
+    {
+      name: employee.innerText,
+      position: employee.dataset.position,
+      salary: employee.dataset.salary,
+      age: employee.dataset.age,
+    }
+  ));
 
-  for (const worker of employees) {
-    newEmployeeList.push({
-      name: worker.innerText,
-      position: worker.dataset.position,
-      salary: worker.dataset.salary,
-      age: worker.dataset.age,
-    });
-  }
-
-  return newEmployeeList;
+  return newRate;
 }
 
 sortList(listOFWorkers);
