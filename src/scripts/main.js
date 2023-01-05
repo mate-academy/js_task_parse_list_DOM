@@ -3,10 +3,13 @@
 const ul = document.querySelector('ul');
 const lists = [...ul.children];
 
+const resultNumber = str => {
+  return +(str.split('$').join('').split(',').join(''));
+};
+
 function sortList(list) {
   const sortedList = list.sort((a, b) =>
-    Number(b.dataset.salary.split('$').join('').split(',').join('')
-    - Number(a.dataset.salary.split('$').join('').split(',').join('')))
+    resultNumber(b.dataset.salary) - resultNumber(a.dataset.salary)
   );
 
   ul.append(...sortedList);

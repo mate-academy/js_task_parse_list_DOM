@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2022-12-29T18:45:06.826Z",
-    "end": "2022-12-29T18:45:07.085Z",
-    "duration": 243,
+    "start": "2023-01-05T20:45:13.985Z",
+    "end": "2023-01-05T20:45:14.254Z",
+    "duration": 250,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "939f4beb-a1df-4bc3-b7d2-1b3ef06e9356",
+      "uuid": "ca5d559e-dc20-4673-816d-d989d276fd6d",
       "title": "",
       "fullFile": "cypress/integration/jsTaskParseListDOM.spec.js",
       "file": "cypress/integration/jsTaskParseListDOM.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "93a46cdf-dc82-43c1-a38c-181580685fec",
+          "uuid": "13227562-f9cc-4928-abac-faa360657769",
           "title": "Parse list app ",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should render list",
               "fullTitle": "Parse list app  should render list",
               "timedOut": null,
-              "duration": 124,
+              "duration": 120,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.get('ul');",
               "err": {},
-              "uuid": "f7d491a4-15fe-4d80-bb6d-5b9f2a41ecda",
-              "parentUUID": "93a46cdf-dc82-43c1-a38c-181580685fec",
+              "uuid": "e573b061-db96-4d68-b49a-a55660e3a1c9",
+              "parentUUID": "13227562-f9cc-4928-abac-faa360657769",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "should have 11 items",
               "fullTitle": "Parse list app  should have 11 items",
               "timedOut": null,
-              "duration": 63,
+              "duration": 74,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "cy.get('ul > li').should('have.length', 11);",
               "err": {},
-              "uuid": "c1abad24-8769-41fb-a7a8-88dad0dddcc3",
-              "parentUUID": "93a46cdf-dc82-43c1-a38c-181580685fec",
+              "uuid": "5365a905-4b23-4efd-8f83-2eaa69689357",
+              "parentUUID": "13227562-f9cc-4928-abac-faa360657769",
               "isHook": false,
               "skipped": false
             },
@@ -83,22 +83,22 @@
               "context": null,
               "code": "cy.get('ul > li').then(function ($ul) {\n  var list = (0, _toConsumableArray2.default)($ul).map(function (row) {\n    return row.dataset.salary.replace('$', '').replace(',', '');\n  });\n  var counter = 0;\n  for (var i = 0; i < list.length; i++) {\n    if (Number(list[i + 1]) <= Number(list[i])) {\n      counter += 1;\n    }\n  }\n  expect(counter).to.equal(list.length - 1);\n});",
               "err": {},
-              "uuid": "7ed27a11-6c8e-4dfd-993b-df3299e74728",
-              "parentUUID": "93a46cdf-dc82-43c1-a38c-181580685fec",
+              "uuid": "d82c8219-bbc4-451b-985a-d62adf30e0aa",
+              "parentUUID": "13227562-f9cc-4928-abac-faa360657769",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "f7d491a4-15fe-4d80-bb6d-5b9f2a41ecda",
-            "c1abad24-8769-41fb-a7a8-88dad0dddcc3",
-            "7ed27a11-6c8e-4dfd-993b-df3299e74728"
+            "e573b061-db96-4d68-b49a-a55660e3a1c9",
+            "5365a905-4b23-4efd-8f83-2eaa69689357",
+            "d82c8219-bbc4-451b-985a-d62adf30e0aa"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 243,
+          "duration": 250,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
