@@ -17,15 +17,12 @@ function convertCashToNum(str) {
 }
 
 function getEmployees(array) {
-  return [...array]
-    .map(person => {
-      return {
-        name: person.innerText,
-        position: person.dataset.position,
-        salary: convertCashToNum(person.dataset.salary),
-        age: +person.dataset.age,
-      };
-    });
+  return [...array].map(person => ({
+    name: person.innerText,
+    position: person.dataset.position,
+    salary: convertCashToNum(person.dataset.salary),
+    age: +person.dataset.age,
+  }));
 }
 
 list.append(...sortList(workers));
