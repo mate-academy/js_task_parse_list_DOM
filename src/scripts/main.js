@@ -3,9 +3,17 @@
 const list = document.querySelector('ul');
 
 const sortList = (listOfValue) => {
-  let sort = [...listOfValue].sort((a, b) =>
-    b.dataset.salary.split(',').join('').slice(1)
-    - a.dataset.salary.split(',').join('').slice(1));
+  const listWithNumber = [...listOfValue];
+
+  function normalizeNumber() {
+    for (const item of listWithNumber) {
+      item.dataset.salary = item.dataset.salary.split(',').join('').slice(1);
+    }
+  };
+
+  normalizeNumber();
+
+  let sort = listWithNumber.sort((a, b) => b.dataset.salary - a.dataset.salary);
 
   sort = sort.forEach(item => list.append(item));
 
