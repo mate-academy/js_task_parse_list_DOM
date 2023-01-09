@@ -19,4 +19,16 @@ const sortList = (employeesList) => {
   }
 };
 
+const getEmployees = (employeesList) => {
+  const employees = [...employeesList.children];
+
+  return employees.map(person => ({
+    name: person.innerText,
+    position: person.dataset.position,
+    salary: person.dataset.salary,
+    age: person.dataset.age,
+  }));
+};
+
 sortList(list);
+getEmployees(list);
