@@ -5,13 +5,13 @@ const list = document.querySelector('ul');
 const sortList = (listOfValue) => {
   const listWithNumber = [...listOfValue];
 
-  function normalizeNumber() {
-    for (const item of listWithNumber) {
-      item.dataset.salary = item.dataset.salary.split(',').join('').slice(1);
-    }
+  function normalizeNumber(numberString) {
+    return numberString.split(',').join('').slice(1);
   };
 
-  normalizeNumber();
+  for (const item of listWithNumber) {
+    item.dataset.salary = normalizeNumber(item.dataset.salary);
+  }
 
   let sort = listWithNumber.sort((a, b) => b.dataset.salary - a.dataset.salary);
 
