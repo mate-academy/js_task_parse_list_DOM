@@ -20,13 +20,13 @@ function getEmployees(array) {
   const list = document.querySelector('ul');
 
   list.innerHTML = `
-  ${array.map(Employee => `
+  ${array.map(employee => `
     <li
-      data-position="${Employee.position}"
-      data-salary="${Employee.salary}"
-      data-age="${Employee.age}"
+      data-position="${employee.position}"
+      data-salary="${employee.salary}"
+      data-age="${employee.age}"
     >
-      ${Employee.name}
+      ${employee.name}
     </li>
   `).join('')}
 `;
