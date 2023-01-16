@@ -2,9 +2,7 @@
 
 const peopleOfList = document.querySelectorAll('li');
 
-const listString = function(string) {
-  return +string.slice(1).split(',').join('');
-};
+const listString = string => +string.slice(1).split(',').join('');
 
 const sortPeople = function(list) {
   return [...list].sort((a, b) =>
