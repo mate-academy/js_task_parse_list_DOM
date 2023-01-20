@@ -2,43 +2,37 @@
 
 // write code here
 
-function convertNumber(number) {
-  let final = number;
+function convertNumber(salary) {
+  const salaryCopy = salary;
 
-  let final2 = final.slice(1).split(',').join('')
+  const salaryNumber = salaryCopy.slice(1).split(',').join('');
 
-  return +final2;
+  return +salaryNumber;
 }
 
-let list = document.querySelectorAll('li')
+const listLi = document.querySelectorAll('li');
 
-function getEmployees(list) {
-  let copy4 = [];
+function getEmployees(laborArray) {
+  const copy4 = [];
 
-  for (let i = 0; i < list.length; i++) {
+  for (let i = 0; i < laborArray.length; i++) {
+    const copy3 = {};
 
-    let copy3 = {}
-    copy3.person = list[i].innerText;
-    copy3.salary = convertNumber(list[i].dataset.salary);
-    copy4.push(copy3)
+    copy3.person = laborArray[i].innerText;
+    copy3.salary = convertNumber(laborArray[i].dataset.salary);
+    copy4.push(copy3);
   }
 
   return copy4;
 }
 
-function sortList(list) {
+function sortList(workerList) {
+  const listDom = document.querySelectorAll('li');
 
-  let listDom = document.querySelectorAll('li')
-
-  for (let i = 0; i < list.length; i++) {
-    list.sort((a, b) => b.salary - a.salary)
-    listDom[i].innerText = list[i].person;
+  for (let i = 0; i < workerList.length; i++) {
+    workerList.sort((a, b) => b.salary - a.salary);
+    listDom[i].innerText = workerList[i].person;
   }
 }
 
-
-sortList(getEmployees(list));
-
-
-
-
+sortList(getEmployees(listLi));
