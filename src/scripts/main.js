@@ -1,20 +1,28 @@
 'use strict';
 
 // write code here
-const employeeList = document.querySelectorAll('li');
+const employeeList = document.querySelector('ul');
+
+sortList(employeeList);
 
 function sortList(list) {
-  const employees = getEmployees(list);
+  const ulItems = list.querySelectorAll('li');
+  const employees = getEmployees(ulItems);
 
   employees.sort(
     (a, b) => convertSalaryToNumber(b.salary) - convertSalaryToNumber(a.salary)
   );
 
   for (let i = 0; i < employees.length; i++) {
-    list[i].dataset.position = employees[i].position;
-    list[i].dataset.salary = employees[i].salary;
-    list[i].dataset.age = employees[i].age;
-    list[i].textContent = employees[i].name;
+    const li = document.createElement('li');
+
+    li.dataset.position = employees[i].position;
+    li.dataset.salary = employees[i].salary;
+    li.dataset.age = employees[i].age;
+    li.textContent = employees[i].name;
+
+    list.removeChild(ulItems[i]);
+    list.append(li);
   }
 }
 
@@ -32,5 +40,3 @@ function getEmployees(list) {
     };
   });
 }
-
-sortList(employeeList);
