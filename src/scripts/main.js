@@ -17,8 +17,10 @@ function sortList(list) {
 
 function getEmployees(list) {
   return list.map(item => ({
-    ...item.dataset,
-    'name': item.textContent,
+    name: item.textContent.trim(),
+    position: item.dataset.position,
+    salary: item.dataset.salary,
+    age: item.dataset.age,
   }));
 }
 
