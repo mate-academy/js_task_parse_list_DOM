@@ -3,17 +3,14 @@
 const listOfEmployees = document.querySelector('ul');
 const arrOfEmployees = [...document.querySelectorAll('li')];
 
-function convertToNumber(value) {
-  return +value.slice(1).split(',').join('');
+const convertToNumber = value => +value.slice(1).split(',').join('');
+
+function sortList(list) {
+  list.sort((a, b) => convertToNumber(b.dataset.salary)
+    - convertToNumber(a.dataset.salary));
+
+  listOfEmployees.append(...list);
 }
-
-function sortList(item) {
-  const sortItem = item.sort((a, b) =>
-    convertToNumber(b.dataset.salary) - convertToNumber(a.dataset.salary)
-  );
-
-  listOfEmployees.append(...sortItem);
-};
 
 sortList(arrOfEmployees);
 
