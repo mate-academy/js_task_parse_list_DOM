@@ -6,13 +6,11 @@ const arrOfEmployees = [...document.querySelectorAll('li')];
 const convertToNumber = value => +value.slice(1).split(',').join('');
 
 function sortList(list) {
-  list.sort((a, b) => convertToNumber(b.dataset.salary)
+  return list.sort((a, b) => convertToNumber(b.dataset.salary)
     - convertToNumber(a.dataset.salary));
-
-  listOfEmployees.append(...list);
 }
 
-sortList(arrOfEmployees);
+listOfEmployees.append(...sortList(arrOfEmployees));
 
 function getEmployees(item) {
   return item.map(el => ({
