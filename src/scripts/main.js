@@ -14,20 +14,16 @@ function sortList(argList) {
 list = sortList(list);
 
 function getEmployees(argList) {
-  const arrOfSortObjects = [];
+  const arrOfSortObjects = argList.map(function(item) {
+    const obj = {
 
-  argList.map(function(item) {
-    const obj = {};
+      name: item.innerHTML.trim(),
+      position: item.dataset.position,
+      salary: item.dataset.salary,
+      age: item.dataset.age,
+    };
 
-    obj.name = item.innerHTML.trim();
-
-    obj.position = item.dataset.position;
-
-    obj.salary = item.dataset.salary;
-
-    obj.age = item.dataset.age;
-
-    return arrOfSortObjects.push(obj);
+    return obj;
   });
 
   return arrOfSortObjects;
