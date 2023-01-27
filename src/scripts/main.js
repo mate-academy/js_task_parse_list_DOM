@@ -1,6 +1,7 @@
 'use strict';
 
-let list = document.querySelectorAll('li');
+let listItems = document.querySelectorAll('li');
+const list = document.querySelector('ul');
 
 const getNumber = (salary) => {
   return Number(salary.replace(',', '').replace('$', ''));
@@ -11,11 +12,15 @@ function sortList(argList) {
     person2.dataset.salary) - getNumber(person1.dataset.salary));
 }
 
-list = sortList(list);
+listItems = sortList(listItems);
+
+for (const li of listItems) {
+  list.append(li);
+}
 
 function getEmployees(argList) {
-  const arrOfSortObjects = argList.map(function(item) {
-    const obj = {
+  const arrOfSortPersons = argList.map((item) => {
+    const person = {
 
       name: item.innerHTML.trim(),
       position: item.dataset.position,
@@ -23,10 +28,10 @@ function getEmployees(argList) {
       age: item.dataset.age,
     };
 
-    return obj;
+    return person;
   });
 
-  return arrOfSortObjects;
+  return arrOfSortPersons;
 }
 
-getEmployees(list);
+getEmployees(listItems);
