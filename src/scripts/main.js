@@ -11,7 +11,7 @@ function sortList(listToSort) {
     return bFormatted - aFormatted;
   });
 
-  return sortedList.map(el => list.append(el));
+  sortedList.forEach(el => list.append(el));
 }
 
 function formatSalary(str) {
