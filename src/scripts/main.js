@@ -15,9 +15,7 @@ function sortList(employeesList) {
 }
 
 function convertToNumber(a) {
-  const num = parseInt(a.slice(1).replaceAll(',', ''));
-
-  return num;
+  return parseInt(a.slice(1).replaceAll(',', ''));
 }
 
 sortList(employees);
