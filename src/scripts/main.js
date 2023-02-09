@@ -13,7 +13,9 @@ function sortList(arr) {
 }
 
 function converter(item) {
-  return item.dataset.salary.slice(1).split(',').join('');
+  const salary = +item.dataset.salary.slice(1).split(',').join('');
+
+  return salary;
 }
 
 function getEmployees(arr) {
