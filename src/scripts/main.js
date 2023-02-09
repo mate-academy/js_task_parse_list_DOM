@@ -12,7 +12,7 @@ function sortList(list) {
     const salaryA = toNumber(a.dataset.salary);
     const salaryB = toNumber(b.dataset.salary);
 
-    return salaryA - salaryB;
+    return salaryB - salaryA;
   });
 
   while (ul.lastElementChild) {
