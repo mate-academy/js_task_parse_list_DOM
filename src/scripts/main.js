@@ -5,11 +5,11 @@ const list = document.querySelector('ul');
 
 const frag = document.createDocumentFragment();
 
-const sortedList = Array.from(nodes).sort((a, b) =>
-  parseInt(a.dataset.salary.replace(/\D/g, ''))
+const sortList = function(someList) {
+  const sortedList = Array.from(nodes).sort((a, b) =>
+    parseInt(a.dataset.salary.replace(/\D/g, ''))
 - parseInt(b.dataset.salary.replace(/\D/g, '')));
 
-const sortList = function(someList) {
   for (const item of sortedList) {
     frag.prepend(item);
   }
@@ -20,6 +20,9 @@ sortList(list);
 
 const getEmployees = function() {
   const massive = [];
+  const sortedList = Array.from(nodes).sort((a, b) =>
+    parseInt(a.dataset.salary.replace(/\D/g, ''))
+- parseInt(b.dataset.salary.replace(/\D/g, '')));
 
   for (const item of sortedList) {
     const object = {
