@@ -3,17 +3,17 @@
 const nodes = document.querySelectorAll('li');
 const list = document.querySelector('ul');
 
-const frag = document.createDocumentFragment();
+const fragment = document.createDocumentFragment();
 
-const sortList = function(someList) {
+function sortList() {
   const sortedList = Array.from(nodes).sort((a, b) =>
     parseInt(a.dataset.salary.replace(/\D/g, ''))
 - parseInt(b.dataset.salary.replace(/\D/g, '')));
 
   for (const item of sortedList) {
-    frag.prepend(item);
+    fragment.prepend(item);
   }
-  list.appendChild(frag);
+  list.appendChild(fragment);
 };
 
 sortList(list);
