@@ -1,16 +1,16 @@
 'use strict';
 
-function convertToNum(num) {
-  return num.split(',').join('').split('$').join('');
+function numStr(num) {
+  return +num.split(',').join('').split('$').join('');
 };
 
 function sortBySalary(list) {
   const sorted = [...list].sort(function(a, b) {
-    const FirstSalary = convertToNum(a.dataset.salary);
+    const firstSalary = numStr(a.dataset.salary);
 
-    const SecondSalary = convertToNum(b.dataset.salary);
+    const secondSalary = numStr(b.dataset.salary);
 
-    return +SecondSalary - +FirstSalary;
+    return secondSalary - firstSalary;
   });
 
   document.querySelector('ul').append(...sorted);
