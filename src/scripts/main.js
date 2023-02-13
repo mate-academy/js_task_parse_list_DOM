@@ -18,9 +18,27 @@ function sortList(list) {
   sortedEmployees.sort((emloyeeA, employeeB) =>
     employeeB.dataset.salary - emloyeeA.dataset.salary);
 
-  for (let i = 0; i < sortedEmployees.length; ++i) {
+  for (let i = 0; i < sortedEmployees.length; i++) {
     list.appendChild(sortedEmployees[i]);
   }
 };
 
+function getEmployees(list) {
+  const Employees = [];
+
+  for (let i = 0; i < list.children.length; i++) {
+    const Employee = {};
+
+    Employee.name = list.children[i].textContent.trim();
+    Employee.position = list.children[i].dataset.position;
+    Employee.salary = list.children[i].dataset.salary;
+    Employee.age = list.children[i].dataset.age;
+
+    Employees.push(Employee);
+  }
+
+  return Employees;
+}
+
 sortList(listOfEmployees);
+getEmployees(listOfEmployees);
