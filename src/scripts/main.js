@@ -1,27 +1,23 @@
 'use strict';
 
 const listOfEmployees = document.querySelector('ul');
-let items = document.querySelectorAll('li');
+const items = document.querySelectorAll('li');
 
 function sortList(list) {
-  listOfEmployees.innerHTML = '';
-
   const sortedList = [...list].sort((a, b) => {
-    const salaryA = Number(a.dataset.salary.slice(1).split(',').join(''));
-    const salaryB = Number(b.dataset.salary.slice(1).split(',').join(''));
+    const salaryA = convertToNumber(a.dataset.salary);
+    const salaryB = convertToNumber(b.dataset.salary);
 
     return salaryB - salaryA;
   });
 
   sortedList.forEach((item) => listOfEmployees.append(item));
-  items = document.querySelectorAll('li');
 }
 
-function getEmployees(list) {
-  const sortedArray = [...list];
+function convertToNumber(string) {
+  const convertedNumber = string.slice(1).split(',').join('');
 
-  return sortedArray;
+  return Number(convertedNumber);
 }
 
 sortList(items);
-getEmployees(items);
