@@ -1,43 +1,38 @@
 'use strict';
 
-// write code here
-
 const listOfEmployees = document.querySelector('ul');
 
 function sortList(list) {
   const sortedEmployees = [];
 
-  for (let i = 0; i < list.children.length; i++) {
-    list.children[i].dataset.salary = +list.children[i].dataset.salary
+  function toNumber(employee) {
+    employee.dataset.salary = employee.dataset.salary
       .replace('$', '')
       .replace(',', '');
 
-    sortedEmployees.push(list.children[i]);
+    sortedEmployees.push(employee);
   }
+
+  [...list.children].map(toNumber);
 
   sortedEmployees.sort((emloyeeA, employeeB) =>
     employeeB.dataset.salary - emloyeeA.dataset.salary);
 
-  for (let i = 0; i < sortedEmployees.length; i++) {
-    list.appendChild(sortedEmployees[i]);
-  }
+  list.append(...sortedEmployees);
 };
 
 function getEmployees(list) {
-  const Employees = [];
+  const employees = [];
 
-  for (let i = 0; i < list.children.length; i++) {
-    const Employee = {};
+  [...list.children].map(employee => employees.push({
+    name: employee.textContent.trim(),
+    position: employee.dataset.position,
+    salary: employee.dataset.salary,
+    age: employee.dataset.age,
+  })
+  );
 
-    Employee.name = list.children[i].textContent.trim();
-    Employee.position = list.children[i].dataset.position;
-    Employee.salary = list.children[i].dataset.salary;
-    Employee.age = list.children[i].dataset.age;
-
-    Employees.push(Employee);
-  }
-
-  return Employees;
+  return employees;
 }
 
 sortList(listOfEmployees);
