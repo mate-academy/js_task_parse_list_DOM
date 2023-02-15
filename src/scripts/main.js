@@ -24,7 +24,7 @@ function converter(salary) {
   return salary.replaceAll(',', '').replace('$', '');
 }
 
-const worker = [...document.body.children[1].children];
+const worker = [...document.querySelectorAll('li')];
 
 sortList(worker);
 getEmployees(worker);
