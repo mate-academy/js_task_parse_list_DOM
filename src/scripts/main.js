@@ -8,7 +8,7 @@ function convertIntoNumber(string) {
 }
 
 const sortList = function(arr) {
-  const sortedArray = arr.sort((employee1, employee2) => {
+  const sortedArray = [...arr].sort((employee1, employee2) => {
     return convertIntoNumber(employee2.dataset.salary)
     - convertIntoNumber(employee1.dataset.salary);
   });
