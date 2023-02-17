@@ -10,7 +10,10 @@ for (const item of arrNew) {
 }
 
 function sortList(list) {
-  return [...list].sort(({ dataset: { salary: salA } }, { dataset: { salary: salB } }) => {
+  return [...list].sort((
+    { dataset: { salary: salA } },
+    { dataset: { salary: salB } }
+  ) => {
     return getValidNumber(salB) - getValidNumber(salA);
   });
 }
