@@ -14,14 +14,12 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  return list.map(employee => {
-    return {
-      name: employee.innerText,
-      position: employee.dataset.position,
-      salary: employee.dataset.salary,
-      age: employee.dataset.age,
-    };
-  });
+  return list.map(employee => ({
+    name: employee.innerText,
+    position: employee.dataset.position,
+    salary: employee.dataset.salary,
+    age: employee.dataset.age,
+  }));
 }
 
 sortList(liItems);
