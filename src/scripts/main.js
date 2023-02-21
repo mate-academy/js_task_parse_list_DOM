@@ -1,21 +1,21 @@
 'use strict';
 
-const workerColection = Array.from(
+const workers = Array.from(
   document.getElementsByTagName('li')
 );
 const listWorker = document.querySelector('ul');
-const solaryArray = [];
+const solaries = [];
 
-workerColection.forEach(element => {
-  solaryArray.push(formatItem(element));
+workers.forEach(element => {
+  solaries.push(formatItem(element));
 });
 
 function formatItem(item) {
   return Number(item.dataset.salary.match(/\d+/g).join(''));
 }
 
-solaryArray.sort((a, b) => b - a).map(salary => {
-  workerColection.forEach(element => {
+solaries.sort((a, b) => b - a).forEach(salary => {
+  workers.forEach(element => {
     if (formatItem(element) === salary) {
       listWorker.append(element);
     };
