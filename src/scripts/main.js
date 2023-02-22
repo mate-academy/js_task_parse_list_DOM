@@ -11,13 +11,17 @@ function formatSalary(employee) {
 }
 
 function sortList(list) {
-  list.sort(
+  const sortedList = [...list]
+
+  sortedList.sort(
     (firstEmployee, secondEmployee) =>
       formatSalary(secondEmployee) - formatSalary(firstEmployee)
   );
 
   newList.innerHTML = `
   ${list.map((element) => `<li>${element.textContent}</li>`).join('')}`;
+
+  return sortedList;
 }
 
 function getEmployees(list) {
