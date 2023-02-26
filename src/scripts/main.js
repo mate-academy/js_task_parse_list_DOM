@@ -8,7 +8,7 @@ function getSalary(worker) {
   return worker.dataset.salary.replace(/[$,]/g, '');
 }
 
-function sortList(people) {
+function sortBySalary(people) {
   const sorted = people.sort((personA, personB) => (
     getSalary(personB) - getSalary(personA)
   ));
@@ -25,5 +25,5 @@ function getEmployees(workers) {
   }));
 }
 
-sortList(employees);
+sortBySalary(employees);
 getEmployees(employees);
