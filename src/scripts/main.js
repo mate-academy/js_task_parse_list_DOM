@@ -1,9 +1,17 @@
 'use strict';
 
+const employeesList = document.querySelectorAll('li');
+const sortedArray = getEmployees(sortList(employeesList));
+const ul = document.querySelector('ul');
+
+function transformSalary(employee) {
+  return +employee.dataset.salary.split(',').join('').slice(1);
+}
+
 function sortList(list) {
   return [...list].sort((employee1, employee2) => {
-    const first = +employee1.dataset.salary.split(',').join('').slice(1);
-    const second = +employee2.dataset.salary.split(',').join('').slice(1);
+    const first = transformSalary(employee1);
+    const second = transformSalary(employee2);
 
     return second - first;
   });
@@ -14,7 +22,7 @@ function getEmployees(list) {
 
   for (const item of list) {
     const obj = {
-      name: item.textContent.trim(),
+      named: item.textContent.trim(),
       position: item.dataset.position,
       salary: item.dataset.salary,
       age: item.dataset.age,
@@ -26,17 +34,14 @@ function getEmployees(list) {
   return employeesArr;
 }
 
-const employeesList = document.querySelectorAll('li');
-const sortedArray = getEmployees(sortList(employeesList));
-
-document.querySelector('ul').innerHTML = `
-  ${sortedArray.map(item => `
+ul.innerHTML = `
+  ${sortedArray.map(({ named, position, salary, age }) => `
   <li
-    data-position="${item.position}"
-    data-salary="${item.salary}"
-    data-age="${item.age}"
+    data-position="${position}"
+    data-salary="${salary}"
+    data-age="${age}"
   >
-    ${item.name}
+    ${named}
   </li>
   `).join('')}
 `;
