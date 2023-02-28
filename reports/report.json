@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-02-28T18:17:20.591Z",
+    "end": "2023-02-28T18:17:22.523Z",
+    "duration": 1786,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "91a9cdde-9a83-4425-b2c9-e4d486fed52b",
+      "title": "",
+      "fullFile": "cypress\\integration\\jsTaskParseListDOM.spec.js",
+      "file": "cypress\\integration\\jsTaskParseListDOM.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d31bccfe-688e-4bbe-8eb5-cee40273d5dd",
+          "title": "Parse list app ",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should render list",
+              "fullTitle": "Parse list app  should render list",
+              "timedOut": null,
+              "duration": 1209,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul');",
+              "err": {},
+              "uuid": "d298249b-2c55-4730-957c-0de9d0f5da7b",
+              "parentUUID": "d31bccfe-688e-4bbe-8eb5-cee40273d5dd",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should have 11 items",
+              "fullTitle": "Parse list app  should have 11 items",
+              "timedOut": null,
+              "duration": 383,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul > li').should('have.length', 11);",
+              "err": {},
+              "uuid": "44c274e6-dd85-41d0-a7d9-f6f09020e184",
+              "parentUUID": "d31bccfe-688e-4bbe-8eb5-cee40273d5dd",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should be sorted by salary DSC",
+              "fullTitle": "Parse list app  should be sorted by salary DSC",
+              "timedOut": null,
+              "duration": 194,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul > li').then(function ($ul) {\n  var list = (0, _toConsumableArray2.default)($ul).map(function (row) {\n    return row.dataset.salary.replace('$', '').replace(',', '');\n  });\n  var counter = 0;\n  for (var i = 0; i < list.length; i++) {\n    if (Number(list[i + 1]) <= Number(list[i])) {\n      counter += 1;\n    }\n  }\n  expect(counter).to.equal(list.length - 1);\n});",
+              "err": {},
+              "uuid": "775f64c7-e9f5-43dd-8494-4ce9422a4a80",
+              "parentUUID": "d31bccfe-688e-4bbe-8eb5-cee40273d5dd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d298249b-2c55-4730-957c-0de9d0f5da7b",
+            "44c274e6-dd85-41d0-a7d9-f6f09020e184",
+            "775f64c7-e9f5-43dd-8494-4ce9422a4a80"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1786,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "raw_reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}
