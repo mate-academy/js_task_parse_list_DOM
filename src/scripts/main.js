@@ -1,3 +1,29 @@
 'use strict';
 
-// write code here
+const list = document.querySelectorAll('li');
+
+function sortList([...items]) {
+  items.sort((a, b) => {
+    return getNumbers(b.dataset.salary) - getNumbers(a.dataset.salary);
+  });
+
+  document.querySelector('ul').append(...items);
+}
+
+function getNumbers(number) {
+  return +number.split('')
+    .filter(el => '0123456789'.includes(el))
+    .join('');
+}
+
+function getEmployees([...items]) {
+  return items.map(person => ({
+    name: person.innerText,
+    position: person.dataset.position,
+    salary: person.dataset.salary,
+    age: person.dataset.age,
+  }));
+}
+
+sortList(list);
+getEmployees(list);
