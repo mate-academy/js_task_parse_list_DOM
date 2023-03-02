@@ -1,8 +1,6 @@
 'use strict';
 
 const ullist = document.querySelector('ul');
-// получаем все элементы списка
-// const items = list.querySelectorAll('li');
 
 function sortList(list) {
   const items = Array.from(list.children);
@@ -10,11 +8,7 @@ function sortList(list) {
     element: item,
     salary: convertToNumber(item.dataset.salary),
   }));
-
-  // сортируем элементы по зарплате в порядке убывания
   sortable.sort((a, b) => b.salary - a.salary);
-
-  // перемещаем элементы в список в порядке отсортированного массива
   sortable.forEach(({ element }) => ullist.appendChild(element));
 }
 
