@@ -1,17 +1,17 @@
 'use strict';
 
-let list = document.querySelectorAll('li');
+const list = document.querySelectorAll('li');
 
 function toNumber(str) {
-  return +str.dataset.salary.slice(1).split(',').join('');
+  return +str.dataset.salary.slice(1).replaceAll(',', '');
 }
 
 function sortList(someList) {
-  list = [...someList].sort((person1, person2) =>
+  const newList = [...someList].sort((person1, person2) =>
     toNumber(person2)
       - toNumber(person1));
 
-  document.querySelector('ul').append(...list);
+  document.querySelector('ul').append(...newList);
 }
 
 function getEmployees(someList) {
