@@ -8,11 +8,11 @@ const sortList = (argList) => {
 };
 
 const getEmployees = (argList) => {
-  return argList.map(e => ({
-    name: e.innerText,
-    position: e.dataset.position,
-    salary: e.dataset.salary,
-    age: e.dataset.age,
+  return argList.map(person => ({
+    name: person.innerText,
+    position: person.dataset.position,
+    salary: person.dataset.salary,
+    age: person.dataset.age,
   }));
 };
 
