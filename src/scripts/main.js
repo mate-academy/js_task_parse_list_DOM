@@ -1,26 +1,27 @@
 'use strict';
 
-const listContainer = document.querySelector('ul');
+const list = document.querySelector('ul');
+const listSalary = [...document.querySelectorAll('li')];
 
-const sortList = (list) => {
-  const people = [...list.querySelectorAll('li')];
-  const arr = people.sort(
-    (a, b) => +b.dataset.salary.slice(1).split(',').join('')
-    - +a.dataset.salary.slice(1).split(',').join(''));
+function getSalary(string) {
+  return +string.slice(1).split(',').join('');
+}
 
-  list.append(...arr);
-};
+function sortList(arr) {
+  const sortedList = arr.sort((a, b) =>
+    getSalary(b.dataset.salary) - getSalary(a.dataset.salary));
 
-const getEmployees = (list) => {
-  const listItems = [...list.querySelectorAll('li')];
+  list.append(...sortedList);
+}
 
-  return listItems.map(el => ({
-    name: el.innerText,
-    position: el.dataset.position,
-    salary: el.dataset.salary,
-    age: el.dataset.age,
+function getEmployees(arr) {
+  return arr.map(item => ({
+    name: item.textContent,
+    position: item.dataset.position,
+    salary: item.dataset.salary,
+    age: item.dataset.age,
   }));
-};
+}
 
-sortList(listContainer);
-getEmployees(listContainer);
+sortList(listSalary);
+getEmployees(listSalary);
