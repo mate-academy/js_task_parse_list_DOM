@@ -8,8 +8,12 @@ const convertSalary = (salary) => {
 };
 
 function sortList(list) {
-  return list.sort((a, b) => convertSalary(b.dataset.salary)
-  - convertSalary(a.dataset.salary));
+  const copyList = [...list];
+  const sortedList = copyList.sort((first, second) => (
+    convertSalary(second.dataset.salary) - convertSalary(first.dataset.salary))
+  );
+
+  employeesList.append(...sortedList);
 }
 
 function getEmployees(list) {
@@ -21,5 +25,5 @@ function getEmployees(list) {
   }));
 };
 
-employeesList.append(...sortList(employeesElements));
+sortList(employeesElements);
 getEmployees(employeesElements);
