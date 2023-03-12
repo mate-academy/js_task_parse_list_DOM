@@ -3,13 +3,13 @@
 const listPeople = document.querySelector('ul');
 const listMen = document.querySelectorAll('li');
 
-function transformMony(string) {
+function transformMoney(string) {
   return +string.slice(1).split(',').join('');
 };
 
 function sortList(list) {
   const sortColeclect = [...list].sort((a, b) =>
-    transformMony(b.dataset.salary) - transformMony(a.dataset.salary));
+    transformMoney(b.dataset.salary) - transformMoney(a.dataset.salary));
 
   listPeople.append(...sortColeclect);
 };
