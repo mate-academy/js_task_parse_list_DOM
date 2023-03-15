@@ -2,7 +2,6 @@
 
 const eachEmployee = document.querySelectorAll('li');
 const allEmployees = document.querySelector('ul');
-// console.log(allEmployees)
 
 const salaryToNumber = (salary) => {
   return +salary.slice(1).replace(/,/g, '');
@@ -19,9 +18,7 @@ const sortList = (list) => {
 };
 
 const getEmployees = (list) => {
-  const copiedList = [...list];
-
-  return copiedList.map(el => ({
+  return list.map(el => ({
     name: el.innerText,
     position: el.dataset.position,
     salary: el.dataset.salary,
