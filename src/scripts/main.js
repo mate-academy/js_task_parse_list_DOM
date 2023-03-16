@@ -4,7 +4,8 @@ const ul = document.querySelector('ul');
 const li = [...document.querySelectorAll('li')];
 
 function sortList(list) {
-  const sorted = list.sort((a, b) =>
+  const copy = [...list];
+  const sorted = copy.sort((a, b) =>
     converter(b) - converter(a));
 
   ul.append(...sorted);
