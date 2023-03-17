@@ -1,33 +1,34 @@
 'use strict';
 
-const list = document.querySelectorAll('li');
+const list = document.querySelector('ul');
+const employees = document.querySelectorAll('li');
 
-function sortList(someList) {
-  return [...someList].sort((item1, item2) => {
+function sortList(someEmployees) {
+  const sortedEmployees = [...someEmployees].sort((item1, item2) => {
     const salary1 = +item1.dataset.salary
       .split(',').join('')
       .split('$').join('');
-  console.log(item2.dataset.salary);
+
     const salary2 = +item2.dataset.salary
       .split(',').join('')
       .split('$').join('');
 
     return salary2 - salary1;
   });
+
+  list.append(...sortedEmployees);
 }
 
-
-
 function getEmployees(someList) {
-  return [...someList].map(item => (
-    {
-      name: item.textContent,
+  return [...someList].map(item => {
+    return {
+      name: item.innerText,
       position: item.dataset.position,
       salary: item.dataset.salary,
       age: item.dataset.age,
-    },
-  ));
+    };
+  });
 }
 
-sortList(list);
-getEmployees(list);
+sortList(employees);
+getEmployees(employees);
