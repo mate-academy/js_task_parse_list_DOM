@@ -1,7 +1,7 @@
 'use strict';
 
-function convertToNumber(SalaryString) {
-  return SalaryString.slice(1).split(',').join('');
+function convertToNumber(salaryString) {
+  return salaryString.slice(1).split(',').join('');
 }
 
 function sortList(list) {
@@ -18,12 +18,13 @@ function sortList(list) {
 function getEmployees(list) {
   const employees = [...list]
     .map(person => {
+      const { position, salary, age } = person.dataset;
       const employee = {};
 
       employee.name = person.innerText;
-      employee.position = person.dataset.position;
-      employee.salary = person.dataset.salary;
-      employee.age = person.dataset.age;
+      employee.position = position;
+      employee.salary = salary;
+      employee.age = age;
 
       return employee;
     });
