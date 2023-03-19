@@ -3,10 +3,11 @@
 const listItems = [...document.querySelectorAll('li')];
 const list = document.querySelector('ul');
 
+function toNumber(salary) {
+  return +salary.slice(1).split(',').join('');
+}
+ 
 function sortList(li) {
-  function toNumber(salary) {
-    return +salary.slice(1).split(',').join('');
-  }
 
   return list.append(...li
     .sort((a, b) => toNumber(b.dataset.salary) - toNumber(a.dataset.salary)));
