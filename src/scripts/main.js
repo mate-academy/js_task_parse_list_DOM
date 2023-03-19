@@ -8,21 +8,6 @@ function convertSalaryToNumber(salary) {
   );
 }
 
-function convertSalaryToString(salary) {
-  return `$${salary.toLocaleString('en')}`;
-}
-
-function createEmployeeElement(employee) {
-  return `
-    <li
-      data-position="${employee.position}"
-      data-salary="${convertSalaryToString(employee.salary)}"
-      data-age="${employee.age}"
-    >
-    ${employee.name}
-    </li>`;
-}
-
 function getEmployees(list) {
   return [...list.children].map(child => (
     {
@@ -35,18 +20,18 @@ function getEmployees(list) {
 }
 
 function sortList(list) {
-  const sortedEmployees = getEmployees(list)
-    .sort((employeePrevious, employeeCurrent) => (
-      employeeCurrent.salary - employeePrevious.salary
-    ));
+  const listCopy = [...list.children];
 
-  const employeesSortedElementsList = sortedEmployees
-    .map(employee => createEmployeeElement(employee));
+  listCopy.sort((employeeElementA, employeeElementB) => (
+    convertSalaryToNumber(employeeElementB.dataset.salary)
+    - convertSalaryToNumber(employeeElementA.dataset.salary)
+  ));
 
-  return employeesSortedElementsList;
+  list.append(...listCopy);
 }
 
 const employeesElementsList = document.querySelector('ul');
-const employeesElementsSortedList = sortList(employeesElementsList);
 
-employeesElementsList.innerHTML = employeesElementsSortedList.join('');
+sortList(employeesElementsList);
+
+window.console.log(getEmployees(employeesElementsList));
