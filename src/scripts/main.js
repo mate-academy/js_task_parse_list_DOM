@@ -19,12 +19,12 @@ function getEmployees(list) {
   const employees = [...list]
     .map(person => {
       const { position, salary, age } = person.dataset;
-      const employee = {};
-
-      employee.name = person.innerText;
-      employee.position = position;
-      employee.salary = salary;
-      employee.age = age;
+      const employee = {
+        name: person.innerText,
+        position,
+        salary,
+        age,
+      };
 
       return employee;
     });
