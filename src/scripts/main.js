@@ -1,19 +1,24 @@
 'use strict';
 
-const items = document.querySelectorAll('li');
+const list = document.querySelectorAll('li');
 
-const sortedList = [...items].sort(
-  (a, b) =>
-    +b.dataset.salary.replace(/[^+\d]/g, '')
-    - +a.dataset.salary.replace(/[^+\d]/g, '')
-);
+const numberConverter = (item) =>
+  parseFloat(item.dataset.salary.replace(/[^+\d]/g, ''));
 
-document.querySelector('ul').remove();
+const sortList = (items, listSelector) => {
+  [...items]
+    .sort((a, b) => numberConverter(b) - numberConverter(a))
+    .forEach((el) => listSelector.append(el));
+};
 
-const list = document.createElement('ul');
+const getEmployees = (items) => {
+  return [...items].map((el) => ({
+    name: el.innerText,
+    position: el.dataset.position,
+    salary: el.dataset.salary,
+    age: el.dataset.age,
+  }));
+};
 
-for (const item of sortedList) {
-  list.append(item);
-}
-
-document.querySelector('body').append(list);
+sortList(list, document.querySelector('ul'));
+getEmployees(list);
