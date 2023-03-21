@@ -4,6 +4,7 @@ const listNode = document.querySelector('ul');
 const [...employees] = listNode.children;
 
 sortList(employees);
+listNode.append(...employees);
 getEmployees(employees);
 
 function sortList(list) {
@@ -13,8 +14,6 @@ function sortList(list) {
 
     return bSalary - aSalary;
   });
-
-  listNode.append(...employees);
 };
 
 function convertToNumber(string) {
