@@ -1,14 +1,13 @@
 'use strict';
 
 const listNode = document.querySelector('ul');
-const [...employees] = listNode.children;
+const employees = listNode.children;
 
-sortList(employees);
-listNode.append(...employees);
+listNode.append(...sortList(employees));
 getEmployees(employees);
 
 function sortList(list) {
-  list.sort((a, b) => {
+  return [...list].sort((a, b) => {
     const aSalary = convertToNumber(a.getAttribute('data-salary'));
     const bSalary = convertToNumber(b.getAttribute('data-salary'));
 
@@ -23,12 +22,10 @@ function convertToNumber(string) {
 };
 
 function getEmployees(list) {
-  return list.map((person) => {
-    return {
-      name: person.innerText,
-      position: person.getAttribute('data-position'),
-      salary: person.getAttribute('data-salary'),
-      age: person.getAttribute('data-age'),
-    };
-  });
+  return [...list].map((person) => ({
+    name: person.innerText,
+    position: person.getAttribute('data-position'),
+    salary: person.getAttribute('data-salary'),
+    age: person.getAttribute('data-age'),
+  }));
 };
