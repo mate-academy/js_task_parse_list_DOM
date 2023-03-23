@@ -1,55 +1,43 @@
 'use strict';
 
-const arrayLike = document.querySelectorAll('li');
+function toNumber(Str) {
+  const numb = +Str.replace(/\D/g, '');
 
-const arrayReal = [];
+  return numb;
+}
 
-function getEmployees() {
-  for (let i = 0; i < arrayLike.length; i++) {
-    const item = arrayLike[i].dataset;
-    let itemReal = { ...item };
+function sortList(list) {
+  const arrayNew = [...list].sort((a, b) => {
+    const salaryA = toNumber(a.dataset.salary);
+    const salaryB = toNumber(b.dataset.salary);
 
-    itemReal = {
-      name: arrayLike[i].innerText, ...itemReal,
-    };
+    return salaryB - salaryA;
+  });
 
-    arrayReal.push(itemReal);
+  document.querySelector('ul').innerHTML = '';
+
+  for (const item of arrayNew) {
+    document.querySelector('ul').innerHTML += `
+      <li
+        data-positiion=${item.dataset.position}
+        data-salary=${item.dataset.salary}
+        data-age=${item.dataset.age}
+      >
+        ${item.textContent.trim()}
+      </li>
+    `;
   }
+}
+
+function getEmployees(list) {
+  const arrayReal = [...list].map(item => {
+    return {
+      name: item.innerText, ...item.dataset,
+    };
+  });
 
   return arrayReal;
 }
 
-getEmployees();
-
-const arrayNew = [];
-
-function sortList() {
-  for (let i = 0; i < arrayReal.length; i++) {
-    arrayNew.push({ ...arrayReal[i] });
-  }
-
-  for (let i = 0; i < arrayNew.length; i++) {
-    arrayNew[i].salary = +arrayNew[i].salary.replace(/\D/g, '');
-  }
-
-  arrayNew.sort((a, b) => b.salary - a.salary);
-
-  for (let i = 0; i < arrayNew.length; i++) {
-    arrayNew[i].salary = '$' + arrayNew[i].salary.toLocaleString('en-US');
-
-    for (let j = 0; j < arrayReal.length; j++) {
-      if (arrayReal[j].name === arrayNew[i].name) {
-        document.querySelectorAll('li')[i].innerText = arrayNew[i].name;
-
-        document.querySelectorAll('li')[i].dataset.position
-        = arrayNew[i].position;
-
-        document.querySelectorAll('li')[i].dataset.salary = arrayNew[i].salary;
-
-        document.querySelectorAll('li')[i].dataset.age = arrayNew[i].age;
-      }
-    }
-  }
-}
-
-sortList();
+sortList(document.querySelectorAll('li'));
+getEmployees(document.querySelectorAll('li'));
