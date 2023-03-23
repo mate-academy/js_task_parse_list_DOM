@@ -3,11 +3,12 @@
 const employeesList = [...document.querySelectorAll('li')];
 const ul = document.querySelector('ul');
 
-const toNumber = str => +(str.replace('$', '').replace(',', ''));
+const convertStrToNum = str => +(str.replace('$', '').replace(',', ''));
 
 function sortList(list) {
-  const sorted = list
-    .sort((a, b) => toNumber(b.dataset.salary) - toNumber(a.dataset.salary));
+  const sorted = list.sort((a, b) => (
+    convertStrToNum(b.dataset.salary) - convertStrToNum(a.dataset.salary)
+  ));
 
   ul.append(...sorted);
 }
