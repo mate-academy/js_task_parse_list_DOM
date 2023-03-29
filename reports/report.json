@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2023-03-29T15:53:07.181Z",
-    "end": "2023-03-29T15:53:07.486Z",
-    "duration": 279,
+    "start": "2023-03-29T16:09:27.801Z",
+    "end": "2023-03-29T16:09:28.100Z",
+    "duration": 274,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "f2731b56-b984-4364-8397-a908c4440b2d",
+      "uuid": "02f3b786-03be-4ff1-9e06-dd973c2f364f",
       "title": "",
       "fullFile": "cypress/integration/jsTaskParseListDOM.spec.js",
       "file": "cypress/integration/jsTaskParseListDOM.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "88516bbc-9e32-4c4f-ab0e-ea1c03bb2331",
+          "uuid": "a1433d27-507d-4a87-bc28-08622aa5d86d",
           "title": "Parse list app ",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should render list",
               "fullTitle": "Parse list app  should render list",
               "timedOut": null,
-              "duration": 138,
+              "duration": 137,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.get('ul');",
               "err": {},
-              "uuid": "644cd7b9-66c7-4410-98e8-1857ed28c95b",
-              "parentUUID": "88516bbc-9e32-4c4f-ab0e-ea1c03bb2331",
+              "uuid": "fae29610-7efe-4d74-93a0-56185c01e0a6",
+              "parentUUID": "a1433d27-507d-4a87-bc28-08622aa5d86d",
               "isHook": false,
               "skipped": false
             },
@@ -65,8 +65,8 @@
               "context": null,
               "code": "cy.get('ul > li').should('have.length', 11);",
               "err": {},
-              "uuid": "fe5c7a4f-7ec0-4f7a-8fad-33b96535bb9a",
-              "parentUUID": "88516bbc-9e32-4c4f-ab0e-ea1c03bb2331",
+              "uuid": "518c2431-4566-49d7-9e39-e75fd8c44938",
+              "parentUUID": "a1433d27-507d-4a87-bc28-08622aa5d86d",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "should be sorted by salary DSC",
               "fullTitle": "Parse list app  should be sorted by salary DSC",
               "timedOut": null,
-              "duration": 69,
+              "duration": 65,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -83,22 +83,22 @@
               "context": null,
               "code": "cy.get('ul > li').then(function ($ul) {\n  var list = (0, _toConsumableArray2.default)($ul).map(function (row) {\n    return row.dataset.salary.replace('$', '').replace(',', '');\n  });\n  var counter = 0;\n  for (var i = 0; i < list.length; i++) {\n    if (Number(list[i + 1]) <= Number(list[i])) {\n      counter += 1;\n    }\n  }\n  expect(counter).to.equal(list.length - 1);\n});",
               "err": {},
-              "uuid": "2f3a04fc-d5df-4181-9b39-22dcef4936a3",
-              "parentUUID": "88516bbc-9e32-4c4f-ab0e-ea1c03bb2331",
+              "uuid": "214bd2a7-ccdb-44f6-b4ff-3248853261f0",
+              "parentUUID": "a1433d27-507d-4a87-bc28-08622aa5d86d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "644cd7b9-66c7-4410-98e8-1857ed28c95b",
-            "fe5c7a4f-7ec0-4f7a-8fad-33b96535bb9a",
-            "2f3a04fc-d5df-4181-9b39-22dcef4936a3"
+            "fae29610-7efe-4d74-93a0-56185c01e0a6",
+            "518c2431-4566-49d7-9e39-e75fd8c44938",
+            "214bd2a7-ccdb-44f6-b4ff-3248853261f0"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 279,
+          "duration": 274,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

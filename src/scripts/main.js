@@ -1,6 +1,7 @@
 'use strict';
 
 const list = document.querySelectorAll('li');
+const personList = document.querySelector('ul');
 
 function getNum(string) {
   return +string.replace(/[$,]/g, '');
@@ -10,7 +11,7 @@ function sortList(li) {
   const sortPerson = [...li].sort((a, b) =>
     getNum(b.dataset.salary) - getNum(a.dataset.salary));
 
-  document.querySelector('ul').append(...sortPerson);
+  personList.append(...sortPerson);
 }
 
 function getEmployees(li) {
