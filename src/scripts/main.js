@@ -7,7 +7,7 @@ function getSalaryValue(str) {
 };
 
 function sortList(list) {
-  const sortedList = [...elements].sort((a, b) =>
+  const sortedList = [...list].sort((a, b) =>
     getSalaryValue(b.dataset.salary) - getSalaryValue(a.dataset.salary)
   );
 
