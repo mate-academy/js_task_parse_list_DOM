@@ -13,22 +13,22 @@ const sortList = (list) => {
   document.querySelector('ul').append(...list);
 };
 
-const getEmployee = (list) => {
-  const newObjects = [];
+const getEmployees = (list) => {
+  const newEmployees = [];
 
   for (let i = 0; i < list.length; i++) {
-    const obj = {};
+    const employee = {};
 
-    obj.name = list[i].innerText;
-    obj.position = list[i].dataset.position;
-    obj.salary = list[i].dataset.salary;
-    obj.age = list[i].dataset.age;
+    employee.name = list[i].innerText;
+    employee.position = list[i].dataset.position;
+    employee.salary = list[i].dataset.salary;
+    employee.age = list[i].dataset.age;
 
-    newObjects.push(obj);
+    newEmployees.push(employee);
   }
 
-  return newObjects;
+  return newEmployees;
 };
 
 sortList(listEmployees);
-getEmployee(listEmployees);
+getEmployees(listEmployees);
