@@ -16,7 +16,7 @@ for (const employee of employees) {
   employeesArray.push(employeeObj);
 }
 
-function helperFunction(arr) {
+function convertStringToNumbers(arr) {
   const result = arr.map((person) =>
     ({
       ...person,
@@ -27,7 +27,7 @@ function helperFunction(arr) {
 }
 
 function sortList(list) {
-  const newArr = helperFunction(list);
+  const newArr = convertStringToNumbers(list);
 
   newArr.sort((x, y) => (y.salary - x.salary));
 
@@ -52,7 +52,4 @@ function getEmployees(list) {
   `;
 }
 
-const finalArray = sortList(employeesArray);
-
-sortList(employeesArray);
-getEmployees(finalArray);
+getEmployees(sortList(employeesArray));
