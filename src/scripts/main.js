@@ -14,18 +14,16 @@ const sortList = (list) => {
 };
 
 const getEmployees = (list) => {
-  const newEmployees = [];
-
-  for (let i = 0; i < list.length; i++) {
+  const newEmployees = list.map(person => {
     const employee = {};
 
-    employee.name = list[i].innerText;
-    employee.position = list[i].dataset.position;
-    employee.salary = list[i].dataset.salary;
-    employee.age = list[i].dataset.age;
+    employee.name = person.innerText;
+    employee.position = person.dataset.position;
+    employee.salary = person.dataset.salary;
+    employee.age = person.dataset.age;
 
-    newEmployees.push(employee);
-  }
+    return employee;
+  });
 
   return newEmployees;
 };
