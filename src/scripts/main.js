@@ -2,54 +2,41 @@
 
 // write code here
 
-const employees = document.querySelectorAll('li');
-const employeesArray = [];
+const employees = document.querySelector('ul');
 
-for (const employee of employees) {
-  const employeeObj = {};
-
-  employeeObj.name = employee.innerText;
-  employeeObj.position = employee.dataset.position;
-  employeeObj.salary = employee.dataset.salary;
-  employeeObj.age = employee.dataset.age;
-
-  employeesArray.push(employeeObj);
-}
-
-function convertStringToNumbers(arr) {
-  const result = arr.map((person) =>
-    ({
-      ...person,
-      salary: Number(person.salary.replace(/[$,]/g, '')),
-    }));
-
-  return result;
+function convertStringToNumber(salaryString) {
+  return Number(salaryString.replace(/[$,]/g, ''));
 }
 
 function sortList(list) {
-  const newArr = convertStringToNumbers(list);
+  const people = Array.from(list.children);
 
-  newArr.sort((x, y) => (y.salary - x.salary));
+  people.sort((a, b) => {
+    const salaryA = convertStringToNumber(a.dataset.salary);
+    const salaryB = convertStringToNumber(b.dataset.salary);
 
-  return newArr;
+    return salaryB - salaryA;
+  });
+  people.forEach(person => list.appendChild(person));
 }
 
 function getEmployees(list) {
-  const ul = document.querySelector('ul');
+  sortList(list);
 
-  ul.innerHTML = `
-  <ul>
-    ${list.map(person => `
-      <li
-      data-position="${person.position}"
-      data-salary="$${person.salary.toLocaleString()}"
-      data-age="${person.age}"
-      >
-        ${person.name}
-      </li>
-    `).join('')}
-  </ul>
-  `;
+  const sortedEmployees = Array
+    .from(list.children)
+    .map(employee => {
+      const employeeName = employee.textContent;
+      const employeePosition = employee.dataset.position;
+      const employeeSalary = Number(employee.dataset.salary);
+      const employeeAge = Number(employee.dataset.age);
+
+      return {
+        employeeName, employeePosition, employeeSalary, employeeAge,
+      };
+    });
+
+  return sortedEmployees;
 }
 
-getEmployees(sortList(employeesArray));
+getEmployees(employees);
