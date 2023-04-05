@@ -1,7 +1,5 @@
 'use strict';
 
-const List = document.querySelectorAll('li');
-
 function sortList(list) {
   const employees = [];
   const sortedList = [...list].sort((a, b) =>
@@ -24,4 +22,6 @@ function sortList(list) {
   return employees;
 }
 
-sortList(List);
+const listOfEmployees = document.querySelectorAll('li');
+
+sortList(listOfEmployees);
