@@ -1,15 +1,21 @@
 'use strict';
 
-const element = document.body.children[1].children;
-const sortlist = [...element].sort((x, y) =>
-  (+(((y.dataset['salary']).replace(/,/g, '')).replace('$', '')))
-  - (+(((x.dataset['salary']).replace(/,/g, '')).replace('$', ''))));
+const peopleList = document.body.children[1].children;
+
+for (const person of peopleList) {
+  person.dataset['salaryNum'] = +(person.dataset['salary'].replace(/,/g, ''))
+    .replace('$', '');
+}
+
+const sortlist = [...peopleList].sort((x, y) =>
+  ((y.dataset['salaryNum']) - (x.dataset['salaryNum'])));
+
 const sortListNames = [];
 
 for (const person of sortlist) {
   sortListNames.push(person.innerText);
 }
 
-for (let i = 0; i <= element.length; i++) {
-  element[i].innerText = sortListNames[i];
+for (let i = 0; i <= peopleList.length; i++) {
+  peopleList[i].innerText = sortListNames[i];
 }
