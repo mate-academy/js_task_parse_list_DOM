@@ -1,21 +1,30 @@
 'use strict';
 
-const peopleList = document.body.children[1].children;
+const peopleList = document.querySelectorAll('li');
+const ul = document.querySelector('ul');
 
-for (const person of peopleList) {
-  person.dataset['salaryNum'] = +(person.dataset['salary'].replace(/,/g, ''))
-    .replace('$', '');
+function sort(list) {
+  const listArr = [...list];
+
+  function toNumber(string) {
+    return +(string.dataset.salary.replace(/,/g, '')).replace('$', '');
+  }
+
+  listArr.sort((x, y) => toNumber(y) - toNumber(x));
+
+  ul.prepend(...listArr);
+};
+
+sort(peopleList);
+
+function getEmployees(list) {
+  const listArr = [...list];
+
+  const getEmployeesArr = listArr.map(person => ({
+    name: person.innerText, ...person.dataset,
+  }));
+
+  return getEmployeesArr;
 }
 
-const sortlist = [...peopleList].sort((x, y) =>
-  ((y.dataset['salaryNum']) - (x.dataset['salaryNum'])));
-
-const sortListNames = [];
-
-for (const person of sortlist) {
-  sortListNames.push(person.innerText);
-}
-
-for (let i = 0; i <= peopleList.length; i++) {
-  peopleList[i].innerText = sortListNames[i];
-}
+getEmployees(peopleList);
