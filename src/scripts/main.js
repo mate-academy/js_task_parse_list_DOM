@@ -14,10 +14,11 @@ function sortList(arr) {
 
     return {
       ...dataInfo,
-      name : innerText
-    }
+      name: innerText,
+    };
   }).sort((a, b) => transNum(b.salary) - transNum(a.salary));
 }
+
 const sortValue = sortList([...people]);
 
 list.innerHTML = '';
@@ -25,16 +26,15 @@ list.innerHTML = '';
 function getEmployees(obj) {
   obj.forEach(element => {
     const keysData = Object.keys(element);
-    let itemList = document.createElement('li');
-      
+    const itemList = document.createElement('li');
+
     for (let i = 0; i < keysData.length - 1; i++) {
       itemList.dataset[keysData[i]] = element[keysData[i]];
     }
 
     itemList.innerText = element.name;
-    list.appendChild(itemList)
+    list.appendChild(itemList);
   });
 }
-
 
 getEmployees(sortValue);
