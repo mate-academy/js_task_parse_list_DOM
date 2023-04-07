@@ -19,7 +19,7 @@ function sortList(arr) {
   }).sort((a, b) => transNum(b.salary) - transNum(a.salary));
 }
 
-const sortValue = sortList([...people]);
+const sortedListValues  = sortList([...people]);
 
 list.innerHTML = '';
 
@@ -37,4 +37,4 @@ function getEmployees(obj) {
   });
 }
 
-getEmployees(sortValue);
+getEmployees(sortedListValues);
