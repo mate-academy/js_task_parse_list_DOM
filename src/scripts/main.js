@@ -1,39 +1,27 @@
 'use strict';
 
-const people = document.querySelectorAll('li');
+const people = [...document.querySelectorAll('li')];
 const list = document.querySelector('ul');
 
-function change(salary) {
+function transfStrToNum(salary) {
   return +salary.slice(1).replaceAll(',', '');
 };
 
 const sortList = listToSort => {
-  const currentList = Array.prototype.slice.call(listToSort, 0);
-
-  currentList
-    .sort((a, b) => change(b.dataset.salary) - change(a.dataset.salary))
-    .map(x => list.append(x));
-
-  return currentList;
+  return listToSort
+    .sort((firstPerson, secondPerson) =>
+      transfStrToNum(secondPerson.dataset.salary)
+      - transfStrToNum(firstPerson.dataset.salary))
+    .forEach(person => list.append(person));
 };
 
 function getEmployees(listToObjectArray) {
-  const currentList = Array.prototype.slice.call(listToObjectArray, 0);
-
-  for (let i = 0; i < currentList.length; i++) {
-    const newPerson = {
-      name: currentList[i].textContent
-        .replaceAll('\n', '')
-        .trim(),
-      position: currentList[i].dataset.position,
-      salary: currentList[i].dataset.salary,
-      age: currentList[i].dataset.age,
+  return listToObjectArray.map(employee => {
+    return {
+      name: employee.innerText,
+      ...employee.dataset,
     };
-
-    currentList[i] = newPerson;
-  }
-
-  return currentList;
+  });
 }
 
 sortList(people);
