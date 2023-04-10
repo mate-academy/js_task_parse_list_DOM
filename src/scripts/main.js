@@ -1,14 +1,23 @@
 'use strict';
 
-const list = document.querySelector('ul');
-const employyes = [...list.children];
+const employeesList = document.querySelector('ul');
+const employees = [...employeesList.children];
 
-function removeChars(str) {
-  return +str.replaceAll(',', '').replaceAll('$', '');
-}
+const convertToNumber = (string) => Number(string.replace(/[$,]/g, ''));
 
-const getEmployees = (employeesList) => {
-  return employeesList.map((employee) => ({
+const sortList = (list) => {
+  list.sort((empA, empB) => {
+    const salaryA = convertToNumber(empA.dataset.salary);
+    const salaryB = convertToNumber(empB.dataset.salary);
+
+    return salaryB - salaryA;
+  });
+
+  employeesList.append(...list);
+};
+
+const getEmployees = (list) => {
+  return list.map((employee) => ({
     name: employee.innerText,
     position: employee.dataset.position,
     salary: employee.dataset.salary,
@@ -16,19 +25,5 @@ const getEmployees = (employeesList) => {
   }));
 };
 
-getEmployees(employyes);
-
-const sortList = (employeesList) => {
-  employeesList.sort((empA, empB) => {
-    const salaryA = removeChars(empA.dataset.salary);
-    const salaryB = removeChars(empB.dataset.salary);
-
-    return salaryB - salaryA;
-  });
-
-  for (const person of employeesList) {
-    list.append(person);
-  }
-};
-
-sortList(employyes);
+getEmployees(employees);
+sortList(employees);
