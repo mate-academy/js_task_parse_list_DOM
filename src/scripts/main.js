@@ -3,32 +3,26 @@
 const list = document.querySelectorAll('li');
 const ul = document.querySelector('ul');
 
-// сортування за з.п
-// eslint-disable-next-line no-shadow
-function sortBySalary(list) {
+function sortBySalary(l) {
   function convertToNumber(str) {
     return parseInt(str.replace(/\D/g, ''));
   }
 
-  // eslint-disable-next-line no-shadow
-  const sortedList = [...list].sort((a, b) => {
+  const sortList = [...list].sort((a, b) => {
     const salaryA = convertToNumber(a.dataset.salary);
     const salaryB = convertToNumber(b.dataset.salary);
 
     return salaryB - salaryA;
   });
 
-  return sortedList;
+  return sortList;
 }
 
-// масив об'єктів
-// eslint-disable-next-line no-shadow
-function getEmployees(list) {
-  // eslint-disable-next-line no-shadow
-  const employees = [];
+function getEmployees(l) {
+  const empl = [];
 
   list.forEach(item => {
-    employees.push({
+    empl.push({
       name: item.textContent.trim(),
       position: item.dataset.position,
       salary: item.dataset.salary,
@@ -36,17 +30,14 @@ function getEmployees(list) {
     });
   });
 
-  return employees;
+  return empl;
 }
 
-// запуск обох функцій для списку li-шок
 const sortedList = sortBySalary(list);
 const employees = getEmployees(sortedList);
 
-// очистити вміст ul
 ul.innerHTML = '';
 
-// створення нових li-елементів з масиву відсортованих об'єктів
 employees.forEach(item => {
   const li = document.createElement('li');
 
