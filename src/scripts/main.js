@@ -21,7 +21,7 @@ function sortBySalary(l) {
 function getEmployees(l) {
   const empl = [];
 
-  list.forEach(item => {
+  l.forEach(item => {
     empl.push({
       name: item.textContent.trim(),
       position: item.dataset.position,
