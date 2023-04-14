@@ -1,52 +1,34 @@
 'use strict';
 
-const list = document.body.children[1];
-
-const employees = [];
+const listOfEmployees = document.body.children[1];
 
 function salaryToNumber(salary) {
-  const slaryArray = salary.slice(1).split(',');
-  let result = '';
-
-  for (const element of slaryArray) {
-    result += element;
-  }
+  const result = salary.slice(1).split(',').join('');
 
   return +result;
 }
 
-function toFormat(data) {
-  let resultString = data.toString();
-  const result = [];
+function getEmployees(list) {
+  const employees = [];
 
-  do {
-    if (resultString.length % 3 !== 0) {
-      result.push(resultString.slice(0, resultString.length % 3));
-      resultString = resultString.slice(resultString.length % 3);
-    }
-    result.push(resultString.slice(0, 3));
-    resultString = resultString.slice(3);
-  } while (resultString.length > 0);
+  for (const employee of list.children) {
+    const employeeObject = {};
 
-  return '$' + result.join(',');
+    employeeObject.item = employee;
+    employeeObject.salary = salaryToNumber(employee.dataset.salary);
+
+    employees.push(employeeObject);
+  }
+
+  return employees;
 }
 
-for (const employee of list.children) {
-  const employeeObject = {};
+function sortList(toSort) {
+  toSort.sort((a, b) => b.salary - a.salary);
 
-  employeeObject.name = employee.innerText;
-  employeeObject.position = employee.dataset.position;
-  employeeObject.salary = salaryToNumber(employee.dataset.salary);
-  employeeObject.age = employee.dataset.age;
-
-  employees.push(employeeObject);
+  for (let i = 0; i < listOfEmployees.children.length; i++) {
+    listOfEmployees.append(toSort[i].item);
+  }
 }
 
-const sortedBySalary = employees.sort((a, b) => b.salary - a.salary);
-
-for (let i = 0; i < list.children.length; i++) {
-  list.children[i].innerHTML = sortedBySalary[i].name;
-  list.children[i].dataset.position = sortedBySalary[i].position;
-  list.children[i].dataset.salary = toFormat(sortedBySalary[i].salary);
-  list.children[i].dataset.age = sortedBySalary[i].age;
-}
+sortList(getEmployees(listOfEmployees));
