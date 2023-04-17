@@ -16,25 +16,23 @@ function sortList(list) {
     prepareNumber(b.dataset.salary) - prepareNumber(a.dataset.salary)
   ));
 
-  for (const node of listArray) {
-    document.querySelector('ul').append(node);
-  }
+  listArray.forEach(node => document.querySelector('ul').append(node));
 }
 
 function getEmployees(list) {
   const listArray = Array.from(list);
 
-  return listArray.reduce((accumulator, current) => {
-    const fullName = current.innerText;
-    const { position, salary, age } = current.dataset;
+  return listArray.map(node => {
+    const fullName = node.innerText;
+    const { position, salary, age } = node.dataset;
 
-    return [...accumulator, {
+    return {
       fullName,
       position,
       salary,
       age,
-    }];
-  }, []);
+    };
+  });
 }
 
 sortList(nodesList);
