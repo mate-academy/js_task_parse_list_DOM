@@ -37,10 +37,8 @@ function sortEmployeesList() {
 }
 
 function setEmployeesElement() {
-  let currentEmployee = 0;
-
-  employeesElement.forEach(employeeElement => {
-    const { position, salary, age, employeeName } = employees[currentEmployee];
+  employeesElement.forEach((employeeElement, employeeIndex) => {
+    const { position, salary, age, employeeName } = employees[employeeIndex];
 
     employeeElement.dataset.age = age;
 
@@ -48,7 +46,6 @@ function setEmployeesElement() {
 
     employeeElement.dataset.position = position;
     employeeElement.innerText = employeeName;
-    currentEmployee++;
   });
 }
 
