@@ -13,19 +13,12 @@ const sortedList = sortList(listOfEmployees);
 listTotal.append(...sortedList);
 
 function getEmployees(list) {
-  const arrOfEmployees = [];
-
-  list.forEach(item => {
-    const objOfEmployee = {};
-
-    objOfEmployee['name'] = item.innerText;
-    objOfEmployee['position'] = item.dataset.position;
-    objOfEmployee['salary'] = item.dataset.salary;
-    objOfEmployee['age'] = item.dataset.age;
-    arrOfEmployees.push(objOfEmployee);
-  });
-
-  return arrOfEmployees;
+  return list.map(item => ({
+    name: item.innerText,
+    position: item.dataset.position,
+    salary: item.dataset.salary,
+    age: item.dataset.age,
+  }));
 };
 
 getEmployees(sortedList);
