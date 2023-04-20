@@ -13,18 +13,14 @@ function getNumberFromSalary(item) {
 }
 
 function getEmployees(arr) {
-  const result = [];
-
-  arr.forEach((el) => {
-    result.push({
+  return arr.map((el) => {
+    return {
       name: el.innerText,
       position: el.dataset.position,
       salary: el.dataset.salary,
       age: el.dataset.age,
-    });
+    };
   });
-
-  return result;
 }
 
 const list = document.querySelector('UL');
