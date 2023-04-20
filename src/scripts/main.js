@@ -31,12 +31,8 @@ const list = document.querySelector('UL');
 const employees = [...document.getElementsByTagName('li')];
 
 employees.sort((a, b) => {
-  if (getNumberFromSalary(a) - getNumberFromSalary(b) > 0) {
-    return -1;
-  }
-});
+  return getNumberFromSalary(a) - getNumberFromSalary(b);
+}).reverse();
 
 employees.forEach((el) => list.append(el));
-
-// eslint-disable-next-line no-unused-vars
-const employeesObjectsList = getEmployees(employees);
+getEmployees(employees);
