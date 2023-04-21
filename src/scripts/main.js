@@ -5,14 +5,14 @@ const employees = document.querySelectorAll('li');
 
 function sortPeople(listPeople, list) {
   const replaceString = (str) => {
-    return str.replace(/,/g, '').replace('$', '');
+    return str.replace(/[,|$]/g, '');
   };
 
-  const peopleSortSalary = [...listPeople].sort((str1, str2) => {
-    const num2 = str2.dataset.salary;
-    const num1 = str1.dataset.salary;
+  const peopleSortSalary = [...listPeople].sort((prevStr, nextStr) => {
+    const nextNum = nextStr.dataset.salary;
+    const prevNum = prevStr.dataset.salary;
 
-    return replaceString(num2) - replaceString(num1);
+    return replaceString(nextNum) - replaceString(prevNum);
   });
 
   peopleSortSalary.forEach(people => list.append(people));
@@ -26,14 +26,14 @@ function createObjFromEmployess(listPeople) {
     const { position, age, salary } = infoPeople.dataset;
     const elementContent = infoPeople.textContent.trim();
 
-    const obj = {
+    const descriptionOfPeople = {
       name: elementContent,
       position,
       age,
       salary,
     };
 
-    return obj;
+    return descriptionOfPeople;
   }
 }
 
