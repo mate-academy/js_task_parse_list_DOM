@@ -1,20 +1,21 @@
 'use strict';
 
-const ulMain = document.querySelector('ul');
-const listUl = ulMain.children;
+const personUl = document.querySelector('ul');
+const personList = [...personUl.children];
 
 function sortList(list) {
-  const sortL = [...listUl].sort((a, b) => {
-    return creatNumber(b.dataset.salary) - creatNumber(a.dataset.salary);
+  const sortedEmployees = list.sort((a, b) => {
+    return (convertSalaryToNumber(b.dataset.salary)
+      - convertSalaryToNumber(a.dataset.salary));
   });
 
-  for (const lis of sortL) {
-    ulMain.insertAdjacentElement('beforeend', lis);
+  for (const employee of sortedEmployees) {
+    personUl.insertAdjacentElement('beforeend', employee);
   }
 }
 
 function getEmployees(list) {
-  const objEl = [...list].map(elem => {
+  const employees = list.map(elem => {
     return {
       name: elem.innerText,
       position: elem.dataset.position,
@@ -23,14 +24,14 @@ function getEmployees(list) {
     };
   });
 
-  return objEl;
+  return employees;
 }
 
-function creatNumber(str) {
+function convertSalaryToNumber(str) {
   const corectNumb = str.slice(1).split(',').join('');
 
   return corectNumb;
 };
 
-sortList(listUl);
-getEmployees(listUl);
+sortList(personList);
+getEmployees(personList);
