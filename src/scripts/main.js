@@ -12,12 +12,15 @@ class Employee {
   }
 }
 
+function validateSalary(string) {
+  return string.dataset.salary.substring(1).replaceAll(',', '');
+}
+
 function sortList() {
   let resultString = '';
 
   employees.sort((a, b) => {
-    return Number(b.dataset.salary.substring(1).replaceAll(',', ''))
-    - Number(a.dataset.salary.substring(1).replaceAll(',', ''));
+    return Number(validateSalary(b)) - Number(validateSalary(a));
   });
 
   for (const li of employees) {
