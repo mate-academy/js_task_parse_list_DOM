@@ -12,8 +12,8 @@ class Employee {
   }
 }
 
-function validateSalary(string) {
-  return string.dataset.salary.substring(1).replaceAll(',', '');
+function validateSalary(employee) {
+  return employee.dataset.salary.substring(1).replaceAll(',', '');
 }
 
 function sortList() {
