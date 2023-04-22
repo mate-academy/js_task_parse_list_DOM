@@ -1,6 +1,7 @@
 'use strict';
 
 const list = document.body.querySelector('ul');
+const employees = [ ...list.children ];
 
 class Employee {
   constructor(boss, position, salary, age) {
@@ -12,15 +13,14 @@ class Employee {
 }
 
 function sortList() {
-  const employeesArr = [ ...list.children ];
   let resultString = '';
 
-  employeesArr.sort((a, b) => {
+  employees.sort((a, b) => {
     return Number(b.dataset.salary.substring(1).replaceAll(',', ''))
     - Number(a.dataset.salary.substring(1).replaceAll(',', ''));
   });
 
-  for (const li of employeesArr) {
+  for (const li of employees) {
     resultString += `
     <li
       data-position=${li.dataset.position}
@@ -38,7 +38,7 @@ function sortList() {
 function getEmployees() {
   const employeesArray = [];
 
-  for (const li of [ ...list.children ]) {
+  for (const li of employees) {
     const employee = new Employee(li.innerText, li.dataset.position,
       li.dataset.salary, li.dataset.age);
 
