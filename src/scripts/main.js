@@ -1,10 +1,9 @@
 'use strict';
 
 const list = document.querySelector('ul');
+const itemsList = [...document.querySelectorAll('li')];
 
-function sortListSalary(ul) {
-  const items = [...list.querySelectorAll('li')];
-
+function sortListSalary(items) {
   items.sort((itemA, itemB) => {
     const saleryA = +itemA.dataset.salary.slice(1).split(',').join('');
     const saleryB = +itemB.dataset.salary.slice(1).split(',').join('');
@@ -19,4 +18,4 @@ function sortListSalary(ul) {
   return list;
 }
 
-sortListSalary(list);
+sortListSalary(itemsList);
