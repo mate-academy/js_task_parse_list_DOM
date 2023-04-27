@@ -11,13 +11,35 @@ function camparator(a, b) {
 }
 
 const salary = document.querySelectorAll(['[data-salary]']);
-const salaryArrey = [...salary];
+const workersArray = [...salary];
 
-const sorted = salaryArrey.sort(camparator);
+function sortList() {
+  const sorted = workersArray.sort(camparator);
 
-sorted.forEach(item => document.querySelector('ul').appendChild(item));
+  sorted.forEach(item => document.querySelector('ul').appendChild(item));
 
-const list = document.querySelector('ul');
-const firstLi = document.querySelector('li');
+  const list = document.querySelector('ul');
+  const firstLi = document.querySelector('li');
 
-list.append(firstLi);
+  list.append(firstLi);
+}
+
+function getEmployees() {
+  const employeesArr = [];
+
+  for (const worker of workersArray) {
+    const employeesObject = {};
+
+    employeesObject.name = worker.innerText;
+    employeesObject.position = worker.dataset.position;
+    employeesObject.salary = worker.dataset.salary;
+    employeesObject.age = worker.dataset.age;
+
+    employeesArr.push(employeesObject);
+  }
+
+  return employeesArr;
+}
+
+sortList();
+getEmployees();
