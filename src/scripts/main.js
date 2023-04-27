@@ -26,17 +26,14 @@ function sortList(list) {
 
 function getSalary(person) {
   const salaryString = person.dataset.salary;
-  const salary = parseFloat(salaryString.replace(/[$,]/g, ''));
 
-  return salary;
+  return parseFloat(salaryString.replace(/[$,]/g, ''));
 }
 
 function getEmployees(list) {
   const result = [];
 
-  for (let i = 0; i < list.length; i++) {
-    const person = list[i];
-
+  [...list].map(person => {
     const personSummary = {
       name: person.innerText.trim(),
       position: person.dataset.position,
@@ -45,7 +42,7 @@ function getEmployees(list) {
     };
 
     result.push(personSummary);
-  }
+  });
 
   return result;
 }
