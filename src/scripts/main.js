@@ -20,14 +20,12 @@ function sortList(sortsalary) {
 }
 
 const arrsort = sortList(getEmployees(list)).map(el => {
-  return `  <li
+  return `<li
   data-position=${el.position}
   data-salary=$${el.salary}
   data-age=${el.age}
->${el.name}
-</li>
-`;
+  >${el.name}
+  </li>`;
 });
 
-ul.innerHTML = `
-${arrsort.join('')}`;
+ul.innerHTML = `${arrsort.join('')}`;
