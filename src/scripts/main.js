@@ -9,10 +9,9 @@ function getSalary(person) {
 
 function sortList(list) {
   const sortedList = [...list].sort((a, b) =>
-    getSalary(b.dataset.salary) - getSalary(a.dataset.salary)
+    getSalary(b) - getSalary(a)
   );
 
-  employees.innerHTML = '';
   employees.append(...sortedList);
 }
 
