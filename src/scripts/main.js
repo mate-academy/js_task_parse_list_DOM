@@ -1,7 +1,7 @@
 'use strict';
 
 const employeeList = [...document.querySelectorAll('li')];
-const people = document.querySelector('ul');
+const employees = document.querySelector('ul');
 
 function getSalary(person) {
   return Number(person.dataset.salary.slice(1).replace(',', ''));
@@ -12,7 +12,7 @@ function sortList(list) {
     getSalary(b.dataset.salary) - getSalary(a.dataset.salary)
   );
 
-  people.append(...sortedList);
+  employees.append(...sortedList);
 }
 
 function getEmployees(list) {
