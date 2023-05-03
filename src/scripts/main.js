@@ -1,6 +1,6 @@
 'use strict';
 
-const employeeList = document.querySelectorAll('li');
+const employeeList = [...document.querySelectorAll('li')];
 const people = document.querySelector('ul');
 
 function getSalary(person) {
