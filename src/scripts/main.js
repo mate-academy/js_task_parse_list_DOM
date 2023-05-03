@@ -12,6 +12,7 @@ function sortList(list) {
     getSalary(b.dataset.salary) - getSalary(a.dataset.salary)
   );
 
+  employees.innerHTML = '';
   employees.append(...sortedList);
 }
 
