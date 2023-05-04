@@ -2,50 +2,26 @@
 'use strict';
 
 const list = document.querySelector('ul');
+const allEmployees = [...list.querySelectorAll('li')];
 
 const helperFn = {
-  sort(prev, next) {
-    return helperFn.convertToNumber(next.dataset.salary) - helperFn.convertToNumber(prev.dataset.salary);
-  },
   convertToNumber(number) {
     return +number.replace('$', '').replace(',', '.');
   },
-  appendToList(item) {
-    list.innerHTML += `
-      <li
-        data-position="${item.dataset.position}"
-        data-salary="${item.dataset.salary}"
-        data-age="${item.dataset.age}"
-      >
-      ${item.innerText}
-      </li>
-    `;
+  sort(prev, next) {
+    return helperFn.convertToNumber(next.dataset.salary) - helperFn.convertToNumber(prev.dataset.salary);
   },
 };
 
-function sortList(array) {
-  const sortedList = [...array.querySelectorAll('li')].sort(helperFn.sort);
+const sortList = (ulNode) => allEmployees.sort(helperFn.sort).forEach(item => ulNode.append(item));
 
-  // clear list
-  list.innerHTML = '';
-  // add items
-  sortedList.forEach(item => helperFn.appendToList(item));
-}
-
-function getEmployees(array) {
-  const employeesArr = [];
-
-  [...array.querySelectorAll('li')].forEach(employee => {
-    employeesArr.push({
-      name: employee.innerText,
-      position: employee.dataset.position,
-      salary: employee.dataset.salary,
-      age: employee.dataset.age,
-    });
-  });
-
-  return employeesArr;
-}
+const getEmployees = (nodeList) =>
+  [...nodeList].map(employee => ({
+    name: employee.innerText,
+    position: employee.dataset.position,
+    salart: employee.dataset.salary,
+    age: employee.dataset.age,
+  }));
 
 sortList(list);
-getEmployees(list);
+getEmployees(allEmployees);
