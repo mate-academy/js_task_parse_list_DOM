@@ -9,8 +9,12 @@ function toNumber(str) {
 }
 
 function sortList(list) {
-  list.sort((a, b) => toNumber(b.dataset.salary)
-  - toNumber(a.dataset.salary));
+  list.sort((item1, item2) => {
+    const { salary: salary1 } = item1.dataset;
+    const { salary: salary2 } = item2.dataset;
+
+    return toNumber(salary2) - toNumber(salary1);
+  });
 
   document.querySelector('ul').append(...list);
 }
