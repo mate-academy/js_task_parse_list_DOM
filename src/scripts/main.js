@@ -1,15 +1,15 @@
 'use strict';
 
 const listEmployees = document.querySelector('ul');
-const employees = document.querySelectorAll('li'); // nodelist
-const employeesList = [ ...employees ]; // array
+const employees = [...document.querySelectorAll('li')];
 
-function salary(person) {
+function getFormattedSalary(person) {
   return +(person.dataset.salary).slice(1).replace(',', '');
 }
 
-function sortList(list) { // list is array of li
-  const sortEmloyees = list.sort((a, b) => salary(b) - salary(a));
+function sortList(list) {
+  const sortEmloyees = list.sort((a, b) =>
+    getFormattedSalary(b) - getFormattedSalary(a));
 
   listEmployees.append(...sortEmloyees);
 }
@@ -24,5 +24,5 @@ function getEmployees(list) {
   );
 }
 
-sortList(employeesList);
-getEmployees(employeesList);
+sortList(employees);
+getEmployees(employees);
