@@ -10,14 +10,14 @@
 Hey there! Can you parse data from the list and sort it based on data attributes?
 
 Your task: Sort list by salary in descending order.
-Get an array of employees. Write two functions: 
+Get an array of employees. Write two functions:
 - first, which sorts the list by salary from data attributes
 - second, which returns an array of objects, where objects are employees.
 
 The schema for the employee:
 ```
 {
-  name, 
+  name,
   position,
   salary,
   age
@@ -35,10 +35,10 @@ Expected result after soring:
 You can read about non-standard attributes and dataset [here](https://javascript.info/dom-attributes-and-properties#non-standard-attributes-dataset)
 
 ##### Steps to do this challenge:
-1) Find and get a list from the document.
-2) Create function `sortList`, which takes a `list` property, and sorts list items in descending order by salary from data attribute. (Salary from data attribute is a string, do not forget to convert it to number, write helper function for it). Append sorted items to list.
-3) Create function `getEmployees`, which takes a `list` property, and returns an array of right objects.
-4) Call both functions.
-5) Done.
+1) Знайдіть і отримайте список із документа.
+2) Створіть функцію `Sortlist`, яка бере властивість" Список ", і сортує список елементів у порядку зниження за допомогою зарплати від атрибута даних.(Заробітна плата від атрибута даних - це рядок, не забудьте перетворити його на номер, запишіть для нього функцію помічників).Додайте відсортовані елементи до списку.
+3) Створіть функцію `getEmployees`, яка приймає властивість" список ", і повертає масив правильних об'єктів.
+4) Викликайте обидві функції.
+5) зроблено.
 
 You don't need to change styles or HTML layout in this task. Change only `main.js` file.
