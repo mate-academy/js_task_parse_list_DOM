@@ -2,9 +2,15 @@
 
 const list = [...document.querySelectorAll('li')];
 
+const toNumber = (arg) => {
+  return arg.slice(1).replaceAll(',', '');
+};
+
 const sortList = (argList) => {
-  argList.sort(
-    (e1, e2) => toNumber(e2.dataset.salary) - toNumber(e1.dataset.salary));
+  const copyArray = [...argList];
+  return copyArray.sort((e1, e2) => (
+      toNumber(e2.dataset.salary) - toNumber(e1.dataset.salary)
+    ));
 };
 
 const getEmployees = (argList) => {
@@ -16,9 +22,7 @@ const getEmployees = (argList) => {
   }));
 };
 
-const toNumber = (e) => {
-  return e.slice(1).replaceAll(',', '');
-};
+
 
 sortList(list);
 
