@@ -3,9 +3,9 @@
 const list = Array.from(document.querySelectorAll('ul li'));
 
 function sortList() {
-  function parseSalary(salaryString) {
+  const parseSalary = (salaryString) => {
     return parseFloat(salaryString.replace(/[$,]/g, ''));
-  }
+  };
 
   list.sort((a, b) => {
     const salaryA = parseSalary(a.dataset.salary);
@@ -20,14 +20,14 @@ function sortList() {
 }
 
 function getEmployees() {
-  return list.map(li => ({
-    name: li.textContent,
-    position: li.dataset.position,
-    salary: li.dataset.salary,
-    age: parseInt(li.dataset.age),
+  return list.map(({ textContent, dataset }) => ({
+    name: textContent,
+    position: dataset.position,
+    salary: dataset.salary,
+    age: parseInt(dataset.age),
   }));
 }
 
-sortList(list);
+sortList();
 
-getEmployees(list);
+getEmployees();
