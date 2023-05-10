@@ -5,8 +5,8 @@ const listEl = document.querySelector('ul');
 
 const sortList = (list) => {
   const sorted = list.sort((a, b) => {
-    const aSalary = +a.dataset.salary.replace(/[^0-9]/g, '');
-    const bSalary = +b.dataset.salary.replace(/[^0-9]/g, '');
+    const aSalary = getFormaredSalary(a.dataset.salary);
+    const bSalary = getFormaredSalary(b.dataset.salary);
 
     return bSalary - aSalary;
   });
@@ -21,6 +21,10 @@ const getEmployees = (list) => {
     salary: person.dataset.salary,
     age: person.dataset.age,
   }));
+};
+
+const getFormaredSalary = (salary) => {
+  return +salary.replace(/[^0-9]/g, '');
 };
 
 sortList(employeesElArray);
