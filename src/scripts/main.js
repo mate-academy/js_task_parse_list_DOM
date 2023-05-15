@@ -3,15 +3,15 @@
 const listOfEmployees = document.querySelector('ul');
 const employees = [...listOfEmployees.children];
 
-function sortList(list) {
-  function employeeSalary(employee) {
-    return employee.dataset.salary
-      .slice(1)
-      .replace(/,/gi, '');
-  };
+function getEmployeeSalary(employee) {
+  return Number(employee.dataset.salary
+    .slice(1)
+    .replace(/,/gi, ''));
+};
 
+function sortList(list) {
   const sortedList = list
-    .sort((a, b) => +employeeSalary(b) - +employeeSalary(a));
+    .sort((a, b) => getEmployeeSalary(b) - getEmployeeSalary(a));
 
   listOfEmployees.append(...sortedList);
 };
