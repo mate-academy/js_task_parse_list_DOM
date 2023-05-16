@@ -56,5 +56,3 @@ document.addEventListener('DOMContentLoaded', () => {
     return valueNumberType;
   }
 });
-
-// write code here
