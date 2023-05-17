@@ -16,9 +16,9 @@ function getNumber(value) {
 }
 
 function sortList(list) {
-  const employee = [...list.children];
+  const employees = [...list.children];
 
-  const sortEmployees = employee.sort((a, b) => getNumber(b.dataset.salary)
+  const sortedEmployees = employees.sort((a, b) => getNumber(b.dataset.salary)
   - getNumber(a.dataset.salary));
 
   list.remove();
@@ -28,7 +28,7 @@ function sortList(list) {
 
   body.append(newList);
 
-  for (const person of sortEmployees) {
+  sortedEmployees.forEach(person => {
     const item = document.createElement('li');
 
     item.dataset.position = person.dataset.position;
@@ -36,21 +36,21 @@ function sortList(list) {
     item.dataset.age = person.dataset.age;
     item.textContent = person.innerText;
     newList.append(item);
-  }
+  });
 
   return newList;
 }
 
 function getEmployees(list) {
-  const peoples = [...list.children];
+  const people = [...list.children];
   const employees = [];
 
-  for (const person of peoples) {
+  people.forEach(person => {
     const employee = new Employee(person.innerText, person.dataset.position,
       person.dataset.salary, person.dataset.age);
 
     employees.push(employee);
-  }
+  });
 
   return employees;
 };
