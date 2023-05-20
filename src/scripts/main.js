@@ -1,13 +1,11 @@
-/* eslint-disable no-console */
-/* eslint-disable no-shadow */
 'use strict';
 
 function convertSalaryToNumber(salary) {
   return Number(salary.replace(/[^0-9.-]+/g, ''));
 }
 
-function sortList(list) {
-  const listItems = Array.from(list.children);
+function sortList(listEl) {
+  const listItems = Array.from(listEl.children);
 
   listItems.sort((a, b) => {
     const salaryA = convertSalaryToNumber(a.dataset.salary);
@@ -15,29 +13,24 @@ function sortList(list) {
 
     return salaryB - salaryA;
   });
-  list.innerHTML = '';
-  listItems.forEach(item => list.appendChild(item));
+  listEl.innerHTML = '';
+  listItems.forEach(item => listEl.appendChild(item));
 }
 
-function getEmployees(list) {
-  const employees = [];
-
-  Array.from(list.children).forEach(item => {
-    employees.push({
-      name: item.textContent.trim(),
-      position: item.dataset.position,
-      salary: item.dataset.salary,
-      age: item.dataset.age,
-    });
-  });
-
-  return employees;
+function getEmployees(listEl) {
+  return Array.from(listEl.children).map(item => ({
+    name: item.textContent.trim(),
+    position: item.dataset.position,
+    salary: item.dataset.salary,
+    age: item.dataset.age,
+  }));
 }
 
-const list = document.querySelector('ul');
+const ul = document.querySelector('ul');
 
-sortList(list);
+sortList(ul);
 
-const employees = getEmployees(list);
+const employees = getEmployees(ul);
 
+// eslint-disable-next-line no-console
 console.log(employees);
