@@ -31,6 +31,3 @@ const ul = document.querySelector('ul');
 sortList(ul);
 
 const employees = getEmployees(ul);
-
-// eslint-disable-next-line no-console
-console.log(employees);
