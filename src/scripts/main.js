@@ -9,11 +9,9 @@ function convertSalary(salary) {
   return +noCurrency.split(',').join('');
 }
 
-function sortList(salary) {
-  const sort = salary.sort((a, b) =>
+function sortList(list) {
+  return [...list].sort((a, b) =>
     convertSalary(b.dataset.salary) - convertSalary(a.dataset.salary));
-
-  return sort;
 }
 
 listUl.append(...sortList(employees));
