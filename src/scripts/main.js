@@ -18,4 +18,3 @@ const box = document.querySelector('li').parentNode;
 
 return list.sort(sortList).forEach(item =>
   box.appendChild(item));
-
