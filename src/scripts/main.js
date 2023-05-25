@@ -16,7 +16,6 @@ function sortList(a, b) {
 
 const box = document.querySelector('li').parentNode;
 
-const sortedWithSalary = list.sort(sortList).forEach(item =>
+return list.sort(sortList).forEach(item =>
   box.appendChild(item));
 
-return sortedWithSalary;
