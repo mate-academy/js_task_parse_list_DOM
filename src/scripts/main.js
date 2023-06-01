@@ -1,6 +1,10 @@
 'use strict';
 
-const listOfEmploees = document.querySelectorAll('ul li');
+const listOfEmployees = document.querySelectorAll('ul li');
+
+function toNumber(string) {
+  return string.slice(1).split(',').join('') * 1;
+}
 
 function sortList(list) {
   const sortedList = [...list].sort((employee1, employee2) => {
@@ -17,24 +21,22 @@ function sortList(list) {
   });
 };
 
-function toNumber(string) {
-  return string.slice(1).split(',').join('') * 1;
-}
-
 function getEmployees(array) {
   return array.map((employee) => {
     const employeeName = employee.innerText;
     const position = employee.dataset.position;
-    const employeesalary = employee.dataset.salary;
+    const salary = employee.dataset.salary;
     const age = employee.dataset.age;
 
     return {
-      employeeName,
+      name: employeeName,
       position,
-      employeesalary,
+      salary,
       age,
     };
   });
 };
 
-getEmployees(sortList(listOfEmploees));
+sortList(listOfEmployees);
+
+getEmployees([...listOfEmployees]);
