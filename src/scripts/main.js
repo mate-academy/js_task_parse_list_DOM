@@ -1,23 +1,42 @@
 'use strict';
 
-const employees = document.querySelectorAll('li[data-salary]');
+const nodeList = document.querySelectorAll('li[data-salary]');
 
-const employeeArray = [...employees].map(employee => {
-  const salary = employee
-    .getAttribute('data-salary')
-    .replace(/[^\d.-]/g, '');
+function createEmployeeArray(employees) {
+  const employeeArray = [...employees].map(employee => {
+    const salary = employee
+      .getAttribute('data-salary')
+      .replace(/[^\d.-]/g, '');
 
-  return {
-    element: employee, salary: parseInt(salary),
-  };
-});
+    const empName = employee.textContent.trim();
+    const position = employee.getAttribute('data-position');
+    const age = employee.getAttribute('data-age');
 
-employeeArray.sort((a, b) => b.salary - a.salary);
+    return {
+      element: employee,
+      empName,
+      position,
+      salary: parseInt(salary),
+      age,
+    };
+  });
 
-const ul = document.querySelector('ul');
+  return employeeArray;
+}
 
-ul.innerHTML = '';
+createEmployeeArray(nodeList);
+console.log(createEmployeeArray(nodeList));
 
-employeeArray.forEach(employee => {
-  ul.appendChild(employee.element);
-});
+function sortUpdateDom(arr) {
+  arr.sort((a, b) => b.salary - a.salary);
+
+  const ul = document.querySelector('ul');
+
+  ul.innerHTML = '';
+
+  arr.forEach(employee => {
+    ul.appendChild(employee.element);
+  });
+}
+
+sortUpdateDom(createEmployeeArray(nodeList));
