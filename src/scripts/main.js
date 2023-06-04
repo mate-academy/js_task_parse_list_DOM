@@ -25,7 +25,6 @@ function createEmployeeArray(employees) {
 }
 
 createEmployeeArray(nodeList);
-console.log(createEmployeeArray(nodeList));
 
 function sortUpdateDom(arr) {
   arr.sort((a, b) => b.salary - a.salary);
