@@ -1,36 +1,7 @@
 'use strict';
 
-const listOfEmployees = document.querySelectorAll('li');
-
-function getEmployees(list) {
-  const employees = [];
-
-  class Employee {
-    constructor(name, position, salary, age) {
-      this.name = name;
-      this.position = position;
-      this.salary = salary;
-      this.age = age;
-    }
-  }
-
-  for (let i = 0; i < list.length; i++) {
-    const worker = new Employee(
-      list[i].innerText,
-      list[i].dataset.position,
-      convertSalary(list[i].dataset.salary),
-      list[i].dataset.age
-    );
-
-    employees.push(worker);
-  }
-
-  return employees;
-}
-
-getEmployees(listOfEmployees);
-
-const arrayOfEmployees = getEmployees(listOfEmployees);
+const container = document.querySelector('ul');
+const listOfEmployees = [...container.children];
 
 function convertSalary(salary) {
   const salaryAmount = salary.slice(1, salary.length + 1).replace(',', '');
@@ -39,11 +10,22 @@ function convertSalary(salary) {
 }
 
 function sortList(list) {
-  return list.sort((a, b) => b.salary - a.salary);
+  const people = list.sort(
+    (a, b) =>
+      convertSalary(b.dataset.salary) - convertSalary(a.dataset.salary));
+
+  container.append(...people);
 }
 
-const sortedList = sortList(arrayOfEmployees);
+sortList(listOfEmployees);
 
-for (let i = 0; i < listOfEmployees.length; i++) {
-  listOfEmployees[i].innerText = sortedList[i].name;
+function getEmployees(list) {
+  return list.map(person => ({
+    name: person.innerText,
+    position: person.dataset.position,
+    salary: person.dataset.salary,
+    age: person.dataset.age,
+  }));
 }
+
+getEmployees(listOfEmployees);
