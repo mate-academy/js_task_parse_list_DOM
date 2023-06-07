@@ -3,18 +3,16 @@
 const list = document.querySelector('ul');
 
 function sortList(roster) {
-  let rosterItems = roster.querySelectorAll('li');
+  const rosterItems = [...roster.querySelectorAll('li')];
 
-  [...rosterItems] = [...rosterItems].sort((a, b) => {
+  const sortedItems = rosterItems.sort((a, b) => {
     const numberA = convertToNumber(a.dataset.salary);
     const numberB = convertToNumber(b.dataset.salary);
 
     return numberB - numberA;
   });
 
-  for (const item of [...rosterItems]) {
-    roster.append(item);
-  }
+  sortedItems.forEach(item => roster.append(item));
 }
 
 function convertToNumber(a) {
@@ -23,11 +21,9 @@ function convertToNumber(a) {
 
 function getEmployees(roster) {
   const result = [];
-  const rosterItems = roster.querySelectorAll('li');
+  const rosterItems = [...roster.querySelectorAll('li')];
 
-  for (let index = 0; index < [...rosterItems].length; index++) {
-    const currentItem = [...rosterItems][index];
-
+  rosterItems.forEach((currentItem, index) => {
     result.push(
       {
         name: currentItem.innerText,
@@ -36,7 +32,7 @@ function getEmployees(roster) {
         age: currentItem.dataset.age,
       }
     );
-  }
+  });
 
   return result;
 }
