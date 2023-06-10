@@ -11,7 +11,7 @@ function sortList(list) {
     const salaryA = salaryToFloat(a.dataset.salary);
     const salaryB = salaryToFloat(b.dataset.salary);
 
-    return salaryA === salaryB ? 0 : salaryA < salaryB ? 1 : -1;
+    return salaryA < salaryB ? 1 : -1;
   });
 
   document.querySelector('ul').append(...sortedList);
