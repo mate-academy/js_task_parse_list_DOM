@@ -17,11 +17,12 @@ function sortList(list) {
 
 function getEmployees(list) {
   return list.map(person => {
+    const { age, position, salary } = person.dataset;
     const sortedPeople = {
       name: person.innerText,
-      position: person.dataset.position,
-      salary: person.dataset.salary,
-      age: person.dataset.age,
+      position,
+      salary,
+      age,
     };
 
     return sortedPeople;
