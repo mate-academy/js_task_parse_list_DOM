@@ -2,34 +2,29 @@
 
 // write code here
 
-const employees = document.getElementsByTagName('li');
+const employees = document.querySelectorAll('li');
 
 function sortList(toBeSorted) {
   const employeesArray = [...toBeSorted].sort((a, b) =>
     b.dataset.salary.substring(1).replaceAll(',', '')
   - a.dataset.salary.substring(1).replaceAll(',', ''));
 
-  const StartPoint = document.getElementsByTagName('ul');
+  const StartPoint = document.querySelector('ul');
 
-  for (let i = 0; i < employeesArray.length; i++) {
-    StartPoint[0].append(employeesArray[i]);
-  }
+  employeesArray.forEach(arrayItem => StartPoint.append(arrayItem));
 }
 
 sortList(employees);
 
 function getEmployees(list) {
-  const employeesList = [];
-
-  for (let i = 0; i < list.length; i++) {
-    const employee = {};
-
-    employee.name = list[i].lastChild.textContent.trim();
-    employee.position = list[i].dataset.position;
-    employee.salary = list[i].dataset.salary;
-    employee.age = list[i].dataset.age;
-    employeesList.push(employee);
-  }
+  const employeesList = Array.from(list).map((person) => {
+    return {
+      name: person.lastChild.textContent.trim(),
+      position: person.dataset.position,
+      salary: person.dataset.salary,
+      age: person.dataset.age,
+    };
+  });
 
   return employeesList;
 }
