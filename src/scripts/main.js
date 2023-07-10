@@ -13,10 +13,10 @@ function sortList(arr) {
   const sortArr = Array.from(arr);
 
   sortArr.sort((a, b) => {
-    const first = convertNumber(a.getAttribute('data-salary'));
-    const second = convertNumber(b.getAttribute('data-salary'));
+    const firstSalary = convertNumber(a.getAttribute('data-salary'));
+    const secondSalary = convertNumber(b.getAttribute('data-salary'));
 
-    return second > first ? 1 : second < first ? -1 : 0;
+    return secondSalary - firstSalary;
   });
 
   for (const item of sortArr) {
@@ -26,20 +26,20 @@ function sortList(arr) {
   return sortArr;
 }
 
-function getEmployees(arr) {
-  const arrObjects = [];
+function getEmployees() {
+  const listOfEmployees = document.getElementsByTagName('ul')[0];
+  const listItems = [...listOfEmployees.children];
 
-  for (const item of arr) {
-    const attrs = item.getAttributeNames().reduce((acc, atname) => {
-      return {
-        ...acc, [atname]: item.getAttribute(atname),
-      };
-    }, {});
+  const employees = listItems.map(item => {
+    return {
+      name: item.innerText,
+      position: item.getAttribute('data-position'),
+      salary: item.getAttribute('data-salary'),
+      age: item.getAttribute('data-age'),
+    };
+  });
 
-    arrObjects.push(attrs);
-  }
-
-  return arrObjects;
+  return employees;
 }
 
 sortList(items);
