@@ -2,17 +2,12 @@
 
 const list = document.querySelectorAll('li');
 
-function sortList(element) {
-  const elementArray = Array.from(element);
+function sortList(elements) {
+  const elementArray = Array.from(elements);
 
   elementArray.sort((a, b) => {
-    let x = b.getAttribute('data-salary').substring(1);
-
-    x = Number(x.replace(',', ''));
-
-    let y = a.getAttribute('data-salary').substring(1);
-
-    y = Number(y.replace(',', ''));
+    const x = salaryToNumber(b.getAttribute('data-salary'));
+    const y = salaryToNumber(a.getAttribute('data-salary'));
 
     return x - y;
   });
@@ -24,19 +19,23 @@ function sortList(element) {
 
 sortList(list);
 
-function getEmployees(element) {
+function getEmployees(elements) {
   const employeesList = [];
 
-  for (let i = 0; i < element.length; i++) {
+  for (let i = 0; i < elements.length; i++) {
     employeesList.push({
-      name: element[i].innerText,
-      position: element[i].getAttribute('data-position'),
-      salary: element[i].getAttribute('data-salary'),
-      age: element[i].getAttribute('data-age'),
+      name: elements[i].innerText,
+      position: elements[i].getAttribute('data-position'),
+      salary: elements[i].getAttribute('data-salary'),
+      age: elements[i].getAttribute('data-age'),
     });
   }
 
   return employeesList;
+}
+
+function salaryToNumber(string) {
+  return string.slice(1).replaceAll(',', '');
 }
 
 getEmployees(list);
