@@ -2,7 +2,7 @@
 
 function convertToNumber(salary) {
   const cleanedString = salary.replace(/[$,]/g, '');
-  const number = +cleanedString;
+  const number = Number(cleanedString);
 
   return number;
 }
@@ -25,16 +25,14 @@ function sortList(propName) {
 sortList('salary');
 
 function getEmployees() {
-  const result = [];
-
-  for (const person of liArr) {
-    result.push({
-      name: person.textContent.trim(),
-      position: person.dataset.position,
-      salary: person.dataset.salary,
-      age: person.dataset.age,
-    });
-  }
+  const result = liArr.map(item => {
+    return {
+      name: item.textContent.trim(),
+      position: item.dataset.position,
+      salary: item.dataset.salary,
+      age: item.dataset.age,
+    };
+  });
 
   return result;
 }
