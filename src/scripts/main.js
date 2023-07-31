@@ -6,7 +6,7 @@ function convertToNumber(salaryString) {
 
 function sortList(listProperty) {
   const list = document.querySelectorAll(listProperty);
-  const items = Array.from(list);
+  const items = [...list];
 
   items.sort((a, b) => {
     const salaryA = convertToNumber(a.dataset.salary);
@@ -15,14 +15,16 @@ function sortList(listProperty) {
     return salaryB - salaryA;
   });
 
-  document.querySelector('ul').innerHTML = '';
-  document.querySelector('ul').append(...items);
+  const ulElement = list[0].parentNode;
+
+  ulElement.innerHTML = '';
+  ulElement.append(...items);
 }
 
 function getEmployees(listProperty) {
   const list = document.querySelectorAll(listProperty);
 
-  const employees = Array.from(list).map((item) => {
+  const employees = [...list].map((item) => {
     return {
       name: item.textContent.trim(),
       position: item.dataset.position,
