@@ -5,15 +5,11 @@ const listElement = document.querySelector('ul');
 const parseSalary = (salary) => {
   const parsedSalary = salary.replace('$', '').replace(',', '');
 
-  try {
-    return Number(parsedSalary);
-  } catch (error) {
-    return 0;
-  }
+  return +parsedSalary;
 };
 
 const sortList = (list) => {
-  const listElements = Array.from(list.children);
+  const listElements = [...list.children];
 
   listElements.sort((a, b) =>
     parseSalary(b.dataset.salary) - parseSalary(a.dataset.salary));
