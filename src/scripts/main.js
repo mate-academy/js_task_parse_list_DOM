@@ -1,19 +1,19 @@
 'use strict';
 
-const listElement = document.querySelectorAll('li');
-const items = [...listElement];
-
 function makeNumber(item) {
   return Number(item.dataset.salary.replace(/\$|,/g, ''));
 }
 
 function sortList(list) {
-  list.sort((a, b) => makeNumber(b) - makeNumber(a));
+  const listElement = document.querySelectorAll(list);
+  const items = [...listElement];
 
-  const ulElement = list[0].parentNode;
+  items.sort((a, b) => makeNumber(b) - makeNumber(a));
+
+  const ulElement = items[0].parentNode;
 
   ulElement.innerHTML = '';
-  ulElement.append(...list);
+  ulElement.append(...items);
 }
 
 function getEmployees(listProperty) {
@@ -31,6 +31,6 @@ function getEmployees(listProperty) {
   return employees;
 }
 
-sortList(items);
+sortList('li');
 
 getEmployees('li');
