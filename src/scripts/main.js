@@ -2,12 +2,15 @@
 
 const list = document.querySelector('ul');
 
+function getNumberFrom(element) {
+  return +element.dataset.salary.replace(/\$|,/g, '');
+}
+
 function sortList(listOfElements) {
   const itemElements = listOfElements.querySelectorAll('li');
 
   const sortedElements = [...itemElements].sort(
-    (element1, element2) => +element2.dataset.salary.replace(/\$|,/g, '')
-      - +element1.dataset.salary.replace(/\$|,/g, '')
+    (element1, element2) => getNumberFrom(element2) - getNumberFrom(element1)
   );
 
   listOfElements.append(...sortedElements);
