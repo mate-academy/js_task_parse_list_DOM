@@ -11,9 +11,9 @@ const getSalary = (el, attr) => {
 
 const attributeToGet = 'data-salary';
 
-const sortedEmployeesBySalary = allEmployees.sort((emploee1, emploee2) => {
-  const salary1 = getSalary(emploee1, attributeToGet);
-  const salary2 = getSalary(emploee2, attributeToGet);
+const sortedEmployeesBySalary = allEmployees.sort((employee1, employee2) => {
+  const salary1 = getSalary(employee1, attributeToGet);
+  const salary2 = getSalary(employee2, attributeToGet);
 
   return Number(salary2) - Number(salary1);
 });
@@ -25,11 +25,11 @@ list.innerHTML = '';
 sortedEmployeesBySalary.forEach(worker => list.appendChild(worker));
 
 const getEmployee = () =>
-  allEmployees.map(emp => ({
-    name: emp.innerText,
-    position: emp.getAttribute('data-position'),
-    salary: emp.getAttribute('data-salary'),
-    age: emp.getAttribute('data-age'),
+  allEmployees.map(employee => ({
+    name: employee.innerText,
+    position: employee.getAttribute('data-position'),
+    salary: employee.getAttribute('data-salary'),
+    age: employee.getAttribute('data-age'),
   }));
 
 getEmployee();
