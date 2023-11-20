@@ -1,6 +1,5 @@
 # IDE
 .idea
-.vscode
 
 # Node
 node_modules
@@ -11,6 +10,11 @@ node_modules
 # Generated files
 dist
 .cache
+.parcel-cache
 raw_reports
 cypress/screenshots
 cypress/videos
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
