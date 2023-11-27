@@ -27,7 +27,7 @@ function getEmployees(listProperty = '') {
   const list = document.querySelectorAll(`[data-${listProperty}]`);
 
   return Array.from(list).map((item) => ({
-    name: item.textContent,
+    name: item.textContent.trim(),
     position: item.getAttribute('data-position'),
     salary: convertSalaryToNumber(item.getAttribute('data-salary')),
     age: +item.getAttribute('data-age'),
