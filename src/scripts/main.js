@@ -1,8 +1,8 @@
 'use strict';
 
 const ulElement = document.querySelector('ul');
-const employee = document.querySelectorAll('li');
-const sortedArray = [...employee];
+const employees = document.querySelectorAll('li');
+const sortedEmployees = [...employees];
 
 const parseInteger = (num) => +num.replace(/[$,]/g, '');
 
@@ -12,13 +12,13 @@ function sortList(list) {
   - parseInteger(a.dataset.salary));
 }
 
-function htmlApruvd() {
+function renderEmployeeList() {
   ulElement.innerHTML = '';
 
-  for (const person of sortedArray) {
-    ulElement.insertAdjacentHTML('beforeend', person.outerHTML);
+  for (const employee of sortedEmployees) {
+    ulElement.insertAdjacentHTML('beforeend', employee.outerHTML);
   }
 }
 
-sortList(sortedArray);
-htmlApruvd();
+sortList(sortedEmployees);
+renderEmployeeList();
