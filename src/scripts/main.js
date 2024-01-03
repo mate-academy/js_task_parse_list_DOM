@@ -10,17 +10,13 @@ const sortList = (list) => {
 };
 
 const getEmployees = (list) => {
-  const employees = [];
-
-  [...list.querySelectorAll('li')]
-    .forEach(li => employees.push({
+  return [...list.querySelectorAll('li')]
+    .map(li => ({
       name: li.innerText,
       position: li.dataset.position,
       salary: li.dataset.salary,
       age: li.dataset.age,
     }));
-
-  return employees;
 };
 
 sortList(listEl);
