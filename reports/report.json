@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 2,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-01-18T17:32:15.333Z",
+    "end": "2024-01-18T17:32:15.853Z",
+    "duration": 481,
+    "testsRegistered": 3,
+    "passPercent": 66.66666666666667,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8ecbb307-c572-4c22-9379-28c65a928d72",
+      "title": "",
+      "fullFile": "cypress/integration/jsTaskParseListDOM.spec.js",
+      "file": "cypress/integration/jsTaskParseListDOM.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ac384b05-71d8-4b19-81da-29c5dec00b13",
+          "title": "Parse list app ",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should render list",
+              "fullTitle": "Parse list app  should render list",
+              "timedOut": null,
+              "duration": 135,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul');",
+              "err": {},
+              "uuid": "ebfc6536-e2d2-4ce3-85fa-463fe2ca0b12",
+              "parentUUID": "ac384b05-71d8-4b19-81da-29c5dec00b13",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should have 11 items",
+              "fullTitle": "Parse list app  should have 11 items",
+              "timedOut": null,
+              "duration": 86,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul > li').should('have.length', 11);",
+              "err": {},
+              "uuid": "9d80b87c-3ba2-4d9e-a0c2-eaa9f92f4366",
+              "parentUUID": "ac384b05-71d8-4b19-81da-29c5dec00b13",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should be sorted by salary DSC",
+              "fullTitle": "Parse list app  should be sorted by salary DSC",
+              "timedOut": null,
+              "duration": 260,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul > li').then($ul => {\n  const list = [...$ul].map(row => row.dataset.salary.replace('$', '').replace(',', ''));\n  let counter = 0;\n  for (let i = 0; i < list.length; i++) {\n    if (Number(list[i + 1]) <= Number(list[i])) {\n      counter += 1;\n    }\n  }\n  expect(counter).to.equal(list.length - 1);\n});",
+              "err": {
+                "message": "AssertionError: expected 0 to equal 10",
+                "estack": "AssertionError: expected 0 to equal 10\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress\\integration\\jsTaskParseListDOM.spec.js:120:26)",
+                "diff": null
+              },
+              "uuid": "fa9c1226-0681-4b07-9304-a849d702b7f1",
+              "parentUUID": "ac384b05-71d8-4b19-81da-29c5dec00b13",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ebfc6536-e2d2-4ce3-85fa-463fe2ca0b12",
+            "9d80b87c-3ba2-4d9e-a0c2-eaa9f92f4366"
+          ],
+          "failures": [
+            "fa9c1226-0681-4b07-9304-a849d702b7f1"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 481,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "raw_reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
