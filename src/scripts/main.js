@@ -10,11 +10,6 @@ function convertToNumber(text) {
 
 const sortList = (input) => {
   return [...input].sort((item1, item2) => {
-    if (convertToNumber(item1.dataset.salary)
-      === convertToNumber(item2.dataset.salary)) {
-      return item1.innerText.localeCompare(item2.innerText);
-    }
-
     return convertToNumber(item1.dataset.salary)
       < convertToNumber(item2.dataset.salary) ? 1 : -1;
   });

@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 1,
-    "start": "2024-01-18T17:32:15.333Z",
-    "end": "2024-01-18T17:32:15.853Z",
-    "duration": 481,
+    "start": "2024-01-18T20:28:21.003Z",
+    "end": "2024-01-18T20:28:21.575Z",
+    "duration": 523,
     "testsRegistered": 3,
     "passPercent": 66.66666666666667,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "8ecbb307-c572-4c22-9379-28c65a928d72",
+      "uuid": "205fab03-e96c-41f9-82ca-e056bb3e074a",
       "title": "",
       "fullFile": "cypress/integration/jsTaskParseListDOM.spec.js",
       "file": "cypress/integration/jsTaskParseListDOM.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "ac384b05-71d8-4b19-81da-29c5dec00b13",
+          "uuid": "333f92e7-db62-4101-88ee-220b69cf18ef",
           "title": "Parse list app ",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should render list",
               "fullTitle": "Parse list app  should render list",
               "timedOut": null,
-              "duration": 135,
+              "duration": 147,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.get('ul');",
               "err": {},
-              "uuid": "ebfc6536-e2d2-4ce3-85fa-463fe2ca0b12",
-              "parentUUID": "ac384b05-71d8-4b19-81da-29c5dec00b13",
+              "uuid": "7154fc99-ad8f-449b-8b2a-016cd9464fd2",
+              "parentUUID": "333f92e7-db62-4101-88ee-220b69cf18ef",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "should have 11 items",
               "fullTitle": "Parse list app  should have 11 items",
               "timedOut": null,
-              "duration": 86,
+              "duration": 94,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "cy.get('ul > li').should('have.length', 11);",
               "err": {},
-              "uuid": "9d80b87c-3ba2-4d9e-a0c2-eaa9f92f4366",
-              "parentUUID": "ac384b05-71d8-4b19-81da-29c5dec00b13",
+              "uuid": "eee9ab77-7fbc-4e4c-993d-936f1ef08b3e",
+              "parentUUID": "333f92e7-db62-4101-88ee-220b69cf18ef",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "should be sorted by salary DSC",
               "fullTitle": "Parse list app  should be sorted by salary DSC",
               "timedOut": null,
-              "duration": 260,
+              "duration": 282,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -87,23 +87,23 @@
                 "estack": "AssertionError: expected 0 to equal 10\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress\\integration\\jsTaskParseListDOM.spec.js:120:26)",
                 "diff": null
               },
-              "uuid": "fa9c1226-0681-4b07-9304-a849d702b7f1",
-              "parentUUID": "ac384b05-71d8-4b19-81da-29c5dec00b13",
+              "uuid": "938d75f6-51ca-4648-ba85-72654e1664f6",
+              "parentUUID": "333f92e7-db62-4101-88ee-220b69cf18ef",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "ebfc6536-e2d2-4ce3-85fa-463fe2ca0b12",
-            "9d80b87c-3ba2-4d9e-a0c2-eaa9f92f4366"
+            "7154fc99-ad8f-449b-8b2a-016cd9464fd2",
+            "eee9ab77-7fbc-4e4c-993d-936f1ef08b3e"
           ],
           "failures": [
-            "fa9c1226-0681-4b07-9304-a849d702b7f1"
+            "938d75f6-51ca-4648-ba85-72654e1664f6"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 481,
+          "duration": 523,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
