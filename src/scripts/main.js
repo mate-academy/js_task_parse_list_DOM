@@ -8,10 +8,8 @@ addEventListener('DOMContentLoaded', () => {
     if (listBlock) {
       const items = listBlock.querySelectorAll('li');
 
-      // get salary
       const getSalary = (salary) => +salary.replace('$', '').replace(',', '');
 
-      // get employees
       const getEmployees = (employees) => {
         const arr = [];
 
@@ -32,7 +30,6 @@ addEventListener('DOMContentLoaded', () => {
         return arr;
       };
 
-      // sort list
       const sortList = (list) => {
         const employees = getEmployees(list);
         const sortedEmployees = employees.sort((a, b) => {
@@ -51,7 +48,6 @@ addEventListener('DOMContentLoaded', () => {
         });
       };
 
-      // run func
       sortList(items);
     }
   };
