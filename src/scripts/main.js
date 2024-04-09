@@ -9,10 +9,10 @@ function convertToNumber(salary) {
 
 function sortList(property) {
   items.sort((a, b) => {
-    const salaryA = convertToNumber(a.dataset[property]);
-    const salaryB = convertToNumber(b.dataset[property]);
+    const propA = convertToNumber(a.dataset[property]);
+    const propB = convertToNumber(b.dataset[property]);
 
-    return salaryB - salaryA;
+    return propB - propA;
   });
 
   list.innerHTML = '';
