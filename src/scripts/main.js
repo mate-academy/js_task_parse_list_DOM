@@ -20,16 +20,12 @@ function sortList(property) {
 }
 
 function getEmployees() {
-  const employees = items.map((item) => {
-    return {
-      name: item.textContent.trim(),
-      position: item.dataset.position,
-      salary: item.dataset.salary,
-      age: item.dataset.age,
-    };
-  });
-
-  return employees;
+  return items.map((item) => ({
+    name: item.textContent.trim(),
+    position: item.dataset.position,
+    salary: item.dataset.salary,
+    age: item.dataset.age,
+  }));
 }
 
 sortList('salary');
