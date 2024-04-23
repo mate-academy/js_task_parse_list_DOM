@@ -40,6 +40,6 @@ ul.innerHTML = '';
 sortedLi.forEach((item) => {
   const addLi = document.createElement('li');
 
-  addLi.textContent = `${item.textContent.trim().split(' ')[0]}`;
+  addLi.textContent = `${item.textContent.trim().split(' ')}`;
   ul.appendChild(addLi);
 });
