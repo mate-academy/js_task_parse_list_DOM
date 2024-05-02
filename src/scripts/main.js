@@ -12,9 +12,9 @@ function prepareNumber(param) {
 employees.forEach((e) =>
   employeesObj.push({
     name: e.textContent.trim(),
-    position: e.getAttribute('data-position'),
-    salary: prepareNumber(e.getAttribute('data-salary')),
-    age: e.getAttribute('data-age'),
+    position: e.dataset.position,
+    salary: prepareNumber(e.dataset.salary),
+    age: e.dataset.age,
   }),
 );
 
