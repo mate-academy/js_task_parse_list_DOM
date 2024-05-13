@@ -19,25 +19,14 @@ function sortList(userList) {
 }
 
 function getEmployees(userList) {
-  const employeeList = [];
-
-  userList.forEach((employee) => {
-    const userName = employee.innerText;
-    const position = employee.dataset.position;
-    const salary = employee.dataset.salary;
-    const age = employee.dataset.age;
-
-    const newUser = {
-      name: userName,
-      position,
-      salary,
-      age,
+  return userList.map((employee) => {
+    return {
+      name: employee.innerText,
+      position: employee.dataset.position,
+      salary: employee.dataset.salary,
+      age: employee.dataset.age,
     };
-
-    employeeList.push(newUser);
   });
-
-  return employeeList;
 }
 
 const sortedUsers = sortList(users);
