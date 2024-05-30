@@ -7,7 +7,7 @@ function salaryParser(salary) {
   return salary.replace('$', '').replace(',', '');
 }
 
-const sortList = () => {
+const sortList = (employeesList) => {
   employees.sort((a, b) => {
     const salaryA = salaryParser(a.getAttribute('data-salary'));
     const salaryB = salaryParser(b.getAttribute('data-salary'));
