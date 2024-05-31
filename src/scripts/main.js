@@ -1,21 +1,22 @@
 'use strict';
 
 const empList = document.querySelector('ul');
-const employees = Array.from(empList.children);
 
 function salaryParser(salary) {
   return salary.replace('$', '').replace(',', '');
 }
 
 const sortList = (employeesList) => {
+  const employees = Array.from(employeesList.children);
+
   employees.sort((a, b) => {
-    const salaryA = salaryParser(a.getAttribute('data-salary'));
-    const salaryB = salaryParser(b.getAttribute('data-salary'));
+    const salaryA = parseFloat(salaryParser(a.getAttribute('data-salary')));
+    const salaryB = parseFloat(salaryParser(b.getAttribute('data-salary')));
 
     return salaryB - salaryA;
   });
 
-  employees.forEach((employee) => empList.appendChild(employee));
+  employees.forEach((employee) => employeesList.appendChild(employee));
 };
 
 sortList(empList);
