@@ -1,37 +1,40 @@
 'use strict';
 
-// getting an array of list items
-const list = [...document.getElementsByTagName('li')];
+const list = [...document.getElementsByTagName('li')]; // array of list items
+const ul = document.getElementsByTagName('ul')[0]; // ul consists of
 
-// function for sorting values by a descending order (according to a salary)
 function sortList() {
-  // sorting by a descending order
-  list.sort((a, b) => parseInt(b.dataset.salary) - parseInt(a.dataset.salary));
+  // sorting all list items in descending order (by salary)
+  list.sort((a, b) => {
+    // getting rid of $ sign and commas
+    const filteredA = a.dataset.salary.slice(1).replaceAll(',', '');
+    const filteredB = b.dataset.salary.slice(1).replaceAll(',', '');
 
-  const ul = document.getElementsByTagName('ul')[0];
+    return parseInt(filteredB) - parseInt(filteredA);
+  });
 
-  // deleting all list items that were inside ul before
+  // deleting all list items that were not sorted
   while (ul.firstChild) {
     ul.removeChild(ul.firstChild);
   }
 
-  // adding sorted list items inside ul
-  list.forEach((li) => {
-    ul.appendChild(li);
+  // appending sorted list items
+  list.forEach((child) => {
+    ul.appendChild(child);
   });
 }
 sortList(list);
 
-// function to get information about employees
 function getEmployees() {
   list.map((person) => {
-    const initials = person.textContent; // 'initials' bc 'name' is a global val
+    const inititals = person.textContent; // name
     const position = person.dataset.position;
     const salary = person.dataset.salary;
     const age = person.dataset.age;
 
+    // object with information about employee
     return {
-      name: initials,
+      name: inititals,
       position,
       salary,
       age,
