@@ -3,13 +3,6 @@
 const ulList = document.querySelector('ul');
 const listLi = Array.from(document.querySelectorAll('li'));
 
-// listLi.forEach((elem) => {
-//   const eleNow = elem.dataset.salary;
-//   let cleanedString = eleNow.replace(/,/g, '').replace(/\$/g, '');
-
-//   console.log(parseInt(cleanedString, 10));
-// });
-
 const sortList = (list) => {
   return list.sort((el1, el2) => {
     const firElem = el1.dataset.salary;
