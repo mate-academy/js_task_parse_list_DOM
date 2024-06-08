@@ -11,7 +11,7 @@ const sortList = (list) => {
     const cleanedString1 = firElem.replace(/,/g, '').replace(/\$/g, '');
     const cleanedString2 = secElem.replace(/,/g, '').replace(/\$/g, '');
 
-    return parseInt(cleanedString1) - parseInt(cleanedString2);
+    return parseInt(cleanedString2) - parseInt(cleanedString1);
   });
 };
 
