@@ -4,7 +4,7 @@ const parsedData = document.querySelectorAll('li');
 const data = [];
 
 parsedData.forEach((item) => {
-  const personName = item.textContent;
+  const personName = item.textContent.trim();
   const personPosition = item.getAttribute('data-position');
   const personSalary = item.getAttribute('data-salary');
   const personAge = item.getAttribute('data-age');
@@ -17,14 +17,12 @@ parsedData.forEach((item) => {
   });
 });
 
-const convertToNumber = (person) => {
-  return +person.salary;
+const convertToNumber = (salaryString) => {
+  return parseFloat(salaryString.replace(/[^0-9.-]+/g, ''));
 };
 
 const sortList = (list) => {
-  list.sort((a, b) => {
-    return convertToNumber(b) - convertToNumber(a);
-  });
+  list.sort((a, b) => convertToNumber(b.salary) - convertToNumber(a.salary));
 };
 
 const getEmployees = (list) => {
@@ -32,7 +30,7 @@ const getEmployees = (list) => {
     return {
       name: person.name,
       position: person.position,
-      salary: +person.salary,
+      salary: convertToNumber(person.salary),
       age: person.age,
     };
   });
@@ -42,9 +40,16 @@ sortList(data);
 
 const employees = getEmployees(data);
 
-parsedData.forEach((item, index) => {
-  item.textContent = employees[index].name;
-  item.setAttribute('data-position', employees[index].position);
-  item.setAttribute('data-salary', employees[index].salary);
-  item.setAttribute('data-age', employees[index].age);
+const listContainer = document.querySelector('ul');
+
+listContainer.innerHTML = ''; // очищую список
+
+employees.forEach((employee) => {
+  const listItem = document.createElement('li');
+
+  listItem.textContent = employee.name;
+  listItem.setAttribute('data-position', employee.position);
+  listItem.setAttribute('data-salary', `$${employee.salary.toLocaleString()}`);
+  listItem.setAttribute('data-age', employee.age);
+  listContainer.appendChild(listItem);
 });
