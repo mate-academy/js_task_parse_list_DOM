@@ -1,8 +1,9 @@
 'use strict';
 
-const liElements = [...document.querySelectorAll('li')];
+const liElements = document.querySelectorAll('li');
+const listOfElements = document.querySelector('ul');
 
-const employes = liElements.map((li) => ({
+const employes = [...liElements].map((li) => ({
   name: li.innerText,
   position: li.getAttribute('data-position'),
   salary: li.getAttribute('data-salary'),
@@ -25,11 +26,27 @@ function sortList(people) {
 function getEmployees(people) {
   return people.map((person) => ({
     ...person,
-    // salary: '$' + person.salary,
   }));
 }
 
 sortList(employes);
 getEmployees(employes);
 
-// console.log(employes)
+listOfElements.remove();
+
+const newListUl = document.createElement('ul');
+
+employes.forEach((employee) => {
+  const { position, salary, age } = employee;
+
+  const newLi = document.createElement('li');
+
+  newLi.innerText = employee.name;
+  newLi.setAttribute('data-position', position);
+  newLi.setAttribute('data-salary', salary);
+  newLi.setAttribute('data-age', age);
+
+  newListUl.append(newLi);
+});
+
+document.body.appendChild(newListUl);
