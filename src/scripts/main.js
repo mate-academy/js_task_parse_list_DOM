@@ -7,24 +7,23 @@ const employeesList = employees.map((employee) => {
     name: employee.innerText,
     position: employee.dataset.position,
     salary: +employee.dataset.salary.replace(/[$,]/g, ''),
-    age: employee.dataset.age,
+    age: +employee.dataset.age,
   };
 });
 
-const sortEmployees = employeesList.sort((a, b) => b.salary - a.salary);
+const sortEmployees = [...employeesList].sort((a, b) => b.salary - a.salary);
 const onStartOrderedList = () => {
   employeesContainer.innerHTML = '';
 
   sortEmployees.forEach((el) => {
-    employeesContainer.innerHTML += `
-      <li
-        data-position=${el.position}
-        data-salary=${el.salary}
-        data-age=${el.age}
-      >
-        ${el.name}
-      </li>
-    `;
+    const empEl = document.createElement('li');
+
+    empEl.innerText = el.name;
+    empEl.dataset.position = el.position;
+    empEl.dataset.salary = `$${el.position}`;
+    empEl.dataset.age = el.age;
+
+    employeesContainer.appendChild(empEl);
   });
 };
 
