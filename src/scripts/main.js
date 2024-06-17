@@ -1,5 +1,3 @@
-'use strict';
-
 const listOfgetEmployees = [...document.querySelectorAll('li')];
 const ulList = document.querySelector('ul');
 
