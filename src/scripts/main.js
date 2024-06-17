@@ -3,7 +3,7 @@
 const listFromDocument = document.querySelectorAll('li');
 
 const parseSalary = (salaryString) => {
-  return Number(salaryString.replace(/[^0-9.-]+/g, ''));
+  return parseFloat(salaryString.replace(/[^0-9]+/g, ''));
 };
 
 const sortList = (list) => {
@@ -13,7 +13,7 @@ const sortList = (list) => {
     const salaryA = parseSalary(a.dataset.salary);
     const salaryB = parseSalary(b.dataset.salary);
 
-    return salaryA - salaryB;
+    return salaryB - salaryA;
   });
 
   const parentElement = list[0].parentNode;
