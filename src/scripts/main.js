@@ -6,7 +6,7 @@ const employeesList = employees.map((employee) => {
   return {
     name: employee.innerText,
     position: employee.dataset.position,
-    salary: +employee.dataset.salary.replace(/[$,]/g, ''),
+    salary: +employee.dataset.salary.replace(/[$, ]/g, ''),
     age: +employee.dataset.age,
   };
 });
@@ -20,7 +20,7 @@ const onStartOrderedList = () => {
 
     empEl.innerText = el.name;
     empEl.dataset.position = el.position;
-    empEl.dataset.salary = `$${el.position}`;
+    empEl.dataset.salary = `$${el.salary}`;
     empEl.dataset.age = el.age;
 
     employeesContainer.appendChild(empEl);
