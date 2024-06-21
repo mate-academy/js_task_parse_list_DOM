@@ -21,17 +21,13 @@ function sortlist(sortedList) {
 }
 
 function getEmployees(listEmployees) {
-  const newlistEml = [];
-
-  listEmployees.map((item) => {
-    newlistEml.push({
+  const newlistEml = listEmployees.map((item) => {
+    return {
       name: item.innerText,
       position: item.dataset.position,
       salary: item.dataset.salary,
       age: item.dataset.age,
-    });
-
-    return item;
+    };
   });
 
   return newlistEml;
