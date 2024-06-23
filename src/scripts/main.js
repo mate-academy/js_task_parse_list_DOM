@@ -11,7 +11,7 @@ const getSalary = (item) => {
 const sortList = (list) => {
   const sorted = Array.from(list).sort((a, b) => getSalary(b) - getSalary(a));
 
-  const employeeList = document.getElementById('employeeList');
+  const employeeList = document.querySelector('ul');
 
   employeeList.innerHTML = '';
   sorted.forEach((item) => employeeList.appendChild(item));
@@ -28,8 +28,7 @@ const getEmployees = (list) => {
   }));
 };
 
-sortList(listItems);
+const sortedList = sortList(listItems);
+const employees = getEmployees(sortedList);
 
-getEmployees();
-
-// console.log(employees);
+window.sortedEmployees = employees;
