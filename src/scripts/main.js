@@ -1,8 +1,5 @@
 'use strict';
 
-// write code here
-'use strict';
-
 const elemsList = [...document.querySelectorAll('li')];
 const ulist = document.querySelector('ul');
 
