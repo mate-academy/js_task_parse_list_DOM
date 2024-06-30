@@ -45,8 +45,8 @@ function getEmployees(employeers) {
     const li = list[i];
 
     li.textContent = listObject[i].name;
-    li.dataset.position = listObject[i].position;
     li.dataset.salary = listObject[i].salary;
+    li.dataset.position = listObject[i].position;
     li.dataset.age = listObject[i].age;
   }
 
