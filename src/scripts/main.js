@@ -10,7 +10,7 @@ const salary = employeesList.map((element) => ({
   salary: Number(element.dataset.salary.replace(reg, '')),
 }));
 
-const sortList = (item) => item.sort((a, b) => a.salary - b.salary);
+const sortList = (item) => item.sort((a, b) => b.salary - a.salary);
 
 const getEmployees = sortList(salary);
 
