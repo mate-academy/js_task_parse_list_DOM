@@ -1,33 +1,33 @@
 'use strict';
 
-const list = document.querySelector('ul');
+const pageList = document.querySelector('ul');
 
-function norm(salary) {
-  return +salary.split(',').join('').slice(1);
+function normalize(stringSalary) {
+  return +stringSalary.split(',').join('').slice(1);
 }
 
-function sort(l) {
-  const childrenCopy = [...l.children];
+function sortList(list) {
+  const copyEmployeesChilds = [...list.children];
 
-  childrenCopy.sort((a, b) => {
-    return norm(b.dataset.salary) - norm(a.dataset.salary);
+  copyEmployeesChilds.sort((a, b) => {
+    return normalize(b.dataset.salary) - normalize(a.dataset.salary);
   });
 
-  childrenCopy.forEach((emp) => l.append(emp));
+  copyEmployeesChilds.forEach((employee) => list.append(employee));
 }
 
-function getEmps(l) {
-  return [...l.children].reduce((arr, child) => {
-    arr.push({
+function getEmployees(list) {
+  return [...list.children].reduce((array, child) => {
+    array.push({
       name: child.innerText,
       position: child.dataset.position,
       age: child.dataset.age,
       salary: child.dataset.salary,
     });
 
-    return arr;
+    return array;
   }, []);
 }
 
-sort(list);
-getEmps(list);
+sortList(pageList);
+getEmployees(pageList);
