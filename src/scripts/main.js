@@ -30,6 +30,7 @@ const getEmployees = (arr) => {
 
   return items.map((item) => ({
     name: item.textContent.trim(),
+    position: item.dataset.position,
     salary: parseIntegers(item.dataset.salary),
     age: parseInt(item.dataset.age),
   }));
