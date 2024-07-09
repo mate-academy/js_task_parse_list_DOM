@@ -8,6 +8,7 @@ function sortList() {
     const getNormalized = (item) => {
       return +item.dataset.salary.slice(1).split(',').join('');
     };
+
     return getNormalized(second) - getNormalized(first);
   });
 
@@ -23,3 +24,6 @@ const getEmployees = (list) =>
     age: employee.dataset.age,
     salary: employee.dataset.salary,
   }));
+
+sortList();
+getEmployees();
