@@ -1,6 +1,7 @@
 'use strict';
 
 const arrayOfEmployees = [...document.querySelectorAll('li')];
+document.querySelectorAll('li').style.listStyleType = 'square';
 
 //function for sorting list of employees and chenching order in html document
 function sortList(list) {
