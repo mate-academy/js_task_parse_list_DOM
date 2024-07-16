@@ -17,8 +17,6 @@ function sortList() {
   return itemsArray.map((item) => item);
 }
 
-const newItems = sortList();
-
 listOfEmployees.innerHTML = '';
 
-newItems.forEach((item) => listOfEmployees.append(item));
+sortList().forEach((item) => listOfEmployees.append(item));
