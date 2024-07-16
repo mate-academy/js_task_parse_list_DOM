@@ -6,9 +6,7 @@ const ul = document.querySelector('ul');
 const helper = (value) => {
   const changeValue = value.getAttribute('data-salary');
 
-  if (typeof changeValue === 'string') {
-    return +changeValue.replaceAll('$', '').split(',').join('');
-  }
+  return +changeValue.replace('$', '').split(',').join('');
 };
 
 const sortList = (list) => {
@@ -19,11 +17,11 @@ const sortList = (list) => {
   ul.replaceWith(ulWrap);
 };
 
-const getEployis = () => {
+const getEployees = () => {
   const sortedArray = [...document.querySelectorAll('li')];
 
   return sortedArray;
 };
 
 sortList(listArray);
-getEployis();
+getEployees();
