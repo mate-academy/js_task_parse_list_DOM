@@ -3,39 +3,25 @@
 const listOfEmployees = document.querySelectorAll('li');
 
 function getEmployees(list) {
-  const listArr = [];
+  const copy = [...list];
 
-  for (let i = 0; i < listOfEmployees.length; i++) {
-    const pushSalary = listOfEmployees[i].getAttribute('data-salary').slice(1);
-    const li = listOfEmployees[i].textContent.replaceAll('\n', '').trim();
-    const pos = listOfEmployees[i].getAttribute('data-position');
-    const dataAge = listOfEmployees[i].getAttribute('data-age');
-
-    listArr.push({
-      name: li,
-      position: pos,
-      salary: pushSalary,
-      age: dataAge,
-    });
-  }
-
-  return listArr;
+  return copy.map((employee) => ({
+    name: employee.textContent.replaceAll('\n', '').trim(),
+    position: employee.getAttribute('data-position'),
+    salary: employee.getAttribute('data-salary').slice(1),
+    age: employee.getAttribute('data-age'),
+  }));
 }
 
 function CreateSortList(list) {
-  const arr = [];
+  const copy = [...list];
 
-  for (let i = 0; i < listOfEmployees.length; i++) {
-    let pushSalary = listOfEmployees[i].getAttribute('data-salary').slice(1);
-    const li = listOfEmployees[i].textContent.replaceAll('\n', '').trim();
-
-    pushSalary = Number(pushSalary.replaceAll(',', ''));
-
-    arr.push({
-      name: li,
-      salary: pushSalary,
-    });
-  }
+  const arr = copy.map((employee) => ({
+    name: employee.textContent.replaceAll('\n', '').trim(),
+    salary: Number(
+      employee.getAttribute('data-salary').slice(1).replaceAll(',', ''),
+    ),
+  }));
 
   arr.sort((a, b) => b.salary - a.salary);
 
