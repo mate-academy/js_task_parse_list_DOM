@@ -38,6 +38,3 @@ function newSortedHtml(sortedEmployees) {
 }
 
 newSortedHtml(sorted);
-
-console.log(getEmployees(employee));
-console.log(sorted);
