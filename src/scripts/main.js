@@ -6,9 +6,9 @@ let names = [];
 document.querySelectorAll('li').forEach((el) => {
   const data = {
     name: el.textContent.trim(),
-    age: el.dataset.age,
-    salary: parseFloat(el.dataset.salary.replace(/[$,]/g, '')),
     position: el.dataset.position,
+    salary: parseFloat(el.dataset.salary.replace(/[$,]/g, '')),
+    age: el.dataset.age,
   };
 
   names.push(data);
