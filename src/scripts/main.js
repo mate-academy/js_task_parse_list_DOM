@@ -1,13 +1,16 @@
 'use strict';
 
+const list = document.querySelector('ul');
+const listItems = [...list.children];
+
 const convertToNumber = (data) => {
   return +data.replace(',', '').slice(1);
 };
 
-const getEmployees = (list) => {
+const getEmployees = (items) => {
   const result = [];
 
-  for (const item of list) {
+  for (const item of items) {
     const salary = item.getAttribute('data-salary');
     const position = item.getAttribute('data-position');
     const age = item.getAttribute('data-age');
@@ -31,12 +34,8 @@ const ListItem = (text) => {
   return li;
 };
 
-const sortList = () => {
-  const list = document.querySelector('ul');
-  const items = [...list.children];
-  const employees = getEmployees(items);
-  const sortedEmployees = employees.sort((a, b) => b.salary - a.salary);
-
+const sortList = (employeesList) => {
+  const sortedEmployees = employeesList.sort((a, b) => b.salary - a.salary);
   list.innerHTML = '';
 
   for (const employeer of sortedEmployees) {
@@ -50,4 +49,6 @@ const sortList = () => {
   }
 };
 
-sortList();
+const employees = getEmployees(listItems);
+
+sortList(employees);
