@@ -22,7 +22,7 @@ function sortList(list) {
     const salary1 = parseFloat(x1.salary.replace(/[$,]/g, ''));
     const salary2 = parseFloat(x2.salary.replace(/[$,]/g, ''));
 
-    return salary1 - salary2;
+    return salary2 - salary1;
   });
 }
 
