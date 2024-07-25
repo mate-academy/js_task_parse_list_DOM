@@ -1,6 +1,5 @@
 'use strict';
 
-// Получаем все элементы <li>
 const empl = document.getElementsByTagName('li');
 
 function getEmployeeArr(li) {
@@ -18,16 +17,22 @@ function getEmployeeArr(li) {
   return emplpoeys;
 }
 
-const lalala = getEmployeeArr(empl).sort((x1, x2) => {
-  const salary1 = parseFloat(x1.salary.replace(/[$,]/g, ''));
-  const salary2 = parseFloat(x2.salary.replace(/[$,]/g, ''));
+function sortList(list) {
+  list.sort((x1, x2) => {
+    const salary1 = parseFloat(x1.salary.replace(/[$,]/g, ''));
+    const salary2 = parseFloat(x2.salary.replace(/[$,]/g, ''));
 
-  return salary1 - salary2;
-});
+    return salary1 - salary2;
+  });
+}
+
+const newList = getEmployeeArr(empl);
+
+sortList(newList);
 
 for (let i = 0; i < empl.length; i++) {
-  empl[i].innerText = lalala[i].name;
-  empl[i].dataset.position = lalala[i].position;
-  empl[i].dataset.salary = lalala[i].salary;
-  empl[i].dataset.age = lalala[i].age;
+  empl[i].innerText = newList[i].name;
+  empl[i].dataset.position = newList[i].position;
+  empl[i].dataset.salary = newList[i].salary;
+  empl[i].dataset.age = newList[i].age;
 }
