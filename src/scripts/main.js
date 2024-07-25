@@ -3,19 +3,10 @@
 const empl = document.getElementsByTagName('li');
 
 function getEmployeeArr(li) {
-  const employees = [];
-  const tmpList = Array.from(li);
-
-  tmpList.map((item) => {
-    const emp = {
-      name: item.innerText,
-      ...item.dataset,
-    };
-
-    employees.push(emp);
-  });
-
-  return employees;
+  return li.map((item) => ({
+    name: item.innerText,
+    ...item.dataset,
+  }));
 }
 
 function sortList(list) {
@@ -27,7 +18,7 @@ function sortList(list) {
   });
 }
 
-const newList = getEmployeeArr(empl);
+const newList = getEmployeeArr(Array.from(empl));
 
 sortList(newList);
 
