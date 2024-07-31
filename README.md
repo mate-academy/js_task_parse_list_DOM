@@ -4,6 +4,7 @@
     - Run `npm run test` command to test your code;
     - Run `npm run test:only -- -n` to run fast test ignoring linter;
     - Run `npm run test:only -- -l` to run fast test with additional info in console ignoring linter.
+    
 ### Task: Parse list with data attributes
 
 Hey there! Can you parse data from the list and sort it based on data attributes?
