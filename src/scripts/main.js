@@ -3,53 +3,29 @@
 const collection = document.querySelectorAll('li');
 
 function sortList(list) {
-  const set = Array.from(list);
+  return Array.from(list).sort((a, b) => {
+    const salaryA = parseInt(a.dataset.salary.slice(1).split(',').join(''));
+    const salaryB = parseInt(b.dataset.salary.slice(1).split(',').join(''));
 
-  for (let i = 0; i < set.length; i++) {
-    for (let j = 0; j < set.length - i - 1; j++) {
-      const salaryA = parseInt(
-        set[j].dataset.salary.slice(1).split(',').join(''),
-      );
-      const salaryB = parseInt(
-        set[j + 1].dataset.salary.slice(1).split(',').join(''),
-      );
-
-      if (salaryA < salaryB) {
-        const temp = set[j];
-
-        set[j] = set[j + 1];
-        set[j + 1] = temp;
-      }
-    }
-  }
-
-  return set;
+    return salaryB - salaryA;
+  });
 }
 
 function getEmployees(list) {
   const sortedList = sortList(list);
 
-  const employeesArr = [];
-
-  for (const human of sortedList) {
-    const tempArr = {};
-
-    tempArr.name = human.innerText;
-    tempArr.position = human.dataset.position;
-    tempArr.salary = human.dataset.salary;
-    tempArr.age = human.dataset.age;
-    employeesArr.push(tempArr);
-  }
-
   const ul = document.querySelector('ul');
 
   ul.innerHTML = '';
 
-  for (const li of sortedList) {
-    ul.appendChild(li);
-  }
+  sortedList.forEach((li) => ul.appendChild(li));
 
-  return employeesArr;
+  return sortedList.map((human) => ({
+    name: human.innerText,
+    position: human.dataset.position,
+    salary: human.dataset.salary,
+    age: human.dataset.age,
+  }));
 }
 
 getEmployees(collection);
