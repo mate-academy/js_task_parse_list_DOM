@@ -10,14 +10,14 @@
 Hey there! Can you parse data from the list and sort it based on data attributes?
 
 Your task: Sort list by salary in descending order.
-Get an array of employees. Write two functions: 
+Get an array of employees. Write two functions:
 - first, which sorts the list by salary from data attributes
 - second, which returns an array of objects, where objects are employees.
 
 The schema for the employee:
 ```
 {
-  name, 
+  name,
   position,
   salary,
   age
