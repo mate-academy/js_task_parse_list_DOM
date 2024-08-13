@@ -5,7 +5,7 @@ const listEmployes = [...document.getElementsByTagName('li')];
 function sortList() {
   const salaryArr = listEmployes.map((el) => {
     const salary = el.dataset.salary;
-    const numericSalary = Number(salary.replace(/[\$,]/g, ''));
+    const numericSalary = Number(salary.replace(/[$,]/g, ''));
 
     return { element: el, salary: numericSalary };
   });
@@ -21,13 +21,13 @@ function sortList() {
 
 function getEmployees() {
   const objectOfEmployees = listEmployes.map((el) => {
-    const name = el.textContent.trim();
+    const nameEmp = el.textContent.trim();
     const position = el.dataset.position;
     const salary = el.dataset.salary;
     const age = el.dataset.age;
 
     return {
-      name,
+      name: nameEmp,
       position,
       salary,
       age,
@@ -38,4 +38,4 @@ function getEmployees() {
 }
 
 sortList();
-console.log(getEmployees());
+getEmployees();
