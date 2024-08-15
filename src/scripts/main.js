@@ -2,21 +2,17 @@
 
 const employeeList = document.querySelector('ul');
 
-const employeeNodes = document.querySelectorAll('li');
+const employeeNodes = Array.from(document.querySelectorAll('li'));
 
-const employees = [];
-
-employeeNodes.forEach((node) => {
+const employees = employeeNodes.map((node) => {
   const salary = node.getAttribute('data-salary').split(',').join('').slice(1);
 
-  const newObj = {
+  return {
     name: node.textContent.trim(),
     position: node.getAttribute('data-position'),
     salary: Number(salary),
     age: Number(node.getAttribute('data-age')),
   };
-
-  employees.push(newObj);
 });
 
 function sortList(list) {
