@@ -17,19 +17,18 @@ function parseSalary(salary) {
 }
 
 function getEmployees(list) {
-  const listOfEmployees = [];
+  const itemArray = Array.from(list);
 
-  for (let i = 0; i < list.length; i++) {
-    listOfEmployees.push({
-      name: list[i].textContent.trim(),
-      position: list[i].dataset.position,
-      salary: parseSalary(list[i].dataset.salary),
-      age: parseInt(list[i].dataset.age),
-    });
-  }
-
-  return listOfEmployees;
+  return itemArray.map((el) => {
+    return {
+      name: el.textContent.trim(),
+      position: el.dataset.position,
+      salary: parseSalary(el.dataset.salary),
+      age: parseInt(el.dataset.age),
+    };
+  });
 }
 
 getEmployees(listElements);
+
 sortList(listElements);
