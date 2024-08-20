@@ -22,20 +22,15 @@ function sortList() {
 
 function getEmployees() {
   const getWorkers = Array.from(document.querySelectorAll('li'));
-  const workers = [];
 
-  getWorkers.forEach((li) => {
-    const employee = {
+  getWorkers.map((li) => {
+    return {
       name: li.textContent,
       position: li.getAttribute('data-position'),
       salary: li.getAttribute('data-salary'),
       age: li.getAttribute('data-age'),
     };
-
-    workers.push(employee);
   });
-
-  return workers;
 }
 
 sortList();
