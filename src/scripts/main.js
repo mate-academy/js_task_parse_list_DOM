@@ -21,18 +21,13 @@ function sortList(list) {
 
 function getEmployees(list) {
   const employees = [...list.children];
-  const result = [];
 
-  employees.forEach((employee) => {
-    result.push({
-      name: employee.innerText,
-      position: employee.dataset.position,
-      salary: employee.dataset.salary,
-      age: employee.dataset.age,
-    });
-  });
-
-  return result;
+  return employees.map((employee) => ({
+    name: employee.innerText,
+    position: employee.dataset.position,
+    salary: employee.dataset.salary,
+    age: employee.dataset.age,
+  }));
 }
 
 const listOfEmployees = document.querySelector('ul');
