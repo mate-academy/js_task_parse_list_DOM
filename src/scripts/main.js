@@ -38,6 +38,4 @@ function getEmployeesArray() {
 
 sortListBySalary();
 
-const employees = getEmployeesArray();
-
-console.log(employees);
+getEmployeesArray();
