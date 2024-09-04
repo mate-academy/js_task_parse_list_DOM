@@ -1,40 +1,41 @@
 'use strict';
 
-const list = document.querySelector('li');
-const listItems = Array.from(list.children);
-const salaries = [];
-
-function parseSalary(salary) {
-  return +salary.replace(/[$,]/g, '');
-}
+const listEmployes = [...document.getElementsByTagName('li')];
 
 function sortList() {
-  listItems.forEach((item) => {
-    const salary = parseSalary(item.dataset.salary);
+  const salaryArr = listEmployes.map((el) => {
+    const salary = el.dataset.salary;
+    const numericSalary = Number(salary.replace(/[$,]/g, ''));
 
-    salaries.push({ item, salary });
+    return { element: el, salary: numericSalary };
   });
 
-  salaries.sort((a, b) => b.salary - a.salary);
+  salaryArr.sort((firstEm, secondEm) => secondEm.salary - firstEm.salary);
 
-  list.innerHTML = '';
-  salaries.forEach(({ item }) => list.append(item));
+  const parentLi = listEmployes[0].parentNode;
 
-  listItems.length = 0;
-  listItems.push(...Array.from(list.children));
+  salaryArr.forEach(({ element }) => {
+    parentLi.appendChild(element);
+  });
+}
+
+function getEmployees() {
+  const objectOfEmployees = listEmployes.map((el) => {
+    const nameEmp = el.textContent.trim();
+    const position = el.dataset.position;
+    const salary = el.dataset.salary;
+    const age = el.dataset.age;
+
+    return {
+      name: nameEmp,
+      position,
+      salary,
+      age,
+    };
+  });
+
+  return objectOfEmployees;
 }
 
 sortList();
-
-function getEmployees() {
-  return listItems.map((item) => {
-    return {
-      name: item.textContent.trim(),
-      position: item.dataset.position,
-      salary: item.dataset.salary,
-      age: item.dataset.age,
-    };
-  });
-}
-
 getEmployees();
