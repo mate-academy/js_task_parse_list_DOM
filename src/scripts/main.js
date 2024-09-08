@@ -13,7 +13,7 @@ function sortList(array) {
     const sallaryA = getNumber(a.getAttribute('data-salary'));
     const sallaryB = getNumber(b.getAttribute('data-salary'));
 
-    return sallaryA < sallaryB;
+    return sallaryB - sallaryA;
   });
 
   employeesList.innerHTML = '';
