@@ -4,15 +4,11 @@ const li = document.querySelectorAll('li');
 const ul = document.querySelector('ul');
 
 function extractNumber(str) {
-  let num = '';
-
-  for (const n of str) {
-    if (!isNaN(n)) {
-      num += n;
-    }
+  if (!str || typeof str !== 'string') {
+    return 0;
   }
 
-  return +num;
+  return parseFloat(str.replace(/[^\d.-]/g, '')) || 0;
 }
 
 const sortList = (list) => {
@@ -30,18 +26,8 @@ const sortList = (list) => {
 
 const items = sortList(li);
 
-ul.innerHTML = '';
-
 items.forEach((item) => {
-  const newLi = document.createElement('li');
-
-  newLi.textContent = item.textContent;
-
-  Object.keys(item.dataset).forEach((attr) => {
-    newLi.setAttribute(attr, item.dataset[attr]);
-  });
-
-  ul.appendChild(newLi);
+  ul.appendChild(item);
 });
 
 const getEmployees = (list) => {
