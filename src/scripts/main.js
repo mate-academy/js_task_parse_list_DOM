@@ -30,6 +30,7 @@ function createEmployeesArray(sortsArray) {
 
     li.textContent = user.textContent;
     li.dataset.position = user.dataset.position;
+    li.dataset.salary = user.dataset.salary;
     li.dataset.age = user.dataset.age;
 
     usersList.appendChild(li);
