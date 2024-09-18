@@ -31,5 +31,6 @@ function getEmployees(list) {
 
 const employeeList = document.querySelector('ul');
 
+// виклик функцій
 sortList(employeeList);
 getEmployees(employeeList);
