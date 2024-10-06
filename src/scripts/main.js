@@ -10,8 +10,8 @@ function sortList(list) {
 
   sortedList.sort(
     (salary1, salary2) =>
-      parseInt(salary1.dataset.salary.replace(/[$,]/g, '')) -
-      parseInt(salary2.dataset.salary.replace(/[$,]/g, '')),
+      parseInt(salary2.dataset.salary.replace(/[$,]/g, '')) -
+      parseInt(salary1.dataset.salary.replace(/[$,]/g, '')),
   );
 
   return sortedList;
