@@ -28,5 +28,5 @@ const sorted = getEmployes(sortList(listem));
 const newlist = [...document.querySelectorAll('li')];
 
 for (let i = 0; i < listem.length; i++) {
-    newlist[i].textContent = sorted[i].name;
+  newlist[i].textContent = sorted[i].name;
 }
