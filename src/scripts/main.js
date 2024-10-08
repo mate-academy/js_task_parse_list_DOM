@@ -28,5 +28,4 @@ const getEmployees = (sortList) => {
   return arr;
 };
 
-const employees = getEmployees(listArray);
-console.log(employees);
+getEmployees(listArray);
