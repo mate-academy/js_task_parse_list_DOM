@@ -4,7 +4,6 @@
 
 const employees = document.querySelectorAll('li');
 
-// - first, which sorts the list by salary from data attributes
 function sortList([...list]) {
   const newList = list.sort((a, b) => {
     const salaryA = Number(
@@ -45,11 +44,3 @@ function getEmployees([...list]) {
 
 sortList(employees);
 getEmployees(employees);
-
-/* <li
-        data-position="Accountant"
-        data-salary="$162,700"
-        data-age="33"
-      >
-        Airi Satou
-</li> */
