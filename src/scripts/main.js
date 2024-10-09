@@ -3,8 +3,8 @@
 const salaryList = [...document.querySelectorAll('li[data-salary]')];
 
 salaryList.sort((a, b) => {
-  const item1 = parseInt(a.getAttribute('data-salary').replace('$', ''));
-  const item2 = parseInt(b.getAttribute('data-salary').replace('$', ''));
+  const item1 = parseInt(a.getAttribute('data-salary').replace('$', '')) || 0;
+  const item2 = parseInt(b.getAttribute('data-salary').replace('$', '')) || 0;
 
   return item2 - item1;
 });
