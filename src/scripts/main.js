@@ -1,14 +1,24 @@
 'use strict';
 
-const salaryList = [...document.querySelectorAll('li[data-salary]')];
+const employees = [...document.querySelectorAll('li')];
+const list = document.querySelector('ul');
+const newList = document.createElement('ul');
 
-salaryList.sort((a, b) => {
-  const item1 = parseInt(a.getAttribute('data-salary').replace('$', '')) || 0;
-  const item2 = parseInt(b.getAttribute('data-salary').replace('$', '')) || 0;
+const sortList = (arr) => {
+  return arr.sort((a, b) => {
+    const salaryA = parseInt(a.dataset.salary.slice(1).replace(',', '')) || 0;
+    const salaryB = parseInt(b.dataset.salary.slice(1).replace(',', '')) || 0;
 
-  return item2 - item1;
-});
+    return salaryB - salaryA;
+  });
+};
 
-salaryList.forEach((item) => {
-  document.querySelector('ul').appendChild(item);
-});
+const getEmployees = (newArr) => {
+  newArr.forEach((element) => {
+    newList.append(element);
+  });
+
+  list.replaceWith(newList);
+};
+
+getEmployees(sortList(employees));
