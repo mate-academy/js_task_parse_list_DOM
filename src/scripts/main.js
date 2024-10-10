@@ -1,23 +1,23 @@
 'use strict';
 
-const ul = document.querySelector('ul');
-const listItems = document.querySelectorAll('li');
+const employeeList = document.querySelector('ul');
 
-const sortList = function(items) {
-  const list = Array.from(items);
+function sortList(list) {
+  const copyOfList = [...list.children];
 
-  list.sort((a, b) => {
-    const salaryA = parseInt(a.getAttribute('data-salary').replace(/[$,]/g, ''));
-    const salaryB = parseInt(b.getAttribute('data-salary').replace(/[$,]/g, ''));
+  const sorted = copyOfList.sort((a, b) => {
+    const preparedA = parseInt(a.getAttribute('data-salary').replace(/[$,]/g, ''));
+    const preparedB = parseInt(b.getAttribute('data-salary').replace(/[$,]/g, ''));
 
-    return salaryB - salaryA;
-  })
+    return preparedB - preparedA;
+  });
 
-  ul.appendChild(...list);
-};
+  list.append(...sorted);
+}
 
 const getEmployees = (list) => {
-  return list.map((el) => {
+  const copyOfList = [...list.children];
+  return copyOfList.map((el) => {
     return {
       name: el.textContent.trim(),
       position: el.getAttribute('data-position'),
@@ -27,5 +27,5 @@ const getEmployees = (list) => {
   });
 };
 
-sortList(listItems);
-getEmployees();
+sortList(employeeList);
+getEmployees(employeeList);
