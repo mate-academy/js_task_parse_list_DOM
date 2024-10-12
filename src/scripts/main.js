@@ -4,18 +4,19 @@ const listItems = [...document.querySelectorAll('li')];
 const employeesList = document.querySelector('ul');
 
 function convertToNumber(string) {
-  const salaryString = string;
-  const salaryNumber = salaryString.replace('$', '').replace(',', '');
+  const salaryNumber = string.replace('$', '').replace(',', '');
 
   return +salaryNumber;
 }
 
-function sortBySalary(items, list) {
+function sortBySalary(items) {
   items.sort(
     (a, b) =>
       convertToNumber(b.dataset.salary) - convertToNumber(a.dataset.salary),
   );
+}
 
+function updateList(list, items) {
   list.innerHTML = '';
   items.forEach((item) => list.appendChild(item));
 }
@@ -29,6 +30,11 @@ function getEmployees(items) {
   }));
 }
 
-sortBySalary(listItems, employeesList);
+updateList(employeesList, listItems);
+
+sortBySalary(listItems);
 
 getEmployees(listItems);
+
+// eslint-disable-next-line no-unused-vars
+const newEmployeesList = getEmployees(listItems);
