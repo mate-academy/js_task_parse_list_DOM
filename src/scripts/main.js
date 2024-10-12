@@ -4,7 +4,7 @@ const listItems = [...document.querySelectorAll('li')];
 const employeesList = document.querySelector('ul');
 
 function convertToNumber(string) {
-  const salaryNumber = string.replace('$', '').replace(',', '');
+  const salaryNumber = string.replace(/\$/g, '').replace(/,/g, '');
 
   return +salaryNumber;
 }
@@ -14,28 +14,19 @@ function sortBySalary(items) {
     (a, b) =>
       convertToNumber(b.dataset.salary) - convertToNumber(a.dataset.salary),
   );
+
+  return items;
 }
 
 function updateList(list, items) {
   list.innerHTML = '';
-  items.forEach((item) => list.appendChild(item));
-}
 
-// function getEmployees(items) {
-//   return items.map((item) => ({
-//     name: item.textContent.trim(),
-//     position: item.dataset.position,
-//     salary: item.dataset.salary,
-//     age: item.dataset.age,
-//   }));
-// }
+  const fragment = document.createDocumentFragment();
+
+  items.forEach((item) => fragment.appendChild(item));
+
+  list.appendChild(fragment);
+}
 
 sortBySalary(listItems);
 updateList(employeesList, listItems);
-// getEmployees(listItems);
-
-// eslint-disable-next-line no-unused-vars
-const newEmployeesList = updateList;
-
-// eslint-disable-next-line no-unused-vars
-// const newEmployeesList = getEmployees(listItems);
