@@ -21,18 +21,21 @@ function updateList(list, items) {
   items.forEach((item) => list.appendChild(item));
 }
 
-function getEmployees(items) {
-  return items.map((item) => ({
-    name: item.textContent.trim(),
-    position: item.dataset.position,
-    salary: item.dataset.salary,
-    age: item.dataset.age,
-  }));
-}
+// function getEmployees(items) {
+//   return items.map((item) => ({
+//     name: item.textContent.trim(),
+//     position: item.dataset.position,
+//     salary: item.dataset.salary,
+//     age: item.dataset.age,
+//   }));
+// }
 
 sortBySalary(listItems);
 updateList(employeesList, listItems);
-getEmployees(listItems);
+// getEmployees(listItems);
 
 // eslint-disable-next-line no-unused-vars
-const newEmployeesList = getEmployees(listItems);
+const newEmployeesList = updateList;
+
+// eslint-disable-next-line no-unused-vars
+// const newEmployeesList = getEmployees(listItems);
