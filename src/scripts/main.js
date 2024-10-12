@@ -30,10 +30,8 @@ function getEmployees(items) {
   }));
 }
 
-updateList(employeesList, listItems);
-
 sortBySalary(listItems);
-
+updateList(employeesList, listItems);
 getEmployees(listItems);
 
 // eslint-disable-next-line no-unused-vars
