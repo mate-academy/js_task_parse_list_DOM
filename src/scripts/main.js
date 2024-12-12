@@ -6,15 +6,15 @@ function sortList() {
   const listItems = [...list.children];
 
   const getSalary = (str) => {
-    return +str.slice(1).replaceAll(',', '');
+    return +str.slice(1).split(',').join('');
   };
 
   list.append(
     ...listItems.sort((employee1, employee2) => {
-      return (
-        getSalary(employee2.dataset.salary) -
-        getSalary(employee1.dataset.salary)
-      );
+      return employee1.dataset.salary
+        ? getSalary(employee2.dataset.salary) -
+            getSalary(employee1.dataset.salary)
+        : 0;
     }),
   );
 }
@@ -32,5 +32,7 @@ function getEmployees() {
   return listArr;
 }
 
-sortList();
-getEmployees();
+addEventListener('DOMContentLoaded', () => {
+  sortList();
+  getEmployees();
+});
