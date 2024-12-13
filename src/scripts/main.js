@@ -18,7 +18,7 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
-  const employees = Array.from(list.children).map((name) => ({
+  const employees = Array.from(list.children).map((item) => ({
     name: item.textContent.trim(),
     position: item.dataset.position,
     salary: parseSalary(item.dataset.salary),
