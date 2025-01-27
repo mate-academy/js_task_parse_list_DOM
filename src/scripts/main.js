@@ -9,7 +9,7 @@ function sortList(arr) {
     item.dataset.salaryNumeric = +salary;
   });
 
-  newArr.sort((a, b) => a.dataset.salaryNumeric - b.dataset.salaryNumeric);
+  newArr.sort((a, b) => b.dataset.salaryNumeric - a.dataset.salaryNumeric);
 
   return newArr;
 }
