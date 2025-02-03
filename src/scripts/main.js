@@ -14,12 +14,22 @@ function sortList(employeeList) {
   });
 
   employeeList.sort((a, b) => b.dataset.salary - a.dataset.salary);
-}
-
-function getEmployees(employeeList) {
   ul.innerHTML = '';
   employeeList.forEach((item) => ul.appendChild(item));
 }
 
+function getEmployees() {
+  const employees = list.map((item) => {
+    return {
+      name: item.textContent.trim(),
+      position: item.dataset.position,
+      salary: item.dataset.salary,
+      age: item.dataset.age,
+    };
+  });
+
+  return employees;
+}
+
 sortList(list);
-getEmployees(list);
+getEmployees();
