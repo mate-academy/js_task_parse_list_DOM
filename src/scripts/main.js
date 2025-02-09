@@ -16,7 +16,7 @@ const employees = list.map((employee) => {
   };
 });
 
-employees.sort((a, b) => a.salary - b.salary).reverse();
+employees.sort((a, b) => b.salary - a.salary);
 
 employees.forEach((obj) => {
   obj.salary = `$${obj.salary.toLocaleString()}`;
