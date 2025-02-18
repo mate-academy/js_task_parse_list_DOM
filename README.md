@@ -1,44 +1,26 @@
-1. Replace `<your_account>` with your Github username in the link
-    - [DEMO LINK](https://<your_account>.github.io/js_task_parse_list_DOM/)
-2. Follow [this instructions](https://mate-academy.github.io/layout_task-guideline/)
-    - Run `npm run test` command to test your code;
-    - Run `npm run test:only -- -n` to run fast test ignoring linter;
-    - Run `npm run test:only -- -l` to run fast test with additional info in console ignoring linter.
+# Parse list with data attributes
 
-### Task: Parse list with data attributes
+## 🎮 About the Project
+In this project, the goal was to parse a list of employees, sort them by their salary in descending order, and extract an array of sorted employees. This was achieved by using data attributes and sorting logic to process and display the information.
 
-Hey there! Can you parse data from the list and sort it based on data attributes?
+## 🚀 Tech Stack
+- **HTML** (BEM methodology for structured markup)
+- **CSS** (Basic styling)
+- **JavaScript** (Sorting and data manipulation)
 
-Your task: Sort list by salary in descending order.
-Get an array of employees. Write two functions: 
-- first, which sorts the list by salary from data attributes
-- second, which returns an array of objects, where objects are employees.
+## 🛠️ Tools & Dependencies
+- **ESLint** – Ensuring code quality  
+- **Prettier** – Code formatting for readability  
+- **Cypress** – End-to-end testing  
+- **Mochawesome** – Test reporting  
+- **Parcel** – Web application bundler  
 
-The schema for the employee:
-```
-{
-  name, 
-  position,
-  salary,
-  age
-}
-```
+## 📌 Features
+✅ Sorted the list of employees by salary in descending order  
+✅ Extracted and displayed an array of sorted employees based on data attributes  
 
-Employees list:
+## 🌐 Demo
+🔗 [Live Demo](https://AndriiZakharenko.github.io/parse-list/)
 
-![Preview](./src/images/preview.png)
-
-Expected result after soring:
-
-![Result](./src/images/result.png)
-
-You can read about non-standard attributes and dataset [here](https://javascript.info/dom-attributes-and-properties#non-standard-attributes-dataset)
-
-##### Steps to do this challenge:
-1) Find and get a list from the document.
-2) Create function `sortList`, which takes a `list` property, and sorts list items in descending order by salary from data attribute. (Salary from data attribute is a string, do not forget to convert it to number, write helper function for it). Append sorted items to list.
-3) Create function `getEmployees`, which takes a `list` property, and returns an array of right objects.
-4) Call both functions.
-5) Done.
-
-You don't need to change styles or HTML layout in this task. Change only `main.js` file.
+## 📜 License
+This project is forked from 💻 [Mate Academy](https://github.com/mate-academy/js_task_parse_list_DOM)
