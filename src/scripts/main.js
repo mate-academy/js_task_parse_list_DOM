@@ -37,4 +37,4 @@ function getEmployees(arr) {
   return result;
 }
 
-const employees = getEmployees(sortedList);
+getEmployees(sortedList);
