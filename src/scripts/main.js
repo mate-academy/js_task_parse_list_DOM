@@ -13,15 +13,15 @@ function sortList(list) {
   return allPersons;
 }
 
-const sortFunction = sortList(li);
+const sortedList = sortList(li);
 
 ul.innerHTML = '';
-sortList(li).forEach((item) => ul.appendChild(item));
+sortedList.forEach((item) => ul.appendChild(item));
 
-function getEmployees() {
+function getEmployees(arr) {
   const result = [];
 
-  Array.from(li).forEach((item) => {
+  Array.from(arr).forEach((item) => {
     const age = item.dataset.age;
     const salary = item.dataset.salary;
     const position = item.dataset.position;
@@ -37,4 +37,4 @@ function getEmployees() {
   return result;
 }
 
-getEmployees(sortFunction);
+const employees = getEmployees(sortedList);
