@@ -3,20 +3,12 @@
 const listEmployees = [...document.querySelectorAll('li')];
 
 function getEmployees(list) {
-  const employees = [];
-
-  list.forEach((elem) => {
-    const employee = {
-      name: elem.innerHTML.trim(),
-      position: elem.dataset.position,
-      salary: elem.dataset.salary,
-      age: elem.dataset.age,
-    };
-
-    employees.push(employee);
-  });
-
-  return employees;
+  return list.map((elem) => ({
+    name: elem.innerHTML.trim(),
+    position: elem.dataset.position,
+    salary: elem.dataset.salary,
+    age: elem.dataset.age,
+  }));
 }
 
 function sortList(list) {
@@ -34,4 +26,5 @@ function convertSalary(salary) {
 }
 
 sortList(listEmployees);
+
 getEmployees(listEmployees);
