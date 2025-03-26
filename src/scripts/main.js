@@ -8,9 +8,9 @@ function getEmployees(list) {
   list.forEach((elem) => {
     const employee = {
       name: elem.innerHTML.trim(),
-      position: elem.getAttribute(['data-position']),
-      salary: elem.getAttribute(['data-salary']),
-      age: elem.getAttribute(['data-age']),
+      position: elem.dataset.position,
+      salary: elem.dataset.salary,
+      age: elem.dataset.age,
     };
 
     employees.push(employee);
@@ -21,9 +21,7 @@ function getEmployees(list) {
 
 function sortList(list) {
   const listSort = list.sort(
-    (a, b) =>
-      convertSalary(b.getAttribute(['data-salary'])) -
-      convertSalary(a.getAttribute(['data-salary'])),
+    (a, b) => convertSalary(b.dataset.salary) - convertSalary(a.dataset.salary),
   );
 
   for (const li of listSort) {
@@ -35,5 +33,5 @@ function convertSalary(salary) {
   return +salary.slice(1).split(',').join('');
 }
 
-getEmployees(listEmployees);
 sortList(listEmployees);
+getEmployees(listEmployees);
