@@ -3,22 +3,34 @@
 /* eslint-disable no-console */
 'use strict';
 
-const list = [];
-
-for (const li of document.querySelectorAll('[data-position]')) {
-  list.push([
-    li.textContent.toString().trim(),
-    li.getAttribute('data-position'),
-    li.getAttribute('data-salary'),
-    li.getAttribute('data-age'),
-  ]);
+function getEmployees() {
+  return Array.from(document.querySelectorAll('[data-position]')).map(li => ({
+    name: li.textContent.trim(),
+    position: li.getAttribute('data-position'),
+    salary: Number(li.getAttribute('data-salary').replace(/[^\d.]/g, '')), // Число
+    age: li.getAttribute('data-age'),
+  }));
 }
 
-list.sort((a, b) => Number(b[2].replace(/[^\d.]/g, '')) - Number(a[2].replace(/[^\d.]/g, '')));
+function sortList() {
+  const employees = getEmployees();
 
-document.querySelectorAll('[data-position]').forEach((li, i) => {
-  li.setAttribute('data-position', list[i][1]);
-  li.setAttribute('data-salary', list[i][2]);
-  li.setAttribute('data-age', list[i][3]);
-  li.innerText = list[i][0];
-});
+  employees.sort((a, b) => b.salary - a.salary);
+
+  const listContainer = document.querySelector('ul');
+
+  listContainer.innerHTML = '';
+
+  employees.forEach(employee => {
+    const li = document.createElement('li');
+
+    li.setAttribute('data-position', employee.position);
+    li.setAttribute('data-salary', employee.salary);
+    li.setAttribute('data-age', employee.age);
+    li.textContent = employee.name;
+    listContainer.appendChild(li);
+  });
+}
+
+// Вызываем сортировку (можно привязать к кнопке)
+sortList();
