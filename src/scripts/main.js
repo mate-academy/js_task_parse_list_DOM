@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use strict';
 
 const employeesList = document.querySelector('ul');
@@ -29,5 +30,7 @@ function getEmployees(list) {
     };
   });
 }
+
 sortList(employeesList);
-getEmployees(employeesList);
+
+const employees = getEmployees(employeesList);
