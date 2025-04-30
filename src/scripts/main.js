@@ -1,6 +1,6 @@
 'use strict';
 
-const list = document.querySelectorAll('ul li');
+const list = document.querySelectorAll('ul');
 const listElements = Array.from(list.children);
 
 function parseSalary(salaryString) {
