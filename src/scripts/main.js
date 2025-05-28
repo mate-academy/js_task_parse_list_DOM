@@ -3,10 +3,10 @@
 
 const employeesDOMList = document.querySelectorAll('ul > li');
 
-function getEmployees() {
-  const employeesList = [];
+function getEmployees(domList) {
+  const employeesList =[];
 
-  employeesDOMList.forEach(emp => {
+  domList.forEach(emp => {
     const entries = Object.entries(emp.dataset);
     const employee = {};
 
@@ -28,7 +28,8 @@ function salaryToNumber(salary) {
   return salary.slice(1, salary.length).split(',').join('');
 }
 
-function sortEmployeeBySalary(employeesList) {
+function sortList(employeesList) {
+  const ulList = document.querySelector('ul');
   const copyEmployees = employeesList.map(emp => {
     return { ...emp };
   });
@@ -37,12 +38,25 @@ function sortEmployeeBySalary(employeesList) {
     const salaryA = salaryToNumber(a['salary']);
     const salaryB = salaryToNumber(b['salary']);
 
-    return Number(salaryA) - Number(salaryB);
+    return Number(salaryB) - Number(salaryA);
   });
 
-  return copyEmployees;
+  ulList.innerHTML = '';
+
+  copyEmployees.forEach(emp => {
+    const li = document.createElement('li');
+
+    Object.entries(emp).forEach(([key, value]) => {
+      li.setAttribute(`data-${key}`, value);
+    });
+
+    li.textContent = emp.name;
+
+
+    ulList.appendChild(li);
+  });
 }
 
-const employees = getEmployees();
+const employees = getEmployees(employeesDOMList);
 
-sortEmployeeBySalary(employees);
+sortList(employees);
