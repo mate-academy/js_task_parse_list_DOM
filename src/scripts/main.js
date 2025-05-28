@@ -47,7 +47,9 @@ function sortList(employeesList) {
     const li = document.createElement('li');
 
     Object.entries(emp).forEach(([key, value]) => {
-      li.setAttribute(`data-${key}`, value);
+      if (key !== 'name') {
+        li.setAttribute(`data-${key}`, value);
+      }
     });
 
     li.textContent = emp.name;
