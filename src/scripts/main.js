@@ -1,7 +1,7 @@
 'use strict';
 const listElement = document.querySelector('ul');
 function sortList(list) {
-  let listItems = Array.from(document.querySelectorAll('li'));
+  let listItems = Array.from(list.querySelectorAll('li'));
 
   const sorted = listItems.sort((a, b) => {
     let salaryA = Number(a.dataset.salary.replaceAll('$', '').replaceAll(',', ''));
@@ -16,7 +16,7 @@ sortList(listElement);
 
 function getEmployees(list) {
 let result = [];
-let listItems = Array.from(document.querySelectorAll('li'));
+let listItems = Array.from(list.querySelectorAll('li'));
 for (let i = 0; i < listItems.length; i++) {
   let li = listItems[i];
   let newObject = {
