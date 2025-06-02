@@ -28,8 +28,8 @@ function getEmployees(list) {
     const employeeObj = {
       name: employee.textContent.trim(),
       position: employee.dataset.position,
-      salary: employee.dataset.salary.replace(/[$,]/g, ''),
-      age: employee.dataset.age,
+      salary: Number(employee.dataset.salary.replace(/[$,]/g, '')),
+      age: Number(employee.dataset.age),
     };
 
     employees.push(employeeObj);
