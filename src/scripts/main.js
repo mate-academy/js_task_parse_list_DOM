@@ -9,10 +9,6 @@ function sortList(list) {
     const a = first.salary;
     const b = second.salary;
 
-    if (a === b) {
-      return list.indexOf(b) - list.indexOf(a);
-    }
-
     return b - a;
   });
 }
@@ -22,10 +18,9 @@ function getEmployees(list) {
     element: el.innerHTML,
     salary: el.getAttribute('data-salary')
       ? +el.getAttribute('data-salary').slice(1).split(',').join('')
-      : 0, // Встановлюємо значення 0, якщо атрибут відсутній
+      : 0,
   }));
 
-  // Видаляємо всі елементи з списку
   children.forEach((child) => ul.removeChild(child));
 
   const sortArr = sortList(arrList);
@@ -33,7 +28,7 @@ function getEmployees(list) {
   sortArr.forEach((el) => {
     const newLi = document.createElement('li');
 
-    newLi.textContent = el.element;
+    newLi.innerHTML = el.element;
     ul.appendChild(newLi);
   });
 
