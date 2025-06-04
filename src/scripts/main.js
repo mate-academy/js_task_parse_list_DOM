@@ -34,7 +34,7 @@ function getEmployees(list) {
   }));
 
   children.forEach((child) => {
-    if (child.tagName.toLowerCase() === 'li') {
+    if (child.tagName === 'LI') {
       ul.removeChild(child);
     }
   });
