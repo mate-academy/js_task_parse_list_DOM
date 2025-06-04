@@ -8,6 +8,18 @@ function sortList(list) {
   return list.sort((first, second) => {
     const a = first.salary;
     const b = second.salary;
+    const aName = first.element.toLowerCase();
+    const bName = second.element.toLowerCase();
+
+    if (a === b) {
+      if (aName < bName) {
+        return -1;
+      }
+
+      if (aName > bName) {
+        return 1;
+      }
+    }
 
     return b - a;
   });
@@ -21,7 +33,11 @@ function getEmployees(list) {
       : 0,
   }));
 
-  children.forEach((child) => ul.removeChild(child));
+  children.forEach((child) => {
+    if (child.tagName.toLowerCase() === 'li') {
+      ul.removeChild(child);
+    }
+  });
 
   const sortArr = sortList(arrList);
 
