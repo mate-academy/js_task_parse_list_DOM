@@ -7,7 +7,9 @@ const listData = list.map((li) => ({
 }));
 
 function toNumbers(array) {
-  return array.map((person) => ({
+  const copyArray = [...array];
+
+  return copyArray.map((person) => ({
     ...person,
     ...(person.data.salary = parseInt(person.data.salary.replace(/[$,]/g, ''))),
   }));
