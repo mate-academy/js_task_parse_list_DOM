@@ -1,10 +1,10 @@
 'use strict';
 
 const ul = document.querySelector('ul');
-const list = [...ul.getElementsByTagName('li')];
+const listArr = [...ul.getElementsByTagName('li')];
 
-sortList(list);
-getEmployees(list);
+sortList(listArr);
+getEmployees(listArr);
 
 function sortList(listParam) {
   const res = listParam.sort((a, b) => {
