@@ -20,7 +20,7 @@ function getSalary(item) {
 
 function getEmployees(list) {
   return Array.from(list.children).map((item) => ({
-    name: item.innerHtml,
+    name: item.innerHTML,
     position: item.dataset.position,
     salary: item.dataset.salary,
     age: item.dataset.age,
