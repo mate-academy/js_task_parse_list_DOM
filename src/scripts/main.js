@@ -6,12 +6,12 @@ function sortList() {
   salary.forEach(function (item) {
     const employerName = item.textContent.trim();
 
-    salary = item.dataset.salary;
+    salaryEmployer = item.dataset.salary;
 
     const position = item.dataset.position;
     const age = item.dataset.age;
 
-    let deleteDollar = salary.replace('$', '');
+    let deleteDollar = salaryEmployer.replace('$', '');
 
     deleteDollar = Number(deleteDollar.replace(',', ''));
 
