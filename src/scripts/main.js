@@ -1,12 +1,12 @@
 const employesList = [];
 
 function sortList() {
-  let salary = document.querySelectorAll('li[data-salary]');
+  const salary = document.querySelectorAll('li[data-salary]');
 
   salary.forEach(function (item) {
     const employerName = item.textContent.trim();
 
-    salaryEmployer = item.dataset.salary;
+    const salaryEmployer = item.dataset.salary;
 
     const position = item.dataset.position;
     const age = item.dataset.age;
