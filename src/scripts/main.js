@@ -10,7 +10,7 @@ function sortList(employeeList) {
     const aEl = formatData(a.dataset.salary);
     const bEl = formatData(b.dataset.salary);
 
-    return aEl - bEl;
+    return bEl - aEl;
   });
 
   container[0].innerHTML = '';
