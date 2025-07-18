@@ -7,13 +7,13 @@ function sortList(employeeList) {
   const container = document.getElementsByTagName('ul');
 
   employeeList.sort((a, b) => {
-    const bEl = formatData(a.dataset.salary);
-    const aEl = formatData(b.dataset.salary);
+    const aEl = formatData(a.dataset.salary);
+    const bEl = formatData(b.dataset.salary);
 
     return aEl - bEl;
   });
 
-  container[0].innerHtml = '';
+  container[0].innerHTML = '';
   list.forEach((el) => container[0].appendChild(el));
 }
 
@@ -32,6 +32,8 @@ function getEmployees(employeeList) {
       age: el.dataset.age,
     });
   });
+
+  return employeesArr;
 }
 sortList(list);
 getEmployees(list);
