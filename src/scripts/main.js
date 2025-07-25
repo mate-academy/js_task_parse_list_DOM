@@ -14,7 +14,7 @@
 
 const list = document.querySelector('ul');
 const getSalary = (x) =>
-  x.getAttribute('data-salary').split(',').join('').slice(1);
+  Number(x.getAttribute('data-salary').split(',').join('').slice(1));
 
 function getEmployees(x) {
   let employees = [...x.children];
