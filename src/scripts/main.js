@@ -26,7 +26,7 @@ function sortList(list) {
 
   for (let i = 0; i < listTypeList.length; i++) {
     listTypeList[i].innerHTML = sortedEmplArr[i].name;
-    listTypeList[i].dataset.position = sortedEmplArr[i].postion;
+    listTypeList[i].dataset.position = sortedEmplArr[i].position;
     listTypeList[i].dataset.salary = sortedEmplArr[i].salary;
     listTypeList[i].dataset.age = sortedEmplArr[i].age;
   }
