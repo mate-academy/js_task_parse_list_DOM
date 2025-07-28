@@ -41,4 +41,4 @@ const getEmployees = (list) => {
 const itemsData = Array.from(nodeItems);
 
 sortList(itemsData);
-console.log(getEmployees(itemsData));
+getEmployees(itemsData);
