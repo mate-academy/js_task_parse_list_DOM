@@ -7,7 +7,7 @@ function sortList(list) {
   for (let q = 0; q < employe.length; q++) {
     const a = sorting(employe[q].dataset.salary);
 
-    massive.push([employe[q]], a);
+    massive.push([employe[q], a]);
   }
 
   massive.sort((a, b) => b[1] - a[1]);
