@@ -11,6 +11,8 @@ const sortList = (elements) => {
 
   list.innerHTML = '';
   sortedItems.forEach((li) => list.appendChild(li));
+
+  return sortedItems;
 };
 
 const getEmployees = (items) =>
@@ -21,15 +23,15 @@ const getEmployees = (items) =>
     return {
       name: itemName,
       position,
-      salary,
-      age,
+      salary: formatSalary(salary),
+      age: +age,
     };
   });
 
 const listElements = document.querySelectorAll('li');
 
-sortList(listElements);
+const sortedElements = sortList(listElements);
 
-const employees = getEmployees(listElements);
+const employees = getEmployees(sortedElements);
 
 console.log(employees);
