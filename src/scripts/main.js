@@ -1,7 +1,13 @@
 'use strict';
 
+function parseNumber(value) {
+  const num = Number(value);
+
+  return isNaN(num) ? 0 : num;
+}
+
 function getSalary(li) {
-  return Number(li.dataset.salary);
+  return parseNumber(li.dataset.salary);
 }
 
 function sortList(ul) {
@@ -15,10 +21,10 @@ function sortList(ul) {
 
 function getEmployees(ul) {
   return Array.from(ul.querySelectorAll('li')).map((li) => ({
-    name: li.dataset.name,
-    position: li.dataset.position,
-    salary: Number(li.dataset.salary),
-    age: Number(li.dataset.age),
+    name: li.dataset.name || '', // default to empty string if missing
+    position: li.dataset.position || '',
+    salary: parseNumber(li.dataset.salary),
+    age: parseNumber(li.dataset.age),
   }));
 }
 
