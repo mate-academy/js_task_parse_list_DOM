@@ -1,20 +1,15 @@
 'use strict';
 
-function getEmployees(list) {
-  return Array.from(list.querySelectorAll('li')).map((item) => ({
-    name: item.dataset.name,
-    position: item.dataset.position,
-    salary: parseSalary(item.dataset.salary),
-    age: Number(item.dataset.age),
-  }));
-}
-
 function parseSalary(salaryStr) {
-  return Number(salaryStr.replace(/[^\d.]/g, ''));
+  if (!salaryStr) {
+    return 0;
+  }
+
+  return Number(salaryStr.replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
 }
 
 function sortList(list) {
-  const items = Array.from(list.children);
+  const items = Array.from(list.querySelectorAll('li'));
 
   items.sort((a, b) => {
     const salaryA = parseSalary(a.dataset.salary);
@@ -23,6 +18,15 @@ function sortList(list) {
     return salaryB - salaryA;
   });
   items.forEach((item) => list.appendChild(item));
+}
+
+function getEmployees(list) {
+  return Array.from(list.querySelectorAll('li')).map((item) => ({
+    name: item.dataset.name,
+    position: item.dataset.position,
+    salary: parseSalary(item.dataset.salary),
+    age: Number(item.dataset.age),
+  }));
 }
 
 window.addEventListener('DOMContentLoaded', () => {
