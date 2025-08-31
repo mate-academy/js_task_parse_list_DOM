@@ -1,5 +1,14 @@
 'use strict';
 
+function getEmployees(list) {
+  return Array.from(list.querySelectorAll('li')).map((item) => ({
+    name: item.dataset.name,
+    position: item.dataset.position,
+    salary: parseSalary(item.dataset.salary),
+    age: Number(item.dataset.age),
+  }));
+}
+
 function parseSalary(salaryStr) {
   return Number(salaryStr.replace(/[^\d.]/g, ''));
 }
@@ -23,6 +32,10 @@ window.addEventListener('DOMContentLoaded', () => {
     return;
   }
   sortList(list);
+
+  const employees = getEmployees(list);
+
+  window.employees = employees;
 });
 
 // write code here
