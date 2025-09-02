@@ -1,26 +1,23 @@
 'use strict';
 
-const arr = document.querySelector('ul').children;
-const arrCopy = [...arr];
+function strToNum(string) {
+  return Number(string.replaceAll(/\D/g, ''));
+}
 
-function getSorted(list) {
-  function strToNum(string) {
-    return Number(string.replaceAll(/\D/g, ''));
-  }
-
+function sortList(list) {
   const listCopy = [...list];
 
-  return listCopy.sort((elem1, elem2) => {
+  listCopy.sort((elem1, elem2) => {
     return strToNum(elem2.dataset.salary) - strToNum(elem1.dataset.salary);
   });
-}
 
-function getEmployees(listToReplace, sortedList) {
-  for (let i = 0; i < listToReplace.length; i++) {
-    listToReplace[i].replaceWith(sortedList[i].cloneNode(true));
+  for (let i = 0; i < list.length; i++) {
+    list[i].replaceWith(listCopy[i].cloneNode(true));
   }
 }
 
-document.createElement('div');
+function getEmployees() {
+  return document.querySelector('ul').children;
+}
 
-getEmployees(arr, getSorted(arrCopy));
+sortList([...getEmployees()]);
