@@ -2,27 +2,27 @@
 
 // write code here
 
-const regEx = /[$,]/g;
+function parseSalary(str) {
+  const regEx = /[$,]/g;
 
-function sortList(list = document.querySelectorAll('li')) {
-  const parsedEmployeeList = Array.from(list);
-
-  const sortedEmployeeList = parsedEmployeeList.sort((a, b) => {
-    return (
-      Number(b.dataset.salary.replace(regEx, '')) -
-      Number(a.dataset.salary.replace(regEx, ''))
-    );
-  });
-
-  const parentLiElement = list[0].parentElement;
-
-  parentLiElement.innerHTML = '';
-
-  sortedEmployeeList.forEach((li) => parentLiElement.append(li));
+  return Number(str.replace(regEx, ''));
 }
 
-function getEmployees(list = document.querySelectorAll('li')) {
-  const parsedEmployeeList = Array.from(list);
+function sortList(ul) {
+  const items = ul.querySelectorAll(':scope > li');
+  const parsedEmployeeList = Array.from(items);
+
+  const sortedEmployeeList = parsedEmployeeList.sort((a, b) => {
+    return parseSalary(b.dataset.salary) - parseSalary(a.dataset.salary);
+  });
+
+  ul.innerHTML = '';
+  sortedEmployeeList.forEach((li) => ul.appendChild(li));
+}
+
+function getEmployees(ul) {
+  const items = ul.querySelectorAll(':scope > li');
+  const parsedEmployeeList = Array.from(items);
   const dataList = [];
 
   parsedEmployeeList.forEach(
@@ -30,7 +30,7 @@ function getEmployees(list = document.querySelectorAll('li')) {
       dataList.push({
         name: li.textContent.trim(),
         position: li.dataset.position,
-        salary: Number(li.dataset.salary.replace(regEx, '')),
+        salary: parseSalary(li.dataset.salary),
         age: Number(li.dataset.age),
       }),
     // eslint-disable-next-line function-paren-newline
@@ -39,5 +39,7 @@ function getEmployees(list = document.querySelectorAll('li')) {
   return dataList;
 }
 
-sortList();
-getEmployees();
+const list = document.querySelector('ul');
+
+sortList(list);
+getEmployees(list);
