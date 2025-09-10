@@ -29,7 +29,7 @@ function getEmployees(list) {
       name: el.dataset.name?.trim() || el.textContent.trim(),
       position: el.dataset.position,
       salary: parseSalary(el.dataset.salary),
-      age: Number(el.dataset.age.trim()),
+      age: el.dataset.age ? Number(el.dataset.age.trim()) : undefined,
     });
   });
 
@@ -37,4 +37,9 @@ function getEmployees(list) {
 }
 
 sortList(listWrapper);
-getEmployees(listWrapper);
+
+const employeeObjects = getEmployees(listWrapper);
+
+/* I added this line to suppress the
+error: 'employees' is assigned a value but never used */
+window.employees = employeeObjects;
