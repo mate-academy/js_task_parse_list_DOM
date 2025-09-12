@@ -1,8 +1,11 @@
 'use strict';
 
-(function (globalT) {
+(function (root) {
   const LIST_SELECTOR = 'ul';
-  const employeeList = document.querySelector(LIST_SELECTOR);
+  const employeeList =
+    typeof document !== 'undefined'
+      ? document.querySelector(LIST_SELECTOR)
+      : null;
 
   function parseSalary(salaryStr) {
     if (typeof salaryStr !== 'string') {
@@ -21,13 +24,10 @@
 
     const items = Array.from(list.querySelectorAll('li'));
 
-    items.sort((a, b) => {
-      const aVal = parseSalary(a?.dataset?.salary);
-      const bVal = parseSalary(b?.dataset?.salary);
-
-      return bVal - aVal;
-    });
-
+    items.sort(
+      (a, b) =>
+        parseSalary(b?.dataset?.salary) - parseSalary(a?.dataset?.salary),
+    );
     items.forEach((item) => list.appendChild(item));
   }
 
@@ -46,18 +46,17 @@
     }));
   }
 
+  let employees = [];
+
   if (employeeList) {
     sortList(employeeList);
+    employees = getEmployees(employeeList);
   }
 
-  const employees = getEmployees(employeeList);
-
-  if (typeof window !== 'undefined') {
-    global.sortList = sortList;
-    global.getEmployees = getEmployees;
-    global.employees = employees;
-    global.parseSalary = parseSalary;
-  }
+  root.sortList = sortList;
+  root.getEmployees = getEmployees;
+  root.employees = employees;
+  root.parseSalary = parseSalary;
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
