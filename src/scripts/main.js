@@ -1,10 +1,12 @@
 'use strict';
 
-// helper: convert salary string like "$162,700" → 162700
-const parseSalary = (str) => Number(str.replace(/[$,]/g, ''));
+function parseSalary(str) {
+  return Number(String(str || '').replace(/[$,]/g, '')) || 0;
+}
 
-// 1) sort list by salary (desc)
 function sortList(list) {
+  if (!list) return;
+
   const items = Array.from(list.children);
 
   items.sort((a, b) => {
@@ -14,23 +16,28 @@ function sortList(list) {
     return salaryB - salaryA;
   });
 
-  items.forEach((item) => list.appendChild(item));
+  items.forEach(item => list.appendChild(item));
 }
 
-// 2) get array of employees
 function getEmployees(list) {
-  return Array.from(list.children).map((item) => ({
+  if (!list) return [];
+
+  return Array.from(list.children).map(item => ({
     name: item.textContent.trim(),
-    position: item.dataset.position,
+    position: item.dataset.position || '',
     salary: parseSalary(item.dataset.salary),
-    age: Number(item.dataset.age),
+    age: Number(item.dataset.age) || 0,
   }));
 }
 
-// ==== Виклик функцій ====
 document.addEventListener('DOMContentLoaded', () => {
   const list = document.querySelector('ul');
+  if (!list) return;
 
   sortList(list);
-  getEmployees(list); // масив готовий
+  const employees = getEmployees(list);
+
+  window.sortList = sortList;
+  window.getEmployees = getEmployees;
+  window.employees = employees;
 });
