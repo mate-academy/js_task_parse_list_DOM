@@ -7,8 +7,8 @@ function sortList(listElement) {
     (a, b) => getSalary(b) - getSalary(a),
   );
 
-  list.innerHTML = '';
-  list.append(...sorted);
+  listElement.innerHTML = '';
+  listElement.append(...sorted);
 
   return sorted;
 }
