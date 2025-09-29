@@ -2,13 +2,13 @@
 
 const list = document.querySelector('ul');
 
-function sortList(listElement) {
-  const sorted = Array.from(listElement.children).sort(
+function sortList(list) {
+  const sorted = Array.from(list.children).sort(
     (a, b) => getSalary(b) - getSalary(a),
   );
 
-  listElement.innerHTML = '';
-  listElement.append(...sorted);
+  list.innerHTML = '';
+  list.append(...sorted);
 
   return sorted;
 }
@@ -20,12 +20,12 @@ function getSalary(el) {
   return Number(cleaned);
 }
 
-function getEmployees(listElement) {
+function getEmployees(list) {
   const employees = [];
 
-  for (const element of listElement.children) {
+  for (const element of list.children) {
     const obj = {
-      name: element.textContent.trim(),
+      name: element.dataset.name,
       position: element.dataset.position,
       salary: getSalary(element),
       age: Number(element.dataset.age),
@@ -38,4 +38,6 @@ function getEmployees(listElement) {
 }
 
 sortList(list);
+
+const employees = getEmployees(list);
 getEmployees(list);
