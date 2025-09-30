@@ -26,3 +26,10 @@ export function getEmployees(ul) {
     age: Number(li.dataset.age),
   }));
 }
+
+const list = document.querySelector('ul');
+
+if (list) {
+  sortList(list);
+  getEmployees(list);
+}
