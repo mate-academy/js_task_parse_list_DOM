@@ -6,7 +6,6 @@ function parseSalary(salaryStr) {
   return Number(salaryStr.replace(/[^0-9.]/g, ''));
 }
 
-// Функція для сортування списку за зарплатою (спадання)
 function sortList(listElement) {
   const items = Array.from(listElement.children);
 
@@ -20,7 +19,6 @@ function sortList(listElement) {
   items.forEach((item) => listElement.appendChild(item));
 }
 
-// Функція для отримання масиву об'єктів співробітників
 function getEmployees(listElement) {
   const items = Array.from(listElement.children);
 
@@ -36,4 +34,4 @@ sortList(employeeList);
 
 const employees = getEmployees(employeeList);
 
-alert(JSON.stringify(employees, null, 2));
+window.employees = employees;
