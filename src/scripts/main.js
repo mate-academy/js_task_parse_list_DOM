@@ -2,35 +2,40 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const ul = document.querySelector('ul');
-  const listItems = [...ul.querySelectorAll('li')];
 
   function parseSalary(salaryStr) {
+    if (!salaryStr) {
+      return 0;
+    }
+
     return Number(salaryStr.replace(/[$,]/g, '').trim());
   }
 
   function sortList(list) {
-    const sorted = list.sort((a, b) => {
-      const salaryA = parseSalary(a.getAttribute('data-salary'));
-      const salaryB = parseSalary(b.getAttribute('data-salary'));
+    const items = Array.from(list.querySelectorAll('li'));
 
-      return salaryB - salaryA;
-    });
-
-    sorted.forEach((li) => ul.appendChild(li));
+    items.sort(
+      (a, b) => parseSalary(b.dataset.salary) - parseSalary(a.dataset.salary),
+    );
+    items.forEach((li) => list.appendChild(li));
   }
 
   function getEmployees(list) {
-    return list
+    const items = Array.from(list.querySelectorAll('li'));
+
+    return items
       .map((li) => ({
         name: li.textContent.trim(),
-        position: li.getAttribute('data-position'),
-        salary: parseSalary(li.getAttribute('data-salary')),
-        age: Number(li.getAttribute('data-age')),
+        position: li.dataset.position,
+        lary: parseSalary(li.dataset.salary),
+        age: Number(li.dataset.age),
       }))
       .filter((emp) => !isNaN(emp.salary) && !isNaN(emp.age));
   }
 
-  sortList(listItems);
+  sortList(ul);
 
-  getEmployees(listItems);
+  const employees = getEmployees(ul);
+
+  window.employees = employees;
 });
