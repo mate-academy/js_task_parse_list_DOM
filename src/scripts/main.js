@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lary: parseSalary(li.dataset.salary),
         age: Number(li.dataset.age),
       }))
-      .filter((emp) => !isNaN(emp.salary) && !isNaN(emp.age));
+      .filter((emp) => Number.isFinite(emp.salary) && Number.isFinite(emp.age));
   }
 
   sortList(ul);
