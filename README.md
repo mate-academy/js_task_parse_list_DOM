@@ -1,5 +1,5 @@
 1. Replace `<your_account>` with your Github username in the link
-    - [DEMO LINK](https://<your_account>.github.io/js_task_parse_list_DOM/)
+    - [DEMO LINK](https://ElinaMrachkovska.github.io/js_task_parse_list_DOM/)
 2. Follow [this instructions](https://mate-academy.github.io/layout_task-guideline/)
     - Run `npm run test` command to test your code;
     - Run `npm run test:only -- -n` to run fast test ignoring linter;
@@ -40,5 +40,44 @@ You can read about non-standard attributes and dataset [here](https://javascript
 3) Create function `getEmployees`, which takes a `list` property, and returns an array of right objects.
 4) Call both functions.
 5) Done.
+
+
+Привіт! Чи можете ви розібрати дані зі списку та відсортувати їх на основі атрибутів даних?
+
+Ваше завдання: Сортувати список за зарплатою в порядку спадання.
+Отримати масив співробітників. Напишіть дві функції:
+- перша, яка сортує список за зарплатою на основі атрибутів даних
+- друга, яка повертає масив об'єктів, де об'єкти - це співробітники.
+
+Схема для співробітника:
+```
+{
+ім'я,
+посада,
+зарплата,
+вік
+}
+```
+
+Список співробітників:
+
+![Попередній перегляд](./src/images/preview.png)
+
+Очікуваний результат після сортування:
+
+![Результат](./src/images/result.png)
+
+Ви можете прочитати про нестандартні атрибути та набір даних [тут](https://javascript.info/dom-attributes-and-properties#non-standard-attributes-dataset)
+
+##### Кроки для виконання цього завдання:
+
+1) Знайдіть та отримайте список з документа.
+2) Створіть функцію `sortList`, яка приймає властивість `list` та сортує елементи списку у порядку спадання за зарплатою з атрибута даних. (Зарплата з атрибута даних – це рядок, не забудьте перетворити його на число, напишіть для нього допоміжну функцію). Додайте відсортовані елементи до списку.
+
+3) Створіть функцію `getEmployees`, яка приймає властивість `list` та повертає масив потрібних об'єктів.
+
+4) Викличте обидві функції.
+
+5) Готово.
 
 You don't need to change styles or HTML layout in this task. Change only `main.js` file.
