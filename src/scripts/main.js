@@ -1,41 +1,32 @@
 'use strict';
 
-const employeesArray = document.querySelectorAll('[data-salary]');
+const employeesList = document.querySelectorAll('[data-salary]');
 
-function sortBySalary(employees) {
-  const sortedArray = Array.from(employees).sort((a, b) => {
-    const salaryA = parseFloat(
-      a.dataset.salary.replace('$', '').replace(',', ''),
-    );
+function convertSalary(salaryString) {
+  return parseFloat(salaryString.replace('$', '').replace(',', ''));
+}
 
-    const salaryB = parseFloat(
-      b.dataset.salary.replace('$', '').replace(',', ''),
-    );
+function sortList(list) {
+  const sortedArray = Array.from(list).sort((a, b) => {
+    const salaryA = convertSalary(a.dataset.salary);
+    const salaryB = convertSalary(b.dataset.salary);
 
     return salaryB - salaryA;
   });
 
-  const parents = employees[0].parentNode;
+  const parents = list[0].parentNode;
 
-  sortedArray.forEach((element) => {
-    parents.appendChild(element);
-  });
+  sortedArray.forEach((element) => parents.appendChild(element));
 }
 
-function employeesToObjectArray(employees) {
-  const employeesList = Array.from(employees).map((employee) => {
-    return {
-      name: employee.textContent.replace(/\n/g, '').trim(),
-      position: employee.dataset.position,
-      salary: parseFloat(
-        employee.dataset.salary.replace('$', '').replace(',', ''),
-      ),
-      age: parseInt(employee.dataset.age, 10),
-    };
-  });
-
-  return employeesList;
+function getEmployees(list) {
+  return Array.from(list).map((employee) => ({
+    name: employee.textContent.trim(),
+    position: employee.dataset.position,
+    salary: convertSalary(employee.dataset.salary),
+    age: parseInt(employee.dataset.age, 10),
+  }));
 }
 
-sortBySalary(employeesArray);
-employeesToObjectArray(employeesArray);
+sortList(employeesList);
+getEmployees(employeesList);
