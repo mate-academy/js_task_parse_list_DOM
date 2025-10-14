@@ -1,21 +1,39 @@
 'use strict';
 
 // write code here
-const salary = document.querySelectorAll('li.data-salary');
-const allSalary = Array.from(salary).sort((a, b) => a - b);
+function makeObject() {
+  const li = document.querySelectorAll('li');
+  const people = [];
 
-const li = document.querySelectorAll('li');
-const liName = li.textContent.trim();
+  for (const item of li) {
+    const person = {
+      name: item.textContent.trim(),
+      position: item.dataset.position,
+      salary: item.dataset.salary,
+      age: Number(item.dataset.age),
+    };
 
-const people = [];
+    people.push(person);
+  }
 
-for (const i of li) {
-  const person = {
-    name: liName,
-    position: i.dataset.position,
-    salary: i.dataset.salary,
-    age: i.dataset.age,
-  };
-
-  people.push(person);
+  return people;
 }
+
+function sortSalaries() {
+  const li = document.querySelectorAll('li');
+  const people = [];
+
+  for (const item of li) {
+    const salary = Number(item.dataset.salary.replace(/\D/g, ''));
+
+    people.push(salary);
+  }
+
+  const allSalary = people.sort((a, b) => a - b);
+
+  return allSalary;
+}
+
+// Виклики:
+makeObject();
+sortSalaries();
