@@ -20,13 +20,15 @@ function sortList(list) {
     return salaryB - salaryA;
   });
 
-  list.innerHTML = '';
-  sortedItems.forEach((item) => list.appendChild(item));
+  const fragment = document.createDocumentFragment();
+
+  sortedItems.forEach((item) => fragment.appendChild(item));
+  list.appendChild(fragment);
 }
 
 function getEmployees(list) {
   employees = Array.from(list.children).map((item) => ({
-    name: item.textContent.trim(),
+    name: item.querySelector('.name').textContent.trim(),
     salary: parseSalaryToNumber(item.dataset.salary),
     position: item.dataset.position,
     age: Number(item.dataset.age),
