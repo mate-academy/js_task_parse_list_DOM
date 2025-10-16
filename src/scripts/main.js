@@ -1,39 +1,41 @@
 'use strict';
 
 // write code here
-function makeObject() {
-  const li = document.querySelectorAll('li');
+export function getEmployees(list) {
   const people = [];
 
-  for (const item of li) {
-    const person = {
-      name: item.textContent.trim(),
-      position: item.dataset.position,
-      salary: item.dataset.salary,
-      age: Number(item.dataset.age),
-    };
+  for (const item of list.children) {
+    const personName = item.querySelector('.name').textContent.trim();
+    const position = item.querySelector('.position').textContent.trim();
+    const salary = item.dataset.salary;
+    const age = Number(item.dataset.age);
 
-    people.push(person);
+    people.push({
+      name: personName,
+      position,
+      salary,
+      age,
+    });
   }
 
   return people;
 }
 
-function sortSalaries() {
-  const li = document.querySelectorAll('li');
-  const people = [];
+export function sortList(list) {
+  const items = Array.from(list.children);
 
-  for (const item of li) {
-    const salary = Number(item.dataset.salary.replace(/\D/g, ''));
+  const sorted = items.sort((a, b) => {
+    const salaryA = Number(a.dataset.salary.replace(/\D/g, ''));
+    const salaryB = Number(b.dataset.salary.replace(/\D/g, ''));
 
-    people.push(salary);
+    return salaryA - salaryB;
+  });
+
+  for (const item of sorted) {
+    list.appendChild(item);
   }
-
-  const allSalary = people.sort((a, b) => a - b);
-
-  return allSalary;
 }
 
 // Виклики:
-makeObject();
-sortSalaries();
+getEmployees();
+sortList();
