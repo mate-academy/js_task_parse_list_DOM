@@ -2,6 +2,10 @@
 
 const list = document.querySelector('ul');
 
+if (!list) {
+  return console.error('list is not found!');
+}
+
 function parseSalary(salaryStr) {
   return Number(salaryStr.replace(/[$,]/g, ''));
 }
