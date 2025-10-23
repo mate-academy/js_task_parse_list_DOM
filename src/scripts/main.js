@@ -20,13 +20,13 @@ function getEmployees([...list]) {
   const listObj = [];
 
   for (const item of list) {
-    const names = item.innerText.trim();
+    const name = item.innerText.trim();
     const salary = item.dataset.salary;
     const age = +item.dataset.age;
     const position = item.dataset.position;
 
     listObj.push({
-      names,
+      name,
       position,
       salary,
       age,
