@@ -4,10 +4,12 @@ const listOfEmployees = document.querySelectorAll('li');
 const parents = document.querySelector('ul');
 
 function sortList([...list]) {
-  return list.sort(
+  const sorted = list.sort(
     (curr, next) =>
       toNumber(next.dataset.salary) - toNumber(curr.dataset.salary),
   );
+
+  sorted.forEach((item) => parents.appendChild(item));
 }
 
 function toNumber(notNumber) {
@@ -36,8 +38,6 @@ function getEmployees([...list]) {
   return listObj;
 }
 
-const sortedList = sortList(listOfEmployees);
-
-sortedList.forEach((item) => parents.appendChild(item));
+sortList(listOfEmployees);
 
 getEmployees(listOfEmployees);
