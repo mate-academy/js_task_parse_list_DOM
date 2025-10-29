@@ -7,7 +7,7 @@ function fromStrToNumber(salaryString) {
 }
 
 function sortList(listElement) {
-  const items = Array.from(list.querySelectorAll('li'));
+  const items = Array.from(listElement.querySelectorAll('li'));
 
   items.sort((a, b) => {
     const salaryA = fromStrToNumber(a.dataset.salary);
@@ -17,7 +17,7 @@ function sortList(listElement) {
   });
 
   listElement.innerHTML = '';
-  items.forEach((item) => list.appendChild(item));
+  items.forEach((item) => listElement.appendChild(item));
 }
 
 function getEmployees(listEmployee) {
