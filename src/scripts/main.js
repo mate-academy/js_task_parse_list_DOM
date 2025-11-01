@@ -21,7 +21,7 @@ function sortList(list) {
     }
 
     for (let i = 0; i < text2.length; i++) {
-      if (text2[i] !== ',' && text2[i] !== ' ' && text1[i] !== '$') {
+      if (text2[i] !== ',' && text2[i] !== ' ' && text2[i] !== '$') {
         s2 += text2[i];
       }
     }
@@ -56,7 +56,7 @@ function getEmployees(list) {
 
     const n = !isNaN(Number(s)) ? Number(s) : 0;
 
-    person.selary = n;
+    person.salary = n;
 
     person.age = !isNaN(Number(el.dataset.age.trim()))
       ? Number(el.dataset.age.trim())
