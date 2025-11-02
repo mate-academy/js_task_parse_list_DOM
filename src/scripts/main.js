@@ -1,12 +1,12 @@
 'use strict';
 
-const list = document.querySelector('ul');
+const handledList = document.querySelector('ul');
 
 function parseSalary(salaryStr) {
   return Number(salaryStr.replace(/[^0-9.-]+/g, ''));
 }
 
-function sortList() {
+function sortList(list) {
   const items = Array.from(list.querySelectorAll('li'));
 
   items.sort((a, b) => {
@@ -19,7 +19,7 @@ function sortList() {
   items.forEach((item) => list.appendChild(item));
 }
 
-function getEmployees() {
+function getEmployees(list) {
   const items = Array.from(list.querySelectorAll('li'));
 
   return items.map((item) => ({
@@ -30,6 +30,6 @@ function getEmployees() {
   }));
 }
 
-sortList();
+sortList(handledList);
 
-getEmployees();
+getEmployees(handledList);
