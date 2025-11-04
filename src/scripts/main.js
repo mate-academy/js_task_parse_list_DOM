@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 'use strict';
 
@@ -34,3 +35,5 @@ function getEmployees(listElement) {
 }
 
 sortList(list);
+
+console.log(getEmployees(list));
