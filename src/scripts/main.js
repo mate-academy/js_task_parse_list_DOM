@@ -18,6 +18,7 @@ function getEmployees(ulElement) {
   const items = ulElement.querySelectorAll('li');
 
   return Array.from(items).map((li) => ({
+    name: li.textContent.trim(),
     position: li.dataset.position,
     salary: Number(li.dataset.salary.replace(/[$,]/g, '')),
     age: Number(li.dataset.age),
