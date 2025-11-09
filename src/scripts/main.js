@@ -1,11 +1,15 @@
 'use strict';
 
+function parseSalary(salaryString) {
+  return Number(salaryString.replace(/[$,]/g, ''));
+}
+
 function sortList(ulElement) {
   const listItems = Array.from(ulElement.querySelectorAll('li'));
 
   listItems.sort((a, b) => {
-    const salaryA = Number(a.dataset.salary.replace(/[$,]/g, ''));
-    const salaryB = Number(b.dataset.salary.replace(/[$,]/g, ''));
+    const salaryA = parseSalary(a.dataset.salary);
+    const salaryB = parseSalary(b.dataset.salary);
 
     return salaryB - salaryA;
   });
@@ -20,7 +24,7 @@ function getEmployees(ulElement) {
   return Array.from(items).map((li) => ({
     name: li.textContent.trim(),
     position: li.dataset.position,
-    salary: Number(li.dataset.salary.replace(/[$,]/g, '')),
+    salary: parseSalary(li.dataset.salary),
     age: Number(li.dataset.age),
   }));
 }
