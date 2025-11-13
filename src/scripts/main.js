@@ -3,9 +3,9 @@
 const list = [...document.querySelectorAll('li')];
 
 const helper = (arg) => {
-  const str = arg.getAttribute('data-salary').replace(',', '').replace('$', '');
+  const salary = arg.getAttribute('data-salary').replace(/[^\d]/g, '');
 
-  return Number(str);
+  return Number(salary);
 };
 
 function sortList(arg) {
@@ -40,6 +40,4 @@ sorted.forEach((element) => {
   ul.appendChild(element);
 });
 
-const employees = getEmployees(sorted);
-
-console.log(employees);
+getEmployees(sorted);
