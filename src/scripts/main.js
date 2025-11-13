@@ -40,4 +40,6 @@ sorted.forEach((element) => {
   ul.appendChild(element);
 });
 
-getEmployees(sorted);
+const employees = getEmployees(sorted);
+
+console.log(employees);
