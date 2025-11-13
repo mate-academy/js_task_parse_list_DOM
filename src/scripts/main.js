@@ -6,48 +6,51 @@
 'use strict';
 
 const temp = document.querySelectorAll('li');
+const ulik = document.querySelector('ul');
 
-function getListItems(list) {
-  const sortedItemList = [];
+function separateAuxiliaryFunction(noInt) {
+  const rez = parseInt(noInt.replace(/[^0-9]/g, ''));
+
+  return rez;
+}
+
+function sortList(list) {
+  let sortedList = [];
 
   for (const i of list) {
     const objects = {};
+    const tempSelary = i.dataset.salary;
+    const tmp = separateAuxiliaryFunction(tempSelary);
 
+    objects.salary = tmp;
     objects.name = i.textContent.trim();
-    objects.salary = parseInt(i.dataset.salary.replace(/[^0-9]/g, ''));
     objects.age = i.dataset.age;
     objects.position = i.dataset.position;
     objects.elem = i;
 
-    sortedItemList.push(objects);
+    sortedList.push(objects);
   }
-  return sortedItemList;
-}
-
-const actionOne = getListItems(temp);
-// console.log(actionOne);
-
-const ulik = document.querySelector('ul');
-
-function sortList(list) {
 
   ulik.innerHTML = '';
+  sortedList = sortedList.sort((a, b) => b.salary - a.salary);
+  sortedList.forEach((item) => ulik.appendChild(item.elem));
 
-  list.sort((a, b) => b.salary - a.salary);
-  const rez = list.forEach((item) => ulik.appendChild(item.elem));
+  return sortedList;
 }
 
-const actionTwo = sortList(actionOne);
-// console.log(actionTwo);
+const actionOwo = sortList(temp);
+
 
 function getEmployees(list) {
   const sortedList = [];
 
   for (const i of list) {
     const objects = {};
+    const tempSelary = i.dataset.salary;
+    const tmp = separateAuxiliaryFunction(tempSelary);
 
+    objects.salary = tmp;
     objects.name = i.textContent.trim();
-    objects.salary = parseInt(i.dataset.salary.replace(/[^0-9]/g, ''));
     objects.age = i.dataset.age;
     objects.position = i.dataset.position;
 
@@ -57,5 +60,4 @@ function getEmployees(list) {
   return sortedList;
 }
 
-const actionThree = getEmployees(temp);
-// console.log(actionThree);
+const actionTwo = getEmployees(temp);
