@@ -3,22 +3,21 @@
 const ulElementEmployees = document.querySelector('ul');
 const dataEmployees = [...ulElementEmployees.children];
 
-function sortList(list) {
+function sortList(list, ulElemEmployee) {
   const sortEmployeeSalaries = list.sort((employeeA, employeeB) => {
-    const salaryA = Number(employeeA.dataset.salary.replace(/[^\d]/g, ''));
-    const salaryB = Number(employeeB.dataset.salary.replace(/[^\d]/g, ''));
+    const salaryA = getSalaryNumber(employeeA);
+    const salaryB = getSalaryNumber(employeeB);
 
     return salaryB - salaryA;
   });
 
-  return sortEmployeeSalaries;
+  ulElemEmployee.innerHTML = '';
+  sortEmployeeSalaries.forEach((li) => ulElemEmployee.append(li));
 }
 
-const sortedEmployees = sortList(dataEmployees);
-
-ulElementEmployees.innerHTML = '';
-
-sortedEmployees.forEach((li) => ulElementEmployees.append(li));
+function getSalaryNumber(employee) {
+  return Number(employee.dataset.salary.replace(/[^\d]/g, ''));
+}
 
 function getEmployees(list) {
   const allDataEmployees = list.map((employee) => {
@@ -35,4 +34,9 @@ function getEmployees(list) {
   return allDataEmployees;
 }
 
-getEmployees(dataEmployees);
+sortList(dataEmployees, ulElementEmployees);
+
+const employeesData = getEmployees(dataEmployees);
+
+// eslint-disable-next-line no-console
+console.log(employeesData);
