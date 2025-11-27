@@ -13,7 +13,7 @@ function sortList(emList) {
     return;
   }
 
-  const items = Array.from(list.children);
+  const items = Array.from(emList.children);
 
   items.sort((a, b) => {
     const salaryA = parseSalary(a.dataset.salary);
@@ -22,7 +22,7 @@ function sortList(emList) {
     return salaryB - salaryA;
   });
 
-  items.forEach((item) => list.appendChild(item));
+  items.forEach((item) => emList.appendChild(item));
 }
 
 function getEmployees(emList) {
@@ -32,15 +32,15 @@ function getEmployees(emList) {
 
   const employees = [];
 
-  for (const item of list.children) {
-    const nameTextEl = item.querySelector('.name');
-    const nameText = nameTextEl ? nameTextEl.textContent.trim() : '';
+  for (const item of emList.children) {
+    const nameEl = item.querySelector('.name');
+    const name = nameEl ? nameEl.textContent.trim() : '';
     const position = item.dataset.position;
     const salary = parseSalary(item.dataset.salary);
     const age = Number(item.dataset.age);
 
     employees.push({
-      nameText,
+      name,
       position,
       salary,
       age,
