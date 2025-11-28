@@ -3,7 +3,7 @@
 // write code here
 
 function parseSalary(salary) {
-  return Number(salary.replace(/,/g, '').replace(/\$/g, ''));
+  return Number(salary.replace(/[$,]/g, ''));
 }
 
 function sortList(employeesList) {
