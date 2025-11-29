@@ -17,7 +17,7 @@ function getEmployees(list) {
     const age = Number(item.getAttribute('data-age'));
 
     result.push({
-      personName,
+      name: personName,
       position,
       salary,
       age,
