@@ -4,8 +4,8 @@ function parseSalary(str) {
   return Number(str.replace(/\D/g, ''));
 }
 
-function getEmployees() {
-  const items = Array.from(document.querySelectorAll('li'));
+function getEmployees(list) {
+  const items = Array.from(list.querySelectorAll('li'));
 
   return items.map((li) => ({
     name: li.textContent.trim(),
@@ -16,16 +16,16 @@ function getEmployees() {
   }));
 }
 
-function sortList() {
-  const employees = getEmployees();
+function sortList(list) {
+  const employees = getEmployees(list);
 
   employees.sort((a, b) => b.salary - a.salary);
-
-  const list = document.querySelector('ul');
 
   list.innerHTML = '';
 
   employees.forEach((emp) => list.appendChild(emp.element));
 }
 
-sortList();
+const employeeList = document.querySelector('ul'); // ← змінено імʼя
+
+sortList(employeeList);
