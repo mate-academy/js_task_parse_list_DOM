@@ -28,7 +28,7 @@ function getEmployees(list) {
     const salaryValue = parseSalaryString(item.dataset.salary);
 
     return {
-      name: item.textContent.split('<')[0].trim(),
+      name: item.textContent.trim(), // ПОВЕРНУТО ДО ОРИГІНАЛЬНОЇ ФОРМИ
       position: item.dataset.position,
       salary: salaryValue,
       age: Number(item.dataset.age),
@@ -38,7 +38,7 @@ function getEmployees(list) {
   return employeesArray;
 }
 
-const employeeList = document.querySelector('#employee-data');
+const employeeList = document.querySelector('ul');
 
 if (employeeList) {
   sortList(employeeList);
