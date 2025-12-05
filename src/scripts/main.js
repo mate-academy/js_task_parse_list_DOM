@@ -1,7 +1,7 @@
 'use strict';
 
 function parseSalaryString(salaryString) {
-  const cleanedString = salaryString.replace(/[\$\s,]/g, '');
+  const cleanedString = salaryString.replace(/[$,\s]/g, '');
 
   return Number(cleanedString);
 }
@@ -28,7 +28,7 @@ function getEmployees(list) {
     const salaryValue = parseSalaryString(item.dataset.salary);
 
     return {
-      name: item.textContent.trim(),
+      name: item.textContent.split('<')[0].trim(),
       position: item.dataset.position,
       salary: salaryValue,
       age: Number(item.dataset.age),
@@ -36,4 +36,11 @@ function getEmployees(list) {
   });
 
   return employeesArray;
+}
+
+const employeeList = document.querySelector('#employee-data');
+
+if (employeeList) {
+  sortList(employeeList);
+  getEmployees(employeeList);
 }
