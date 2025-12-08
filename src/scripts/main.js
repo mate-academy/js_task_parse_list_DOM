@@ -1,18 +1,13 @@
 'use strict';
 
-const listNodes = document.querySelectorAll('li');
-
-class Employee {
-  constructor(nameEmployee, position, salary, age) {
-    this.name = nameEmployee;
-    this.position = position;
-    this.salary = salary;
-    this.age = age;
-  }
-}
+const listNodes = document.querySelector('.employees').children;
 
 // write code here
 function sortList(list) {
+  if (!list.length) {
+    return;
+  }
+
   const copiedList = [...list];
 
   copiedList.sort((a, b) => {
@@ -27,20 +22,22 @@ function getEmployees(list) {
   const employeeObjects = [];
 
   list.forEach((i) => {
-    employeeObjects.push(
-      new Employee(
-        i.innerText,
-        i.dataset.position,
-        parseSalary(i.dataset.salary),
-        +i.dataset.age,
-      ),
-    );
+    employeeObjects.push({
+      name: i.innerText,
+      position: i.dataset.position,
+      salary: parseSalary(i.dataset.salary),
+      age: +i.dataset.age,
+    });
   });
 
   return employeeObjects;
 }
 
 function parseSalary(salaryString) {
+  if (!salaryString) {
+    return 0;
+  }
+
   const regexp = /\d+/g;
 
   return +salaryString.match(regexp).join('');
@@ -48,4 +45,4 @@ function parseSalary(salaryString) {
 
 sortList(listNodes);
 
-getEmployees(listNodes);
+export const employees = getEmployees(listNodes);
