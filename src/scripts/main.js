@@ -1,6 +1,7 @@
 'use strict';
 
-const listNodes = document.querySelector('.employees').children;
+const listElm = document.querySelector('.employees');
+const listNodes = listElm ? listElm.children : [];
 
 // write code here
 function sortList(list) {
@@ -8,6 +9,7 @@ function sortList(list) {
     return;
   }
 
+  const container = list[0].parentNode;
   const copiedList = [...list];
 
   copiedList.sort((a, b) => {
@@ -15,15 +17,15 @@ function sortList(list) {
   });
 
   // allList.children[0].before(...copiedList)
-  list[0].parentNode.append(...copiedList);
+  container.append(...copiedList);
 }
 
 function getEmployees(list) {
   const employeeObjects = [];
 
-  list.forEach((i) => {
+  Array.from(list).forEach((i) => {
     employeeObjects.push({
-      name: i.innerText,
+      name: i.querySelector('.name').textContent.trim(),
       position: i.dataset.position,
       salary: parseSalary(i.dataset.salary),
       age: +i.dataset.age,
@@ -40,7 +42,9 @@ function parseSalary(salaryString) {
 
   const regexp = /\d+/g;
 
-  return +salaryString.match(regexp).join('');
+  const digits = salaryString.match(regexp);
+
+  return digits ? +digits.join('') : 0;
 }
 
 sortList(listNodes);
