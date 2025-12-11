@@ -2,7 +2,6 @@
 
 const items = [...document.querySelectorAll(`li`)];
 const roster = document.querySelector('ul');
-const workers = [];
 
 function salaryToNumber(li) {
   return Number(li.dataset.salary.replaceAll(',', '').replaceAll('$', ''));
@@ -19,6 +18,8 @@ function sortList(list) {
 }
 
 function getEmployees(list) {
+  const workers = [];
+
   for (const item of list) {
     workers.push({
       name: item.textContent.trim(),
@@ -27,6 +28,8 @@ function getEmployees(list) {
       age: item.dataset.age,
     });
   }
+
+  return workers;
 }
 
 sortList(items);
