@@ -25,11 +25,13 @@ function sortList(list) {
     return secondSalary - firstSalary;
   });
 
-  const parentEl = arr[0].parentElement;
+  const listOfEmployees = document.querySelector('ul');
 
-  arr.forEach((item) => parentEl.append(item));
+  arr.forEach((item) => listOfEmployees.append(item));
+
+  return arr;
 }
 
-sortList(allEmployees);
+const sortedLi = sortList(allEmployees);
 
-getEmployees(allEmployees);
+getEmployees(sortedLi);
