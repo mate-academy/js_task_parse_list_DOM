@@ -4,23 +4,33 @@
 const ulElement = document.querySelector('ul');
 const employeesArray = [...document.querySelectorAll('ul li')];
 
-function sortList(list) {
-  list.map((employee) => {
-    employee.dataset.salary = employee.dataset.salary
-      .slice(1)
-      .replace(/,/g, '.');
-  });
-
-  return list.sort((a, b) => b.dataset.salary - a.dataset.salary);
-}
-
 function getEmployees(list) {
-  list.forEach((employee) => {
-    ulElement.appendChild(employee);
+  list.forEach((employee, index) => {
+    employee.name = employee.innerText;
+    employee.salary = employee.dataset.salary;
+    employee.position = employee.dataset.position;
+    employee.age = employee.dataset.age;
   });
 
   return list;
 }
 
-sortList(employeesArray);
-getEmployees(employeesArray);
+function sortList(list) {
+  list.map((employee) => {
+    employee.salary = convertSalary(employee.salary);
+  });
+
+  list.sort((a, b) => b.salary - a.salary);
+
+  list.forEach((employee) => {
+    ulElement.appendChild(employee);
+  });
+}
+
+function convertSalary(salary) {
+  return +salary.slice(1).replace(/,/g, '.');
+}
+
+const employees = getEmployees(employeesArray);
+
+sortList(employees);
