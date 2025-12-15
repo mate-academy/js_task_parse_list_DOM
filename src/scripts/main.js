@@ -5,14 +5,23 @@ const ulElement = document.querySelector('ul');
 const employeesArray = [...document.querySelectorAll('ul li')];
 
 function getEmployees(list) {
-  list.forEach((employee, index) => {
+  const employees = [];
+
+  list.forEach((employee) => {
     employee.name = employee.innerText;
     employee.salary = employee.dataset.salary;
     employee.position = employee.dataset.position;
     employee.age = employee.dataset.age;
+
+    employees.push({
+      name: employee.name,
+      salary: employee.salary,
+      position: employee.position,
+      age: employee.age,
+    });
   });
 
-  return list;
+  return employees;
 }
 
 function sortList(list) {
@@ -28,9 +37,9 @@ function sortList(list) {
 }
 
 function convertSalary(salary) {
-  return +salary.slice(1).replace(/,/g, '.');
+  return +salary.slice(1).replace(/,/g, '');
 }
 
-const employees = getEmployees(employeesArray);
+getEmployees(employeesArray);
 
-sortList(employees);
+sortList(employeesArray);
