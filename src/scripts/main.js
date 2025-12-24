@@ -1,12 +1,17 @@
 'use strict';
 
-const ul = document.querySelectorAll('ul');
+const ul = document.querySelector('ul');
 const items = [...ul.querySelectorAll('li')];
 
-const getSalary = (li) => {
-  Number(li.dataset.salary.replace(/[$,]/g, ''));
-};
+function sortList () {
 
-items.sort((a, b) => getSalary(a) - getSalary(b));
+  const getSalary = (li) => {
+    return Number(li.dataset.salary.replace(/[$,]/g, ''));
+  };
 
-ul.replaceChildren(...items);
+  items.sort((a, b) => getSalary(a) + getSalary(b));
+}
+
+function getEmployees () {
+  ul.replaceChildren(...items);
+}
