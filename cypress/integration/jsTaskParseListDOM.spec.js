@@ -30,3 +30,5 @@ describe('Parse list app ', () => {
     });
   });
 });
+
+'use strict';
