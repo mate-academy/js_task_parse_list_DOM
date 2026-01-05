@@ -1,5 +1,9 @@
 'use strict';
 
+function getSalaryValue(salaryString) {
+  return Number(salaryString.replace(/[^0-9.-]+/g, ''));
+}
+
 function getEmployees(list) {
   const listEmployee = [...list.querySelectorAll('li')];
 
@@ -17,8 +21,8 @@ function sortList(list) {
   const listEmployee = [...list.querySelectorAll('li')];
 
   listEmployee.sort((first, second) => {
-    const salaryA = Number(first.dataset.salary.replace(/[^0-9.-]+/g, ''));
-    const salaryB = Number(second.dataset.salary.replace(/[^0-9.-]+/g, ''));
+    const salaryA = Number(getSalaryValue(first.dataset.salary));
+    const salaryB = Number(getSalaryValue(second.dataset.salary));
 
     return salaryB - salaryA;
   });
