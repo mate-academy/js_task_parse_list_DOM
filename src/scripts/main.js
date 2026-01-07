@@ -3,7 +3,7 @@
 const listOfEmpl = [...document.querySelectorAll('li')];
 
 function sortList(list) {
-  const ul = document.querySelector('ul');
+  const ul = list[0]?.parentElement;
 
   list.sort(
     (e1, e2) => toNumber(e2.dataset.salary) - toNumber(e1.dataset.salary),
@@ -19,7 +19,7 @@ function sortList(list) {
 function toNumber(string) {
   const num = string.slice(1);
 
-  return Number(num.replaceAll(',', '.'));
+  return Number(num.replaceAll(',', ''));
 }
 
 function getEmployees(list) {
