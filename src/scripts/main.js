@@ -19,15 +19,17 @@ function sortList(targetList) {
   items.forEach((item) => targetList.append(item));
 }
 
-function getEmployeeNames(targetList) {
+function getEmployees(targetList) {
   return [...targetList.children].map((item) => ({
     name: item.textContent.trim(),
     salary: getSalary(item),
+    position: item.dataset.position,
+    age: Number(item.dataset.age),
   }));
 }
 
 sortList(list);
 
-const employees = getEmployeeNames(list);
+const employees = getEmployees(list);
 
 window.employees = employees;
