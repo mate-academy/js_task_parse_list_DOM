@@ -6,7 +6,7 @@ const parseSalary = (salaryStr) => {
   return Number(salaryStr.replace(/[^\d]/g, ''));
 };
 
-function sortList() {
+function sortList(listElement) {
   const items = Array.from(list.children);
 
   items.sort((a, b) => {
@@ -19,7 +19,7 @@ function sortList() {
   items.forEach((item) => list.append(item));
 }
 
-function getEmployees() {
+function getEmployees(listElement) {
   return Array.from(list.children).map((item) => ({
     name: item.textContent.trim(),
     position: item.dataset.position,
