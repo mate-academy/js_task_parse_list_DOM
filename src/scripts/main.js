@@ -7,7 +7,7 @@ const parseSalary = (salaryStr) => {
 };
 
 function sortList(listElement) {
-  const items = Array.from(list.children);
+  const items = Array.from(listElement.children);
 
   items.sort((a, b) => {
     const salaryA = parseSalary(a.dataset.salary);
@@ -20,7 +20,7 @@ function sortList(listElement) {
 }
 
 function getEmployees(listElement) {
-  return Array.from(list.children).map((item) => ({
+  return Array.from(listElement.children).map((item) => ({
     name: item.textContent.trim(),
     position: item.dataset.position,
     salary: parseSalary(item.dataset.salary),
