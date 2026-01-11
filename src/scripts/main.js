@@ -3,7 +3,7 @@
 const list = document.querySelector('#list');
 
 function parseSalary(dataSalary) {
-  return Number(dataSalary);
+  return Number(dataSalary.replace(/[$,]/g, ''));
 }
 
 function sortList(listElement) {
@@ -25,13 +25,13 @@ function sortList(listElement) {
 
 function getEmployees(listElement) {
   return Array.from(listElement.children).map((item) => {
-    const employeeName = item.querySelector('.name').innerText.trim();
-    const position = item.querySelector('.position').innerText.trim();
-    const salary = Number(item.dataset.salaryValue);
+    const employeeName = item.textContent.trim();
+    const position = item.dataset.position;
+    const salary = parseSalary(item.dataset.salary);
     const age = Number(item.dataset.age);
 
     return {
-      employeeName,
+      name: employeeName,
       position,
       salary,
       age,
