@@ -2,25 +2,28 @@
 
 // write code here
 const listOfEmployeesFromHtml = document.querySelector('ul');
-const employeesFromHtml = Array.from(document.querySelectorAll('li'));
 
 function parceSalary(salary) {
   return parseFloat(salary.replace(/[$,]/g, ''));
 }
 
-function sortList(listElement, items) {
+function sortList(list) {
+  const items = Array.from(list.children);
+
   items.sort((a, b) => {
     return parceSalary(b.dataset.salary) - parceSalary(a.dataset.salary);
   });
 
-  listElement.innerHTML = '';
+  list.innerHTML = '';
 
   items.forEach((li) => {
-    listElement.appendChild(li);
+    list.appendChild(li);
   });
 }
 
-function getEmployees(items) {
+function getEmployees(list) {
+  const items = Array.from(list.children);
+
   return items.map((item) => {
     return {
       name: item.textContent.trim(),
@@ -31,9 +34,9 @@ function getEmployees(items) {
   });
 }
 
-sortList(listOfEmployeesFromHtml, employeesFromHtml);
+sortList(listOfEmployeesFromHtml);
 
-const employeesArray = getEmployees(employeesFromHtml);
+const employeesArray = getEmployees(listOfEmployeesFromHtml);
 
 // eslint-disable-next-line no-console
 console.log(employeesArray);
