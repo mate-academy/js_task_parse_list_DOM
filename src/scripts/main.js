@@ -24,7 +24,7 @@ function getEmployees(listElement) {
     const object = {
       name: li.textContent.trim(),
       position: li.dataset.position,
-      salary: Number(li.dataset.salary),
+      salary: getSalary(li),
       age: Number(li.dataset.age),
     };
 
