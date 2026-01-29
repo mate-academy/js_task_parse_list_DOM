@@ -5,7 +5,7 @@ function salaryToNumber(salaryStr) {
 }
 
 function sortList(l) {
-  const items = Array.from(list.querySelectorAll('li'));
+  const items = Array.from(l.querySelectorAll('li'));
 
   items.sort((a, b) => {
     const salaryA = salaryToNumber(a.dataset.salary);
@@ -14,12 +14,12 @@ function sortList(l) {
     return salaryB - salaryA;
   });
 
-  list.innerHTML = '';
-  list.append(...items);
+  l.innerHTML = '';
+  l.append(...items);
 }
 
 function getEmployees(l) {
-  const items = Array.from(list.querySelectorAll('li'));
+  const items = Array.from(l.querySelectorAll('li'));
 
   return items.map((li) => ({
     name: li.textContent.trim(),
@@ -32,5 +32,4 @@ function getEmployees(l) {
 const list = document.querySelector('ul');
 
 sortList(list);
-
 getEmployees(list);
