@@ -20,7 +20,7 @@ function sortList(list) {
   itemsArray.forEach((item) => list.appendChild(item));
 }
 
-function getEmployess(list) {
+function getEmployees(list) {
   const employeesArray = Array.from(list.children).map((item) => {
     return {
       name: item.textContent.trim(),
@@ -35,4 +35,7 @@ function getEmployess(list) {
 
 sortList(ulElement);
 
-getEmployess(ulElement);
+getEmployees(ulElement);
+
+// eslint-disable-next-line no-console
+console.log(getEmployees(ulElement));
