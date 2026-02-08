@@ -12,14 +12,14 @@ class Employee {
 const ul = document.querySelector('ul');
 const li = ul.children;
 
-getEmployees(li);
 sortList(li);
+getEmployees(li);
 
 function sortList(list) {
   [...list]
     .sort(
       (a, b) =>
-        convertSalary(b.dataset.salary) - convertSalary(a.dataset.salary),
+        convertNumber(b.dataset.salary) - convertNumber(a.dataset.salary),
     )
     .forEach((element) => ul.appendChild(element));
 }
@@ -29,14 +29,14 @@ function getEmployees(list) {
     return new Employee(
       element.textContent.trim(),
       element.dataset.position,
-      convertSalary(element.dataset.salary),
-      element.dataset.age,
+      convertNumber(element.dataset.salary),
+      convertNumber(element.dataset.age),
     );
   });
 
   return arrayOfEmployees;
 }
 
-function convertSalary(salary) {
-  return Number.parseInt(salary.replace(/\D/g, ''));
+function convertNumber(number) {
+  return Number.parseInt(number.replace(/\D/g, ''));
 }
