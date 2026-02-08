@@ -21,7 +21,7 @@ function sortList(list) {
       (a, b) =>
         convertSalary(b.dataset.salary) - convertSalary(a.dataset.salary),
     )
-    .forEach((element) => element.parentElement = ul);
+    .forEach((element) => ul.appendChild(element));
 }
 
 function getEmployees(list) {
