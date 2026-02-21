@@ -17,13 +17,13 @@ function sortList(listElement) {
 
 function getEmployees(listElement) {
   return [...listElement.children].map((item) => {
-    const employeeName = item.textContent.split('\n')[0].trim() || '';
+    const nameText = item.textContent.split('\n')[0].trim() || '';
     const position = item.dataset.position || '';
     const salary = parseSalary(item);
     const age = Number(item.dataset.age) || null;
 
     return {
-      employeeName,
+      name: nameText,
       position,
       salary,
       age,
