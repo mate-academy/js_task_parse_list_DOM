@@ -2,25 +2,32 @@
 
 const list = document.querySelector('ul');
 
-const parseSalary = (el) => Number(el.dataset.salary) || 0;
+const parseSalary = (el) => {
+  const cleaned = el.dataset.salary.replace(/[$,]/g, '');
+
+  const value = Number(cleaned);
+
+  return Number.isNaN(value) ? 0 : value;
+};
 
 function sortList(listElement) {
-  // 1. Перетворюємо NodeList у масив
-  const items = [...listElement.children];
+  const items = [...listElement.children].map((item) => ({
+    element: item,
+    salary: parseSalary(item),
+  }));
 
-  // 2. Сортуємо в порядку спадання (b - a)
-  items.sort((a, b) => parseSalary(b) - parseSalary(a));
+  items.sort((a, b) => b.salary - a.salary);
 
-  // 3. Оновлюємо DOM
-  items.forEach((item) => listElement.appendChild(item));
+  items.forEach((item) => listElement.appendChild(item.element));
 }
 
 function getEmployees(listElement) {
   return [...listElement.children].map((item) => {
-    const nameText = item.textContent.split('\n')[0].trim() || '';
+    const nameText = item.firstChild?.textContent.trim() || '';
     const position = item.dataset.position || '';
     const salary = parseSalary(item);
-    const age = Number(item.dataset.age) || null;
+    const ageValue = Number(item.dataset.age);
+    const age = Number.isNaN(ageValue) ? null : ageValue;
 
     return {
       name: nameText,
@@ -31,6 +38,8 @@ function getEmployees(listElement) {
   });
 }
 
-sortList(list);
+if (list) {
+  sortList(list);
+}
 
 getEmployees(list);
