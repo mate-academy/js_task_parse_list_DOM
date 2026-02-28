@@ -3,45 +3,34 @@
 /* eslint-disable prettier/prettier */
 'use strict';
 
-function getEmployees() {
-  const collection = document.getElementsByTagName('li');
-  const list = [];
+function salaryNormilaze(salary) {
+  return parseInt(salary.slice(1).split(',').join(''));
+}
 
-  for (let i = 0; i < collection.length; i++) {
-    list.push(collection.item(i));
-  }
-
+function sortList(list) {
+  list.sort((a, b) => {
+    return salaryNormilaze(b.dataset.salary) - salaryNormilaze(a.dataset.salary);
+  });
   return list;
 }
 
-function sortList(employees) {
-  employees.sort((employee1, employee2) => {
-
-    const salary1 = salaryNormilaze(employee1['attributes']['data-salary']['value']);
-    const salary2 = salaryNormilaze(employee2['attributes']['data-salary']['value']);
-
-    // console.log(salary1);
-    // console.log(salary2);
-
-    return salary2 - salary1;
-  });
-
-  return employees;
+function getEmployees(list) {
+  return list.map(employee => ({
+    name: employee.dataset.name,
+    position: employee.dataset.position,
+    salary: salaryNormilaze(employee.dataset.salary),
+    age: parseInt(employee.dataset.age),
+  }));
 }
 
-function salaryNormilaze(salary) {
-  const normilaizedSalary = salary.slice(1).split(',').join('');
+const ul = document.getElementsByTagName('ul')[0];
+const listItems = Array.from(ul.getElementsByTagName('li'));
 
-  // console.log(salary);
-  // console.log(normilaizedSalary);
+const sortedItems = sortList(listItems);
 
-  return parseInt(normilaizedSalary);
-}
+ul.innerHTML = '';
+sortedItems.forEach(item => ul.appendChild(item));
 
-const listOfEmployees = getEmployees();
+const employees = getEmployees(sortedItems);
 
-const sortedList = sortList(listOfEmployees);
-
-for (let i = 0; i < sortedList.length; i++) {
-  document.getElementsByTagName('li')[i].outerHTML = sortedList[i].outerHTML;
-}
+console.log(employees);
