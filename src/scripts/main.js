@@ -3,14 +3,13 @@
 const listOfEmployees = document.querySelector('ul');
 const employeesArr = Array.from(listOfEmployees.children);
 
-console.log(employeesArr);
+function salaryToNumber (salaryString) {
+    return Number(salaryString.dataset.salary.slice(1).split(',').join(''));
+}
 
 function sortList(array) {
     array.sort((a, b) => {
-        const firstSalary = a.dataset.salary.slice(1).split(',').join('');
-        const secondSalary = b.dataset.salary.slice(1).split(',').join('');
-
-        return Number(secondSalary) - Number(firstSalary)});
+        return salaryToNumber(b) - salaryToNumber(a)});
 
     array.forEach(person => {
         listOfEmployees.appendChild(person);
@@ -32,6 +31,6 @@ function getEmployees(array) {
 
 sortList(employeesArr);
 
-console.log(getEmployees(employeesArr));
+getEmployees(employeesArr);
 
 
