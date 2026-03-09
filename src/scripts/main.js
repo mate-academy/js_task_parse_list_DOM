@@ -8,12 +8,16 @@ function normalizeSalary(salary) {
   return parseInt(salary.slice(1).split(',').join(''));
 }
 
-function sortList(list) {
+function sortList(list, newUl) {
   list.sort((a, b) => {
     return (
       normalizeSalary(b.dataset.salary) - normalizeSalary(a.dataset.salary)
     );
   });
+
+  newUl.innerHTML = '';
+
+  list.forEach((item) => newUl.appendChild(item));
 
   return list;
 }
@@ -27,10 +31,6 @@ function getEmployees(list) {
   }));
 }
 
-const sortedList = sortList(items);
-
-ul.innerHTML = '';
-
-sortedList.forEach((item) => ul.appendChild(item));
+const sortedList = sortList(items, ul);
 
 getEmployees(sortedList);
