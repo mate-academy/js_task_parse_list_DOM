@@ -1,13 +1,12 @@
 'use strict';
 
 // write code here
-const list = document.querySelector('ul');
 
 function salaryToNumber(salaryStr) {
   return Number(salaryStr.replace('$', '').replace(/,/g, ''));
 }
 
-function sortList() {
+function sortList(list) {
   const listItems = [...list.querySelectorAll('li')];
 
   listItems.sort((a, b) => {
@@ -17,7 +16,7 @@ function sortList() {
   listItems.forEach((item) => list.appendChild(item));
 }
 
-function getEmployees() {
+function getEmployees(list) {
   const listItems = [...list.querySelectorAll('li')];
 
   return listItems.map((li) => ({
@@ -28,6 +27,8 @@ function getEmployees() {
   }));
 }
 
-sortList(list);
+const itemList = document.querySelector('ul');
 
-getEmployees(list);
+sortList(itemList);
+
+getEmployees(itemList);
