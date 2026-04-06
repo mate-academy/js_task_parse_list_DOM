@@ -5,7 +5,9 @@ function helper(string) {
     return 0;
   }
 
-  return Number(string.replace(/,/g, '').trim());
+  const cleanString = string.replace(/[$,]/g, '').trim();
+
+  return Number(cleanString);
 }
 
 function sortList(list) {
@@ -22,7 +24,9 @@ function sortList(list) {
     return salaryB - salaryA;
   });
 
-  allLi.forEach((li) => list.append(li));
+  allLi.forEach((li) => {
+    list.append(li);
+  });
 }
 
 function getEmployees(list) {
@@ -44,7 +48,7 @@ function getEmployees(list) {
   return employees;
 }
 
-const mainList = document.querySelector('.list');
+const mainList = document.querySelector('ul');
 
 if (mainList) {
   sortList(mainList);
