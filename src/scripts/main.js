@@ -1,43 +1,43 @@
 'use strict';
 
-const allItems = [];
-
-document.querySelectorAll('.list li').forEach((element) => {
-  const text = element.textContent;
-
-  allItems.push(text);
-});
-
 function helper(string) {
-  const cleanString = string.replace(/,/g, '');
+  if (!string) {
+    return 0;
+  }
 
-  return Number(cleanString);
+  return Number(string.replace(/,/g, '').trim());
 }
 
 function sortList(list) {
-  const notAllLi = list.querySelectorAll('li');
-  const Allli = [...notAllLi];
+  if (!list) {
+    return;
+  }
 
-  Allli.sort((a, b) => {
+  const allLi = [...list.querySelectorAll('li')];
+
+  allLi.sort((a, b) => {
     const salaryA = helper(a.dataset.salary);
     const salaryB = helper(b.dataset.salary);
 
     return salaryB - salaryA;
   });
 
-  Allli.forEach((li) => list.append(li));
+  allLi.forEach((li) => list.append(li));
 }
 
 function getEmployees(list) {
+  if (!list) {
+    return [];
+  }
+
   const employees = [];
 
   list.querySelectorAll('li').forEach((item) => {
-    const employeeName = item.textContent.split(' ')[0];
-    const salary = helper(item.dataset.salary);
-
     employees.push({
-      name: employeeName,
-      salary: salary,
+      name: item.textContent.trim().split(' ')[0],
+      position: item.dataset.position,
+      salary: helper(item.dataset.salary),
+      age: helper(item.dataset.age),
     });
   });
 
@@ -46,5 +46,7 @@ function getEmployees(list) {
 
 const mainList = document.querySelector('.list');
 
-sortList(mainList);
-getEmployees(mainList);
+if (mainList) {
+  sortList(mainList);
+  getEmployees(mainList);
+}
