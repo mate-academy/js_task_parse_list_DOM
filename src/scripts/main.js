@@ -1,13 +1,17 @@
 'use strict';
 
-const list = document.querySelector('ul');
-const employees = document.querySelectorAll('li[data-position]');
+const listElement = document.querySelector('ul');
 
-// eslint-disable-next-line no-shadow
-function sortList(employees) {
-  const sortedArray = Array.from(employees).sort((a, b) => {
-    const salaryA = Number(a.dataset.salary.replace(/[^0-9.-]+/g, ''));
-    const salaryB = Number(b.dataset.salary.replace(/[^0-9.-]+/g, ''));
+function getSalaryValue(salaryString) {
+  return Number(salaryString.replace(/[^0-9.-]+/g, ''));
+}
+
+function sortList(list) {
+  const nodes = list.querySelectorAll('li[data-position]');
+
+  const sortedArray = Array.from(nodes).sort((a, b) => {
+    const salaryA = getSalaryValue(a.dataset.salary);
+    const salaryB = getSalaryValue(b.dataset.salary);
 
     return salaryB - salaryA;
   });
@@ -15,27 +19,22 @@ function sortList(employees) {
   sortedArray.forEach((node) => list.append(node));
 }
 
-// eslint-disable-next-line no-shadow
-function getEmployees(employees) {
+function getEmployees(list) {
+  const nodes = list.querySelectorAll('li[data-position]');
   const employeeList = [];
 
-  for (const employee of employees) {
-    // eslint-disable-next-line no-shadow
-    const name = employee.textContent;
-    const position = employee.getAttribute('data-position');
-    const salary = employee.getAttribute('data-salary');
-    const age = employee.getAttribute('data-age');
-
+  for (const employee of nodes) {
     employeeList.push({
-      name,
-      position,
-      salary,
-      age,
+      name: employee.textContent.trim(),
+      position: employee.dataset.position,
+      // Використовуємо той самий helper для одноманітності даних
+      salary: getSalaryValue(employee.dataset.salary),
+      age: Number(employee.dataset.age),
     });
   }
 
   return employeeList;
 }
 
-getEmployees(employees);
-sortList(employees);
+getEmployees(listElement);
+sortList(listElement);
