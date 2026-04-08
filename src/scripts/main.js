@@ -13,14 +13,12 @@ const sortList = (listElement) => {
     return salaryB - salaryA;
   });
 
-  list.append(...items);
-
   listElement.innerHTML = '';
   listElement.append(...items);
 };
 
 const getEmployees = (listElement) => {
-  const items = [...listElement.querySelectorAll('li')];
+  const items = listElement.querySelectorAll('li');
 
   return Array.from(items).map((li) => ({
     name: li.textContent.trim(),
