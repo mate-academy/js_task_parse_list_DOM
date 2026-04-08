@@ -1,10 +1,9 @@
 'use strict';
 
-const list = document.querySelector('ul');
 const parseSalary = (salaryStr) => Number(salaryStr.replace(/[^\d]/g, ''));
 
 const sortList = (listElement) => {
-  const items = Array.from(list.querySelectorAll('li'));
+  const items = Array.from(listElement.querySelectorAll('li'));
 
   items.sort((a, b) => {
     const salaryA = parseSalary(a.dataset.salary);
