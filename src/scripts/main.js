@@ -23,17 +23,9 @@ function getEmployees(ulElement) {
   }));
 }
 
-function renderResult(employees) {
-  const pre = document.createElement('pre');
-
-  pre.textContent = JSON.stringify(employees, null, 2);
-  document.body.appendChild(pre);
-}
-
 const employeeList = document.querySelector('ul');
 
-sortList(employeeList);
-
-const employeeArray = getEmployees(employeeList);
-
-renderResult(employeeArray);
+if (employeeList) {
+  sortList(employeeList);
+  getEmployees(employeeList);
+}
