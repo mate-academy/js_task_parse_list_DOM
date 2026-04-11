@@ -15,12 +15,16 @@ function sortList(ulElement) {
 }
 
 function getEmployees(ulElement) {
-  return Array.from(ulElement.querySelectorAll('li')).map((item) => ({
-    name: item.querySelector('.name').textContent.trim(),
-    position: item.dataset.position,
-    salary: parseSalary(item.dataset.salary),
-    age: Number(item.dataset.age),
-  }));
+  return Array.from(ulElement.querySelectorAll('li')).map((item) => {
+    const nameElement = item.querySelector('.name');
+
+    return {
+      name: nameElement ? nameElement.textContent.trim() : '',
+      position: item.dataset.position,
+      salary: parseSalary(item.dataset.salary),
+      age: Number(item.dataset.age),
+    };
+  });
 }
 
 const employeeList = document.querySelector('ul');
