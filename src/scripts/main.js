@@ -10,7 +10,7 @@ function getEmployees(list) {
   return Array.from(list.children).map((li) => ({
     name: li.textContent.trim(),
     position: li.dataset.position,
-    salary: li.dataset.salary,
+    salary: getSalaryNumber(li.dataset.salary),
     age: li.dataset.age,
   }));
 }
