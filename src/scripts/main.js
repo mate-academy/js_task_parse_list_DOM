@@ -21,14 +21,13 @@ function getEmployees(list) {
   const items = list.querySelectorAll('li');
 
   items.forEach((item) => {
-    // eslint-disable-next-line no-shadow
-    const name = item.querySelector('li');
-    const position = item.querySelector('[data-position]');
+    const employeeName = item.textContent.trim();
+    const position = item.dataset.position;
     const salary = getSalaryNumber(item);
-    const age = Number(item.querySelector('[data-age]'));
+    const age = Number(item.dataset.age);
 
     employees.push({
-      name,
+      name: employeeName,
       position,
       salary,
       age,
