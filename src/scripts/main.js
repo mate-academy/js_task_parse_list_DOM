@@ -24,7 +24,7 @@ function getEmployees(list) {
 
   return workerArray.map((worker) => {
     return {
-      name: worker.textContent.trim(),
+      name: worker.dataset.name,
       position: worker.dataset.position,
       salary: getSalaryNumber(worker),
       age: +worker.dataset.age,
@@ -35,4 +35,8 @@ function getEmployees(list) {
 const mainList = document.querySelector('ul');
 
 sortList(mainList);
-getEmployees(mainList);
+
+const employees = getEmployees(mainList);
+
+// eslint-disable-next-line no-console
+console.log(employees);
