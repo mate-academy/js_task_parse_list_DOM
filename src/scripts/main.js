@@ -1,18 +1,44 @@
 'use strict';
 
-const list = document.querySelector('ul');
-const listChildren = document.querySelectorAll('li');
-const ArrayListChildren = [...listChildren];
+function parseSalaryToNumber(salaryString) {
+  const cleanString = salaryString.replace(/[$,]/g, '');
 
-ArrayListChildren.sort((a, b) => {
-  const cleanA = a.dataset.salary.replace(/[$,]/g, '');
-  const cleanB = b.dataset.salary.replace(/[$,]/g, '');
+  return Number(cleanString);
+}
 
-  const salaryA = Number(cleanA);
-  const salaryB = Number(cleanB);
+function getEmployees() {
+  const listChildren = document.querySelectorAll('ul li');
+  const arrayListChildren = [...listChildren];
 
-  return salaryB - salaryA;
-});
+  return arrayListChildren.map((li) => {
+    return {
+      element: li,
+      name: li.textContent.trim(),
+      position: li.dataset.position,
+      salary: li.dataset.salary,
+      age: Number(li.dataset.age),
+    };
+  });
+}
 
-list.innerHTML = '';
-ArrayListChildren.forEach((li) => list.appendChild(li));
+
+function sortList(list) {
+  const employees = getEmployees();
+
+  employees.sort((a, b) => {
+    const salaryA = parseSalaryToNumber(a.salary);
+    const salaryB = parseSalaryToNumber(b.salary);
+
+    return salaryB - salaryA;
+  });
+
+  list.innerHTML = '';
+
+  employees.forEach((employee) => {
+    list.appendChild(employee.element);
+  });
+}
+
+const listElement = document.querySelector('ul');
+
+sortList(listElement);
