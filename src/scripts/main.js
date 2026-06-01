@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 'use strict';
 
 function salaryReplace(salaryString) {
