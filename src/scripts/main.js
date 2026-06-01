@@ -7,7 +7,7 @@ function sortList(list) {
   const items = [...list.querySelectorAll('li')];
 
   items.sort((a, b) => {
-    return parseSalary(a) - parseSalary(b);
+    return parseSalary(b) - parseSalary(a);
   });
 
   list.append(...items);
