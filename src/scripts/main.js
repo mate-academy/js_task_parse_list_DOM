@@ -15,13 +15,13 @@ function sortList(ul) {
   ul.append(...items);
 }
 
-function getEmployers(ul) {
+function getEmployeers(ul) {
   const items = [...ul.children];
   const employers = [];
 
   items.forEach((item) => {
     employers.push({
-      name: item.textContent.trim(),
+      name: item.querySelector('.name').textContent.trim(),
       position: item.dataset.position,
       salary: getSalary(item),
       age: Number(item.dataset.age),
@@ -31,4 +31,4 @@ function getEmployers(ul) {
   return employers;
 }
 sortList(list);
-getEmployers(list);
+getEmployeers(list);
