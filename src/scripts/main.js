@@ -21,7 +21,7 @@ function getEmployees(ul) {
 
   items.forEach((item) => {
     employers.push({
-      name: item.children[0].textContent.trim(),
+      name: item.textContent.trim(),
       position: item.dataset.position,
       salary: getSalary(item),
       age: Number(item.dataset.age),
