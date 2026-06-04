@@ -15,7 +15,7 @@ function sortList(ul) {
   ul.append(...items);
 }
 
-function getEmployeers(ul) {
+function getEmployees(ul) {
   const items = [...ul.children];
   const employers = [];
 
@@ -31,4 +31,4 @@ function getEmployeers(ul) {
   return employers;
 }
 sortList(list);
-getEmployeers(list);
+getEmployees(list);
