@@ -2,7 +2,7 @@
 
 // write code here
 
-const listOfEmployees = [...document.querySelector('ul')];
+const listOfEmployees = document.querySelector('ul');
 
 function parseSalary(salary) {
   return Number(salary.replace(/[$,]/g, ''));
