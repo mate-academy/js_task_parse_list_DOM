@@ -15,11 +15,11 @@ function sortList(list) {
     .sort(
       (a, b) => parseSalary(b.dataset.salary) - parseSalary(a.dataset.salary),
     )
-    .forEach(item => list.append(item));
+    .forEach((item) => list.append(item));
 }
 
 function getEmployees(list) {
-  return [...list.querySelectorAll('li')].map(item => ({
+  return [...list.querySelectorAll('li')].map((item) => ({
     name: item.textContent.trim(),
     position: item.dataset.position,
     salary: item.dataset.salary,
