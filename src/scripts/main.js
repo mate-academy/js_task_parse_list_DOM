@@ -1,30 +1,34 @@
 'use strict';
 
-const ul = document.querySelector('ul');
 const liElements = [...document.querySelectorAll('li')];
 
-function sortList(list, property) {
-  return list.sort(
+function sortList(list) {
+  const ul = list[0].parentNode;
+  const sortProperty = 'salary';
+
+  list.sort(
     (li1, li2) =>
-      strToNumber(li2.dataset[property]) - strToNumber(li1.dataset[property]),
+      strToNumber(li2.dataset[sortProperty]) -
+      strToNumber(li1.dataset[sortProperty]),
   );
+
+  list.forEach((li) => ul.append(li));
 }
 
 function strToNumber(str) {
-  return Number(str.replaceAll(/[$,]/g, ''));
+  return Number(str.replace(/[$,]/g, ''));
 }
 
 function getEmployees(list) {
   const employees = [];
 
   for (const li of list) {
-    const employee = {};
-
-    employee.name = li.textContent.trim();
-
-    for (const key in li.dataset) {
-      employee[key] = li.dataset[key];
-    }
+    const employee = {
+      name: li.textContent.trim(),
+      position: li.dataset.position,
+      salary: strToNumber(li.dataset.salary),
+      age: Number(li.dataset.age),
+    };
 
     employees.push(employee);
   }
@@ -32,6 +36,5 @@ function getEmployees(list) {
   return employees;
 }
 
-sortList(liElements, 'salary');
-liElements.forEach((li) => ul.append(li));
+sortList(liElements);
 getEmployees(liElements);
