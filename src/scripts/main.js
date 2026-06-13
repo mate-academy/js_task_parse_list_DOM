@@ -23,9 +23,9 @@ function getEmployees(list) {
   const itemsArray = [...list.children];
   const employeesArray = itemsArray.map((item) => {
     return {
-      name: item.textContent.trim(),
+      name: item.firstChild.textContent.trim(),
       position: item.dataset.position,
-      salary: item.dataset.salary,
+      salary: parseSalary(item.dataset.salary),
       age: item.dataset.age,
     };
   });
