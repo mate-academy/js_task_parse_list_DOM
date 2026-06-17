@@ -25,10 +25,16 @@ function getEmployees(listElement) {
   const items = [...listElement.children];
 
   return items.map((item) => {
+    const employeeName = [...item.childNodes]
+      .filter((node) => node.nodeType === 3)
+      .map((node) => node.textContent)
+      .join('')
+      .trim();
+
     return {
-      name: item.textContent.trim(),
+      name: employeeName,
       position: item.dataset.position,
-      salary: item.dataset.salary,
+      salary: parseSalary(item.dataset.salary),
       age: item.dataset.age,
     };
   });
