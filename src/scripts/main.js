@@ -2,14 +2,16 @@
 
 const list = document.querySelector('ul');
 
+const parseSalary = (salary) => Number(salary.replace(/[$,]/g, ''));
+
 const sortList = (employees) => {
   const items = [...employees.children];
 
   items.sort((a, b) => {
-    const salaryA = Number(a.getAttribute('data-salary').replace(/[$,]/g, ''));
-    const salaryB = Number(b.getAttribute('data-salary').replace(/[$,]/g, ''));
-
-    return salaryB - salaryA;
+    return (
+      parseSalary(b.getAttribute('data-salary')) -
+      parseSalary(a.getAttribute('data-salary'))
+    );
   });
 
   employees.append(...items);
@@ -17,9 +19,9 @@ const sortList = (employees) => {
 
 const getEmployees = (employees) => {
   return [...employees.children].map((item) => ({
-    name: item.textContent.trim(),
+    name: item.dataset.name || item.getAttribute('data-name'),
     position: item.getAttribute('data-position'),
-    salary: Number(item.getAttribute('data-salary').replace(/[$,]/g, '')),
+    salary: parseSalary(item.getAttribute('data-salary')),
     age: Number(item.getAttribute('data-age')),
   }));
 };
