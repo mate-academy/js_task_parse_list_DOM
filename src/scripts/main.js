@@ -7,7 +7,9 @@ function getSalary(element) {
 }
 
 function sortList(employeeList) {
-  const sortedList = [...employeeList.employees].sort((a, b) => {
+  const employees = [...employeeList.children];
+
+  const sortedList = employees.sort((a, b) => {
     return getSalary(b) - getSalary(a);
   });
 
@@ -15,7 +17,7 @@ function sortList(employeeList) {
 }
 
 function getEmployees(employeeList) {
-  return [...employeeList.employees].map((employee) => {
+  return [...employeeList.children].map((employee) => {
     return {
       name: employee.textContent.trim(),
       position: employee.dataset.position,
@@ -27,7 +29,7 @@ function getEmployees(employeeList) {
 
 sortList(list);
 
-const employees = getEmployees(list);
+const employeeData = getEmployees(list);
 
 // eslint-disable-next-line no-console
-console.log(employees);
+console.log(employeeData);
