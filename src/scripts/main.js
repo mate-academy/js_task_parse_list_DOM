@@ -1,7 +1,7 @@
 'use strict';
 
 function getSalary(item) {
-  return Number(item.dataset.salary.replace('$', '').replace(',', ''));
+  return Number(item.dataset.salary.replace('$', '').replaceAll(',', ''));
 }
 
 function sortList(list) {
