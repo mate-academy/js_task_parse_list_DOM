@@ -1,5 +1,9 @@
 'use strict';
 
+function getSalary(item) {
+  return parseInt(item.dataset.salary, 10);
+}
+
 function getEmployees(list) {
   const items = list.children;
   const employees = [];
@@ -10,7 +14,7 @@ function getEmployees(list) {
     employees.push({
       name: item.dataset.name,
       position: item.dataset.position,
-      salary: parseInt(item.dataset.salary, 10),
+      salary: getSalary(item),
       age: parseInt(item.dataset.age, 10),
     });
   }
@@ -22,8 +26,8 @@ function sortList(list) {
   const items = Array.from(list.children);
 
   items.sort((a, b) => {
-    const salaryA = parseInt(a.dataset.salary, 10);
-    const salaryB = parseInt(b.dataset.salary, 10);
+    const salaryA = getSalary(a);
+    const salaryB = getSalary(b);
 
     return salaryB - salaryA;
   });
