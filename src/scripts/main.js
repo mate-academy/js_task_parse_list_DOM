@@ -2,10 +2,14 @@
 
 const list = Array.from(document.querySelector('ul').children);
 
+function parseSalary(value) {
+  return value.replace(/[^0-9]/g, '');
+}
+
 function sortList(li) {
   li.sort((a, b) => {
-    const aValue = a.dataset.salary.replace(/[^0-9]/g, '');
-    const bValue = b.dataset.salary.replace(/[^0-9]/g, '');
+    const aValue = parseSalary(a.dataset.salary);
+    const bValue = parseSalary(b.dataset.salary);
 
     return bValue - aValue;
   });
@@ -16,7 +20,7 @@ function sortList(li) {
 function getEmployees(li) {
   return li.map((item) => {
     const position = item.dataset.position;
-    const salary = item.dataset.salary;
+    const salary = parseSalary(item.dataset.salary);
     const age = item.dataset.age;
 
     return {
