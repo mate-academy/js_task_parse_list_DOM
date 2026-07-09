@@ -1,7 +1,7 @@
 'use strict';
 
 function getSalary(item) {
-  return parseInt(item.dataset.salary, 10);
+  return parseInt(item.dataset.salary.replace(/\D/g, ''), 10);
 }
 
 function getEmployees(list) {
