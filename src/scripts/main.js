@@ -1,24 +1,22 @@
 'use strict';
 
 // write code here
-const people = [...document.querySelectorAll('[data-salary]')];
-const emp = [];
 const list = document.querySelector('ul');
 
-people.forEach((person) => {
-  emp.push({
-    name: person.dataset.name,
-    salary: Number(person.dataset.salary.replace('$', '').replace(/,/g, '')),
+function getSalary(salary) {
+  return Number(salary.replace('$', '').replace(/,/g, ''));
+}
+
+function sortList(soringList) {
+  const people = [...soringList.children];
+
+  people.sort((a, b) => {
+    return getSalary(b.dataset.salary) - getSalary(a.dataset.salary);
   });
-});
 
-people.sort((a, b) => {
-  return (
-    Number(b.dataset.salary.replace('$', '').replace(/,/g, '')) -
-    Number(a.dataset.salary.replace('$', '').replace(/,/g, ''))
-  );
-});
+  people.forEach((person) => {
+    list.append(person);
+  });
+}
 
-people.forEach((person) => {
-  list.append(person);
-});
+sortList(list);
