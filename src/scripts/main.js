@@ -3,19 +3,31 @@
 // write code here
 const list = document.querySelector('ul');
 
-function getSalary(salary) {
-  return Number(salary.replace('$', '').replace(/,/g, ''));
+function getEmployees(poeple) {
+  const employees = [];
+
+  poeple.forEach((person) => {
+    employees.push({
+      element: person,
+      name: person.dataset.name,
+      position: person.dataset.position,
+      salary: person.dataset.salary.replace('$', '').replace(/,/g, ''),
+      age: person.dataset.age,
+    });
+  });
+
+  return employees;
 }
 
 function sortList(soringList) {
-  const people = [...soringList.children];
+  const employees = getEmployees([...soringList.children]);
 
-  people.sort((a, b) => {
-    return getSalary(b.dataset.salary) - getSalary(a.dataset.salary);
+  employees.sort((a, b) => {
+    return b.salary - a.salary;
   });
 
-  people.forEach((person) => {
-    list.append(person);
+  employees.forEach((employee) => {
+    list.append(employee.element);
   });
 }
 
