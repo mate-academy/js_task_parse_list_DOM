@@ -7,17 +7,17 @@ function parseSalary(salaryString) {
 }
 
 function sortList(employeeList) {
-  const items = Array.from(list.children);
+  const items = Array.from(employeeList.children);
 
   items.sort((a, b) => {
     return parseSalary(b.dataset.salary) - parseSalary(a.dataset.salary);
   });
 
-  items.forEach((item) => list.appendChild(item));
+  items.forEach((item) => employeeList.appendChild(item));
 }
 
 function getEmployees(employeeList) {
-  const items = Array.from(list.children);
+  const items = Array.from(employeeList.children);
 
   return items.map((item) => {
     return {
