@@ -3,7 +3,7 @@
 const employeeList = document.querySelector('ul');
 
 function getSalary(employeeElement) {
-  const salary = employeeElement.getAttribute('data-salary');
+  const salary = employeeElement.dataset.salary;
 
   return Number(salary.replaceAll('$', '').replaceAll(',', ''));
 }
@@ -25,9 +25,9 @@ function getEmployees(listElement) {
 
   return employeeItems.map((employeeElement) => ({
     name: employeeElement.textContent.trim(),
-    position: employeeElement.getAttribute('data-position'),
+    position: employeeElement.dataset.position,
     salary: getSalary(employeeElement),
-    age: Number(employeeElement.getAttribute('data-age')),
+    age: Number(employeeElement.dataset.age),
   }));
 }
 
