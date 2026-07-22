@@ -21,9 +21,6 @@ function getEmployees(arr) {
 
 const list = document.querySelector('ul');
 const employees = Array.from(list.querySelectorAll('li'));
-
-sortList(employees);
-
 const sortedEmployees = sortList(employees);
 
 sortedEmployees.forEach((item) => list.appendChild(item));
