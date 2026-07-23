@@ -1,6 +1,6 @@
 'use strict';
 
-const employees = document.querySelectorAll('li');
+const employeesList = document.querySelector('ul');
 
 function sortList(list) {
   const employeesArr = getEmployees(list);
@@ -20,16 +20,15 @@ function sortList(list) {
     fragment.append(li);
   }
 
-  const listOfEmployees = document.querySelector('ul');
-
-  listOfEmployees.innerHTML = '';
-  listOfEmployees.append(fragment);
+  list.innerHTML = '';
+  list.append(fragment);
 }
 
 function getEmployees(list) {
+  const employees = list.getElementsByTagName('li');
   const result = [];
 
-  for (const employee of list) {
+  for (const employee of employees) {
     const employeeObj = {
       name: employee.textContent,
       position: employee.dataset.position,
@@ -47,4 +46,5 @@ function salaryToNumber(salary) {
   return +salary.replaceAll(',', '').replaceAll('$', '');
 }
 
-sortList(employees);
+getEmployees(employeesList);
+sortList(employeesList);
