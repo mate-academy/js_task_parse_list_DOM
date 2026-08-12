@@ -33,7 +33,7 @@ function convertToNumber(string) {
 
 function sortList(listBlock) {
   const sortedList = list.sort((a, b) => {
-    return convertToNumber(b.salary) - convertToNumber(a.salary);
+    return convertToNumber(a.salary) - convertToNumber(b.salary);
   });
 
   listBlock.innerHTML = '';
