@@ -12,7 +12,9 @@ function getEmployees(listArr) {
   });
 }
 
-const list = getEmployees(listBlock.querySelectorAll('li'));
+const list = getEmployees(
+  document.querySelector('.js-list').querySelectorAll('li'),
+);
 
 function createNewListItem(data) {
   const elem = document.createElement('li');
