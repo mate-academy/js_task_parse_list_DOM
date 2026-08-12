@@ -28,12 +28,12 @@ function createNewListItem(data) {
 }
 
 function convertToNumber(string) {
-  return string.replace(/,/g, '').slice(1);
+  return +string.replace(',', '').slice(1);
 }
 
 function sortList(listBlock) {
   const sortedList = list.sort((a, b) => {
-    return convertToNumber(a.salary) - convertToNumber(b.salary);
+    return b.salary - a.salary;
   });
 
   listBlock.innerHTML = '';
