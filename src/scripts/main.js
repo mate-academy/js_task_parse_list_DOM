@@ -1,19 +1,18 @@
 'use strict';
 
-const listBlock = document.querySelector('.js-list');
-const list = getEmployees(listBlock.querySelectorAll('li'));
-
 // write code here
 function getEmployees(listArr) {
   return [...listArr].map((item) => {
     return {
-      user: item.innerHTML,
-      name: item.dataset.position,
+      name: item.innerHTML,
+      position: item.dataset.position,
       salary: convertToNumber(item.dataset.salary),
       age: +item.dataset.age,
     };
   });
 }
+
+const list = getEmployees(listBlock.querySelectorAll('li'));
 
 function createNewListItem(data) {
   const elem = document.createElement('li');
@@ -23,14 +22,14 @@ function createNewListItem(data) {
   elem.dataset.salary = '$' + data.salary || '';
   elem.dataset.age = data.age || '';
 
-  listBlock.appendChild(elem);
+  return elem;
 }
 
 function convertToNumber(string) {
   return string.replace(/,/g, '').slice(1);
 }
 
-function sortList(List) {
+function sortList(listBlock) {
   const sortedList = list.sort((a, b) => {
     return convertToNumber(b.salary) - convertToNumber(a.salary);
   });
@@ -38,10 +37,8 @@ function sortList(List) {
   listBlock.innerHTML = '';
 
   sortedList.forEach((empl) => {
-    createNewListItem(empl);
+    listBlock.append(createNewListItem(empl));
   });
 }
 
-
-
-sortList(listBlock.querySelectorAll('li'));
+sortList(document.querySelector('.js-list'));
