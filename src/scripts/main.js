@@ -21,7 +21,7 @@ function sortList(list) {
 function getEmployees(people) {
   return people.map((person) => {
     const employee = {
-      name: person.dataset.name ?? person.textContent.trim(),
+      name: person.dataset.name || person.textContent.trim(),
       position: person.dataset.position,
       salary: toNumber(person.dataset.salary),
       age: Number(person.dataset.age),
