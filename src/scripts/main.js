@@ -1,9 +1,10 @@
 'use strict';
 
-const takenListItem = [...document.querySelectorAll('li')];
+// const takenListItem = [...document.querySelectorAll('li')];
 const takenList = document.querySelector('ul');
 
-function sortList(items, list) {
+function sortList(list) {
+  const items = [...document.querySelectorAll('li')];
   const sorted = items.map((li) => convert(li)).sort((li1, li2) => li2 - li1);
   const copy = [...items];
 
@@ -31,7 +32,7 @@ function convert(value) {
 function getEmployees(list) {
   const array = [];
 
-  for (const li of list) {
+  for (const li of list.children) {
     array.push({
       name: li.innerText,
       position: li.dataset.position,
@@ -43,5 +44,5 @@ function getEmployees(list) {
   return array;
 }
 
-sortList(takenListItem, takenList);
-getEmployees(takenListItem);
+sortList(takenList);
+getEmployees(takenList);
