@@ -3,7 +3,7 @@
 function getEmployees(arr = []) {
   const elements = document.querySelectorAll('li');
 
-  if (arr) {
+  if (arr.length > 0) {
     elements.forEach((el, i) => {
       if (!arr[i]) {
         return;
