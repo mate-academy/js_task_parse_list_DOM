@@ -1,32 +1,30 @@
 'use strict';
 
-function returnPersonList() {
+function getEmployees(arr = []) {
   const elements = document.querySelectorAll('li');
 
-  return Array.from(elements, (el) => ({
-    name: el.textContent.trim(),
-    position: el.dataset.position || '',
-    salary: el.dataset.salary || '',
-    age: el.dataset.age || '',
-  }));
+  if (arr) {
+    elements.forEach((el, i) => {
+      if (!arr[i]) {
+        return;
+      }
+
+      el.textContent = arr[i].name;
+      el.dataset.position = arr[i].position;
+      el.dataset.salary = arr[i].salary;
+      el.dataset.age = arr[i].age;
+    });
+  } else {
+    return Array.from(elements, (el) => ({
+      name: el.textContent.trim(),
+      position: el.dataset.position || '',
+      salary: el.dataset.salary || '',
+      age: el.dataset.age || '',
+    }));
+  }
 }
 
-function updatePersonList(arr) {
-  const elements = document.querySelectorAll('li');
-
-  elements.forEach((el, i) => {
-    if (!arr[i]) {
-      return;
-    }
-
-    el.textContent = arr[i].name;
-    el.dataset.position = arr[i].position;
-    el.dataset.salary = arr[i].salary;
-    el.dataset.age = arr[i].age;
-  });
-}
-
-function sortPersonList(arr) {
+function sortList(arr) {
   if (arr.length <= 1) {
     return arr;
   }
@@ -35,7 +33,7 @@ function sortPersonList(arr) {
   const left = arr.slice(0, middle);
   const right = arr.slice(middle);
 
-  return merge(sortPersonList(left), sortPersonList(right));
+  return merge(sortList(left), sortList(right));
 }
 
 function merge(left, right) {
@@ -61,4 +59,4 @@ function merge(left, right) {
     .concat(right.slice(rightIndex));
 }
 
-updatePersonList(sortPersonList(returnPersonList()));
+getEmployees(sortList(getEmployees()));
