@@ -22,7 +22,7 @@ function getEmployees(list) {
 
   list.forEach((item) => {
     resArr.push({
-      name: item.textContent,
+      name: item.dataset.name,
       position: item.dataset.position,
       salary: salaryToNum(item),
       age: item.dataset.age,
