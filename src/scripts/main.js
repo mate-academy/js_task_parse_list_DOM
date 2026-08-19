@@ -1,27 +1,10 @@
 'use strict';
 
-const elements = document.querySelectorAll('[data-salary]');
-const elementsParent = [...elements][0].parentElement;
-
-elements.forEach((element) => element.remove());
+const list = document.querySelector('ul');
+const elements = list.querySelectorAll('[data-salary]');
+const elementsParent = list;
 
 const peopleBySalary = [];
-
-[...elements].forEach((element) => {
-  const salaryValue = element.getAttribute('data-salary');
-
-  const salary = getTotalSalary(salaryValue);
-
-  peopleBySalary.push([salary, element]);
-});
-
-peopleBySalary.sort((value1, value2) => {
-  return value2[0] - value1[0];
-});
-
-peopleBySalary.forEach((person, index) => {
-  elementsParent.appendChild(peopleBySalary[index][1]);
-});
 
 function getTotalSalary(value) {
   let salary = '';
@@ -35,3 +18,35 @@ function getTotalSalary(value) {
 
   return +salary;
 }
+
+function sortList(listProperty) {
+  [...elements].forEach((element) => {
+    const salaryValue = element.getAttribute('data-salary');
+    const salary = getTotalSalary(salaryValue);
+
+    peopleBySalary.push([salary, element]);
+  });
+
+  peopleBySalary.sort((value1, value2) => {
+    return value2[0] - value1[0];
+  });
+
+  peopleBySalary.forEach((person, index) => {
+    elementsParent.appendChild(peopleBySalary[index][1]);
+  });
+}
+
+function getEmployees(listProperty) {
+  const employeeElements = listProperty.querySelectorAll('[data-salary]');
+
+  return [...employeeElements].map((element) => {
+    return {
+      position: element.getAttribute('data-position'),
+      salary: getTotalSalary(element.getAttribute('data-salary')),
+      age: Number(element.getAttribute('data-age')),
+    };
+  });
+}
+
+sortList(list);
+getEmployees(list);
