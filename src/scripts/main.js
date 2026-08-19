@@ -41,6 +41,7 @@ function getEmployees(listProperty) {
 
   return [...employeeElements].map((element) => {
     return {
+      name: element.innerText,
       position: element.getAttribute('data-position'),
       salary: getTotalSalary(element.getAttribute('data-salary')),
       age: Number(element.getAttribute('data-age')),
