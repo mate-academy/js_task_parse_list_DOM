@@ -19,7 +19,7 @@ function getEmployees(list) {
   return employeesList;
 }
 
-function sortList(list) {
+function sortList(employeesList, list) {
   if (!list) {
     return;
   }
@@ -32,8 +32,6 @@ function sortList(list) {
         .join(''),
     );
   }
-
-  const employeesList = getEmployees(list);
 
   const sortedList = employeesList.sort((personOne, personTwo) => {
     return (
@@ -50,4 +48,7 @@ function sortList(list) {
   }
 }
 
-sortList(document.querySelector('ul'));
+const ulList = document.querySelector('ul');
+const objectList = getEmployees(ulList);
+
+sortList(objectList, ulList);
