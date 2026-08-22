@@ -16,7 +16,7 @@ function sortList(list) {
   return list;
 }
 
-function getEmployee(list) {
+function getEmployees(list) {
   return list.map((li) => ({
     name: li.textContent,
     position: li.dataset.position,
@@ -26,4 +26,4 @@ function getEmployee(list) {
 }
 
 sortList(listt);
-getEmployee(listt);
+getEmployees(listt);
