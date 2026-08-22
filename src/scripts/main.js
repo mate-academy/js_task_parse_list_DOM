@@ -6,7 +6,12 @@ function getEmployees(list) {
   }
 
   const employeesList = [...list.children].reduce((previous, item) => {
-    previous.push({ name: item.innerText, ...item.dataset });
+    previous.push({
+      name: item.textContent.trim(),
+      position: item.dataset.position,
+      salary: item.dataset.salary,
+      age: item.dataset.age,
+    });
 
     return previous;
   }, []);
@@ -44,7 +49,5 @@ function sortList(list) {
     );
   }
 }
-
-getEmployees();
 
 sortList(document.querySelector('ul'));
