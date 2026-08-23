@@ -1,34 +1,34 @@
 'use strict';
-// Функція тут не потрібна мій код і так виконує всі поставлені умови завдання.
 
-const listItems = document.querySelectorAll('ul li');
+function parseSalary(salaryString) {
+  return Number(salaryString.replace('$', '').replace(/,/g, ''));
+}
 
-const employees = Array.from(listItems).map((li) => {
-  return {
+function sortList(list) {
+  const listItems = Array.from(list.children);
+
+  listItems.sort((a, b) => {
+    const salaryA = parseSalary(a.dataset.salary);
+    const salaryB = parseSalary(b.dataset.salary);
+
+    return salaryB - salaryA;
+  });
+
+  listItems.forEach((item) => list.appendChild(item));
+}
+
+function getEmployees(list) {
+  const listItems = Array.from(list.children);
+
+  return listItems.map((li) => ({
     name: li.textContent.trim(),
     ...li.dataset,
-  };
-});
+  }));
+}
 
-const sortedBySalary = [...employees].sort((a, b) => {
-  return (
-    Number(b.salary.replace('$', '').replace(',', '')) -
-    Number(a.salary.replace('$', '').replace(',', ''))
-  );
-});
+const listEl = document.querySelector('ul');
 
-const list = document.querySelector('ul');
-
-list.innerHTML = sortedBySalary
-  .map((employee) => {
-    return `
-  <li
-        data-position="${employee.position}"
-        data-salary="${employee.salary}"
-        data-age="${employee.age}"
-      >
-        ${employee.name}
-      </li>
-  `;
-  })
-  .join('');
+if (listEl) {
+  sortList(listEl);
+  getEmployees(listEl);
+}
