@@ -17,23 +17,16 @@ function sortList(list) {
 }
 
 function convertToNumber(string) {
-  return string.slice(1).split(',').join('');
+  return Number(string.slice(1).split(',').join(''));
 }
 
 function getEmployees(list) {
-  const employees = [...list.children];
-  const result = [];
-
-  employees.forEach((employee) => {
-    result.push({
-      name: employee.textContent.trim(),
-      position: employee.dataset.position,
-      salary: employee.dataset.salary,
-      age: employee.dataset.age,
-    });
-  });
-
-  return result;
+  return [...list.children].map((employee) => ({
+    name: employee.textContent.trim(),
+    position: employee.dataset.position,
+    salary: employee.dataset.salary,
+    age: employee.dataset.age,
+  }));
 }
 
 sortList(employeeListElement);
