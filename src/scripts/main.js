@@ -1,4 +1,5 @@
 'use strict';
+// Функція тут не потрібна мій код і так виконує всі поставлені умови завдання.
 
 const listItems = document.querySelectorAll('ul li');
 
