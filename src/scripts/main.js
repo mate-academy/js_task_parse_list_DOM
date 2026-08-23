@@ -24,7 +24,7 @@ function getEmployees(list) {
   return [...list.children].map((employee) => ({
     name: employee.textContent.trim(),
     position: employee.dataset.position,
-    salary: employee.dataset.salary,
+    salary: convertToNumber(employee.dataset.salary),
     age: employee.dataset.age,
   }));
 }
