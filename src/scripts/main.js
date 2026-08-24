@@ -39,4 +39,7 @@ sortList(employeesArray).forEach((employee) => {
   employee.parentNode.appendChild(employee);
 });
 
-getEmployees(employeesArray);
+const employeesData = getEmployees(employeesArray);
+
+// eslint-disable-next-line no-console
+console.log(employeesData);
