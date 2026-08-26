@@ -2,13 +2,17 @@
 
 const employeesList = document.querySelector('ul');
 
+function parseSalary(s) {
+  return Number(s.replace(/[$,]/g, ''));
+}
+
 function sortList(list) {
   let newArr = [];
 
   for (const child of list.children) {
     newArr.push({
       element: child,
-      salary: Number(child.dataset.salary.replace(/[$,]/g, '')),
+      salary: parseSalary(child.dataset.salary),
     });
   }
   newArr = newArr.sort((a, b) => b.salary - a.salary);
