@@ -1,32 +1,35 @@
 'use strict';
 
-// write code here
-const firstElement = document.body.querySelector('ul');
-const listItems = firstElement.querySelectorAll('li');
+const employeesList = document.body.querySelector('ul');
 
 function getSalary(employee) {
-  const salaryStr = employee.getAttribute('data-salary').replace(',', '');
+  const salaryStr = employee.dataset.salary.replace(',', '');
+
   const salary = +salaryStr.replace('$', '');
 
   return salary;
 }
 
 function sortList(list) {
-  return Array.from(list).sort((a, b) => getSalary(b) - getSalary(a));
+  const listItems = list.querySelectorAll('li');
+
+  const sortedList = Array.from(listItems).sort(
+    (a, b) => getSalary(b) - getSalary(a),
+  );
+
+  list.append(...sortedList);
 }
 
-firstElement.append(...sortList(listItems));
-
 function getEmployees(list) {
-  return Array.from(list).map((value) => {
+  return Array.from(list).map((employee) => {
     return {
-      name: value.dataset.name,
-      position: value.dataset.position,
-      salary: value.dataset.salary,
-      age: +value.dataset.age,
+      name: employee.dataset.name,
+      position: employee.dataset.position,
+      salary: getSalary(employee),
+      age: +employee.dataset.age,
     };
   });
 }
 
-sortList(listItems);
-getEmployees(listItems);
+sortList(employeesList);
+getEmployees(employeesList.querySelectorAll('li'));
