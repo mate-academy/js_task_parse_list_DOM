@@ -16,14 +16,15 @@ function sortList(listElement) {
 }
 
 function getEmployees(listElement) {
-  return Array.from(list.children).map((li) => {
+  return Array.from(listElement.children).map((li) => {
     return {
       name: li.textContent.trim(),
-      salary: Number((li.dataset.salary || '').replace(/,/g, '')),
+      position: li.dataset.position,
+      salary: Number((li.dataset.salary || '').replace(/[$,]/g, '')),
+      age: Number(li.dataset.age),
     };
   });
 }
 
 sortList(list);
-
 getEmployees(list);
