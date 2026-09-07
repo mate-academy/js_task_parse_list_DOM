@@ -6,8 +6,8 @@ function parseSalary(salaryString) {
   return Number(salaryString.replace(/[$,]/g, ''));
 }
 
-function sortList(list) {
-  const items = [...list.children];
+function sortList(employeelist) {
+  const items = [...employeelist.children];
 
   items.sort((a, b) => {
     const salaryA = parseSalary(a.dataset.salary);
@@ -16,11 +16,11 @@ function sortList(list) {
     return salaryB - salaryA;
   });
 
-  items.forEach((item) => list.appendChild(item));
+  items.forEach((item) => employeelist.appendChild(item));
 }
 
-function getEmployees(list) {
-  const items = [...list.children];
+function getEmployees(employeelist) {
+  const items = [...employeelist.children];
 
   return items.map((item) => ({
     name: item.textContent.trim(),
@@ -33,5 +33,4 @@ function getEmployees(list) {
 const list = document.querySelector('ul');
 
 sortList(list);
-
-const employees = getEmployees(list);
+getEmployees(list);
