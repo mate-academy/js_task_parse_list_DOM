@@ -15,4 +15,19 @@ workers.forEach((worker) => {
 });
 }
 
+function getEmployees() {
+  const workers = [...document.querySelectorAll('li[data-salary]')];
+
+  return workers.map((worker) => {
+    return {
+      name: worker.textContent.trim(),
+      position: worker.dataset.position,
+      salary: Number(
+        worker.dataset.salary.slice(1).split(',').join('')
+      ),
+      age: Number(worker.dataset.age),
+      };
+  });
+}
+
 // write code here
