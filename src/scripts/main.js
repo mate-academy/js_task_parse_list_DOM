@@ -30,12 +30,10 @@ function getEmployees(list) {
   });
 }
 
-const list = document.querySelector('ul');
+const employeesList = document.querySelector('ul');
 
-sortList(list);
+sortList(employeesList);
+getEmployees(employeesList);
 
-const employees = getEmployees(list);
-
-console.log(employees);
 
 // write code here
