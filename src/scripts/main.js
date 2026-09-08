@@ -17,8 +17,8 @@ workers.forEach((worker) => {
 });
 }
 
-function getEmployees() {
-  const workers = [...document.querySelectorAll('li[data-salary]')];
+function getEmployees(list) {
+  const workers = [...list.querySelectorAll('li[data-salary]')];
 
   return workers.map((worker) => {
     return {
