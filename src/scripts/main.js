@@ -30,4 +30,7 @@ function getEmployees() {
   });
 }
 
+sortList();
+getEmployees();
+
 // write code here
