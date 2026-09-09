@@ -1,26 +1,32 @@
 'use strict';
 
-function sortEmployeesBySalary() {
-  const list = document.querySelector('ul');
-  const items = [...list.querySelectorAll('li')];
-  const getSalary = (item) =>
-    Number(item.dataset.salary.replace('$', '').replaceAll(',', ''));
+function parseSalary(salaryStr) {
+  return Number(salaryStr.replace('$', '').replaceAll(',', ''));
+}
 
-  items.sort((a, b) => getSalary(b) - getSalary(a));
+function sortList(list) {
+  const items = [...list.querySelectorAll('li')];
+
+  items.sort(
+    (a, b) => parseSalary(b.dataset.salary) - parseSalary(a.dataset.salary),
+  );
   items.forEach((item) => list.appendChild(item));
 }
 
-function getEmployees() {
-  const items = [...document.querySelectorAll('li')];
+function getEmployees(list) {
+  const items = [...list.querySelectorAll('li')];
 
   return items.map((item) => ({
     name: item.textContent.trim(),
     position: item.dataset.position,
-    salary: Number(item.dataset.salary.replace('$', '').replaceAll(',', '')),
+    salary: parseSalary(item.dataset.salary),
     age: Number(item.dataset.age),
   }));
 }
-sortEmployeesBySalary();
-getEmployees();
 
-export { sortEmployeesBySalary, getEmployees };
+const employeeList = document.querySelector('ul');
+
+sortList(employeeList);
+getEmployees(employeeList);
+
+export { parseSalary, sortList, getEmployees };
