@@ -41,5 +41,5 @@ function getEmployees(list) {
 }
 
 function parseSalary(salary) {
-  return salary.replaceAll(/,|\$/g, '');
+  return +salary.replaceAll(/,|\$/g, '');
 }
