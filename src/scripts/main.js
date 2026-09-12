@@ -28,6 +28,8 @@ function getEmployees(list) {
   const employees = [...list].map((li) => {
     return {
       ...li.dataset,
+      age: Number(li.dataset.age),
+      salary: transformSalary(li.dataset.salary),
       name: li.textContent.trim(),
     };
   });
