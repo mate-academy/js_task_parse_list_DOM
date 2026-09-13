@@ -8,13 +8,13 @@ function getEmployees(list) {
   return Array.from(items).map((item) => ({
     name: item.textContent.trim(),
     position: item.dataset.position,
-    salary: item.dataset.salary,
-    age: parseInt(item.dataset.age),
+    salary: helperParseSalary(item.dataset.salary),
+    age: parseInt(item.dataset.age, 10),
   }));
 }
 
 function helperParseSalary(salary) {
-  return parseInt(salary.replace(/[$,]/g, ''));
+  return parseInt(salary.replace(/[$,]/g, ''), 10);
 }
 
 function sortList(listElement) {
