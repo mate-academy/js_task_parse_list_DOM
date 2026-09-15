@@ -1,14 +1,14 @@
 'use strict';
 
-function sortEmployees(list) {
+function sortList(list) {
   const listElement = document.querySelector('ul');
   const newListElement = document.createElement('ul');
   const employees = [...list];
 
   employees.sort(
     (employee1, employee2) =>
-      Number(employee2.dataset.salary.replaceAll('$', '').replaceAll(',', '')) -
-      Number(employee1.dataset.salary.replaceAll('$', '').replaceAll(',', '')),
+      parseSalary(employee2.dataset.salary) -
+      parseSalary(employee1.dataset.salary),
   );
 
   for (const employee of employees) {
@@ -16,6 +16,10 @@ function sortEmployees(list) {
   }
 
   listElement.replaceWith(newListElement);
+}
+
+function parseSalary(salary) {
+  return Number(salary.replaceAll('$', '').replaceAll(',', ''));
 }
 
 function getEmployees(list) {
@@ -35,5 +39,5 @@ function getEmployees(list) {
 
 const employeeElementsList = document.querySelectorAll('li');
 
-sortEmployees(employeeElementsList);
+sortList(employeeElementsList);
 getEmployees(employeeElementsList);
