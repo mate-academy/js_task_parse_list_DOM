@@ -2,7 +2,6 @@
 
 function sortList(list) {
   const listElement = document.querySelector('ul');
-  const newListElement = document.createElement('ul');
   const employees = [...list];
 
   employees.sort(
@@ -12,10 +11,8 @@ function sortList(list) {
   );
 
   for (const employee of employees) {
-    newListElement.append(employee);
+    listElement.append(employee);
   }
-
-  listElement.replaceWith(newListElement);
 }
 
 function parseSalary(salary) {
@@ -29,8 +26,8 @@ function getEmployees(list) {
     employees.push({
       name: employee.textContent.trim(),
       position: employee.dataset.position,
-      salary: employee.dataset.salary,
-      age: employee.dataset.age,
+      salary: parseSalary(employee.dataset.salary),
+      age: Number(employee.dataset.age),
     });
   }
 
