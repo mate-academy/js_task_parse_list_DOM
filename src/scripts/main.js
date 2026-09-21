@@ -21,18 +21,6 @@ function sortList(listElem) {
 
     items[i].before(maxItem);
   }
-
-  function parseSalary(elements) {
-    let result = '';
-
-    for (const elem of elements) {
-      if (!Number.isNaN(Number(elem))) {
-        result += elem;
-      }
-    }
-
-    return Number(result);
-  }
 }
 
 getEmployees(list);
@@ -44,7 +32,7 @@ function getEmployees(listElem) {
   for (const elem of items) {
     const newObj = {
       position: elem.getAttribute('data-position'),
-      salary: elem.getAttribute('data-salary'),
+      salary: parseSalary(elem.getAttribute('data-salary')),
       age: elem.getAttribute('data-age'),
       name: elem.textContent,
     };
@@ -53,5 +41,17 @@ function getEmployees(listElem) {
   }
 
   return result;
+}
+
+function parseSalary(elements) {
+  let result = '';
+
+  for (const elem of elements) {
+    if (!Number.isNaN(Number(elem))) {
+      result += elem;
+    }
+  }
+
+  return Number(result);
 }
 // write code here
