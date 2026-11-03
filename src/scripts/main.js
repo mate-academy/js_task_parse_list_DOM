@@ -11,12 +11,12 @@ function sortList(ulElement) {
 
   arrOfElement.sort(
     (a, b) =>
-      intoValue(a.getAttribute('data-salary')) -
-      intoValue(b.getAttribute('data-salary')),
+      intoValue(b.getAttribute('data-salary')) -
+      intoValue(a.getAttribute('data-salary')),
   );
 
   for (const element of arrOfElement) {
-    ulElement.prepend(element);
+    ulElement.append(element);
   }
 }
 
@@ -40,5 +40,3 @@ function getEmployees(ulElement) {
 
 sortList(list);
 getEmployees(list);
-
-console.log(getEmployees(list));
