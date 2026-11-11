@@ -4,7 +4,6 @@
 
 const list = document.querySelector('ul');
 
-// Helper function
 function parseSalary(salaryString) {
   return Number(salaryString);
 }
@@ -12,7 +11,7 @@ function parseSalary(salaryString) {
 function sortList(employeesList) {
   const array = Array.from(employeesList.querySelectorAll('li'));
 
-  array.sort(function (a, b) {
+  array.sort((a, b) => {
     return parseSalary(b.dataset.salary) - parseSalary(a.dataset.salary);
   });
 
