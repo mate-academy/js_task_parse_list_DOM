@@ -9,13 +9,18 @@ function parseSalary(salaryString) {
 }
 
 function sortList(employeesList) {
-  const array = Array.from(employeesList.querySelectorAll('li'));
+  const employees = [...employeesList.querySelectorAll('li')];
 
-  array.sort((a, b) => {
-    return parseSalary(b.dataset.salary) - parseSalary(a.dataset.salary);
+  employees.sort((a, b) => {
+    const salaryA = parseSalary(a.dataset.salary);
+    const salaryB = parseSalary(b.dataset.salary);
+
+    return salaryB - salaryA;
   });
 
-  employeesList.append(...array);
+  employees.forEach(employee => {
+    employeesList.appendChild(employee);
+  });
 }
 
 function getEmployees(employeesList) {
@@ -23,14 +28,12 @@ function getEmployees(employeesList) {
   const employees = [];
 
   for (const l of li) {
-    const employee = {
+    employees.push({
       name: l.dataset.name,
       position: l.dataset.position,
       salary: parseSalary(l.dataset.salary),
       age: Number(l.dataset.age),
-    };
-
-    employees.push(employee);
+    });
   }
 
   return employees;
