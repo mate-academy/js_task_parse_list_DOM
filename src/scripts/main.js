@@ -1,6 +1,5 @@
 'use strict';
 
-// write code here
 
 const list = document.querySelector('ul');
 
