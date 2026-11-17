@@ -20,7 +20,7 @@ function sortList(list) {
 
 function getEmployees(list) {
   return [...list.children].map((item) => ({
-    name: item.textContent.trim(),
+    name: item.dataset.name,
     position: item.dataset.position,
     salary: getSalary(item.dataset.salary),
     age: Number(item.dataset.age),
