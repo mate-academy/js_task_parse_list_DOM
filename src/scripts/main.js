@@ -17,7 +17,7 @@ function sortList(listElement) {
   });
 
   listItems.forEach((employee) => {
-    list.append(employee);
+    listElement.append(employee);
   });
 }
 
