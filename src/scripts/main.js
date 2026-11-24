@@ -42,4 +42,5 @@ function getEmployees(listElement) {
 }
 
 sortList(list);
-getEmployees(list);
+
+const employees = getEmployees(list);
