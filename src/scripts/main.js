@@ -9,7 +9,7 @@ const sortList = (employeesList) => {
   );
 
   for (const li of list) {
-    ul.append(li);
+    employeesList.append(li);
   }
 };
 
