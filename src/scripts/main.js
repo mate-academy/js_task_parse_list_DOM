@@ -30,7 +30,7 @@ const getEmployees = (employeesList) => {
 };
 
 function salaryConvert(sal) {
-  return sal.replaceAll('$', '').replaceAll(',', '');
+  return Number(sal.replaceAll('$', '').replaceAll(',', ''));
 }
 
 sortList(ul);
